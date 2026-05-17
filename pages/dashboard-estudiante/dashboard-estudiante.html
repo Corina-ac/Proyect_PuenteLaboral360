@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMatch - Dashboard Estudiante</title>
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="dashboard-estudiante.css">
+</head>
+<body>
+
+    <section class="navbar">
+        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+        <nav>
+            <a href="../notificaciones/notificaciones.html">🔔 Notificaciones </a>
+            <a href="../login/login.html">Cerrar sesión</a>
+        </nav>
+    </section>
+
+    <section class="layout-dashboard">
+
+        <section class="sidebar">
+            <section class="perfil-mini">
+                <section class="avatar">CA</section>
+                <section class="nombre-usuario">Corina Acosta</section>
+                <section class="rol-usuario">🎓 Estudiante</section>
+            </section>
+            <nav>
+                <a href="dashboard-estudiante.html" class="activo"><span class="icono">🏠</span> Inicio</a>
+                <a href="../cursos/cursos.html"><span class="icono">📚</span> Mis Cursos</a>
+                <a href="../perfil/perfil.html"><span class="icono">👤</span> Mi Perfil</a>
+                <a href="../notificaciones/notificaciones.html"><span class="icono">🔔</span> Notificaciones</a>
+            </nav>
+        </section>
+
+        <section class="contenido-principal">
+
+            <section class="bienvenida">
+                <h1>¡Hola, Corina! 👋</h1>
+                <p>Tienes 3 cursos en progreso y 2 nuevas oportunidades laborales</p>
+            </section>
+
+            <section class="stats-grid">
+                <section class="stat-box">
+                    <section class="numero">3</section>
+                    <section class="etiqueta">Cursos en progreso</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero">2</section>
+                    <section class="etiqueta">Certificados obtenidos</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero">76%</section>
+                    <section class="etiqueta">Perfil completado</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero">5</section>
+                    <section class="etiqueta">Habilidades verificadas</section>
+                </section>
+            </section>
+
+            <section class="tarjeta">
+                <h2> Mis cursos en progreso</h2>
+                <section class="cursos-grid">
+                    <section class="curso-card">
+                        <section class="titulo-curso">Fundamentos de sistema web</section>
+                        <section class="instructor">👨‍🏫 Ing.Geovanny Brito</section>
+                        <section class="progreso-texto">
+                            <span>Progreso</span>
+                            <span>65%</span>
+                        </section>
+                        <section class="barra-progreso">
+                            <section class="relleno" style="width: 65%;"></section>
+                        </section>
+                        <br>
+                        <a href="../cursos/cursos.html" class="btn btn-azul" style="font-size:12px; padding:6px 14px;">Continuar</a>
+                    </section>
+
+                    <section class="curso-card">
+                        <section class="titulo-curso">React desde Cero</section>
+                        <section class="instructor">👩‍🏫 Ing. María López</section>
+                        <section class="progreso-texto">
+                            <span>Progreso</span>
+                            <span>30%</span>
+                        </section>
+                        <section class="barra-progreso">
+                            <section class="relleno" style="width: 30%;"></section>
+                        </section>
+                        <br>
+                        <a href="../cursos/cursos.html" class="btn btn-azul" style="font-size:12px; padding:6px 14px;">Continuar</a>
+                    </section>
+
+                    <section class="curso-card">
+                        <section class="titulo-curso">Base de Datos SQL</section>
+                        <section class="instructor">👨‍🏫 Ing. Luis Ortiz</section>
+                        <section class="progreso-texto">
+                            <span>Progreso</span>
+                            <span>90%</span>
+                        </section>
+                        <section class="barra-progreso">
+                            <section class="relleno" style="width: 90%; background-color: #28a745;"></section>
+                        </section>
+                        <br>
+                        <span class="badge badge-verde">¡Casi terminas!</span>
+                    </section>
+                </section>
+            </section>
+
+            <section class="tarjeta">
+                <h2>🎯 Oportunidades que hacen match contigo</h2>
+
+                <section class="match-card">
+                    <section class="info-empresa">
+                        <section class="nombre-empresa">🏢 TechCorp S.A.</section>
+                        <section class="cargo">Desarrollador Frontend Junior</section>
+                        <section style="margin-top:8px;">
+                            <span class="habilidad-tag">HTML</span>
+                            <span class="habilidad-tag">CSS</span>
+                            <span class="habilidad-tag">JavaScript</span>
+                        </section>
+                    </section>
+                    <section>
+                        <section class="match-porcentaje">
+                            87%
+                            <section class="texto-match">de match</section>
+                        </section>
+                        <a href="../dashboard-empresa/dashboard-empresa.html" class="btn btn-verde" style="font-size:12px; padding:6px 12px; margin-top:8px; display:block; text-align:center;">Ver</a>
+                    </section>
+                </section>
+
+                <section class="match-card">
+                    <section class="info-empresa">
+                        <section class="nombre-empresa">🏢 Innovatech</section>
+                        <section class="cargo">Analista de Datos Jr.</section>
+                        <section style="margin-top:8px;">
+                            <span class="habilidad-tag">SQL</span>
+                            <span class="habilidad-tag">Python</span>
+                        </section>
+                    </section>
+                    <section>
+                        <section class="match-porcentaje" style="color: #f59e0b;">
+                            62%
+                            <section class="texto-match">de match</section>
+                        </section>
+                        <a href="../dashboard-empresa/dashboard-empresa.html" class="btn btn-gris" style="font-size:12px; padding:6px 12px; margin-top:8px; display:block; text-align:center;">Ver</a>
+                    </section>
+                </section>
+            </section>
+
+            <section class="tarjeta">
+                <h2>🏅 Mis habilidades verificadas</h2>
+                <section class="habilidades">
+                    <span class="habilidad-tag">HTML/CSS ✓</span>
+                    <span class="habilidad-tag">JavaScript ✓</span>
+                    <span class="habilidad-tag">Git ✓</span>
+                    <span class="habilidad-tag">SQL (en progreso)</span>
+                    <span class="habilidad-tag">React (en progreso)</span>
+                </section>
+                <br>
+                <a href="../perfil/perfil.html" class="btn btn-azul" style="font-size:13px; padding:8px 18px;">Ver mi perfil completo</a>
+            </section>
+
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMatch - Dashboard Empresa</title>
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="dashboard-empresa.css">
+</head>
+<body>
+
+    <section class="navbar" style="background-color: #c0392b;">
+        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+        <nav>
+            <a href="../notificaciones/notificaciones-empresa.html">🔔 Notificaciones </a>
+            <a href="../login/login.html">Cerrar sesión</a>
+        </nav>
+    </section>
+
+    <section class="layout-dashboard">
+
+        <section class="sidebar">
+            <section class="perfil-mini">
+                <section class="avatar">🏢</section>
+                <section class="nombre-usuario">TechCorp S.A.</section>
+                <section class="rol-usuario">🏢 Reclutador</section>
+            </section>
+            <nav>
+                <a href="dashboard-empresa.html" class="activo"><span>🏠</span> Inicio</a>
+                <a href="../buscar-talento/buscar-talento.html"><span>🔍</span> Buscar Talento</a>
+                <a href="../mis-vacantes/mis-vacantes.html"><span>📌</span> Mis Vacantes</a>
+                <a href="../notificaciones/notificaciones-empresa.html"><span>🔔</span> Notificaciones</a>
+            </nav>
+        </section>
+
+        <section class="contenido-principal">
+
+            <section style="margin-bottom:20px;">
+                <h1 style="font-size:22px; color:#333;">Motor de Emparejamiento de Talento</h1>
+                <p style="font-size:14px; color:#666; margin-top:4px;">Candidatos verificados ordenados por compatibilidad con tu vacante</p>
+            </section>
+
+            <section class="stats-grid">
+                <section class="stat-box">
+                    <section class="numero" style="color:#dc3545;">24</section>
+                    <section class="etiqueta">Candidatos encontrados</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero" style="color:#dc3545;">3</section>
+                    <section class="etiqueta">Vacantes activas</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero" style="color:#dc3545;">8</section>
+                    <section class="etiqueta">Perfiles guardados</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero" style="color:#dc3545;">2</section>
+                    <section class="etiqueta">Contrataciones este mes</section>
+                </section>
+            </section>
+
+            <section class="tarjeta">
+                <h2> Filtrar por vacante</h2>
+                <form method="get" action="dashboard-empresa.html" style="display:flex; gap:15px; flex-wrap:wrap; align-items:flex-end;">
+                    <section class="campo" style="flex:1; min-width:180px; margin-bottom:0;">
+                        <label>Vacante activa</label>
+                        <select name="vacante">
+                            <option value="frontend-junior">Desarrollador Frontend Junior</option>
+                            <option value="analista-datos">Analista de Datos Jr.</option>
+                            <option value="devops">DevOps Engineer</option>
+                        </select>
+                    </section>
+                    <section class="campo" style="flex:1; min-width:150px; margin-bottom:0;">
+                        <label>Nivel mínimo</label>
+                        <select name="nivel">
+                            <option value="junior">Junior</option>
+                            <option value="semi-senior">Semi-senior</option>
+                            <option value="senior">Senior</option>
+                        </select>
+                    </section>
+                    <button type="submit" class="btn btn-rojo" style="margin-bottom:2px;">Buscar</button>
+                </form>
+            </section>
+
+            <section class="tarjeta">
+                <h2> Candidatos — Desarrollador Frontend Junior</h2>
+                <p style="font-size:13px; color:#888; margin-bottom:15px;">Ordenados por porcentaje de compatibilidad con la vacante</p>
+
+                <section class="candidato-card">
+                    <section class="info-candidato">
+                        <section class="nombre-candidato"> Corina Acosta</section>
+                        <section class="detalle-candidato">Junior · 2 certificados · HTML, CSS, JS, Git</section>
+                        <section>
+                            <span class="habilidad-tag">HTML ✓</span>
+                            <span class="habilidad-tag">CSS ✓</span>
+                            <span class="habilidad-tag">JavaScript ✓</span>
+                            <span class="habilidad-tag">Git ✓</span>
+                        </section>
+                        <section class="radar-habilidades">
+                            <h4>📊 Nivel de competencias</h4>
+                            <section class="habilidad-nivel">
+                                <span class="nombre">HTML/CSS</span>
+                                <section class="barra"><section class="nivel" style="width:90%;"></section></section>
+                                <span class="porcentaje">90%</span>
+                            </section>
+                            <section class="habilidad-nivel">
+                                <span class="nombre">JavaScript</span>
+                                <section class="barra"><section class="nivel" style="width:75%;"></section></section>
+                                <span class="porcentaje">75%</span>
+                            </section>
+                            <section class="habilidad-nivel">
+                                <span class="nombre">React</span>
+                                <section class="barra"><section class="nivel" style="width:30%; background-color:#f59e0b;"></section></section>
+                                <span class="porcentaje">30%</span>
+                            </section>
+                            <section class="habilidad-nivel">
+                                <span class="nombre">Git</span>
+                                <section class="barra"><section class="nivel" style="width:70%;"></section></section>
+                                <span class="porcentaje">70%</span>
+                            </section>
+                        </section>
+                    </section>
+                    <section style="text-align:center; margin-left:20px;">
+                        <section class="match-grande" style="color:#28a745;">
+                            87%
+                            <span class="etiqueta-match">de match</span>
+                        </section>
+                        <a href="../perfil/perfil.html" class="btn btn-azul" style="font-size:12px; padding:7px 14px; display:block; margin-top:10px;">Ver perfil</a>
+                        <a href="#" class="btn btn-verde" style="font-size:12px; padding:7px 14px; display:block; margin-top:6px;">Contactar</a>
+                    </section>
+                </section>
+
+                <section class="candidato-card">
+                    <section class="info-candidato">
+                        <section class="nombre-candidato"> Luis Fernández</section>
+                        <section class="detalle-candidato">Junior · 1 certificado · HTML, CSS, JS</section>
+                        <section>
+                            <span class="habilidad-tag">HTML ✓</span>
+                            <span class="habilidad-tag">CSS ✓</span>
+                            <span class="habilidad-tag">JavaScript ✓</span>
+                        </section>
+                        <section class="radar-habilidades">
+                            <h4>📊 Nivel de competencias</h4>
+                            <section class="habilidad-nivel">
+                                <span class="nombre">HTML/CSS</span>
+                                <section class="barra"><section class="nivel" style="width:80%;"></section></section>
+                                <span class="porcentaje">80%</span>
+                            </section>
+                            <section class="habilidad-nivel">
+                                <span class="nombre">JavaScript</span>
+                                <section class="barra"><section class="nivel" style="width:60%;"></section></section>
+                                <span class="porcentaje">60%</span>
+                            </section>
+                            <section class="habilidad-nivel">
+                                <span class="nombre">React</span>
+                                <section class="barra"><section class="nivel" style="width:15%; background-color:#dc3545;"></section></section>
+                                <span class="porcentaje">15%</span>
+                            </section>
+                        </section>
+                    </section>
+                    <section style="text-align:center; margin-left:20px;">
+                        <section class="match-grande" style="color:#f59e0b;">
+                            71%
+                            <span class="etiqueta-match">de match</span>
+                        </section>
+                        <a href="../perfil/perfil.html" class="btn btn-azul" style="font-size:12px; padding:7px 14px; display:block; margin-top:10px;">Ver perfil</a>
+                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px; display:block; margin-top:6px;">Contactar</a>
+                    </section>
+                </section>
+
+            </section>
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+</body>
+</html>

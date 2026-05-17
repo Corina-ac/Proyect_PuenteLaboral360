@@ -1,0 +1,9 @@
+.sidebar .avatar {
+    background-color: #28a745;
+}
+
+.sidebar nav a.activo {
+    background-color: #28a745;
+    color: white;
+    border-left-color: #ffdd57;
+}

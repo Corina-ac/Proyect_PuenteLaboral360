@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMatch - Mis Vacantes</title>
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="../dashboard-empresa/dashboard-empresa.css">
+</head>
+<body>
+
+    <section class="navbar" style="background-color: #c0392b;">
+        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+        <nav>
+            <a href="../notificaciones/notificaciones-empresa.html">🔔 Notificaciones</a>
+            <a href="../login/login.html">Cerrar sesión</a>
+        </nav>
+    </section>
+
+    <section class="layout-dashboard">
+
+        <section class="sidebar">
+            <section class="perfil-mini">
+                <section class="avatar">🏢</section>
+                <section class="nombre-usuario">TechCorp S.A.</section>
+                <section class="rol-usuario">🏢 Reclutador</section>
+            </section>
+            <nav>
+                <a href="../dashboard-empresa/dashboard-empresa.html"><span>🏠</span> Inicio</a>
+                <a href="../buscar-talento/buscar-talento.html"><span>🔍</span> Buscar Talento</a>
+                <a href="mis-vacantes.html" class="activo"><span>📌</span> Mis Vacantes</a>
+                <a href="../notificaciones/notificaciones-empresa.html"><span>🔔</span> Notificaciones</a>
+            </nav>
+        </section>
+
+        <section class="contenido-principal">
+
+            <section style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+                <section>
+                    <h1 style="font-size:22px; color:#333;">Mis Vacantes</h1>
+                    <p style="font-size:14px; color:#666; margin-top:4px;">Gestiona tus ofertas de trabajo y revisa postulantes</p>
+                </section>
+                <a href="#" class="btn btn-rojo" style="font-size:13px; padding:10px 20px;">+ Publicar vacante</a>
+            </section>
+
+            <section class="stats-grid">
+                <section class="stat-box">
+                    <section class="numero" style="color:#dc3545;">3</section>
+                    <section class="etiqueta">Vacantes activas</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero" style="color:#dc3545;">22</section>
+                    <section class="etiqueta">Total postulantes</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero" style="color:#dc3545;">8</section>
+                    <section class="etiqueta">Perfiles guardados</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero" style="color:#dc3545;">2</section>
+                    <section class="etiqueta">Contrataciones este mes</section>
+                </section>
+            </section>
+
+            <section class="tarjeta">
+                <h2>📌 Vacantes activas</h2>
+
+                <section class="candidato-card">
+                    <section class="info-candidato">
+                        <section class="nombre-candidato">Desarrollador Frontend Junior</section>
+                        <section class="detalle-candidato">Tiempo completo · Presencial · Buenos Aires</section>
+                        <section style="margin-top:8px;">
+                            <span class="habilidad-tag">HTML</span>
+                            <span class="habilidad-tag">CSS</span>
+                            <span class="habilidad-tag">JavaScript</span>
+                            <span class="habilidad-tag">React</span>
+                            <span class="habilidad-tag">Git</span>
+                        </section>
+                        <section style="margin-top:10px; font-size:13px; color:#555;">
+                            Publicada el 10/05/2026 · Cierra el 30/05/2026
+                        </section>
+                    </section>
+                    <section style="text-align:center; margin-left:20px; min-width:120px;">
+                        <section style="font-size:28px; font-weight:bold; color:#dc3545;">12</section>
+                        <section style="font-size:12px; color:#888;">postulantes</section>
+                        <span class="badge badge-verde" style="display:block; margin:8px auto 10px; width:fit-content;">Activa</span>
+                        <a href="../buscar-talento/buscar-talento.html" class="btn btn-azul" style="font-size:12px; padding:7px 14px; display:block; margin-top:4px;">Ver candidatos</a>
+                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px; display:block; margin-top:6px;">Editar</a>
+                    </section>
+                </section>
+
+                <section class="candidato-card">
+                    <section class="info-candidato">
+                        <section class="nombre-candidato">Analista de Datos Jr.</section>
+                        <section class="detalle-candidato">Tiempo completo · Remoto · Argentina</section>
+                        <section style="margin-top:8px;">
+                            <span class="habilidad-tag">Python</span>
+                            <span class="habilidad-tag">SQL</span>
+                            <span class="habilidad-tag">Excel</span>
+                            <span class="habilidad-tag">Power BI</span>
+                        </section>
+                        <section style="margin-top:10px; font-size:13px; color:#555;">
+                            Publicada el 05/05/2026 · Cierra el 25/05/2026
+                        </section>
+                    </section>
+                    <section style="text-align:center; margin-left:20px; min-width:120px;">
+                        <section style="font-size:28px; font-weight:bold; color:#dc3545;">7</section>
+                        <section style="font-size:12px; color:#888;">postulantes</section>
+                        <span class="badge badge-verde" style="display:block; margin:8px auto 10px; width:fit-content;">Activa</span>
+                        <a href="../buscar-talento/buscar-talento.html" class="btn btn-azul" style="font-size:12px; padding:7px 14px; display:block; margin-top:4px;">Ver candidatos</a>
+                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px; display:block; margin-top:6px;">Editar</a>
+                    </section>
+                </section>
+
+                <section class="candidato-card">
+                    <section class="info-candidato">
+                        <section class="nombre-candidato">DevOps Engineer</section>
+                        <section class="detalle-candidato">Tiempo completo · Híbrido · Buenos Aires</section>
+                        <section style="margin-top:8px;">
+                            <span class="habilidad-tag">Docker</span>
+                            <span class="habilidad-tag">Kubernetes</span>
+                            <span class="habilidad-tag">CI/CD</span>
+                            <span class="habilidad-tag">Linux</span>
+                            <span class="habilidad-tag">AWS</span>
+                        </section>
+                        <section style="margin-top:10px; font-size:13px; color:#555;">
+                            Publicada el 12/05/2026 · Cierra el 12/06/2026
+                        </section>
+                    </section>
+                    <section style="text-align:center; margin-left:20px; min-width:120px;">
+                        <section style="font-size:28px; font-weight:bold; color:#dc3545;">3</section>
+                        <section style="font-size:12px; color:#888;">postulantes</section>
+                        <span class="badge badge-verde" style="display:block; margin:8px auto 10px; width:fit-content;">Activa</span>
+                        <a href="../buscar-talento/buscar-talento.html" class="btn btn-azul" style="font-size:12px; padding:7px 14px; display:block; margin-top:4px;">Ver candidatos</a>
+                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px; display:block; margin-top:6px;">Editar</a>
+                    </section>
+                </section>
+
+            </section>
+
+            <section class="tarjeta">
+                <h2>📁 Vacantes cerradas</h2>
+                <p style="font-size:13px; color:#888; margin-bottom:15px;">Historial de posiciones anteriores</p>
+
+                <section class="candidato-card" style="opacity:0.7;">
+                    <section class="info-candidato">
+                        <section class="nombre-candidato">QA Tester Junior</section>
+                        <section class="detalle-candidato">Tiempo completo · Presencial · Buenos Aires</section>
+                        <section style="margin-top:8px;">
+                            <span class="habilidad-tag">Testing</span>
+                            <span class="habilidad-tag">Selenium</span>
+                            <span class="habilidad-tag">Jira</span>
+                        </section>
+                        <section style="margin-top:10px; font-size:13px; color:#555;">
+                            Cerrada el 01/05/2026 · 15 postulantes · 1 contratado
+                        </section>
+                    </section>
+                    <section style="text-align:center; margin-left:20px; min-width:120px;">
+                        <span class="badge badge-gris" style="display:block; margin:8px auto 10px; width:fit-content;">Cerrada</span>
+                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px; display:block; margin-top:4px;">Ver historial</a>
+                        <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px; display:block; margin-top:6px;">Reabrir</a>
+                    </section>
+                </section>
+
+            </section>
+
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+</body>
+</html>

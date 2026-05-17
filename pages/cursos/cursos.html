@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMatch - Cursos</title>
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="cursos.css">
+</head>
+<body>
+
+    <section class="navbar">
+        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+        <nav>
+            <a href="../notificaciones/notificaciones.html">🔔 Notificaciones</a>
+            <a href="../login/login.html">Cerrar sesión</a>
+        </nav>
+    </section>
+
+    <section class="layout-dashboard">
+
+        <section class="sidebar">
+            <section class="perfil-mini">
+                <section class="avatar">CA</section>
+                <section class="nombre-usuario">Corina Acosta</section>
+                <section class="rol-usuario">🎓 Estudiante</section>
+            </section>
+            <nav>
+                <a href="../dashboard-estudiante/dashboard-estudiante.html"><span>🏠</span> Inicio</a>
+                <a href="cursos.html" class="activo"><span>📚</span> Mis Cursos</a>
+                <a href="../perfil/perfil.html"><span>👤</span> Mi Perfil</a>
+                <a href="../notificaciones/notificaciones.html"><span>🔔</span> Notificaciones</a>
+            </nav>
+        </section>
+
+        <section class="contenido-principal">
+
+            <section style="margin-bottom:20px;">
+                <h1 style="font-size:22px; color:#333;"> Cursos disponibles</h1>
+                <p style="font-size:14px; color:#666; margin-top:4px;">Aprende con instructores verificados y obtén certificados reconocidos</p>
+            </section>
+
+            <section class="tarjeta">
+                <form method="get" action="cursos.html" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+                    <input type="text" name="q" placeholder="Buscar curso..." style="flex:1; padding:9px 12px; border:1px solid #ccc; border-radius:5px; font-size:14px; min-width:180px;">
+                    <select name="categoria" style="padding:9px 12px; border:1px solid #ccc; border-radius:5px; font-size:14px;">
+                        <option value="">Todas las categorías</option>
+                        <option value="frontend">Frontend</option>
+                        <option value="backend">Backend</option>
+                        <option value="base-de-datos">Base de Datos</option>
+                        <option value="devops">DevOps</option>
+                    </select>
+                    <button type="submit" class="btn btn-azul">Buscar</button>
+                </form>
+            </section>
+
+            <section class="tarjeta">
+                <h2>▶ En progreso</h2>
+                <section class="catalogo-cursos">
+
+                    <section class="curso-item">
+                        <section class="curso-imagen js">🟨</section>
+                        <section class="curso-info">
+                            <section class="titulo">Fundamentos de sistema web</section>
+                            <section class="descripcion">Closures, Promesas, async/await y más</section>
+                            <section class="meta">
+                                <span>👨‍🏫 Roberto Silva</span>
+                                <span>⭐ 4.8</span>
+                            </section>
+                            <section class="barra-progreso">
+                                <section class="relleno" style="width:65%;"></section>
+                            </section>
+                            <p style="font-size:12px; color:#888; margin-top:4px; margin-bottom:10px;">65% completado</p>
+                            <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Continuar curso</a>
+                        </section>
+                    </section>
+
+                    <section class="curso-item">
+                        <section class="curso-imagen react">⚛️</section>
+                        <section class="curso-info">
+                            <section class="titulo">React desde Cero</section>
+                            <section class="descripcion">Componentes, hooks, estado y rutas</section>
+                            <section class="meta">
+                                <span>👩‍🏫 María López</span>
+                                <span>⭐ 4.9</span>
+                            </section>
+                            <section class="barra-progreso">
+                                <section class="relleno" style="width:30%;"></section>
+                            </section>
+                            <p style="font-size:12px; color:#888; margin-top:4px; margin-bottom:10px;">30% completado</p>
+                            <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Continuar curso</a>
+                        </section>
+                    </section>
+
+                    <section class="curso-item">
+                        <section class="curso-imagen sql">🗄️</section>
+                        <section class="curso-info">
+                            <section class="titulo">Base de Datos SQL</section>
+                            <section class="descripcion">Diseño, consultas, joins y optimización</section>
+                            <section class="meta">
+                                <span>👨‍🏫 Carlos Ruiz</span>
+                                <span>⭐ 4.7</span>
+                            </section>
+                            <section class="barra-progreso">
+                                <section class="relleno" style="width:90%; background-color:#28a745;"></section>
+                            </section>
+                            <p style="font-size:12px; color:#28a745; margin-top:4px; margin-bottom:10px;">90% — ¡Casi terminas!</p>
+                            <a href="#" class="btn btn-verde" style="font-size:12px; padding:7px 14px;">Finalizar</a>
+                        </section>
+                    </section>
+
+                </section>
+            </section>
+
+            <section class="tarjeta">
+                <h2>⭐ Recomendados para ti</h2>
+                <section class="catalogo-cursos">
+
+                    <section class="curso-item">
+                        <section class="curso-imagen python">🐍</section>
+                        <section class="curso-info">
+                            <section class="titulo">Python para Data Science</section>
+                            <section class="descripcion">NumPy, Pandas y visualización de datos</section>
+                            <section class="meta">
+                                <span>👨‍🏫 Ana Torres</span>
+                                <span>⭐ 4.9</span>
+                            </section>
+                            <span class="badge badge-azul">Recomendado</span>
+                            <br><br>
+                            <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Inscribirme</a>
+                        </section>
+                    </section>
+
+                    <section class="curso-item">
+                        <section class="curso-imagen node">🟢</section>
+                        <section class="curso-info">
+                            <section class="titulo">Node.js Backend</section>
+                            <section class="descripcion">APIs REST, Express y bases de datos</section>
+                            <section class="meta">
+                                <span>👨‍🏫 Roberto Silva</span>
+                                <span>⭐ 4.8</span>
+                            </section>
+                            <span class="badge badge-verde">Popular</span>
+                            <br><br>
+                            <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Inscribirme</a>
+                        </section>
+                    </section>
+
+                    <section class="curso-item">
+                        <section class="curso-imagen git">🔴</section>
+                        <section class="curso-info">
+                            <section class="titulo">Git y GitHub</section>
+                            <section class="descripcion">Control de versiones para equipos</section>
+                            <section class="meta">
+                                <span>👩‍🏫 Laura Díaz</span>
+                                <span>⭐ 4.6</span>
+                            </section>
+                            <span class="badge badge-amarillo">Básico</span>
+                            <br><br>
+                            <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Inscribirme</a>
+                        </section>
+                    </section>
+
+                </section>
+            </section>
+
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+</body>
+</html>

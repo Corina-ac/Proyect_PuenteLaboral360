@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMatch - Registro</title>
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="registro.css">
+</head>
+<body>
+
+    <section class="navbar">
+        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+        <nav>
+            <a href="../login/login.html">Iniciar Sesión</a>
+        </nav>
+    </section>
+
+    <section class="contenedor">
+        <section class="tarjeta">
+            <h2>Crear nueva cuenta</h2>
+
+            <section class="pasos-registro">
+                <section class="paso-indicador">
+                    <section class="circulo completado">✓</section>
+                    <span class="nombre-paso">Datos básicos</span>
+                </section>
+                <section class="linea-paso"></section>
+                <section class="paso-indicador">
+                    <section class="circulo activo">2</section>
+                    <span class="nombre-paso activo">Mis habilidades</span>
+                </section>
+                <section class="linea-paso"></section>
+                <section class="paso-indicador">
+                    <section class="circulo">3</section>
+                    <span class="nombre-paso">Confirmación</span>
+                </section>
+            </section>
+
+            <form action="../dashboard-estudiante/dashboard-estudiante.html" method="get">
+                <p style="font-size:14px; color:#888; margin-bottom:20px;">Paso 2 de 3 — Cuéntanos sobre tus habilidades actuales</p>
+
+                <section class="campo">
+                    <label>Rol en la plataforma</label>
+                    <select>
+                        <option value="">-- Selecciona un rol --</option>
+                        <option>🎓 Estudiante</option>
+                        <option>👨‍🏫 Instructor</option>
+                        <option>🏢 Empresa / Reclutador</option>
+                    </select>
+                </section>
+
+                <section class="campo">
+                    <label>Nombre completo</label>
+                    <input type="text" placeholder="Ej: Carlos Mendoza" value="Ana García">
+                </section>
+
+                <section class="campo">
+                    <label>Correo electrónico</label>
+                    <input type="email" placeholder="correo@ejemplo.com" value="ana@correo.com">
+                </section>
+                <section class="campo">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password"
+                        placeholder="Ingrese su contraseña" required
+                        minlength="8" maxlength="16"
+                        pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&amp;.#_-])[A-Za-z\d@$!%*?&amp;.#_-]{8,16}"
+                        title="Debe incluir letras, números y al menos un carácter especial (@$!%*?&.#_-)">
+                </section>
+                <section class="campo">
+                    <label>Cual es tu ubicacion actural?</label>
+                    <input type="text" placeholder="Ej: Quito, Ecuador" value="Quito, Ecuador">
+                </section>
+
+                <section class="campo">
+                    <label>¿Qué tecnologías conoces? (selecciona todas las que apliquen)</label>
+                    <section class="habilidades-check">
+                        <label class="check-habilidad"><input type="checkbox" checked> HTML/CSS</label>
+                        <label class="check-habilidad"><input type="checkbox" checked> JavaScript</label>
+                        <label class="check-habilidad"><input type="checkbox"> Python</label>
+                        <label class="check-habilidad"><input type="checkbox"> React</label>
+                        <label class="check-habilidad"><input type="checkbox"> Node.js</label>
+                        <label class="check-habilidad"><input type="checkbox"> SQL</label>
+                        <label class="check-habilidad"><input type="checkbox"> Java</label>
+                        <label class="check-habilidad"><input type="checkbox"> Git</label>
+                        <label class="check-habilidad"><input type="checkbox"> Docker</label>
+                        <label class="check-habilidad"><input type="checkbox"> Figma</label>
+                    </section>
+                </section>
+
+                <section class="campo">
+                    <label>Nivel general de experiencia</label>
+                    <section class="nivel-habilidad">
+                        <label><input type="radio" name="nivel"> Principiante</label>
+                        <label><input type="radio" name="nivel" checked> Junior</label>
+                        <label><input type="radio" name="nivel"> Semi-senior</label>
+                        <label><input type="radio" name="nivel"> Senior</label>
+                    </section>
+                </section>
+
+                <section class="campo">
+                    <label>¿Qué objetivo tienes al unirte?</label>
+                    <select>
+                        <option>Conseguir mi primer empleo en tecnología</option>
+                        <option>Cambiar de carrera al área tech</option>
+                        <option>Mejorar mis habilidades actuales</option>
+                        <option>Obtener certificaciones reconocidas</option>
+                    </select>
+                </section>
+
+                <section style="display:flex; justify-content:space-between; margin-top:20px;">
+                    <a href="../login/login.html" class="btn btn-gris">← Atrás</a>
+                    <button type="submit" class="btn btn-verde">Finalizar Registro →</button>
+                </section>
+            </form>
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+</body>
+</html>

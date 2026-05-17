@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMatch - Inicio</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        .hero {
+            background-color: #1a73e8;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #ffdd57;
+        }
+
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #cde;
+        }
+
+        .hero-botones {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-grande {
+            padding: 14px 30px;
+            font-size: 16px;
+        }
+
+        .btn-blanco {
+            background-color: white;
+            color: #1a73e8;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-amarillo {
+            background-color: #ffdd57;
+            color: #333;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* SECCIÓN CÓMO FUNCIONA */
+        .como-funciona {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #fff;
+        }
+
+        .como-funciona h2 {
+            font-size: 24px;
+            color: #1a73e8;
+            margin-bottom: 30px;
+        }
+
+        .pasos {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .paso {
+            flex: 1;
+            min-width: 180px;
+            max-width: 200px;
+            text-align: center;
+        }
+
+        .paso .icono-paso {
+            width: 60px;
+            height: 60px;
+            background-color: #e8f0fe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 26px;
+        }
+
+        .paso h3 {
+            font-size: 15px;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .paso p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* ROLES */
+        .roles {
+            background-color: #f0f2f5;
+            padding: 40px 20px;
+        }
+
+        .roles h2 {
+            text-align: center;
+            font-size: 24px;
+            color: #1a73e8;
+            margin-bottom: 25px;
+        }
+
+        .roles-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .rol-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px 20px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+        }
+
+        .rol-card .icono-rol {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .rol-card h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .rol-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* STATS INICIO */
+        .estadisticas {
+            background-color: #1a73e8;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .estadisticas h2 {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .stats-inicio {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-inicio {
+            min-width: 120px;
+        }
+
+        .stat-inicio .num {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ffdd57;
+        }
+
+        .stat-inicio .txt {
+            font-size: 14px;
+            color: #cde;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="navbar">
+        <a href="index.html" class="logo">Skill<span>Match</span></a>
+        <nav>
+            <a href="pages/login/login.html">Iniciar Sesión</a>
+            <a href="pages/registro/registro.html">Registrarse</a>
+        </nav>
+    </section>
+
+    <section class="hero">
+        <h1>Bienvenido a <span>SkillMatch</span></h1>
+        <p>La plataforma que conecta estudiantes con empresas mediante habilidades verificadas</p>
+        <section class="hero-botones">
+            <a href="pages/registro/registro.html" class="btn btn-grande btn-amarillo">Comenzar Gratis</a>
+            <a href="pages/login/login.html" class="btn btn-grande btn-blanco">Iniciar Sesión</a>
+        </section>
+    </section>
+
+    <section class="como-funciona">
+        <h2>¿Cómo funciona?</h2>
+        <section class="pasos">
+            <section class="paso">
+                <section class="icono-paso">📝</section>
+                <h3>1. Regístrate</h3>
+                <p>Crea tu perfil y declara tus habilidades actuales</p>
+            </section>
+            <section class="paso">
+                <section class="icono-paso">📚</section>
+                <h3>2. Aprende</h3>
+                <p>Toma cursos verificados por instructores calificados</p>
+            </section>
+            <section class="paso">
+                <section class="icono-paso">🏅</section>
+                <h3>3. Certifícate</h3>
+                <p>Obtén certificados que demuestran tus competencias</p>
+            </section>
+            <section class="paso">
+                <section class="icono-paso">🤝</section>
+                <h3>4. Conéctate</h3>
+                <p>Las empresas te encuentran automáticamente por tu perfil</p>
+            </section>
+        </section>
+    </section>
+
+    <section class="estadisticas">
+        <h2>SkillMatch en números</h2>
+        <section class="stats-inicio">
+            <section class="stat-inicio">
+                <section class="num">1,240</section>
+                <section class="txt">Estudiantes activos</section>
+            </section>
+            <section class="stat-inicio">
+                <section class="num">87</section>
+                <section class="txt">Instructores verificados</section>
+            </section>
+            <section class="stat-inicio">
+                <section class="num">156</section>
+                <section class="txt">Empresas registradas</section>
+            </section>
+            <section class="stat-inicio">
+                <section class="num">340</section>
+                <section class="txt">Empleos conectados</section>
+            </section>
+        </section>
+    </section>
+
+    <section class="roles">
+        <h2>Accede según tu rol</h2>
+        <section class="roles-grid">
+            <section class="rol-card">
+                <section class="icono-rol">🎓</section>
+                <h3>Estudiante</h3>
+                <p>Aprende, certifícate y muestra tu perfil a empresas</p>
+                <a href="pages/dashboard-estudiante/dashboard-estudiante.html" class="btn btn-azul">Ver demo</a>
+            </section>
+            <section class="rol-card">
+                <section class="icono-rol">👨‍🏫</section>
+                <h3>Instructor</h3>
+                <p>Crea cursos y monitorea el progreso de tus alumnos</p>
+                <a href="pages/dashboard-instructor/dashboard-instructor.html" class="btn btn-azul">Ver demo</a>
+            </section>
+            <section class="rol-card">
+                <section class="icono-rol">🏢</section>
+                <h3>Empresa</h3>
+                <p>Encuentra talento verificado con el motor de matching</p>
+                <a href="pages/dashboard-empresa/dashboard-empresa.html" class="btn btn-azul">Ver demo</a>
+            </section>
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+</body>
+</html>

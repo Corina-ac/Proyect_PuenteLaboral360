@@ -1,0 +1,173 @@
+.layout-dashboard {
+    display: flex;
+    min-height: calc(100vh - 55px);
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background-color: #2c3e50;
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+
+.sidebar .perfil-mini {
+    text-align: center;
+    padding: 0 15px 20px;
+    border-bottom: 1px solid #3d5166;
+}
+
+.sidebar .avatar {
+    width: 60px;
+    height: 60px;
+    background-color: #1a73e8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 8px;
+}
+
+.sidebar .nombre-usuario {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sidebar .rol-usuario {
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.sidebar nav {
+    margin-top: 15px;
+}
+
+.sidebar nav a {
+    display: block;
+    color: #bbb;
+    text-decoration: none;
+    padding: 11px 20px;
+    font-size: 14px;
+    border-left: 3px solid transparent;
+}
+
+.sidebar nav a:hover {
+    background-color: #3d5166;
+    color: white;
+}
+
+.sidebar nav a.activo {
+    background-color: #1a73e8;
+    color: white;
+    border-left-color: #ffdd57;
+}
+
+.sidebar nav a .icono {
+    margin-right: 8px;
+}
+
+/* CONTENIDO PRINCIPAL */
+.contenido-principal {
+    flex: 1;
+    padding: 25px;
+    background-color: #f0f2f5;
+    overflow-y: auto;
+}
+
+.bienvenida {
+    margin-bottom: 20px;
+}
+
+.bienvenida h1 {
+    font-size: 22px;
+    color: #333;
+}
+
+.bienvenida p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+}
+
+/* CURSO CARD */
+.cursos-grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.curso-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 18px;
+    flex: 1;
+    min-width: 200px;
+    max-width: 280px;
+}
+
+.curso-card .titulo-curso {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.curso-card .instructor {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.curso-card .progreso-texto {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* MATCH CARD */
+.match-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.match-card .info-empresa {
+    flex: 1;
+}
+
+.match-card .nombre-empresa {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.match-card .cargo {
+    font-size: 13px;
+    color: #666;
+    margin-top: 3px;
+}
+
+.match-porcentaje {
+    font-size: 22px;
+    font-weight: bold;
+    color: #28a745;
+    text-align: center;
+    min-width: 70px;
+}
+
+.match-porcentaje .texto-match {
+    font-size: 11px;
+    color: #888;
+    font-weight: normal;
+}

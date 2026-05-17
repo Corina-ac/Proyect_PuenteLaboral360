@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMatch - Mis Cursos (Instructor)</title>
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="../dashboard-instructor/dashboard-instructor.css">
+</head>
+<body>
+
+    <section class="navbar" style="background-color: #218838;">
+        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+        <nav>
+            <a href="../notificaciones/notificaciones-instructor.html">Notificaciones</a>
+            <a href="../login/login.html">Cerrar sesión</a>
+        </nav>
+    </section>
+
+    <section class="layout-dashboard">
+
+        <section class="sidebar">
+            <section class="perfil-mini">
+                <section class="avatar">RS</section>
+                <section class="nombre-usuario">Prof. Roberto Silva</section>
+                <section class="rol-usuario">Instructor Verificado</section>
+            </section>
+            <nav>
+                <a href="../dashboard-instructor/dashboard-instructor.html">🏠 Inicio</a>
+                <a href="mis-cursos-instructor.html" class="activo">📚 Mis Cursos</a>
+                <a href="../notificaciones/notificaciones-instructor.html">🔔 Notificaciones</a>
+            </nav>
+        </section>
+
+        <section class="contenido-principal">
+
+            <section style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+                <section>
+                    <h1 style="font-size:22px; color:#333;">Mis Cursos</h1>
+                    <p style="font-size:14px; color:#666; margin-top:4px;">Gestiona y monitorea tus cursos publicados</p>
+                </section>
+                <a href="#" class="btn btn-verde" style="font-size:13px; padding:10px 20px;">+ Crear nuevo curso</a>
+            </section>
+
+            <section class="stats-grid">
+                <section class="stat-box">
+                    <section class="numero" style="color:#28a745;">3</section>
+                    <section class="etiqueta">Cursos publicados</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero" style="color:#28a745;">148</section>
+                    <section class="etiqueta">Total inscritos</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero" style="color:#28a745;">62</section>
+                    <section class="etiqueta">Certificados emitidos</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero" style="color:#28a745;">42%</section>
+                    <section class="etiqueta">Tasa de certificación</section>
+                </section>
+            </section>
+
+            <section class="tarjeta">
+                <h2> Cursos activos</h2>
+
+                <section class="solicitud-card">
+                    <section class="info-sol">
+                        <section class="nombre-sol">JavaScript Avanzado</section>
+                        <section class="detalle-sol">Closures, Promesas, async/await y patrones modernos</section>
+                        <section style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;">
+                            <span class="badge badge-verde">Activo</span>
+                            <span class="badge badge-azul">75 inscritos</span>
+                            <span class="badge badge-gris">27 certificados</span>
+                        </section>
+                        <section style="margin-top:10px;">
+                            <section style="font-size:12px; color:#888; margin-bottom:4px;">Tasa de certificación: 36%</section>
+                            <section style="background:#e0e0e0; border-radius:10px; height:8px; width:200px; overflow:hidden;">
+                                <section style="background:#28a745; height:100%; width:36%;"></section>
+                            </section>
+                        </section>
+                    </section>
+                    <section class="acciones-sol">
+                        <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Ver detalles</a>
+                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px;">Editar</a>
+                    </section>
+                </section>
+
+                <section class="solicitud-card">
+                    <section class="info-sol">
+                        <section class="nombre-sol">Node.js para Backend</section>
+                        <section class="detalle-sol">APIs REST, Express, autenticación y bases de datos</section>
+                        <section style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;">
+                            <span class="badge badge-verde">Activo</span>
+                            <span class="badge badge-azul">53 inscritos</span>
+                            <span class="badge badge-gris">23 certificados</span>
+                        </section>
+                        <section style="margin-top:10px;">
+                            <section style="font-size:12px; color:#888; margin-bottom:4px;">Tasa de certificación: 43%</section>
+                            <section style="background:#e0e0e0; border-radius:10px; height:8px; width:200px; overflow:hidden;">
+                                <section style="background:#28a745; height:100%; width:43%;"></section>
+                            </section>
+                        </section>
+                    </section>
+                    <section class="acciones-sol">
+                        <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Ver detalles</a>
+                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px;">Editar</a>
+                    </section>
+                </section>
+
+                <section class="solicitud-card">
+                    <section class="info-sol">
+                        <section class="nombre-sol">TypeScript Básico</section>
+                        <section class="detalle-sol">Tipos, interfaces, generics y configuración de proyectos</section>
+                        <section style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;">
+                            <span class="badge badge-amarillo">Nuevo</span>
+                            <span class="badge badge-azul">20 inscritos</span>
+                            <span class="badge badge-gris">1 certificado</span>
+                        </section>
+                        <section style="margin-top:10px;">
+                            <section style="font-size:12px; color:#888; margin-bottom:4px;">Tasa de certificación: 5%</section>
+                            <section style="background:#e0e0e0; border-radius:10px; height:8px; width:200px; overflow:hidden;">
+                                <section style="background:#f59e0b; height:100%; width:5%;"></section>
+                            </section>
+                        </section>
+                    </section>
+                    <section class="acciones-sol">
+                        <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Ver detalles</a>
+                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px;">Editar</a>
+                    </section>
+                </section>
+
+            </section>
+
+            <section class="tarjeta">
+                <h2> Solicitudes de certificación pendientes</h2>
+                <p style="font-size:13px; color:#888; margin-bottom:15px;">Estudiantes que solicitaron revisión para obtener su certificado</p>
+
+                <section class="solicitud-card">
+                    <section class="info-sol">
+                        <section class="nombre-sol">Corina Acosta</section>
+                        <section class="detalle-sol">Solicita certificación en: JavaScript Avanzado</section>
+                        <section style="margin-top:6px;">
+                            <span class="badge badge-azul">Progreso: 92%</span>
+                        </section>
+                    </section>
+                    <section class="acciones-sol">
+                        <a href="#" class="btn btn-verde" style="font-size:12px; padding:7px 14px;">Aprobar</a>
+                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px;">Revisar</a>
+                    </section>
+                </section>
+
+                <section class="solicitud-card">
+                    <section class="info-sol">
+                        <section class="nombre-sol">Luis Fernández</section>
+                        <section class="detalle-sol">Solicita certificación en: Node.js para Backend</section>
+                        <section style="margin-top:6px;">
+                            <span class="badge badge-amarillo">Progreso: 78%</span>
+                        </section>
+                    </section>
+                    <section class="acciones-sol">
+                        <a href="#" class="btn btn-verde" style="font-size:12px; padding:7px 14px;">Aprobar</a>
+                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px;">Revisar</a>
+                    </section>
+                </section>
+            </section>
+
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+</body>
+</html>

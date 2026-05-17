@@ -1,0 +1,115 @@
+.pagina-login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f2f5;
+}
+
+.caja-login {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 35px 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.caja-login .logo-login {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #1a73e8;
+    margin-bottom: 5px;
+}
+
+.caja-login .logo-login span {
+    color: #ffdd57;
+    background-color: #1a73e8;
+    padding: 0 5px;
+    border-radius: 4px;
+}
+
+.caja-login h2 {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.btn-login:hover {
+    background-color: #1558b0;
+}
+
+.separador {
+    text-align: center;
+    color: #999;
+    margin: 15px 0;
+    font-size: 13px;
+}
+
+.enlace-registro {
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    margin-top: 15px;
+}
+
+.enlace-registro a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.enlace-registro a:hover {
+    text-decoration: underline;
+}
+
+.roles-rapidos {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.roles-rapidos p {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.accesos-rapidos {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.acceso-btn {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 7px 14px;
+    border-radius: 5px;
+    font-size: 12px;
+    text-decoration: none;
+    color: #333;
+}
+
+.acceso-btn:hover {
+    background-color: #e8f0fe;
+    border-color: #1a73e8;
+    color: #1a73e8;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMatch - Iniciar Sesión</title>
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <section class="pagina-login">
+        <section class="caja-login">
+            <form class="form-login" action="#" method="get">
+                <section class="logo-login">Skill<span>Match</span></section>
+                <h2>Inicia sesión en tu cuenta</h2>
+
+                <section class="campo">
+                    <label for="contacto_email">Correo electrónico</label>
+                    <input type="email" id="contacto_email" name="contacto_email"
+                        placeholder="Ej: correo@ejemplo.com" required>
+                </section>
+
+                <section class="campo">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password"
+                        placeholder="Ingrese su contraseña" required
+                        minlength="8" maxlength="16"
+                        pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&amp;.#_-])[A-Za-z\d@$!%*?&amp;.#_-]{8,16}"
+                        title="Debe incluir letras, números y al menos un carácter especial (@$!%*?&.#_-)">
+                </section>
+
+                <section class="campo">
+                    <label for="rol">¿Cuál es tu rol?</label>
+                    <select id="rol" name="rol" required>
+                        <option value="">-- Selecciona tu rol --</option>
+                        <option value="estudiante">🎓 Estudiante</option>
+                        <option value="instructor">👨‍🏫 Instructor</option>
+                        <option value="empresa">🏢 Empresa / Reclutador</option>
+                    </select>
+                </section>
+
+                <button type="submit" class="btn-login">Iniciar Sesión</button>
+            </form>
+
+            <section class="separador">— Accesos rápidos de demostración —</section>
+
+            <section class="roles-rapidos">
+                <p>Haz clic para ver cada dashboard</p>
+                <section class="accesos-rapidos">
+                    <a href="../dashboard-estudiante/dashboard-estudiante.html" class="acceso-btn">🎓 Estudiante</a>
+                    <a href="../dashboard-instructor/dashboard-instructor.html" class="acceso-btn">👨‍🏫 Instructor</a>
+                    <a href="../dashboard-empresa/dashboard-empresa.html" class="acceso-btn">🏢 Empresa</a>
+                </section>
+            </section>
+
+            <section class="enlace-registro">
+                ¿No tienes cuenta? <a href="../registro/registro.html">Regístrate aquí</a>
+            </section>
+
+        </section>
+    </section>
+
+</body>
+</html>

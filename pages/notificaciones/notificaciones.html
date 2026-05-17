@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMatch - Notificaciones</title>
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="notificaciones.css">
+</head>
+<body>
+
+    <section class="navbar">
+        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+        <nav>
+            <a href="notificaciones.html">🔔 Notificaciones </a>
+            <a href="../login/login.html">Cerrar sesión</a>
+        </nav>
+    </section>
+
+    <section class="layout-dashboard">
+
+        <section class="sidebar">
+            <section class="perfil-mini">
+                <section class="avatar">CA</section>
+                <section class="nombre-usuario">Corina Acosta</section>
+                <section class="rol-usuario">🎓 Estudiante</section>
+            </section>
+            <nav>
+                <a href="../dashboard-estudiante/dashboard-estudiante.html"><span>🏠</span> Inicio</a>
+                <a href="../cursos/cursos.html"><span>📚</span> Mis Cursos</a>
+                <a href="../perfil/perfil.html"><span>👤</span> Mi Perfil</a>
+                <a href="notificaciones.html" class="activo"><span>🔔</span> Notificaciones</a>
+            </nav>
+        </section>
+
+        <section class="contenido-principal">
+
+            <section style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+                <section>
+                    <h1 style="font-size:22px; color:#333;"> Centro de Notificaciones</h1>
+                    <p style="font-size:14px; color:#666; margin-top:4px;">El corazón del ecosistema SkillMatch</p>
+                </section>
+                <a href="#" class="btn btn-gris" style="font-size:13px; padding:8px 16px;">Marcar todo como leído</a>
+            </section>
+
+            <section class="tarjeta">
+                <h2> Nuevas </h2>
+
+                <section class="notif-item nueva exito">
+                    <section class="notif-icono">🏅</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">¡Certificado emitido automáticamente!</section>
+                        <section class="notif-descripcion">
+                            El <strong>Servicio de Emparejamiento</strong> detectó que completaste <strong>Base de Datos SQL</strong> con 90%. 
+                            Tu certificado fue emitido y tu perfil fue actualizado automáticamente. 
+                            <strong>3 empresas han sido notificadas</strong> de tu nueva habilidad verificada.
+                        </section>
+                        <section class="notif-fecha">Hace 5 minutos · Servicio de Matching Automático</section>
+                    </section>
+                </section>
+
+                <section class="notif-item nueva">
+                    <section class="notif-icono">🏢</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">TechCorp S.A. vio tu perfil</section>
+                        <section class="notif-descripcion">
+                            Un reclutador de <strong>TechCorp S.A.</strong> revisó tu perfil. 
+                            Tu compatibilidad con la vacante <em>Desarrollador Frontend Junior</em> es del <strong>87%</strong>.
+                        </section>
+                        <section style="margin-top:8px;">
+                            <a href="../dashboard-empresa/dashboard-empresa.html" class="btn btn-azul" style="font-size:12px; padding:6px 14px;">Ver vacante</a>
+                        </section>
+                        <section class="notif-fecha">Hace 1 hora · Motor de Emparejamiento</section>
+                    </section>
+                </section>
+
+                <section class="notif-item nueva alerta">
+                    <section class="notif-icono">⚡</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Match automático encontrado</section>
+                        <section class="notif-descripcion">
+                            El sistema detectó una <strong>nueva vacante compatible</strong> con tu perfil en Innovatech: 
+                            <em>Analista de Datos Jr.</em> — Compatibilidad: <strong>62%</strong>. 
+                            Aprende Python para aumentar tu match al 85%.
+                        </section>
+                        <section style="margin-top:8px;">
+                            <a href="../cursos/cursos.html" class="btn btn-azul" style="font-size:12px; padding:6px 14px;">Ver cursos de Python</a>
+                        </section>
+                        <section class="notif-fecha">Hace 3 horas · Servicio de Emparejamiento</section>
+                    </section>
+                </section>
+            </section>
+
+            <section class="tarjeta">
+                <h2> Anteriores</h2>
+
+                <section class="notif-item leida">
+                    <section class="notif-icono">✅</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Habilidad Git verificada por instructor</section>
+                        <section class="notif-descripcion">
+                            El Prof. <strong>Laura Díaz</strong> verificó tu habilidad en Git & GitHub. 
+                            Tu perfil fue actualizado automáticamente.
+                        </section>
+                        <section class="notif-fecha">20 Dic 2023 · Sistema de Verificación</section>
+                    </section>
+                </section>
+
+                <section class="notif-item leida">
+                    <section class="notif-icono">📚</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Nuevo curso recomendado: React desde Cero</section>
+                        <section class="notif-descripcion">
+                            Basado en tu perfil, el sistema recomienda este curso para mejorar tu employabilidad en un 34%.
+                        </section>
+                        <section class="notif-fecha">15 Dic 2023 · Recomendaciones</section>
+                    </section>
+                </section>
+
+                <section class="notif-item leida">
+                    <section class="notif-icono">🎉</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">¡Bienvenida a SkillMatch, Ana!</section>
+                        <section class="notif-descripcion">
+                            Tu perfil fue creado correctamente. El motor de emparejamiento ya está analizando oportunidades para ti.
+                        </section>
+                        <section class="notif-fecha">1 Ene 2024 · SkillMatch</section>
+                    </section>
+                </section>
+
+            </section>
+
+            <section class="tarjeta">
+                <h2>¿Cómo funcionan las notificaciones?</h2>
+                <p style="font-size:14px; color:#555; line-height:1.6;">
+                    El <strong>Centro de Notificaciones</strong> es el corazón de la arquitectura SkillMatch. 
+                    Cada vez que un estudiante se certifica, el <em>Servicio de Emparejamiento</em> notifica automáticamente a las empresas interesadas, 
+                    creando una conexión inmediata y orgánica entre el talento verificado y las oportunidades laborales.
+                </p>
+                <br>
+                <p style="font-size:14px; color:#555; line-height:1.6;">
+                    Los microservicios trabajan en segundo plano para analizar compatibilidades, detectar nuevas vacantes 
+                    y alertarte cuando tu perfil hace match con una oportunidad laboral.
+                </p>
+            </section>
+
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+</body>
+</html>
