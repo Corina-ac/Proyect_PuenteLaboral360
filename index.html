@@ -193,6 +193,74 @@
             color: #cde;
             margin-top: 4px;
         }
+
+        /* SECCIÓN ACERCA DE */
+        .acerca-de-wrapper {
+            background-color: #fff;
+        }
+
+        .acerca-de {
+            padding: 60px 40px;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .acerca-texto {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .acerca-texto h2 {
+            font-size: 28px;
+            color: #1a73e8;
+            margin-bottom: 18px;
+            border-left: 4px solid #ffdd57;
+            padding-left: 12px;
+        }
+
+        .acerca-texto p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .acerca-galeria {
+            flex: 1;
+            min-width: 280px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 12px;
+        }
+
+        .acerca-img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            transition: transform 0.2s;
+        }
+
+        .acerca-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* La primera imagen ocupa las dos columnas */
+        .acerca-img:first-child {
+            grid-column: 1 / 3;
+            max-height: 220px;
+        }
+
+        .acerca-img:nth-child(2),
+        .acerca-img:nth-child(3) {
+            max-height: 150px;
+        }
     </style>
 </head>
 <body>
@@ -212,6 +280,36 @@
             <a href="pages/registro/registro.html" class="btn btn-grande btn-amarillo">Comenzar Gratis</a>
             <a href="pages/login/login.html" class="btn btn-grande btn-blanco">Iniciar Sesión</a>
         </section>
+    </section>
+
+    <section class="acerca-de-wrapper">
+    <section class="acerca-de">
+        <section class="acerca-texto">
+            <h2>¿Quiénes somos?</h2>
+            <p>
+                <strong>SkillMatch</strong> es una plataforma educativa y de empleo que conecta a
+                <strong>estudiantes</strong> con <strong>empresas</strong> mediante habilidades verificadas
+                y certificados reconocidos. Creemos que el talento no debe quedarse oculto por falta
+                de oportunidades.
+            </p>
+            <p>
+                Trabajamos con <strong>instructores calificados</strong> que diseñan cursos orientados
+                al mercado laboral real. Cada habilidad que aprendes queda registrada en tu perfil y
+                es validada por un experto, dándote una ventaja competitiva frente a otras plataformas.
+            </p>
+            <p>
+                Nuestro <strong>motor de emparejamiento inteligente</strong> analiza tu perfil
+                automáticamente y te conecta con empresas que buscan exactamente las habilidades
+                que tú tienes — sin intermediarios, sin filtros innecesarios.
+            </p>
+            <a href="pages/registro/registro.html" class="btn btn-grande btn-amarillo" style="margin-top:10px; display:inline-block;">Únete a SkillMatch</a>
+        </section>
+        <section class="acerca-galeria">
+            <img src="https://images4.imagebam.com/1e/09/32/ME1D6YKQ_o.jpg" alt="SkillMatch - Comunidad de estudiantes" class="acerca-img">
+            <img src="https://images4.imagebam.com/42/f6/7c/ME1D6YMY_o.jpg" alt="SkillMatch - Aprendizaje colaborativo" class="acerca-img">
+            <img src="https://images4.imagebam.com/19/4f/2d/ME1D6YOV_o.jpg" alt="SkillMatch - Conexión con empresas" class="acerca-img">
+        </section>
+    </section>
     </section>
 
     <section class="como-funciona">
