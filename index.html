@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillMatch - Inicio</title>
-    <link rel="shortcut icon" href="img/educacion-global.ico" type ="image/x-icon">
+    <link rel="shortcut icon" href="img/educacion-global.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
@@ -247,7 +248,7 @@
             border-radius: 10px;
             object-fit: cover;
             display: block;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
             transition: transform 0.2s;
         }
 
@@ -265,15 +266,142 @@
         .acerca-img:nth-child(3) {
             max-height: 150px;
         }
+
+        /* SECCIÓN MAPA */
+        .ubicacion {
+            background-color: #f0f2f5;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .ubicacion h2 {
+            font-size: 24px;
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+
+        .ubicacion p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .mapa-contenedor {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            overflow: hidden;
+
+
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .mapa-contenedor iframe {
+            width: 100%;
+            height: 380px;
+            border: none;
+            display: block;
+        }
+
+        .btn-mapa {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 28px;
+            background-color: #1a73e8;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-mapa:hover {
+            background-color: #1558b0;
+        }
+
+        .btn-mapa i {
+            margin-right: 8px;
+        }
+
+        /* SECCIÓN FAQ */
+        .faq {
+            background-color: #fff;
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq h2 {
+            font-size: 24px;
+            color: #1a73e8;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .faq details {
+
+            border: 1px solid #dde3f0;
+
+            border-radius: 8px; 
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq summary {
+            padding: 16px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f9ff;
+        }
+
+        .faq summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq summary::after {
+            content: "\f078";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 13px;
+            color: #1a73e8;
+            transition: transform 0.2s;
+        }
+
+        .faq details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .faq details[open] summary {
+            background-color: #e8f0fe;
+            color: #1a73e8;
+        }
+
+        .faq .faq-body {
+            padding: 16px 20px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.7;
+            border-top: 1px solid #dde3f0;
+        }
     </style>
 </head>
+
 <body>
 
     <section class="navbar">
         <a href="index.html" class="logo">Skill<span>Match</span></a>
         <nav>
-            <a href="pages/login/login.html">Iniciar Sesión</a>
-            <a href="pages/registro/registro.html">Registrarse</a>
+            <a href="pages/login/login.html"><i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</a>
+            <a href="pages/registro/registro.html"><i class="fa-solid fa-user-plus"></i> Registrarse</a>
         </nav>
     </section>
 
@@ -281,39 +409,46 @@
         <h1>Bienvenido a <span>SkillMatch</span></h1>
         <p>La plataforma que conecta estudiantes con empresas mediante habilidades verificadas</p>
         <section class="hero-botones">
-            <a href="pages/registro/registro.html" class="btn btn-grande btn-amarillo">Comenzar Gratis</a>
-            <a href="pages/login/login.html" class="btn btn-grande btn-blanco">Iniciar Sesión</a>
+            <a href="pages/registro/registro.html" class="btn btn-grande btn-amarillo"><i
+                    class="fa-solid fa-rocket"></i> Comenzar Gratis</a>
+            <a href="pages/login/login.html" class="btn btn-grande btn-blanco"><i
+                    class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</a>
         </section>
     </section>
 
     <section class="acerca-de-wrapper">
-    <section class="acerca-de">
-        <section class="acerca-texto">
-            <h2>¿Quiénes somos?</h2>
-            <p>
-                <strong>SkillMatch</strong> es una plataforma educativa y de empleo que conecta a
-                <strong>estudiantes</strong> con <strong>empresas</strong> mediante habilidades verificadas
-                y certificados reconocidos. Creemos que el talento no debe quedarse oculto por falta
-                de oportunidades.
-            </p>
-            <p>
-                Trabajamos con <strong>instructores calificados</strong> que diseñan cursos orientados
-                al mercado laboral real. Cada habilidad que aprendes queda registrada en tu perfil y
-                es validada por un experto, dándote una ventaja competitiva frente a otras plataformas.
-            </p>
-            <p>
-                Nuestro <strong>motor de emparejamiento inteligente</strong> analiza tu perfil
-                automáticamente y te conecta con empresas que buscan exactamente las habilidades
-                que tú tienes — sin intermediarios, sin filtros innecesarios.
-            </p>
-            <a href="pages/registro/registro.html" class="btn btn-grande btn-amarillo" style="margin-top:10px; display:inline-block;">Únete a SkillMatch</a>
+        <section class="acerca-de">
+            <section class="acerca-texto">
+                <h2>¿Quiénes somos?</h2>
+                <p>
+                    <strong>SkillMatch</strong> es una plataforma educativa y de empleo que conecta a
+                    <strong>estudiantes</strong> con <strong>empresas</strong> mediante habilidades verificadas
+                    y certificados reconocidos. Creemos que el talento no debe quedarse oculto por falta
+                    de oportunidades.
+                </p>
+                <p>
+                    Trabajamos con <strong>instructores calificados</strong> que diseñan cursos orientados
+                    al mercado laboral real. Cada habilidad que aprendes queda registrada en tu perfil y
+                    es validada por un experto, dándote una ventaja competitiva frente a otras plataformas.
+                </p>
+                <p>
+                    Nuestro <strong>motor de emparejamiento inteligente</strong> analiza tu perfil
+                    automáticamente y te conecta con empresas que buscan exactamente las habilidades
+                    que tú tienes — sin intermediarios, sin filtros innecesarios.
+                </p>
+                <a href="pages/registro/registro.html" class="btn btn-grande btn-amarillo"
+                    style="margin-top:10px; display:inline-block;"><i class="fa-solid fa-star"></i> Únete a
+                    SkillMatch</a>
+            </section>
+            <section class="acerca-galeria">
+                <img src="https://images4.imagebam.com/1e/09/32/ME1D6YKQ_o.jpg"
+                    alt="SkillMatch - Comunidad de estudiantes" class="acerca-img">
+                <img src="https://images4.imagebam.com/42/f6/7c/ME1D6YMY_o.jpg"
+                    alt="SkillMatch - Aprendizaje colaborativo" class="acerca-img">
+                <img src="https://images4.imagebam.com/19/4f/2d/ME1D6YOV_o.jpg" alt="SkillMatch - Conexión con empresas"
+                    class="acerca-img">
+            </section>
         </section>
-        <section class="acerca-galeria">
-            <img src="https://images4.imagebam.com/1e/09/32/ME1D6YKQ_o.jpg" alt="SkillMatch - Comunidad de estudiantes" class="acerca-img">
-            <img src="https://images4.imagebam.com/42/f6/7c/ME1D6YMY_o.jpg" alt="SkillMatch - Aprendizaje colaborativo" class="acerca-img">
-            <img src="https://images4.imagebam.com/19/4f/2d/ME1D6YOV_o.jpg" alt="SkillMatch - Conexión con empresas" class="acerca-img">
-        </section>
-    </section>
     </section>
 
     <section class="como-funciona">
@@ -346,18 +481,22 @@
         <h2>SkillMatch en números</h2>
         <section class="stats-inicio">
             <section class="stat-inicio">
+                <i class="fa-solid fa-users" style="font-size:28px; color:#ffdd57; margin-bottom:6px;"></i>
                 <section class="num">1,240</section>
                 <section class="txt">Estudiantes activos</section>
             </section>
             <section class="stat-inicio">
+                <i class="fa-solid fa-chalkboard-user" style="font-size:28px; color:#ffdd57; margin-bottom:6px;"></i>
                 <section class="num">87</section>
                 <section class="txt">Instructores verificados</section>
             </section>
             <section class="stat-inicio">
+                <i class="fa-solid fa-building" style="font-size:28px; color:#ffdd57; margin-bottom:6px;"></i>
                 <section class="num">156</section>
                 <section class="txt">Empresas registradas</section>
             </section>
             <section class="stat-inicio">
+                <i class="fa-solid fa-briefcase" style="font-size:28px; color:#ffdd57; margin-bottom:6px;"></i>
                 <section class="num">340</section>
                 <section class="txt">Empleos conectados</section>
             </section>
@@ -388,9 +527,61 @@
         </section>
     </section>
 
+    <section class="ubicacion">
+        <h2><i class="fa-solid fa-location-dot"></i> Encuéntranos</h2>
+        <p>Conoce nuestra zona de operaciones en Ecuador</p>
+        <section class="mapa-contenedor">
+            <iframe src="https://maps.google.com/maps?q=-0.3866624,-78.413824&z=11&output=embed" allowfullscreen
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación SkillMatch">
+            </iframe>
+        </section>
+        <br>
+        <br>
+        <a href="https://www.google.com/maps/@-0.3866624,-78.413824,11z?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" class="btn-mapa">
+
+            <i class="fa-solid fa-map-location-dot"></i> Ver mapa completo en Google Maps
+        </a>
+    </section>
+
+    <section class="faq">
+        <h2><i class="fa-solid fa-circle-question"></i> Preguntas Frecuentes</h2>
+<!--Preguntas Frecuentes -->
+        <details>
+            <summary>¿Es gratis registrarse en SkillMatch?</summary>
+            <section class="faq-body">
+                Sí, el registro en SkillMatch es completamente gratuito para estudiantes. Puedes crear tu perfil,
+                declarar tus habilidades y acceder a cursos básicos sin ningún costo. Algunos cursos avanzados
+                y certificaciones especiales pueden tener un valor adicional.
+            </section>
+        </details>
+
+        <details>
+            <summary>¿Cómo funciona el motor de emparejamiento con empresas?</summary>
+            <section class="faq-body">
+                Nuestro <strong>motor de matching inteligente</strong> analiza automáticamente las habilidades
+                verificadas de tu perfil y las compara con los requisitos de las empresas registradas. Cuando
+                hay una coincidencia, la empresa recibe tu perfil y puede contactarte directamente  sin que
+                tengas que enviar solicitudes manualmente.
+            </section>
+          
+        </details>
+  
+        <details>
+            <summary>¿Los certificados de SkillMatch son reconocidos por las empresas?</summary>
+            <section class="faq-body">
+                Todos los certificados emitidos por SkillMatch son validados por <strong>instructores calificados</strong>
+                y están vinculados a competencias concretas medidas durante el curso. Las empresas registradas
+                en nuestra plataforma confían en estos certificados porque cada habilidad queda respaldada
+                con evidencia real de aprendizaje.
+            </section>
+        </details>
+    </section>
+
     <section class="footer">
         <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
     </section>
 
 </body>
+
 </html>
