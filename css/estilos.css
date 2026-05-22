@@ -205,18 +205,21 @@ body {
 }
 
 /* BARRA DE PROGRESO */
-.barra-progreso {
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    height: 12px;
-    overflow: hidden;
+progress {
+    width: 100%;
+    height: 10px;
+    border: none;
+    border-radius: 6px;
     margin-top: 5px;
+    display: block;
+    accent-color: #1a73e8;
+    cursor: pointer;
+    transition: height 0.2s ease, box-shadow 0.2s ease;
 }
 
-.barra-progreso .relleno {
-    height: 100%;
-    border-radius: 10px;
-    background-color: #1a73e8;
+progress:hover {
+    height: 14px;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
 }
 
 /* HABILIDADES */
