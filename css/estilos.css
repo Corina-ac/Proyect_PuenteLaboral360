@@ -247,6 +247,9 @@ progress:hover {
     padding: 20px;
     font-size: 13px;
     margin-top: 40px;
+    border-color: #333;
+    border-top-color: #21a7d0;
+    border-style: groove;
 }
 
 .footer span {
