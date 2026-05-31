@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillMatch - Notificaciones</title>
+    <title>PuenteLaboral360 - Notificaciones</title>
     <link rel="stylesheet" href="../../css/estilos.css">
     <link rel="stylesheet" href="notificaciones.css">
     <link rel="shortcut icon" href="../../img/educacion-global.ico" type="image/x-icon">
@@ -14,9 +14,9 @@
 <body>
 
     <section class="navbar">
-        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
         <nav>
-            <a href="notificaciones.html">🔔 Notificaciones </a>
+            <a title="Notificaciones" href="notificaciones.html">🔔 </a>
             <a href="../login/login.html">Cerrar sesión</a>
         </nav>
     </section>
@@ -30,22 +30,21 @@
                 <section class="rol-usuario">🎓 Estudiante</section>
             </section>
             <nav>
-                <a href="../dashboard-estudiante/dashboard-estudiante.html"><span>🏠</span> Inicio</a>
-                <a href="../cursos/cursos.html"><span>📚</span> Mis Cursos</a>
-                <a href="../perfil/perfil.html"><span>👤</span> Mi Perfil</a>
-                <a href="notificaciones.html" class="activo"><span>🔔</span> Notificaciones</a>
+                <a title="Inicio" href="../dashboard-estudiante/dashboard-estudiante.html"><span>🏠</span> Inicio</a>
+                <a title="Mis Cursos" href="../cursos/cursos.html"><span>📚</span> Mis Cursos</a>
+                <a title="Mi Perfil" href="../perfil/perfil.html"><span>👤</span> Mi Perfil</a>
+                <a title="Notificaciones" href="notificaciones.html" class="activo"><span>🔔</span> Notificaciones</a>
             </nav>
         </section>
 
         <section class="contenido-principal">
 
-            <section
-                style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+            <section class="encabezado-seccion">
                 <section>
-                    <h1 style="font-size:22px; color:#333;"> Centro de Notificaciones</h1>
-                    <p style="font-size:14px; color:#666; margin-top:4px;">El corazón del ecosistema SkillMatch</p>
+                    <h1 class="titulo-pagina"> Centro de Notificaciones</h1>
+                    <p class="subtitulo-pagina">El corazón del ecosistema PuenteLaboral360</p>
                 </section>
-                <a href="#" class="btn btn-gris" style="font-size:13px; padding:8px 16px;">Marcar todo como leído</a>
+                <a href="#" class="btn btn-gris btn-sm">Marcar todo como leído</a>
             </section>
 
             <section class="tarjeta">
@@ -74,9 +73,8 @@
                             Tu compatibilidad con la vacante <em>Desarrollador Frontend Junior</em> es del
                             <strong>87%</strong>.
                         </section>
-                        <section style="margin-top:8px;">
-                            <a href="../dashboard-empresa/dashboard-empresa.html" class="btn btn-azul"
-                                style="font-size:12px; padding:6px 14px;">Ver vacante</a>
+                        <section class="notif-accion">
+                            <a href="../dashboard-empresa/dashboard-empresa.html" class="btn btn-azul btn-xs">Ver vacante</a>
                         </section>
                         <section class="notif-fecha">Hace 1 hora · Motor de Emparejamiento</section>
                     </section>
@@ -92,9 +90,8 @@
                             <em>Analista de Datos Jr.</em> — Compatibilidad: <strong>62%</strong>.
                             Aprende Python para aumentar tu match al 85%.
                         </section>
-                        <section style="margin-top:8px;">
-                            <a href="../cursos/cursos.html" class="btn btn-azul"
-                                style="font-size:12px; padding:6px 14px;">Ver cursos de Python</a>
+                        <section class="notif-accion">
+                            <a href="../cursos/cursos.html" class="btn btn-azul btn-xs">Ver cursos de Python</a>
                         </section>
                         <section class="notif-fecha">Hace 3 horas · Servicio de Emparejamiento</section>
                     </section>
@@ -109,7 +106,7 @@
                     <section class="notif-contenido">
                         <section class="notif-titulo">Habilidad Git verificada por instructor</section>
                         <section class="notif-descripcion">
-                            El Prof. <strong>Laura Díaz</strong> verificó tu habilidad en Git & GitHub.
+                            El Prof. <strong>Laura Díaz</strong> verificó tu habilidad en Git &amp; GitHub.
                             Tu perfil fue actualizado automáticamente.
                         </section>
                         <section class="notif-fecha">20 Dic 2023 · Sistema de Verificación</section>
@@ -131,12 +128,12 @@
                 <section class="notif-item leida">
                     <section class="notif-icono">🎉</section>
                     <section class="notif-contenido">
-                        <section class="notif-titulo">¡Bienvenida a SkillMatch, Ana!</section>
+                        <section class="notif-titulo">¡Bienvenida a PuenteLaboral360, Ana!</section>
                         <section class="notif-descripcion">
                             Tu perfil fue creado correctamente. El motor de emparejamiento ya está analizando
                             oportunidades para ti.
                         </section>
-                        <section class="notif-fecha">1 Ene 2024 · SkillMatch</section>
+                        <section class="notif-fecha">1 Ene 2024 · PuenteLaboral360</section>
                     </section>
                 </section>
 
@@ -144,14 +141,14 @@
 
             <section class="tarjeta">
                 <h2>¿Cómo funcionan las notificaciones?</h2>
-                <p style="font-size:14px; color:#555; line-height:1.6;">
-                    El <strong>Centro de Notificaciones</strong> es el corazón de la arquitectura SkillMatch.
+                <p class="texto-info">
+                    El <strong>Centro de Notificaciones</strong> es el corazón de la arquitectura PuenteLaboral360.
                     Cada vez que un estudiante se certifica, el <em>Servicio de Emparejamiento</em> notifica
                     automáticamente a las empresas interesadas,
                     creando una conexión inmediata y orgánica entre el talento verificado y las oportunidades laborales.
                 </p>
                 <br>
-                <p style="font-size:14px; color:#555; line-height:1.6;">
+                <p class="texto-info">
                     Los microservicios trabajan en segundo plano para analizar compatibilidades, detectar nuevas
                     vacantes
                     y alertarte cuando tu perfil hace match con una oportunidad laboral.
@@ -162,7 +159,7 @@
     </section>
 
     <section class="footer">
-        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
     </section>
 
 </body>

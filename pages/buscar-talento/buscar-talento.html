@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillMatch - Buscar Talento</title>
+    <title>PuenteLaboral360 - Buscar Talento</title>
     <link rel="stylesheet" href="../../css/estilos.css">
     <link rel="shortcut icon" href="../../img/educacion-global.ico" type ="image/x-icon">
     <link rel="stylesheet" href="../dashboard-empresa/dashboard-empresa.css">
@@ -11,11 +11,11 @@
 </head>
 <body>
 
-    <section class="navbar" style="background-color: #c0392b;">
-        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+    <section class="navbar navbar-empresa">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
         <nav>
-            <a href="../notificaciones/notificaciones-empresa.html">🔔 Notificaciones</a>
-            <a href="../login/login.html">Cerrar sesión</a>
+            <a title="Notificaciones" href="../notificaciones/notificaciones-empresa.html">🔔 </a>
+            <a title="Cerrar sesión" href="../login/login.html">Cerrar sesión</a>
         </nav>
     </section>
 
@@ -28,24 +28,24 @@
                 <section class="rol-usuario">🏢 Reclutador</section>
             </section>
             <nav>
-                <a href="../dashboard-empresa/dashboard-empresa.html"><span>🏠</span> Inicio</a>
-                <a href="buscar-talento.html" class="activo"><span>🔍</span> Buscar Talento</a>
-                <a href="../mis-vacantes/mis-vacantes.html"><span>📌</span> Mis Vacantes</a>
-                <a href="../notificaciones/notificaciones-empresa.html"><span>🔔</span> Notificaciones</a>
+                <a title="Inicio" href="../dashboard-empresa/dashboard-empresa.html"><span>🏠</span> Inicio</a>
+                <a title="Buscar Talento" href="buscar-talento.html" class="activo"><span>🔍</span> Buscar Talento</a>
+                <a title="Mis Vacantes" href="../mis-vacantes/mis-vacantes.html"><span>📌</span> Mis Vacantes</a>
+                <a title="Notificaciones" href="../notificaciones/notificaciones-empresa.html"><span>🔔</span> Notificaciones</a>
             </nav>
         </section>
 
         <section class="contenido-principal">
 
-            <section style="margin-bottom:20px;">
-                <h1 style="font-size:22px; color:#333;">Buscar Talento</h1>
-                <p style="font-size:14px; color:#666; margin-top:4px;">Encuentra candidatos verificados que se ajusten a tus vacantes</p>
+            <section class="seccion-intro">
+                <h1 class="titulo-pagina">Buscar Talento</h1>
+                <p class="subtitulo-pagina">Encuentra candidatos verificados que se ajusten a tus vacantes</p>
             </section>
 
             <section class="tarjeta">
                 <h2>🔎 Filtros de búsqueda</h2>
-                <form method="get" action="buscar-talento.html" style="display:flex; gap:15px; flex-wrap:wrap; align-items:flex-end;">
-                    <section class="campo" style="flex:1; min-width:180px; margin-bottom:0;">
+                <form method="get" action="buscar-talento.html" class="form-filtros">
+                    <section class="campo campo-flex-lg">
                         <label>Habilidad principal</label>
                         <select name="habilidad">
                             <option value="">Todas</option>
@@ -57,7 +57,7 @@
                             <option value="devops">DevOps</option>
                         </select>
                     </section>
-                    <section class="campo" style="flex:1; min-width:150px; margin-bottom:0;">
+                    <section class="campo campo-flex">
                         <label>Nivel de experiencia</label>
                         <select name="nivel">
                             <option value="">Todos</option>
@@ -66,7 +66,7 @@
                             <option value="senior">Senior</option>
                         </select>
                     </section>
-                    <section class="campo" style="flex:1; min-width:150px; margin-bottom:0;">
+                    <section class="campo campo-flex">
                         <label>Certificados mínimos</label>
                         <select name="certificados">
                             <option value="">Cualquiera</option>
@@ -75,7 +75,7 @@
                             <option value="3">3 o más</option>
                         </select>
                     </section>
-                    <section class="campo" style="flex:1; min-width:150px; margin-bottom:0;">
+                    <section class="campo campo-flex">
                         <label>Vacante asociada</label>
                         <select name="vacante">
                             <option value="">Sin filtrar</option>
@@ -84,13 +84,13 @@
                             <option value="devops">DevOps Engineer</option>
                         </select>
                     </section>
-                    <button type="submit" class="btn btn-rojo" style="margin-bottom:2px; padding:10px 22px;">Buscar</button>
+                    <button type="submit" class="btn btn-rojo btn-filtro">Buscar</button>
                 </form>
             </section>
 
             <section class="tarjeta">
                 <h2>👥 Candidatos disponibles</h2>
-                <p style="font-size:13px; color:#888; margin-bottom:15px;">24 candidatos encontrados · Ordenados por compatibilidad</p>
+                <p class="texto-secundario">24 candidatos encontrados · Ordenados por compatibilidad</p>
 
                 <section class="candidato-card">
                     <section class="info-candidato">
@@ -116,7 +116,7 @@
                             </section>
                             <section class="habilidad-nivel">
                                 <span class="nombre">React</span>
-                                <progress value="30" max="100" style="accent-color:#f59e0b;"></progress>
+                                <progress value="30" max="100" class="progress-amarillo"></progress>
                                 <span class="porcentaje">30%</span>
                             </section>
                             <section class="habilidad-nivel">
@@ -126,13 +126,13 @@
                             </section>
                         </section>
                     </section>
-                    <section style="text-align:center; margin-left:20px;">
-                        <section class="match-grande" style="color:#28a745;">
+                    <section class="acciones-candidato">
+                        <section class="match-grande match-alto">
                             87%
                             <span class="etiqueta-match">de match</span>
                         </section>
-                        <a href="../perfil/perfil.html" class="btn btn-azul" style="font-size:12px; padding:7px 14px; display:block; margin-top:10px;">Ver perfil</a>
-                        <a href="#" class="btn btn-verde" style="font-size:12px; padding:7px 14px; display:block; margin-top:6px;">Contactar</a>
+                        <a href="../perfil/perfil.html" class="btn btn-azul">Ver perfil</a>
+                        <a href="#" class="btn btn-verde">Contactar</a>
                     </section>
                 </section>
 
@@ -159,18 +159,18 @@
                             </section>
                             <section class="habilidad-nivel">
                                 <span class="nombre">React</span>
-                                <progress value="15" max="100" style="accent-color:#dc3545;"></progress>
+                                <progress value="15" max="100" class="progress-rojo"></progress>
                                 <span class="porcentaje">15%</span>
                             </section>
                         </section>
                     </section>
-                    <section style="text-align:center; margin-left:20px;">
-                        <section class="match-grande" style="color:#f59e0b;">
+                    <section class="acciones-candidato">
+                        <section class="match-grande match-medio">
                             71%
                             <span class="etiqueta-match">de match</span>
                         </section>
-                        <a href="../perfil/perfil.html" class="btn btn-azul" style="font-size:12px; padding:7px 14px; display:block; margin-top:10px;">Ver perfil</a>
-                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px; display:block; margin-top:6px;">Contactar</a>
+                        <a href="../perfil/perfil.html" class="btn btn-azul">Ver perfil</a>
+                        <a href="#" class="btn btn-gris">Contactar</a>
                     </section>
                 </section>
 
@@ -203,13 +203,13 @@
                             </section>
                         </section>
                     </section>
-                    <section style="text-align:center; margin-left:20px;">
-                        <section class="match-grande" style="color:#dc3545;">
+                    <section class="acciones-candidato">
+                        <section class="match-grande match-bajo">
                             65%
                             <span class="etiqueta-match">de match</span>
                         </section>
-                        <a href="../perfil/perfil.html" class="btn btn-azul" style="font-size:12px; padding:7px 14px; display:block; margin-top:10px;">Ver perfil</a>
-                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px; display:block; margin-top:6px;">Contactar</a>
+                        <a href="../perfil/perfil.html" class="btn btn-azul">Ver perfil</a>
+                        <a href="#" class="btn btn-gris">Contactar</a>
                     </section>
                 </section>
 
@@ -219,7 +219,7 @@
     </section>
 
     <section class="footer">
-        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
     </section>
 
 </body>
