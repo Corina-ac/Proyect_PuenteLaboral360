@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillMatch - Dashboard Estudiante</title>
+    <title>PuenteLaboral360 - Dashboard Estudiante</title>
     <link rel="stylesheet" href="../../css/estilos.css">
     <link rel="stylesheet" href="dashboard-estudiante.css">
     <link rel="shortcut icon" href="../../img/educacion-global.ico" type ="image/x-icon">
@@ -12,9 +12,9 @@
 <body>
 
     <section class="navbar">
-        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
         <nav>
-            <a href="../notificaciones/notificaciones.html">🔔 Notificaciones </a>
+            <a title="Notificaciones" href="../notificaciones/notificaciones.html">🔔 </a>
             <a href="../login/login.html">Cerrar sesión</a>
         </nav>
     </section>
@@ -28,10 +28,10 @@
                 <section class="rol-usuario">🎓 Estudiante</section>
             </section>
             <nav>
-                <a href="dashboard-estudiante.html" class="activo"><span class="icono">🏠</span> Inicio</a>
-                <a href="../cursos/cursos.html"><span class="icono">📚</span> Mis Cursos</a>
-                <a href="../perfil/perfil.html"><span class="icono">👤</span> Mi Perfil</a>
-                <a href="../notificaciones/notificaciones.html"><span class="icono">🔔</span> Notificaciones</a>
+                <a title="Inicio" href="dashboard-estudiante.html" class="activo"><span class="icono">🏠</span> Inicio</a>
+                <a title="Mis Cursos" href="../cursos/cursos.html"><span class="icono">📚</span> Mis Cursos</a>
+                <a title="Mi Perfil" href="../perfil/perfil.html"><span class="icono">👤</span> Mi Perfil</a>
+                <a title="Notificaciones" href="../notificaciones/notificaciones.html"><span class="icono">🔔</span> Notificaciones</a>
             </nav>
         </section>
 
@@ -71,9 +71,9 @@
                             <span>Progreso</span>
                             <span>65%</span>
                         </section>
-                        <progress value="65" max="100"></progress>
+                        <progress title="Progreso: 65%" value="65" max="100"></progress>
                         <br>
-                        <a href="../cursos/cursos.html" class="btn btn-azul" style="font-size:12px; padding:6px 14px;">Continuar</a>
+                        <a href="../cursos/cursos.html" class="btn btn-azul btn-xs">Continuar</a>
                     </section>
 
                     <section class="curso-card">
@@ -83,9 +83,9 @@
                             <span>Progreso</span>
                             <span>30%</span>
                         </section>
-                        <progress value="30" max="100"></progress>
+                        <progress title="Progreso: 30%" value="30" max="100"></progress>
                         <br>
-                        <a href="../cursos/cursos.html" class="btn btn-azul" style="font-size:12px; padding:6px 14px;">Continuar</a>
+                        <a href="../cursos/cursos.html" class="btn btn-azul btn-xs">Continuar</a>
                     </section>
 
                     <section class="curso-card">
@@ -95,7 +95,7 @@
                             <span>Progreso</span>
                             <span>90%</span>
                         </section>
-                        <progress value="90" max="100" style="accent-color:#28a745;"></progress>
+                        <progress title="Progreso: 90%" value="90" max="100" class="progress-verde"></progress>
                         <br>
                         <span class="badge badge-verde">¡Casi terminas!</span>
                     </section>
@@ -109,7 +109,7 @@
                     <section class="info-empresa">
                         <section class="nombre-empresa">🏢 TechCorp S.A.</section>
                         <section class="cargo">Desarrollador Frontend Junior</section>
-                        <section style="margin-top:8px;">
+                        <section class="habilidades-match">
                             <span class="habilidad-tag">HTML</span>
                             <span class="habilidad-tag">CSS</span>
                             <span class="habilidad-tag">JavaScript</span>
@@ -120,7 +120,7 @@
                             87%
                             <section class="texto-match">de match</section>
                         </section>
-                        <a href="../dashboard-empresa/dashboard-empresa.html" class="btn btn-verde" style="font-size:12px; padding:6px 12px; margin-top:8px; display:block; text-align:center;">Ver</a>
+                        <a href="../dashboard-empresa/dashboard-empresa.html" class="btn btn-verde btn-xs">Ver</a>
                     </section>
                 </section>
 
@@ -128,17 +128,17 @@
                     <section class="info-empresa">
                         <section class="nombre-empresa">🏢 Innovatech</section>
                         <section class="cargo">Analista de Datos Jr.</section>
-                        <section style="margin-top:8px;">
+                        <section class="habilidades-match">
                             <span class="habilidad-tag">SQL</span>
                             <span class="habilidad-tag">Python</span>
                         </section>
                     </section>
                     <section>
-                        <section class="match-porcentaje" style="color: #f59e0b;">
+                        <section class="match-porcentaje match-medio">
                             62%
                             <section class="texto-match">de match</section>
                         </section>
-                        <a href="../dashboard-empresa/dashboard-empresa.html" class="btn btn-gris" style="font-size:12px; padding:6px 12px; margin-top:8px; display:block; text-align:center;">Ver</a>
+                        <a href="../dashboard-empresa/dashboard-empresa.html" class="btn btn-gris btn-xs">Ver</a>
                     </section>
                 </section>
             </section>
@@ -153,14 +153,14 @@
                     <span class="habilidad-tag">React (en progreso)</span>
                 </section>
                 <br>
-                <a href="../perfil/perfil.html" class="btn btn-azul" style="font-size:13px; padding:8px 18px;">Ver mi perfil completo</a>
+                <a href="../perfil/perfil.html" class="btn btn-azul btn-sm">Ver mi perfil completo</a>
             </section>
 
         </section>
     </section>
 
     <section class="footer">
-        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
     </section>
 
 </body>
