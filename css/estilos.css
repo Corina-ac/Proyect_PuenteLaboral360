@@ -255,3 +255,159 @@ progress:hover {
 .footer span {
     color: #ffdd57;
 }
+
+/* ========== NAVBAR - VARIANTES POR ROL ========== */
+.navbar-empresa { background-color: #c0392b; }
+.navbar-instructor { background-color: #218838; }
+
+/* ========== ENCABEZADO DE SECCIÓN ========== */
+.encabezado-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.titulo-pagina {
+    font-size: 22px;
+    color: #333;
+    margin: 0;
+}
+
+.subtitulo-pagina {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.seccion-intro { margin-bottom: 20px; }
+
+/* ========== TAMAÑOS DE BOTONES ========== */
+.btn-accion { font-size: 13px; padding: 10px 20px; }
+.btn-sm { font-size: 13px; padding: 8px 16px; }
+.btn-xs { font-size: 12px; padding: 7px 14px; }
+.btn-xxs { font-size: 11px; padding: 5px 12px; }
+.btn-filtro { margin-bottom: 2px; padding: 10px 22px; }
+
+/* ========== COLUMNA DE ACCIONES EN CANDIDATO CARD ========== */
+.acciones-candidato {
+    text-align: center;
+    margin-left: 20px;
+    min-width: 120px;
+    flex-shrink: 0;
+}
+
+.acciones-candidato .btn {
+    display: block;
+    font-size: 12px;
+    padding: 7px 14px;
+    margin-top: 6px;
+}
+
+.acciones-candidato .match-grande + .btn,
+.acciones-candidato .match-porcentaje + .btn {
+    margin-top: 10px;
+}
+
+.acciones-candidato .badge + .btn {
+    margin-top: 4px;
+}
+
+/* ========== MATCH PORCENTAJE - VARIANTES DE COLOR ========== */
+.match-alto { color: #28a745; }
+.match-medio { color: #f59e0b; }
+.match-bajo { color: #dc3545; }
+
+/* ========== STATS - NÚMEROS POR ROL ========== */
+.numero-verde { color: #28a745; }
+.numero-rojo { color: #dc3545; }
+
+/* ========== FORMULARIOS ========== */
+.form-filtros {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.form-busqueda {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.campo-flex { flex: 1; min-width: 150px; margin-bottom: 0; }
+.campo-flex-lg { flex: 1; min-width: 180px; margin-bottom: 0; }
+
+.input-busqueda {
+    flex: 1;
+    padding: 9px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    min-width: 180px;
+}
+
+.select-filtro {
+    padding: 9px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* ========== BARRAS DE PROGRESO - VARIANTES ========== */
+.progress-azul { accent-color: #1a73e8; }
+.progress-verde { accent-color: #28a745; }
+.progress-amarillo { accent-color: #f59e0b; }
+.progress-rojo { accent-color: #dc3545; }
+
+.texto-progreso {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.texto-progreso-verde {
+    font-size: 12px;
+    color: #28a745;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+/* ========== TEXTOS SECUNDARIOS ========== */
+.texto-secundario { font-size: 13px; color: #888; margin-bottom: 15px; }
+.texto-info { font-size: 14px; color: #555; margin-bottom: 12px; line-height: 1.6; }
+.texto-verificacion { font-size: 13px; color: #888; }
+
+/* ========== BADGES ========== */
+.badge-bloque { display: block; margin: 8px auto 10px; width: fit-content; }
+.badge-grande { font-size: 14px; padding: 6px 16px; }
+.badge-gris { background-color: #e2e3e5; color: #6c757d; }
+
+/* ========== VACANTES ========== */
+.conteo-numero { font-size: 28px; font-weight: bold; color: #dc3545; }
+.conteo-etiqueta { font-size: 12px; color: #888; }
+.vacante-cerrada { opacity: 0.7; }
+
+/* ========== GRUPOS EN CARDS ========== */
+.badges-grupo { margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; }
+.progreso-grupo { margin-top: 10px; }
+.habilidades-match { margin-top: 8px; }
+
+/* ========== PERFIL ========== */
+.editar-perfil-wrapper { margin-left: auto; }
+.progreso-perfil { margin-bottom: 12px; }
+.label-grupo { font-size: 14px; color: #555; font-weight: bold; }
+.habilidad-verificada { border-color: #28a745; color: #28a745; background-color: #e6f4ea; }
+
+/* ========== VERIFICACIÓN INSTRUCTOR ========== */
+.verificacion-estado { display: flex; align-items: center; gap: 12px; }
+
+/* ========== NOTIFICACIONES - ACCIONES ========== */
+.notif-accion { margin-top: 8px; }
+.solicitud-progreso { margin-top: 6px; }
