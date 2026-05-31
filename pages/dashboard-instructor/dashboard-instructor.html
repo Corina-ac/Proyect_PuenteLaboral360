@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillMatch - Dashboard Instructor</title>
+    <title>PuenteLaboral360 - Dashboard Instructor</title>
     <link rel="stylesheet" href="../../css/estilos.css">
     <link rel="stylesheet" href="dashboard-instructor.css">
     <link rel="shortcut icon" href="../../img/educacion-global.ico" type ="image/x-icon">
@@ -11,10 +11,10 @@
 </head>
 <body>
 
-    <section class="navbar" style="background-color: #218838;">
-        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+    <section class="navbar navbar-instructor">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
         <nav>
-            <a href="../notificaciones/notificaciones-instructor.html">Notificaciones</a>
+            <a title="Notificaciones" href="../notificaciones/notificaciones-instructor.html">🔔</a>
             <a href="../login/login.html">Cerrar sesión</a>
         </nav>
     </section>
@@ -28,34 +28,34 @@
                 <section class="rol-usuario">Instructor Verificado</section>
             </section>
             <nav>
-                <a href="dashboard-instructor.html" class="activo">🏠 Inicio</a>
-                <a href="../cursos/mis-cursos-instructor.html">📚 Mis Cursos</a>
-                <a href="../notificaciones/notificaciones-instructor.html">🔔 Notificaciones</a>
+                <a title="Inicio" href="dashboard-instructor.html" class="activo">🏠 Inicio</a>
+                <a title="Mis Cursos" href="../cursos/mis-cursos-instructor.html">📚 Mis Cursos</a>
+                <a title="Notificaciones" href="../notificaciones/notificaciones-instructor.html">🔔 Notificaciones</a>
             </nav>
         </section>
 
         <section class="contenido-principal">
 
-            <section style="margin-bottom:20px;">
-                <h1 style="font-size:22px; color:#333;">Panel del Instructor</h1>
-                <p style="font-size:14px; color:#666; margin-top:4px;">Monitorea el impacto de tus cursos</p>
+            <section class="seccion-intro">
+                <h1 class="titulo-pagina">Panel del Instructor</h1>
+                <p class="subtitulo-pagina">Monitorea el impacto de tus cursos</p>
             </section>
 
             <section class="stats-grid">
                 <section class="stat-box">
-                    <section class="numero" style="color:#28a745;">3</section>
+                    <section class="numero numero-verde">3</section>
                     <section class="etiqueta">Cursos publicados</section>
                 </section>
                 <section class="stat-box">
-                    <section class="numero" style="color:#28a745;">148</section>
+                    <section class="numero numero-verde">148</section>
                     <section class="etiqueta">Total inscritos</section>
                 </section>
                 <section class="stat-box">
-                    <section class="numero" style="color:#28a745;">62</section>
+                    <section class="numero numero-verde">62</section>
                     <section class="etiqueta">Certificados emitidos</section>
                 </section>
                 <section class="stat-box">
-                    <section class="numero" style="color:#28a745;">42%</section>
+                    <section class="numero numero-verde">42%</section>
                     <section class="etiqueta">Tasa de certificación</section>
                 </section>
             </section>
@@ -109,13 +109,13 @@
                     <section class="info-sol">
                         <section class="nombre-sol">Corina Acosta</section>
                         <section class="detalle-sol">Solicita certificación en: JavaScript Avanzado</section>
-                        <section style="margin-top:6px;">
+                        <section class="solicitud-progreso">
                             <span class="badge badge-azul">Progreso: 92%</span>
                         </section>
                     </section>
                     <section class="acciones-sol">
-                        <a href="#" class="btn btn-verde" style="font-size:12px; padding:7px 14px;">Aprobar</a>
-                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px;">Revisar</a>
+                        <a href="#" class="btn btn-verde btn-xs">Aprobar</a>
+                        <a href="#" class="btn btn-gris btn-xs">Revisar</a>
                     </section>
                 </section>
 
@@ -123,23 +123,23 @@
                     <section class="info-sol">
                         <section class="nombre-sol">Luis Fernández</section>
                         <section class="detalle-sol">Solicita certificación en: Node.js para Backend</section>
-                        <section style="margin-top:6px;">
+                        <section class="solicitud-progreso">
                             <span class="badge badge-amarillo">Progreso: 78%</span>
                         </section>
                     </section>
                     <section class="acciones-sol">
-                        <a href="#" class="btn btn-verde" style="font-size:12px; padding:7px 14px;">Aprobar</a>
-                        <a href="#" class="btn btn-gris" style="font-size:12px; padding:7px 14px;">Revisar</a>
+                        <a href="#" class="btn btn-verde btn-xs">Aprobar</a>
+                        <a href="#" class="btn btn-gris btn-xs">Revisar</a>
                     </section>
                 </section>
             </section>
 
             <section class="tarjeta">
                 <h2> Mi estado de verificación</h2>
-                <p style="font-size:14px; color:#555; margin-bottom:12px;">Los instructores deben pasar por revisión administrativa para asegurar la calidad de la enseñanza.</p>
-                <section style="display:flex; align-items:center; gap:12px;">
-                    <span class="badge badge-verde" style="font-size:14px; padding:6px 16px;">✓ Instructor Verificado</span>
-                    <span style="font-size:13px; color:#888;">Verificado el 15/01/2024 por Admin SkillMatch</span>
+                <p class="texto-info">Los instructores deben pasar por revisión administrativa para asegurar la calidad de la enseñanza.</p>
+                <section class="verificacion-estado">
+                    <span class="badge badge-verde badge-grande">✓ Instructor Verificado</span>
+                    <span class="texto-verificacion">Verificado el 15/01/2024 por Admin PuenteLaboral360</span>
                 </section>
             </section>
 
@@ -147,7 +147,7 @@
     </section>
 
     <section class="footer">
-        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
     </section>
 
 </body>

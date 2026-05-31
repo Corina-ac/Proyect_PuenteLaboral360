@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillMatch - Cursos</title>
+    <title>PuenteLaboral360 - Cursos</title>
     <link rel="stylesheet" href="../../css/estilos.css">
     <link rel="stylesheet" href="cursos.css">
     <link rel="shortcut icon" href="../../img/educacion-global.ico" type ="image/x-icon">
@@ -12,9 +12,9 @@
 <body>
 
     <section class="navbar">
-        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
         <nav>
-            <a href="../notificaciones/notificaciones.html">🔔 Notificaciones</a>
+            <a title="Notificaciones" href="../notificaciones/notificaciones.html">🔔 </a>
             <a href="../login/login.html">Cerrar sesión</a>
         </nav>
     </section>
@@ -28,24 +28,24 @@
                 <section class="rol-usuario">🎓 Estudiante</section>
             </section>
             <nav>
-                <a href="../dashboard-estudiante/dashboard-estudiante.html"><span>🏠</span> Inicio</a>
-                <a href="cursos.html" class="activo"><span>📚</span> Mis Cursos</a>
-                <a href="../perfil/perfil.html"><span>👤</span> Mi Perfil</a>
-                <a href="../notificaciones/notificaciones.html"><span>🔔</span> Notificaciones</a>
+                <a title="Inicio" href="../dashboard-estudiante/dashboard-estudiante.html"><span>🏠</span> Inicio</a>
+                <a title="Mis Cursos" href="cursos.html" class="activo"><span>📚</span> Mis Cursos</a>
+                <a title="Mi Perfil" href="../perfil/perfil.html"><span>👤</span> Mi Perfil</a>
+                <a title="Notificaciones" href="../notificaciones/notificaciones.html"><span>🔔</span> Notificaciones</a>
             </nav>
         </section>
 
         <section class="contenido-principal">
 
-            <section style="margin-bottom:20px;">
-                <h1 style="font-size:22px; color:#333;"> Cursos disponibles</h1>
-                <p style="font-size:14px; color:#666; margin-top:4px;">Aprende con instructores verificados y obtén certificados reconocidos</p>
+            <section class="seccion-intro">
+                <h1 class="titulo-pagina"> Cursos disponibles</h1>
+                <p class="subtitulo-pagina">Aprende con instructores verificados y obtén certificados reconocidos</p>
             </section>
 
             <section class="tarjeta">
-                <form method="get" action="cursos.html" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-                    <input type="text" name="q" placeholder="Buscar curso..." style="flex:1; padding:9px 12px; border:1px solid #ccc; border-radius:5px; font-size:14px; min-width:180px;">
-                    <select name="categoria" style="padding:9px 12px; border:1px solid #ccc; border-radius:5px; font-size:14px;">
+                <form method="get" action="cursos.html" class="form-busqueda">
+                    <input type="text" name="q" placeholder="Buscar curso..." class="input-busqueda">
+                    <select name="categoria" class="select-filtro">
                         <option value="">Todas las categorías</option>
                         <option value="frontend">Frontend</option>
                         <option value="backend">Backend</option>
@@ -69,9 +69,9 @@
                                 <span>👨‍🏫 Roberto Silva</span>
                                 <span>⭐ 4.8</span>
                             </section>
-                            <progress title="65%" value="65" max="100" style="accent-color:#1a73e8;"></progress>
-                            <p style="font-size:12px; color:#888; margin-top:4px; margin-bottom:10px;">65% completado</p>
-                            <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Continuar curso</a>
+                            <progress title="65%" value="65" max="100" class="progress-azul"></progress>
+                            <p class="texto-progreso">65% completado</p>
+                            <a href="#" class="btn btn-azul btn-xs">Continuar curso</a>
                         </section>
                     </section>
 
@@ -84,9 +84,9 @@
                                 <span>👩‍🏫 María López</span>
                                 <span>⭐ 4.9</span>
                             </section>
-                            <progress title="30%" value="30" max="100" style="accent-color:#1a73e8;"></progress>
-                            <p style="font-size:12px; color:#888; margin-top:4px; margin-bottom:10px;">30% completado</p>
-                            <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Continuar curso</a>
+                            <progress title="30%" value="30" max="100" class="progress-azul"></progress>
+                            <p class="texto-progreso">30% completado</p>
+                            <a href="#" class="btn btn-azul btn-xs">Continuar curso</a>
                         </section>
                     </section>
 
@@ -99,9 +99,9 @@
                                 <span>👨‍🏫 Carlos Ruiz</span>
                                 <span>⭐ 4.7</span>
                             </section>
-                            <progress title ="90%" value="90" max="100" style="accent-color:#28a745;"></progress>
-                            <p style="font-size:12px; color:#28a745; margin-top:4px; margin-bottom:10px;">90% — ¡Casi terminas!</p>
-                            <a href="#" class="btn btn-verde" style="font-size:12px; padding:7px 14px;">Finalizar</a>
+                            <progress title="90%" value="90" max="100" class="progress-verde"></progress>
+                            <p class="texto-progreso-verde">90% — ¡Casi terminas!</p>
+                            <a href="#" class="btn btn-verde btn-xs">Finalizar</a>
                         </section>
                     </section>
 
@@ -123,7 +123,7 @@
                             </section>
                             <span class="badge badge-azul">Recomendado</span>
                             <br><br>
-                            <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Inscribirme</a>
+                            <a href="#" class="btn btn-azul btn-xs">Inscribirme</a>
                         </section>
                     </section>
 
@@ -138,7 +138,7 @@
                             </section>
                             <span class="badge badge-verde">Popular</span>
                             <br><br>
-                            <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Inscribirme</a>
+                            <a href="#" class="btn btn-azul btn-xs">Inscribirme</a>
                         </section>
                     </section>
 
@@ -153,7 +153,7 @@
                             </section>
                             <span class="badge badge-amarillo">Básico</span>
                             <br><br>
-                            <a href="#" class="btn btn-azul" style="font-size:12px; padding:7px 14px;">Inscribirme</a>
+                            <a href="#" class="btn btn-azul btn-xs">Inscribirme</a>
                         </section>
                     </section>
 
@@ -164,7 +164,7 @@
     </section>
 
     <section class="footer">
-        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
     </section>
 
 </body>
