@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillMatch - Mi Perfil</title>
+    <title>PuenteLaboral360 - Mi Perfil</title>
     <link rel="stylesheet" href="../../css/estilos.css">
     <link rel="stylesheet" href="perfil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -12,9 +12,9 @@
 <body>
 
     <section class="navbar">
-        <a href="../../index.html" class="logo">Skill<span>Match</span></a>
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
         <nav>
-            <a href="../notificaciones/notificaciones.html">🔔 Notificaciones</a>
+            <a title="Notificaciones" href="../notificaciones/notificaciones.html">🔔 </a>
             <a href="../login/login.html">Cerrar sesión</a>
         </nav>
     </section>
@@ -28,10 +28,10 @@
                 <section class="rol-usuario">🎓 Estudiante</section>
             </section>
             <nav>
-                <a href="../dashboard-estudiante/dashboard-estudiante.html"><span>🏠</span> Inicio</a>
-                <a href="../cursos/cursos.html"><span>📚</span> Mis Cursos</a>
-                <a href="perfil.html" class="activo"><span>👤</span> Mi Perfil</a>
-                <a href="../notificaciones/notificaciones.html"><span>🔔</span> Notificaciones</a>
+                <a title="Inicio" href="../dashboard-estudiante/dashboard-estudiante.html"><span>🏠</span> Inicio</a>
+                <a title="Mis Cursos" href="../cursos/cursos.html"><span>📚</span> Mis Cursos</a>
+                <a title="Mi Perfil" href="perfil.html" class="activo"><span>👤</span> Mi Perfil</a>
+                <a title="Notificaciones" href="../notificaciones/notificaciones.html"><span>🔔</span> Notificaciones</a>
             </nav>
         </section>
 
@@ -49,14 +49,14 @@
                         <span class="badge badge-amarillo">Frontend</span>
                     </section>
                 </section>
-                <section style="margin-left:auto;">
+                <section class="editar-perfil-wrapper">
                     <a href="#" class="btn btn-azul">Editar perfil</a>
                 </section>
             </section>
 
             <section class="completado-perfil">
                 <h3>Completado del perfil: 76%</h3>
-                <progress value="76" max="100" style="margin-bottom:12px;"></progress>
+                <progress title="76%" value="76" max="100" class="progreso-perfil"></progress>
                 <section class="items-completado">
                     <section class="item-completado"><span class="check">✅</span> Datos personales completos</section>
                     <section class="item-completado"><span class="check">✅</span> Habilidades declaradas (5 de 5)</section>
@@ -68,20 +68,20 @@
 
             <section class="tarjeta">
                 <h2> Mis habilidades</h2>
-                <p style="font-size:13px; color:#888; margin-bottom:12px;">Las habilidades marcadas con ✓ están verificadas por un instructor</p>
+                <p class="texto-secundario">Las habilidades marcadas con ✓ están verificadas por un instructor</p>
 
-                <section style="margin-bottom:15px;">
-                    <strong style="font-size:14px; color:#555;">Habilidades verificadas:</strong>
-                    <section class="habilidades" style="margin-top:8px;">
-                        <span class="habilidad-tag" style="border-color:#28a745; color:#28a745; background-color:#e6f4ea;">HTML/CSS ✓</span>
-                        <span class="habilidad-tag" style="border-color:#28a745; color:#28a745; background-color:#e6f4ea;">JavaScript ✓</span>
-                        <span class="habilidad-tag" style="border-color:#28a745; color:#28a745; background-color:#e6f4ea;">Git ✓</span>
+                <section class="progreso-grupo">
+                    <strong class="label-grupo">Habilidades verificadas:</strong>
+                    <section class="habilidades seccion-habilidades">
+                        <span class="habilidad-tag habilidad-verificada">HTML/CSS ✓</span>
+                        <span class="habilidad-tag habilidad-verificada">JavaScript ✓</span>
+                        <span class="habilidad-tag habilidad-verificada">Git ✓</span>
                     </section>
                 </section>
 
-                <section>
-                    <strong style="font-size:14px; color:#555;">En aprendizaje:</strong>
-                    <section class="habilidades" style="margin-top:8px;">
+                <section class="progreso-grupo">
+                    <strong class="label-grupo">En aprendizaje:</strong>
+                    <section class="habilidades seccion-habilidades">
                         <span class="habilidad-tag">React (30%)</span>
                         <span class="habilidad-tag">SQL (90%)</span>
                     </section>
@@ -94,20 +94,20 @@
 
                     <section class="cert-card">
                         <section class="icono-cert">🥇</section>
-                        <section class="titulo-cert">HTML & CSS Fundamentals</section>
+                        <section class="titulo-cert">HTML &amp; CSS Fundamentals</section>
                         <section class="instructor-cert">Prof. María López</section>
                         <section class="fecha-cert">Emitido: 10/11/2023</section>
                         <br>
-                        <a href="#" class="btn btn-verde" style="font-size:11px; padding:5px 12px;">Ver certificado</a>
+                        <a href="#" class="btn btn-verde btn-xxs">Ver certificado</a>
                     </section>
 
                     <section class="cert-card">
                         <section class="icono-cert">🥇</section>
-                        <section class="titulo-cert">Git & GitHub para equipos</section>
+                        <section class="titulo-cert">Git &amp; GitHub para equipos</section>
                         <section class="instructor-cert">Prof. Laura Díaz</section>
                         <section class="fecha-cert">Emitido: 20/12/2023</section>
                         <br>
-                        <a href="#" class="btn btn-verde" style="font-size:11px; padding:5px 12px;">Ver certificado</a>
+                        <a href="#" class="btn btn-verde btn-xxs">Ver certificado</a>
                     </section>
 
                 </section>
@@ -115,7 +115,7 @@
 
             <section class="tarjeta">
                 <h2> Visibilidad para empresas</h2>
-                <p style="font-size:14px; color:#555; margin-bottom:12px;">Tu perfil es visible para reclutadores. Las empresas pueden encontrarte en el motor de matching.</p>
+                <p class="texto-info">Tu perfil es visible para reclutadores. Las empresas pueden encontrarte en el motor de matching.</p>
 
                 <table class="tabla">
                     <tbody>
@@ -147,7 +147,7 @@
     </section>
 
     <section class="footer">
-        <p>© 2026 <span>SkillMatch</span> — Cerrando la brecha entre educación y empleo</p>
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
     </section>
 
 </body>
