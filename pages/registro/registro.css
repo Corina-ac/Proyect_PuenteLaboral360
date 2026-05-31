@@ -92,3 +92,15 @@
 .nivel-habilidad input[type="radio"] {
     width: auto;
 }
+
+.texto-paso {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.nav-pasos {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
