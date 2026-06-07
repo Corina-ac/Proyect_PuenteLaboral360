@@ -1,33 +1,35 @@
 /* ============================================================
-   ARCHIVO: inicio.css
+   ARCHIVO: index.css
    Estilos exclusivos de la página principal (index.html).
    Define el hero, sección "¿Quiénes somos?", estadísticas,
    tarjetas de roles, mapa de ubicación, preguntas frecuentes
    y el footer de la página de inicio.
+   Debe cargarse después de general.css.
    ============================================================ */
 
 /* ============================================================
-   BLOQUE 1: HERO
-   Sección principal con título, subtítulo y botones de llamada a acción.
+   BLOQUE 1: PRESENTACIÓN PRINCIPAL
+   Sección hero con título, subtítulo y botones de llamada a acción.
+   Identificador único: #presentacion
    ============================================================ */
 
-.hero {
+#presentacion {
     background-color: #1a73e8;
     color: white;
     text-align: center;
     padding: 60px 20px;
 }
 
-.hero h1 {
+#presentacion h1 {
     font-size: 38px;
     margin-bottom: 10px;
 }
 
-.hero h1 span {
+#presentacion h1 span {
     color: #ffdd57;
 }
 
-.hero p {
+#presentacion p {
     font-size: 16px;
     margin-bottom: 30px;
     color: #cde;
@@ -66,179 +68,35 @@
     font-weight: bold;
 }
 
+.btn-blanco:hover {
+    background-color: #e8f0fe;
+    color: #1558b0;
+    text-decoration: none;
+}
+
+.btn-amarillo:hover {
+    background-color: #f0c800;
+    color: #222;
+    text-decoration: none;
+}
+
 .btn-cta-inicio {
     margin-top: 10px;
     display: inline-block;
 }
 
 /* ============================================================
-   BLOQUE 3: CÓMO FUNCIONA
-   Pasos numerados que explican el flujo de uso de la plataforma.
+   BLOQUE 3: OBJETIVO / QUIÉNES SOMOS
+   Sección "¿Quiénes somos?" con texto descriptivo y galería.
+   Identificador único: #objetivo
    ============================================================ */
 
-.como-funciona {
-    text-align: center;
-    padding: 40px 20px;
+#objetivo {
     background-color: #fff;
+    border-left: none;
 }
 
-.como-funciona h2 {
-    font-size: 24px;
-    color: #1a73e8;
-    margin-bottom: 30px;
-}
-
-.pasos {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.paso {
-    flex: 1;
-    min-width: 180px;
-    max-width: 200px;
-    text-align: center;
-}
-
-.paso .icono-paso {
-    width: 60px;
-    height: 60px;
-    background-color: #e8f0fe;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 12px;
-    font-size: 26px;
-    color: #1a73e8;
-}
-
-.paso h3 {
-    font-size: 15px;
-    color: #333;
-    margin-bottom: 6px;
-}
-
-.paso p {
-    font-size: 13px;
-    color: #666;
-}
-
-/* ============================================================
-   BLOQUE 4: ROLES
-   Tarjetas de acceso por tipo de usuario: estudiante, instructor y empresa.
-   ============================================================ */
-
-.roles {
-    background-color: #f0f2f5;
-    padding: 40px 20px;
-}
-
-.roles h2 {
-    text-align: center;
-    font-size: 24px;
-    color: #1a73e8;
-    margin-bottom: 25px;
-}
-
-.roles-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.rol-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 25px 20px;
-    text-align: center;
-    flex: 1;
-    min-width: 200px;
-    max-width: 250px;
-}
-
-.rol-card .icono-rol {
-    font-size: 40px;
-    margin-bottom: 12px;
-    color: #1a73e8;
-}
-
-.rol-card h3 {
-    font-size: 17px;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-.rol-card p {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-/* ============================================================
-   BLOQUE 5: ESTADÍSTICAS
-   Números destacados sobre el alcance y uso de la plataforma.
-   ============================================================ */
-
-.estadisticas {
-    background-color: #1a73e8;
-    color: white;
-    text-align: center;
-    padding: 35px 20px;
-}
-
-.estadisticas h2 {
-    font-size: 22px;
-    margin-bottom: 25px;
-}
-
-.stats-inicio {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.stat-inicio {
-    min-width: 120px;
-}
-
-.stat-inicio .num {
-    font-size: 36px;
-    font-weight: bold;
-    color: #ffdd57;
-}
-
-.stat-inicio .txt {
-    font-size: 14px;
-    color: #cde;
-    margin-top: 4px;
-}
-
-.icono-estadistica {
-    font-size: 28px;
-    color: #ffdd57;
-    margin-bottom: 6px;
-}
-
-/* ============================================================
-   BLOQUE 6: ACERCA DE
-   Sección "¿Quiénes somos?" con texto descriptivo y galería de imágenes.
-   ============================================================ */
-
-.acerca-de-wrapper {
-    background-color: #fff;
-}
-
-.acerca-de {
+#objetivo .acerca-de {
     padding: 60px 40px;
     display: flex;
     gap: 50px;
@@ -301,23 +159,201 @@
 }
 
 /* ============================================================
-   BLOQUE 7: UBICACIÓN Y MAPA
-   Mapa embebido de Google Maps con contenedor y botón de enlace externo.
+   BLOQUE 4: CÓMO FUNCIONA
+   Pasos numerados que explican el flujo de uso de la plataforma.
+   Identificador único: #como-funciona
    ============================================================ */
 
-.ubicacion {
+#como-funciona {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fff;
+}
+
+#como-funciona h2 {
+    font-size: 24px;
+    color: #1a73e8;
+    margin-bottom: 30px;
+}
+
+.pasos {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.paso {
+    flex: 1;
+    min-width: 180px;
+    max-width: 200px;
+    text-align: center;
+}
+
+.paso .icono-paso {
+    width: 60px;
+    height: 60px;
+    background-color: #e8f0fe;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 26px;
+    color: #1a73e8;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.paso .icono-paso:hover {
+    background-color: #1a73e8;
+    color: #ffffff;
+}
+
+.paso h3 {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.paso p {
+    font-size: 13px;
+    color: #666;
+}
+
+/* ============================================================
+   BLOQUE 5: ROLES
+   Tarjetas de acceso por tipo de usuario: estudiante, instructor y empresa.
+   Identificador único: #roles
+   ============================================================ */
+
+#roles {
+    background-color: #f0f2f5;
+    padding: 40px 20px;
+}
+
+#roles h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #1a73e8;
+    margin-bottom: 25px;
+}
+
+.roles-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.rol-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px 20px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.rol-card:hover {
+    box-shadow: 0 6px 18px rgba(26, 115, 232, 0.18);
+    transform: translateY(-4px);
+}
+
+.rol-card .icono-rol {
+    font-size: 40px;
+    margin-bottom: 12px;
+    color: #1a73e8;
+}
+
+.rol-card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.rol-card p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* ============================================================
+   BLOQUE 6: ESTADÍSTICAS
+   Números destacados sobre el alcance y uso de la plataforma.
+   Identificador único: #estadisticas
+   ============================================================ */
+
+#estadisticas {
+    background-color: #1a73e8;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+#estadisticas h2 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #ffffff;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 12px;
+    display: inline-block;
+}
+
+.stats-inicio {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-inicio {
+    min-width: 120px;
+}
+
+.stat-inicio .num {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ffdd57;
+}
+
+.stat-inicio .txt {
+    font-size: 14px;
+    color: #cde;
+    margin-top: 4px;
+}
+
+.icono-estadistica {
+    font-size: 28px;
+    color: #ffdd57;
+    margin-bottom: 6px;
+}
+
+/* ============================================================
+   BLOQUE 7: MULTIMEDIA / UBICACIÓN Y MAPA
+   Mapa embebido de Google Maps con contenedor y botón externo.
+   Identificador único: #multimedia
+   ============================================================ */
+
+#multimedia {
     background-color: #f0f2f5;
     padding: 50px 20px;
     text-align: center;
 }
 
-.ubicacion h2 {
+#multimedia h2 {
     font-size: 24px;
     color: #1a73e8;
     margin-bottom: 10px;
 }
 
-.ubicacion p {
+#multimedia p {
     font-size: 14px;
     color: #666;
     margin-bottom: 20px;
@@ -355,6 +391,8 @@
 
 .btn-mapa:hover {
     background-color: #1558b0;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .btn-mapa i {
@@ -363,31 +401,32 @@
 
 /* ============================================================
    BLOQUE 8: PREGUNTAS FRECUENTES (FAQ)
-   Acordeón de preguntas y respuestas con animación de apertura y cierre.
+   Acordeón de preguntas y respuestas con animación.
+   Identificador único: #preguntas
    ============================================================ */
 
-.faq {
+#preguntas {
     background-color: #fff;
     padding: 50px 20px;
     max-width: 800px;
     margin: 0 auto;
 }
 
-.faq h2 {
+#preguntas h2 {
     font-size: 24px;
     color: #1a73e8;
     margin-bottom: 25px;
     text-align: center;
 }
 
-.faq details {
+#preguntas details {
     border: 1px solid #dde3f0;
     border-radius: 8px;
     margin-bottom: 12px;
     overflow: hidden;
 }
 
-.faq summary {
+#preguntas summary {
     padding: 16px 20px;
     font-size: 15px;
     font-weight: bold;
@@ -400,11 +439,11 @@
     background-color: #f8f9ff;
 }
 
-.faq summary::-webkit-details-marker {
+#preguntas summary::-webkit-details-marker {
     display: none;
 }
 
-.faq summary::after {
+#preguntas summary::after {
     content: "\f078";
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
@@ -413,19 +452,73 @@
     transition: transform 0.2s;
 }
 
-.faq details[open] summary::after {
+#preguntas details[open] summary::after {
     transform: rotate(180deg);
 }
 
-.faq details[open] summary {
+#preguntas details[open] summary {
     background-color: #e8f0fe;
     color: #1a73e8;
 }
 
-.faq .faq-body {
+#preguntas .faq-body {
     padding: 16px 20px;
     font-size: 14px;
     color: #555;
     line-height: 1.7;
     border-top: 1px solid #dde3f0;
+}
+
+/* ============================================================
+   BLOQUE 9: NAVBAR DE INICIO
+   Barra de navegación principal de la página de inicio.
+   ============================================================ */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1558b0;
+    padding: 14px 30px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navbar .logo span {
+    color: #ffdd57;
+}
+
+.navbar .logo:hover {
+    color: #e8f0fe;
+    text-decoration: none;
+}
+
+/* ============================================================
+   BLOQUE 10: FOOTER DE INICIO
+   Pie de página con texto de copyright.
+   ============================================================ */
+
+.footer {
+    background-color: #2c3e50;
+    color: #bbbbbb;
+    text-align: center;
+    padding: 20px 30px;
+    border-top: 3px solid #1a73e8;
+}
+
+.footer p {
+    color: #bbbbbb;
+    font-size: 13px;
+}
+
+.footer span {
+    color: #ffdd57;
+    font-weight: bold;
 }
