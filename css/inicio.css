@@ -1,4 +1,15 @@
-/* ========== PÁGINA DE INICIO ========== */
+/* ============================================================
+   ARCHIVO: inicio.css
+   Estilos exclusivos de la página principal (index.html).
+   Define el hero, sección "¿Quiénes somos?", estadísticas,
+   tarjetas de roles, mapa de ubicación, preguntas frecuentes
+   y el footer de la página de inicio.
+   ============================================================ */
+
+/* ============================================================
+   BLOQUE 1: HERO
+   Sección principal con título, subtítulo y botones de llamada a acción.
+   ============================================================ */
 
 .hero {
     background-color: #1a73e8;
@@ -29,6 +40,11 @@
     flex-wrap: wrap;
 }
 
+/* ============================================================
+   BLOQUE 2: BOTONES DE INICIO
+   Variantes de botón exclusivas de la página de inicio.
+   ============================================================ */
+
 .btn-grande {
     padding: 14px 30px;
     font-size: 16px;
@@ -55,7 +71,11 @@
     display: inline-block;
 }
 
-/* ========== SECCIÓN CÓMO FUNCIONA ========== */
+/* ============================================================
+   BLOQUE 3: CÓMO FUNCIONA
+   Pasos numerados que explican el flujo de uso de la plataforma.
+   ============================================================ */
+
 .como-funciona {
     text-align: center;
     padding: 40px 20px;
@@ -108,7 +128,11 @@
     color: #666;
 }
 
-/* ========== ROLES ========== */
+/* ============================================================
+   BLOQUE 4: ROLES
+   Tarjetas de acceso por tipo de usuario: estudiante, instructor y empresa.
+   ============================================================ */
+
 .roles {
     background-color: #f0f2f5;
     padding: 40px 20px;
@@ -159,7 +183,11 @@
     margin-bottom: 15px;
 }
 
-/* ========== ESTADÍSTICAS ========== */
+/* ============================================================
+   BLOQUE 5: ESTADÍSTICAS
+   Números destacados sobre el alcance y uso de la plataforma.
+   ============================================================ */
+
 .estadisticas {
     background-color: #1a73e8;
     color: white;
@@ -201,7 +229,11 @@
     margin-bottom: 6px;
 }
 
-/* ========== SECCIÓN ACERCA DE ========== */
+/* ============================================================
+   BLOQUE 6: ACERCA DE
+   Sección "¿Quiénes somos?" con texto descriptivo y galería de imágenes.
+   ============================================================ */
+
 .acerca-de-wrapper {
     background-color: #fff;
 }
@@ -268,7 +300,11 @@
     max-height: 150px;
 }
 
-/* ========== SECCIÓN MAPA ========== */
+/* ============================================================
+   BLOQUE 7: UBICACIÓN Y MAPA
+   Mapa embebido de Google Maps con contenedor y botón de enlace externo.
+   ============================================================ */
+
 .ubicacion {
     background-color: #f0f2f5;
     padding: 50px 20px;
@@ -325,7 +361,11 @@
     margin-right: 8px;
 }
 
-/* ========== SECCIÓN FAQ ========== */
+/* ============================================================
+   BLOQUE 8: PREGUNTAS FRECUENTES (FAQ)
+   Acordeón de preguntas y respuestas con animación de apertura y cierre.
+   ============================================================ */
+
 .faq {
     background-color: #fff;
     padding: 50px 20px;

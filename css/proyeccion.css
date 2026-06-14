@@ -1,0 +1,615 @@
+/* ============================================================
+   ARCHIVO: proyeccion.css
+   CSS propio que personaliza y extiende Bootstrap 5
+   para la página de proyección personal de PuenteLaboral360.
+   Se aplica DESPUÉS de Bootstrap para anular estilos.
+   ============================================================ */
+
+/* ============================================================
+   VARIABLES DE COLOR — Paleta PuenteLaboral360
+   ============================================================ */
+:root {
+    --pf-azul:        #1a73e8;
+    --pf-azul-dark:   #1558b0;
+    --pf-amarillo:    #ffdd57;
+    --pf-navy:        #2c3e50;
+    --pf-fondo:       #f0f2f5;
+    --pf-blanco:      #ffffff;
+    --pf-verde:       #28a745;
+    --pf-naranja:     #f57c00;
+    --pf-morado:      #6f42c1;
+    --pf-rojo:        #dc3545;
+    --pf-gris:        #6c757d;
+    --pf-borde:       #dde3f0;
+    --pf-fondo-card:  #f8f9ff;
+}
+
+/* ============================================================
+   NAVBAR PERSONALIZADO
+   Fondo navy oscuro con acento azul inferior.
+   ============================================================ */
+.navbar-pf {
+    background-color: var(--pf-navy) !important;
+    border-bottom: 3px solid var(--pf-azul);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar-pf .navbar-brand {
+    color: var(--pf-blanco);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+.navbar-pf .navbar-brand span {
+    color: var(--pf-amarillo);
+}
+
+.navbar-pf .navbar-brand:hover {
+    color: #e8f0fe;
+}
+
+.navbar-pf .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 6px 14px !important;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar-pf .nav-link:hover,
+.navbar-pf .nav-link.active {
+    background-color: var(--pf-azul) !important;
+    color: var(--pf-blanco) !important;
+}
+
+.navbar-pf .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.35);
+    padding: 4px 8px;
+}
+
+.navbar-pf .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-pf .btn-nav-yellow {
+    background-color: var(--pf-amarillo);
+    color: #333;
+    font-weight: 700;
+    border-radius: 5px;
+    padding: 6px 16px;
+    border: none;
+    font-size: 0.88rem;
+    transition: background-color 0.2s;
+}
+
+.navbar-pf .btn-nav-yellow:hover {
+    background-color: #f0c800;
+    color: #222;
+}
+
+/* ============================================================
+   SEPARADOR DEGRADADO ENTRE SECCIONES
+   ============================================================ */
+.separador-pf {
+    height: 4px;
+    background: linear-gradient(to right, var(--pf-azul), var(--pf-amarillo), var(--pf-azul));
+    border: none;
+    margin: 0;
+    opacity: 1;
+}
+
+/* ============================================================
+   HERO — Encabezado de la página de proyección
+   ============================================================ */
+.hero-pf {
+    background: linear-gradient(135deg, var(--pf-azul) 0%, var(--pf-azul-dark) 55%, var(--pf-navy) 100%);
+    padding: 80px 0 64px;
+    color: var(--pf-blanco);
+}
+
+.hero-pf h1 {
+    font-size: 2.7rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--pf-blanco);
+}
+
+.hero-pf h1 span {
+    color: var(--pf-amarillo);
+}
+
+.hero-pf .hero-subtitulo {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 24px;
+}
+
+.hero-pf .rol-actual {
+    font-size: 1rem;
+    color: var(--pf-amarillo);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Alert personalizado dentro del hero */
+.alert-pf-hero {
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.alert-pf-hero .btn-close {
+    filter: invert(1) brightness(2);
+}
+
+/* ============================================================
+   FOTO DE PERFIL
+   ============================================================ */
+.foto-perfil {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border: 5px solid var(--pf-amarillo);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+    transition: transform 0.3s ease;
+}
+
+.foto-perfil:hover {
+    transform: scale(1.04);
+}
+
+.foto-perfil-placeholder {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid var(--pf-amarillo);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(135deg, var(--pf-azul-dark), var(--pf-navy));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.5rem;
+    color: var(--pf-blanco);
+    margin: 0 auto;
+}
+
+/* ============================================================
+   FONDOS DE SECCIÓN — Alternancia clara/blanca
+   ============================================================ */
+.seccion-clara  { background-color: var(--pf-fondo);  padding: 72px 0; }
+.seccion-blanca { background-color: var(--pf-blanco); padding: 72px 0; }
+.seccion-navy   { background-color: var(--pf-navy);   padding: 72px 0; color: var(--pf-blanco); }
+.seccion-azul   { background-color: var(--pf-azul);   padding: 64px 0; color: var(--pf-blanco); }
+
+/* ============================================================
+   TÍTULOS DE SECCIÓN
+   ============================================================ */
+.titulo-pf {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--pf-azul);
+    margin-bottom: 6px;
+}
+
+.titulo-pf-blanco { color: var(--pf-blanco) !important; }
+
+.subtitulo-pf {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.subtitulo-pf-blanco { color: rgba(255,255,255,0.8) !important; }
+
+/* Línea decorativa bajo el título */
+.linea-titulo {
+    width: 56px;
+    height: 4px;
+    background: linear-gradient(to right, var(--pf-azul), var(--pf-amarillo));
+    border-radius: 2px;
+    margin: 0 auto 44px;
+    display: block;
+}
+
+.linea-titulo-left {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* ============================================================
+   CARDS PERSONALIZADAS
+   ============================================================ */
+.card-pf {
+    border: 1px solid var(--pf-borde);
+    border-radius: 14px;
+    box-shadow: 0 3px 14px rgba(26, 115, 232, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card-pf:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(26, 115, 232, 0.18);
+    border-color: var(--pf-azul);
+}
+
+.card-pf .card-img-top-placeholder {
+    height: 155px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.card-pf .card-body { padding: 20px; }
+.card-pf .card-title { font-size: 1rem; font-weight: 700; color: var(--pf-navy); }
+.card-pf .card-text  { font-size: 0.85rem; color: #666; }
+
+/* ============================================================
+   ÍCONO DE VISIÓN (Cards de visión/misión/valores)
+   ============================================================ */
+.icono-vision {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin: 0 auto 16px;
+}
+
+.vision-azul    { background-color: #e8f0fe; color: var(--pf-azul); }
+.vision-verde   { background-color: #e6f4ea; color: var(--pf-verde); }
+.vision-naranja { background-color: #fff3e0; color: var(--pf-naranja); }
+.vision-morado  { background-color: #f3e5f5; color: var(--pf-morado); }
+
+/* ============================================================
+   BARRAS DE PROGRESO PERSONALIZADAS
+   ============================================================ */
+.progress-pf {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #e8f0fe;
+    overflow: hidden;
+}
+
+.progress-pf .progress-bar {
+    border-radius: 5px;
+    transition: width 0.6s ease;
+}
+
+.habilidad-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--pf-navy);
+    margin-bottom: 3px;
+}
+
+.habilidad-porcentaje {
+    font-size: 0.8rem;
+    color: var(--pf-azul);
+    font-weight: 700;
+}
+
+/* ============================================================
+   TABLA PERSONALIZADA — Plan de estudios
+   ============================================================ */
+.tabla-pf {
+    font-size: 0.875rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+}
+
+.tabla-pf thead th {
+    background-color: var(--pf-azul);
+    color: var(--pf-blanco);
+    border: none;
+    padding: 13px 14px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.tabla-pf tbody td {
+    vertical-align: middle;
+    padding: 10px 14px;
+    border-color: #e8f0fe;
+}
+
+.tabla-pf tbody tr:hover { background-color: #f0f5ff; }
+
+/* Progress dentro de tabla: más delgado */
+.tabla-pf .progress { height: 8px; border-radius: 4px; min-width: 80px; }
+
+/* ============================================================
+   ACCORDION PERSONALIZADO
+   ============================================================ */
+.accordion-pf .accordion-item {
+    border: 1px solid var(--pf-borde);
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.accordion-pf .accordion-button {
+    font-weight: 600;
+    color: var(--pf-navy);
+    background-color: var(--pf-fondo-card);
+    font-size: 0.95rem;
+}
+
+.accordion-pf .accordion-button:not(.collapsed) {
+    background-color: #e8f0fe;
+    color: var(--pf-azul);
+    box-shadow: none;
+}
+
+.accordion-pf .accordion-button:not(.collapsed)::after {
+    filter: invert(0.4) sepia(1) saturate(5) hue-rotate(200deg);
+}
+
+.accordion-pf .accordion-button:focus {
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.18);
+}
+
+/* ============================================================
+   CAROUSEL DENTRO DEL ACCORDION
+   ============================================================ */
+.carousel-pf .carousel-inner { border-radius: 10px; }
+
+.carousel-pf .carousel-slide {
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.carousel-pf .carousel-control-prev-icon,
+.carousel-pf .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    padding: 16px;
+    background-size: 60%;
+}
+
+.carousel-pf .carousel-indicators [data-bs-target] {
+    background-color: var(--pf-azul);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+}
+
+/* ============================================================
+   LIST GROUP PERSONALIZADO — Certificaciones
+   ============================================================ */
+.list-group-pf .list-group-item {
+    border-left: 4px solid transparent;
+    transition: border-left-color 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+    font-size: 0.88rem;
+    padding: 12px 16px;
+    color: var(--pf-navy);
+}
+
+.list-group-pf .list-group-item:hover {
+    border-left-color: var(--pf-azul);
+    background-color: #f0f5ff;
+    color: var(--pf-azul);
+}
+
+.list-group-pf .list-group-item.active {
+    border-left-color: var(--pf-azul);
+    background-color: #e8f0fe !important;
+    color: var(--pf-azul) !important;
+    border-color: var(--pf-borde);
+    font-weight: 600;
+}
+
+/* Panel de contenido del list group */
+.tab-pane-pf {
+    background-color: var(--pf-fondo-card);
+    border: 1px solid var(--pf-borde);
+    border-radius: 10px;
+    padding: 24px;
+    height: 100%;
+}
+
+/* ============================================================
+   BOTONES PERSONALIZADOS
+   ============================================================ */
+.btn-pf-primary {
+    background-color: var(--pf-azul);
+    border-color: var(--pf-azul);
+    color: var(--pf-blanco);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-pf-primary:hover {
+    background-color: var(--pf-azul-dark);
+    border-color: var(--pf-azul-dark);
+    color: var(--pf-blanco);
+    transform: translateY(-1px);
+}
+
+.btn-pf-outline {
+    border: 2px solid var(--pf-azul);
+    color: var(--pf-azul);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    background: transparent;
+    transition: all 0.2s;
+}
+
+.btn-pf-outline:hover {
+    background-color: var(--pf-azul);
+    color: var(--pf-blanco);
+}
+
+.btn-pf-amarillo {
+    background-color: var(--pf-amarillo);
+    border-color: var(--pf-amarillo);
+    color: #333;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-pf-amarillo:hover {
+    background-color: #f0c800;
+    border-color: #f0c800;
+    color: #222;
+    transform: translateY(-1px);
+}
+
+.btn-pf-outline-blanco {
+    border: 2px solid rgba(255,255,255,0.7);
+    color: var(--pf-blanco);
+    border-radius: 6px;
+    font-weight: 600;
+    background: transparent;
+    font-size: 0.95rem;
+}
+
+.btn-pf-outline-blanco:hover {
+    background-color: rgba(255,255,255,0.15);
+    border-color: var(--pf-blanco);
+    color: var(--pf-blanco);
+}
+
+/* ============================================================
+   MODAL PERSONALIZADO
+   ============================================================ */
+.modal-pf .modal-header {
+    background-color: var(--pf-azul);
+    color: var(--pf-blanco);
+    border-radius: 12px 12px 0 0;
+    padding: 18px 24px;
+}
+
+.modal-pf .modal-header .modal-title { font-weight: 700; }
+
+.modal-pf .modal-header .btn-close {
+    filter: invert(1) brightness(2);
+}
+
+.modal-pf .modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-pf .modal-footer {
+    border-top: 1px solid var(--pf-borde);
+    padding: 16px 24px;
+}
+
+/* ============================================================
+   ALERT PERSONALIZADO
+   ============================================================ */
+.alert-info-pf {
+    background-color: #e8f0fe;
+    border-left: 5px solid var(--pf-azul);
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 8px;
+    color: var(--pf-navy);
+    font-size: 0.9rem;
+}
+
+.alert-success-pf {
+    background-color: #e6f4ea;
+    border-left: 5px solid var(--pf-verde);
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 8px;
+    color: #155724;
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   BADGES PERSONALIZADOS
+   ============================================================ */
+.badge-pf-azul    { background-color: var(--pf-azul)    !important; color: #fff; }
+.badge-pf-navy    { background-color: var(--pf-navy)    !important; color: #fff; }
+.badge-pf-amarillo { background-color: var(--pf-amarillo) !important; color: #333; }
+.badge-pf-verde   { background-color: var(--pf-verde)   !important; color: #fff; }
+.badge-pf-naranja { background-color: var(--pf-naranja) !important; color: #fff; }
+.badge-pf-morado  { background-color: var(--pf-morado)  !important; color: #fff; }
+.badge-pf-gris    { background-color: var(--pf-gris)    !important; color: #fff; }
+
+/* ============================================================
+   FOOTER PERSONALIZADO
+   ============================================================ */
+.footer-pf {
+    background-color: var(--pf-navy);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 44px 0 20px;
+    border-top: 3px solid var(--pf-azul);
+}
+
+.footer-pf .footer-titulo {
+    color: var(--pf-blanco);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 14px;
+}
+
+.footer-pf a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.2s;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.footer-pf a:hover { color: var(--pf-amarillo); }
+
+.footer-pf .footer-copy {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.45);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 16px;
+    margin-top: 28px;
+}
+
+.footer-pf .footer-copy span { color: var(--pf-amarillo); }
+
+/* ============================================================
+   RESPONSIVE — MOBILE FIRST AJUSTES
+   ============================================================ */
+@media (max-width: 575px) {
+    .hero-pf { padding: 52px 0 44px; }
+    .hero-pf h1 { font-size: 1.9rem; }
+    .foto-perfil-placeholder { width: 130px; height: 130px; font-size: 3.2rem; }
+    .seccion-clara, .seccion-blanca, .seccion-navy, .seccion-azul { padding: 52px 0; }
+    .titulo-pf { font-size: 1.5rem; }
+    .tabla-pf { font-size: 0.78rem; }
+    .tabla-pf thead th { padding: 10px 8px; }
+    .tabla-pf tbody td { padding: 8px; }
+    .carousel-pf .carousel-slide { height: 180px; }
+}
+
+@media (max-width: 767px) {
+    .hero-pf h1 { font-size: 2.1rem; }
+    .titulo-pf { font-size: 1.65rem; }
+}

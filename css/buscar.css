@@ -1,0 +1,440 @@
+/* ============================================================
+   ARCHIVO: buscar.css
+   Estilos específicos de la página Buscar Talento (buscar-talento.html).
+   Complementa a general.css y estilos.css con estilos propios
+   del formulario de filtros y los resultados de candidatos.
+   Debe cargarse después de general.css.
+   ============================================================ */
+
+/* ============================================================
+   BLOQUE 1: FORMULARIO DE BÚSQUEDA
+   Panel de filtros con selectores de habilidad, nivel y vacante.
+   Identificador único: #filtros-busqueda
+   ============================================================ */
+
+#filtros-busqueda {
+    border-left: 5px solid #c0392b;
+    background-color: #fff9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#filtros-busqueda h2 {
+    color: #c0392b;
+    border-bottom-color: #f5c0c0;
+}
+
+.form-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.form-filtros .campo-flex-lg {
+    flex: 2;
+    min-width: 200px;
+}
+
+.form-filtros .campo-flex {
+    flex: 1;
+    min-width: 140px;
+}
+
+.btn-filtro {
+    height: 42px;
+    padding: 0 22px;
+    align-self: flex-end;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+/* ============================================================
+   BLOQUE 2: RESULTADOS DE CANDIDATOS
+   Contenedor de la lista de candidatos encontrados.
+   Identificador único: #resultados-candidatos
+   ============================================================ */
+
+#resultados-candidatos {
+    border-left: 5px solid #1a73e8;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#resultados-candidatos h2 {
+    color: #1a73e8;
+}
+
+.texto-secundario {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+/* ============================================================
+   BLOQUE 3: TARJETAS DE CANDIDATO
+   Estilo individual de cada candidato en los resultados de búsqueda.
+   Clase reutilizable: .candidato-card
+   ============================================================ */
+
+.candidato-card {
+    border: 1px solid #e0e7f5;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 20px;
+    background-color: #ffffff;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.candidato-card:hover {
+    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.15);
+    transform: translateY(-2px);
+}
+
+.info-candidato {
+    flex: 1;
+}
+
+.nombre-candidato {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 4px;
+}
+
+.detalle-candidato {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.habilidad-tag {
+    display: inline-block;
+    background-color: #e8f0fe;
+    color: #1a73e8;
+    border: 1px solid #c5d5f5;
+    border-radius: 14px;
+    padding: 3px 10px;
+    font-size: 12px;
+    margin: 2px 3px 2px 0;
+    font-weight: bold;
+}
+
+.acciones-candidato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 110px;
+}
+
+/* ============================================================
+   BLOQUE 4: RADAR DE HABILIDADES
+   Barras de progreso que muestran el nivel de cada competencia.
+   Clase reutilizable: .radar-habilidades
+   ============================================================ */
+
+.radar-habilidades {
+    margin-top: 12px;
+    padding: 12px;
+    background-color: #f8f9ff;
+    border-radius: 8px;
+    border: 1px solid #e8f0fe;
+}
+
+.radar-habilidades h4 {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.habilidad-nivel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.habilidad-nivel .nombre {
+    min-width: 90px;
+    font-size: 12px;
+    color: #555;
+}
+
+.habilidad-nivel progress {
+    flex: 1;
+    height: 8px;
+    border-radius: 4px;
+    accent-color: #1a73e8;
+}
+
+.habilidad-nivel .porcentaje {
+    font-size: 12px;
+    color: #1a73e8;
+    font-weight: bold;
+    min-width: 35px;
+    text-align: right;
+}
+
+.progress-amarillo {
+    accent-color: #f0c800;
+}
+
+.progress-rojo {
+    accent-color: #e74c3c;
+}
+
+/* ============================================================
+   BLOQUE 5: INDICADOR DE MATCH
+   Porcentaje de compatibilidad entre candidato y vacante.
+   Clase reutilizable: .match-grande
+   ============================================================ */
+
+.match-grande {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    border: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.match-alto {
+    background-color: #28a745;
+}
+
+.match-medio {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.match-bajo {
+    background-color: #6c757d;
+}
+
+.etiqueta-match {
+    font-size: 10px;
+    font-weight: normal;
+    display: block;
+    margin-top: 2px;
+}
+
+/* ============================================================
+   BLOQUE 6: ENLACE ACTIVO EN SIDEBAR
+   Resalta el ítem de navegación activo para esta página.
+   ============================================================ */
+
+.activo {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-left: 3px solid #ffdd57;
+    font-weight: bold;
+}
+
+.activo:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================================
+   BLOQUE 7: GRID DE RESULTADOS
+   Cuando hay muchos resultados, los muestra en cuadrícula 2x2.
+   Grid: grid-template-columns, gap.
+   Clase: .resultados-grid
+   ============================================================ */
+
+/* Vista en cuadrícula — 2 columnas para comparar candidatos */
+.resultados-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+/* La tarjeta de candidato en modo grid se ajusta */
+.resultados-grid .candidato-card {
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.resultados-grid .candidato-card .acciones-candidato {
+    flex-direction: row;
+    justify-content: flex-end;
+    min-width: auto;
+    width: 100%;
+}
+
+/* ============================================================
+   BLOQUE 8: BARRA DE HERRAMIENTAS DE RESULTADOS
+   Controles superiores: contador, orden y cambio de vista.
+   Flexbox: justify-content, align-items, gap.
+   ============================================================ */
+
+.barra-resultados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 12px 16px;
+    background-color: #f8f9ff;
+    border: 1px solid #e8f0fe;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.barra-resultados .contador {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.barra-resultados .contador span {
+    color: #1a73e8;
+}
+
+/* Controles de orden y vista */
+.controles-vista {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.controles-vista select {
+    width: auto;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 0;
+}
+
+/* Botones de cambio de vista (lista / grid) */
+.btn-vista {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-vista:hover,
+.btn-vista.activo-vista {
+    background-color: #1a73e8;
+    color: #ffffff;
+    border-color: #1a73e8;
+}
+
+/* ============================================================
+   BLOQUE 9: PANEL DE ESTADÍSTICAS DE BÚSQUEDA
+   Resumen rápido en Grid de 3 columnas sobre los resultados.
+   Grid: grid-template-columns, gap, padding.
+   ============================================================ */
+
+.stats-busqueda {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.stat-busqueda {
+    background-color: #ffffff;
+    border: 1px solid #dde3f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.stat-busqueda .valor {
+    font-size: 26px;
+    font-weight: bold;
+    color: #1a73e8;
+    display: block;
+    line-height: 1.1;
+}
+
+.stat-busqueda .etiqueta {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+    display: block;
+}
+
+/* ============================================================
+   RESPONSIVIDAD — MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Stats: 3 → 2 cols */
+    .stats-busqueda {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Resultados: grid 2 → 1 col */
+    .resultados-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Candidato card en columna */
+    .candidato-card {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .acciones-candidato {
+        flex-direction: row;
+        justify-content: flex-start;
+        min-width: auto;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .resultados-grid .candidato-card .acciones-candidato {
+        justify-content: flex-start;
+    }
+
+    /* Barra de resultados */
+    .barra-resultados {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* Match grande en la tarjeta */
+    .match-grande {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-busqueda {
+        grid-template-columns: 1fr;
+    }
+
+    .form-filtros .campo-flex-lg,
+    .form-filtros .campo-flex {
+        min-width: 100%;
+    }
+
+    .controles-vista {
+        flex-wrap: wrap;
+    }
+}

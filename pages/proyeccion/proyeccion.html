@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Proyección — Corina Acosta | PuenteLaboral360</title>
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type="image/x-icon">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- CSS propio — personalización de Bootstrap -->
+    <link rel="stylesheet" href="../../css/proyeccion.css">
+</head>
+
+<body>
+
+<!-- ================================================================
+     NAVBAR — Bootstrap Navbar responsivo (colapsa en móvil)
+     Componente: Navbar + Container
+     Personalización: .navbar-pf, .btn-nav-yellow (proyeccion.css)
+================================================================ -->
+<nav class="navbar navbar-expand-lg navbar-pf sticky-top" aria-label="Navegación principal">
+    <div class="container">
+
+        <!-- Logo -->
+        <a class="navbar-brand" href="../../index.html">
+            PuenteLaboral<span>360</span>
+        </a>
+
+        <!-- Botón hamburguesa (visible solo en móvil) -->
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarPF"
+                aria-controls="navbarPF" aria-expanded="false" aria-label="Abrir menú">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menú colapsable -->
+        <div class="collapse navbar-collapse" id="navbarPF">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="../../index.html">
+                        <i class="fa-solid fa-house"></i> Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../servicios/servicios.html">
+                        <i class="fa-solid fa-briefcase"></i> Servicios
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../galeria/galeria.html">
+                        <i class="fa-solid fa-images"></i> Galería
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../contacto/contacto.html">
+                        <i class="fa-solid fa-envelope"></i> Contacto
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="proyeccion.html" aria-current="page">
+                        <i class="fa-solid fa-rocket"></i> Mi Proyección
+                    </a>
+                </li>
+            </ul>
+            <div class="d-flex gap-2 mt-2 mt-lg-0">
+                <a href="../login/login.html" class="btn btn-pf-outline-blanco btn-sm">
+                    <i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión
+                </a>
+                <a href="../registro/registro.html" class="btn btn-nav-yellow btn-sm">
+                    <i class="fa-solid fa-user-plus"></i> Registrarse
+                </a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+<hr class="separador-pf m-0">
+
+<!-- ================================================================
+     HEADER / HERO — Presentación personal
+     Etiqueta semántica: <header>
+     Componentes BS: Alert dismissible, Badges, Buttons, Container
+     Personalización: .hero-pf, .alert-pf-hero, .foto-perfil-placeholder
+================================================================ -->
+<header class="hero-pf">
+    <div class="container">
+
+        <!-- Alert dismissible -->
+        <div class="alert alert-pf-hero alert-dismissible fade show mb-4" role="alert">
+            <i class="fa-solid fa-circle-info me-2"></i>
+            <strong>Nueva etapa:</strong> Esta página marca el inicio de mi camino con
+            <strong>Bootstrap 5</strong> — del HTML puro al desarrollo responsivo profesional.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="row align-items-center g-4">
+
+            <!-- Foto de perfil -->
+            <div class="col-12 col-md-3 text-center">
+                <figure class="mb-0">
+                    <div class="foto-perfil-placeholder mx-auto">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <figcaption class="mt-3 text-white-50 small">Corina Acosta</figcaption>
+                </figure>
+            </div>
+
+            <!-- Texto del hero -->
+            <div class="col-12 col-md-9">
+                <p class="rol-actual mb-1">
+                    <i class="fa-solid fa-map-pin me-1"></i> Quito, Ecuador · Estudiante de Ingeniería en Software
+                </p>
+                <h1>Hola, soy <span>Corina Acosta</span></h1>
+                <p class="hero-subtitulo">
+                    Estudiante apasionada por el desarrollo web y la tecnología. Mi meta es convertirme
+                    en <strong style="color:#ffdd57;">Full Stack Developer</strong> y construir soluciones
+                    que generen impacto real, como PuenteLaboral360.
+                </p>
+
+                <!-- Badges de tecnologías -->
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                    <span class="badge rounded-pill badge-pf-amarillo">
+                        <i class="fa-brands fa-html5"></i> HTML5
+                    </span>
+                    <span class="badge rounded-pill badge-pf-azul">
+                        <i class="fa-brands fa-css3-alt"></i> CSS3
+                    </span>
+                    <span class="badge rounded-pill badge-pf-amarillo">
+                        <i class="fa-brands fa-js"></i> JavaScript
+                    </span>
+                    <span class="badge rounded-pill badge-pf-verde">
+                        <i class="fa-brands fa-bootstrap"></i> Bootstrap 5
+                    </span>
+                    <span class="badge rounded-pill badge-pf-morado">
+                        <i class="fa-brands fa-react"></i> React (aprendiendo)
+                    </span>
+                    <span class="badge rounded-pill badge-pf-naranja">
+                        <i class="fa-brands fa-python"></i> Python (aprendiendo)
+                    </span>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#proyectos" class="btn btn-pf-amarillo">
+                        <i class="fa-solid fa-folder-open me-1"></i> Ver Proyectos
+                    </a>
+                    <button class="btn btn-pf-outline-blanco" data-bs-toggle="modal" data-bs-target="#modalContacto">
+                        <i class="fa-solid fa-paper-plane me-1"></i> Enviar Mensaje
+                    </button>
+                    <a href="#habilidades" class="btn btn-pf-outline-blanco">
+                        <i class="fa-solid fa-chart-bar me-1"></i> Mis Habilidades
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<hr class="separador-pf m-0">
+
+<!-- ================================================================
+     MAIN — Contenido principal
+     Etiqueta semántica: <main>
+================================================================ -->
+<main>
+
+    <!-- ============================================================
+         SECCIÓN 1: SOBRE MÍ
+         Etiquetas: <section>, <article>, <figure>
+         Componentes BS: Grid, List Group, Badges
+         id: sobre-mi
+    ============================================================ -->
+    <section class="seccion-blanca" id="sobre-mi">
+        <div class="container">
+
+            <div class="text-center mb-1">
+                <h2 class="titulo-pf">¿Quién Soy?</h2>
+                <p class="subtitulo-pf">Mi historia, mis valores y por qué elegí la tecnología</p>
+            </div>
+            <span class="linea-titulo d-block"></span>
+
+            <div class="row align-items-start g-4">
+
+                <!-- Imagen y datos rápidos -->
+                <div class="col-12 col-md-4">
+                    <figure class="text-center mb-4">
+                        <div class="foto-perfil-placeholder mx-auto mb-3" style="width:140px; height:140px; font-size:3rem;">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <figcaption class="text-muted small">
+                            <i class="fa-solid fa-location-dot me-1 text-primary"></i>Quito, Ecuador
+                        </figcaption>
+                    </figure>
+
+                    <!-- Alert informativo -->
+                    <div class="alert alert-info-pf mb-0" role="alert">
+                        <i class="fa-solid fa-lightbulb me-2" style="color:var(--pf-amarillo)"></i>
+                        <strong>Dato rápido:</strong> Comencé aprendiendo HTML desde cero y hoy
+                        construyo plataformas completas como PuenteLaboral360.
+                    </div>
+                </div>
+
+                <!-- Texto y list group -->
+                <div class="col-12 col-md-8">
+                    <article>
+                        <h3 class="fw-bold mb-3" style="color:var(--pf-navy)">Mi Historia</h3>
+                        <p class="text-muted mb-3">
+                            Soy estudiante de Ingeniería en Software con gran pasión por el desarrollo web.
+                            Empecé este camino aprendiendo las bases de <strong>HTML y CSS</strong>,
+                            luego avancé hacia la <strong>maquetación responsiva</strong> y ahora
+                            domino <strong>Bootstrap 5</strong> para crear interfaces modernas y
+                            accesibles que funcionen en cualquier dispositivo.
+                        </p>
+                        <p class="text-muted mb-4">
+                            Mi proyecto más importante hasta ahora es <strong>PuenteLaboral360</strong>,
+                            una plataforma que conecta estudiantes con empresas mediante habilidades
+                            verificadas. Este proyecto me permitió aplicar todo lo que he aprendido
+                            y sigue siendo mi laboratorio de crecimiento.
+                        </p>
+
+                        <!-- List Group con mis valores -->
+                        <h5 class="fw-bold mb-3" style="color:var(--pf-azul)">
+                            <i class="fa-solid fa-star me-2"></i>Mis Valores Profesionales
+                        </h5>
+                        <ul class="list-group list-group-pf">
+                            <li class="list-group-item d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-code text-primary fa-fw"></i>
+                                <div>
+                                    <strong>Aprendizaje continuo</strong>
+                                    <span class="d-block text-muted small">Siempre hay algo nuevo por aprender en tecnología</span>
+                                </div>
+                                <span class="badge badge-pf-azul ms-auto">Core</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-users text-success fa-fw"></i>
+                                <div>
+                                    <strong>Trabajo colaborativo</strong>
+                                    <span class="d-block text-muted small">Los mejores proyectos nacen en equipo</span>
+                                </div>
+                                <span class="badge badge-pf-verde ms-auto">Core</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-bullseye text-warning fa-fw"></i>
+                                <div>
+                                    <strong>Orientación a resultados</strong>
+                                    <span class="d-block text-muted small">El código debe resolver problemas reales</span>
+                                </div>
+                                <span class="badge badge-pf-amarillo ms-auto">Core</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-palette" style="color:var(--pf-morado)" ></i>
+                                <div>
+                                    <strong>Atención al diseño</strong>
+                                    <span class="d-block text-muted small">La experiencia de usuario importa tanto como la funcionalidad</span>
+                                </div>
+                                <span class="badge badge-pf-morado ms-auto">UX</span>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <hr class="separador-pf m-0">
+
+    <!-- ============================================================
+         SECCIÓN 2: MI VISIÓN — Cards de visión/misión/propósito
+         Etiquetas: <section>
+         Componentes BS: Grid, Cards
+         Personalización: .card-pf, .icono-vision, .vision-*
+         id: vision
+    ============================================================ -->
+    <section class="seccion-clara" id="vision">
+        <div class="container">
+
+            <div class="text-center mb-1">
+                <h2 class="titulo-pf">Mi Visión Profesional</h2>
+                <p class="subtitulo-pf">Hacia dónde me proyecto y qué quiero construir</p>
+            </div>
+            <span class="linea-titulo d-block"></span>
+
+            <!-- Grid responsivo de 3 tarjetas: col-12 → col-md-4 -->
+            <div class="row g-4">
+
+                <!-- Card 1: Visión -->
+                <div class="col-12 col-md-4">
+                    <article class="card card-pf text-center p-4">
+                        <div class="icono-vision vision-azul mx-auto">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <div class="card-body p-0">
+                            <h4 class="card-title mb-2">Mi Visión</h4>
+                            <p class="card-text">
+                                Ser una <strong>Full Stack Developer</strong> reconocida en Ecuador,
+                                capaz de liderar proyectos tecnológicos que resuelvan problemas
+                                sociales reales mediante software de calidad.
+                            </p>
+                            <span class="badge badge-pf-azul mt-2">2028</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Card 2: Misión -->
+                <div class="col-12 col-md-4">
+                    <article class="card card-pf text-center p-4">
+                        <div class="icono-vision vision-verde mx-auto">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <div class="card-body p-0">
+                            <h4 class="card-title mb-2">Mi Misión</h4>
+                            <p class="card-text">
+                                Aprender, construir y compartir. Crear proyectos que demuestren
+                                que el <strong>talento verificado</strong> supera a los títulos,
+                                y que la práctica constante es el mejor currículo.
+                            </p>
+                            <span class="badge badge-pf-verde mt-2">En curso</span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Card 3: Propósito -->
+                <div class="col-12 col-md-4">
+                    <article class="card card-pf text-center p-4">
+                        <div class="icono-vision vision-naranja mx-auto">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="card-body p-0">
+                            <h4 class="card-title mb-2">Mi Propósito</h4>
+                            <p class="card-text">
+                                Usar la tecnología para <strong>reducir brechas</strong>:
+                                de empleo, de educación y de oportunidad. PuenteLaboral360
+                                es el primer paso de ese camino más grande.
+                            </p>
+                            <span class="badge badge-pf-naranja mt-2">Siempre</span>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <hr class="separador-pf m-0">
+
+    <!-- ============================================================
+         SECCIÓN 3: HABILIDADES EN DESARROLLO
+         Etiquetas: <section>
+         Componentes BS: Progress bars (múltiples colores), Grid
+         Personalización: .progress-pf, .habilidad-label
+         id: habilidades
+    ============================================================ -->
+    <section class="seccion-blanca" id="habilidades">
+        <div class="container">
+
+            <div class="text-center mb-1">
+                <h2 class="titulo-pf">Habilidades que Estoy Fortaleciendo</h2>
+                <p class="subtitulo-pf">Nivel actual y hacia dónde quiero llegar</p>
+            </div>
+            <span class="linea-titulo d-block"></span>
+
+            <div class="row g-4">
+
+                <!-- Columna izquierda: habilidades frontend -->
+                <div class="col-12 col-md-6">
+                    <h5 class="fw-bold mb-4" style="color:var(--pf-navy)">
+                        <i class="fa-solid fa-display me-2 text-primary"></i>Frontend
+                    </h5>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="habilidad-label">HTML5 / CSS3</span>
+                            <span class="habilidad-porcentaje">85%</span>
+                        </div>
+                        <div class="progress progress-pf">
+                            <div class="progress-bar bg-primary" role="progressbar"
+                                 style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="habilidad-label">JavaScript ES6+</span>
+                            <span class="habilidad-porcentaje">55%</span>
+                        </div>
+                        <div class="progress progress-pf">
+                            <div class="progress-bar" role="progressbar"
+                                 style="width: 55%; background-color:var(--pf-amarillo);"
+                                 aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="habilidad-label">Bootstrap 5</span>
+                            <span class="habilidad-porcentaje">70%</span>
+                        </div>
+                        <div class="progress progress-pf">
+                            <div class="progress-bar bg-success" role="progressbar"
+                                 style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="habilidad-label">React</span>
+                            <span class="habilidad-porcentaje">25%</span>
+                        </div>
+                        <div class="progress progress-pf">
+                            <div class="progress-bar" role="progressbar"
+                                 style="width: 25%; background-color:var(--pf-morado);"
+                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="habilidad-label">Figma / UX Design</span>
+                            <span class="habilidad-porcentaje">50%</span>
+                        </div>
+                        <div class="progress progress-pf">
+                            <div class="progress-bar" role="progressbar"
+                                 style="width: 50%; background-color:var(--pf-naranja);"
+                                 aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: habilidades backend/otras -->
+                <div class="col-12 col-md-6">
+                    <h5 class="fw-bold mb-4" style="color:var(--pf-navy)">
+                        <i class="fa-solid fa-server me-2 text-success"></i>Backend y Herramientas
+                    </h5>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="habilidad-label">Python</span>
+                            <span class="habilidad-porcentaje">35%</span>
+                        </div>
+                        <div class="progress progress-pf">
+                            <div class="progress-bar bg-warning" role="progressbar"
+                                 style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="habilidad-label">SQL / Base de Datos</span>
+                            <span class="habilidad-porcentaje">60%</span>
+                        </div>
+                        <div class="progress progress-pf">
+                            <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="habilidad-label">Git / GitHub</span>
+                            <span class="habilidad-porcentaje">65%</span>
+                        </div>
+                        <div class="progress progress-pf">
+                            <div class="progress-bar bg-dark" role="progressbar"
+                                 style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="habilidad-label">Node.js</span>
+                            <span class="habilidad-porcentaje">20%</span>
+                        </div>
+                        <div class="progress progress-pf">
+                            <div class="progress-bar bg-success" role="progressbar"
+                                 style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="habilidad-label">TypeScript</span>
+                            <span class="habilidad-porcentaje">10%</span>
+                        </div>
+                        <div class="progress progress-pf">
+                            <div class="progress-bar bg-primary" role="progressbar"
+                                 style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <hr class="separador-pf m-0">
+
+    <!-- ============================================================
+         SECCIÓN 4: PLAN DE ESTUDIOS
+         Etiquetas: <section>
+         Componentes BS: Table responsive + Progress bars (COMBINACIÓN)
+         Personalización: .tabla-pf
+         id: plan-estudios
+    ============================================================ -->
+    <section class="seccion-clara" id="plan-estudios">
+        <div class="container">
+
+            <div class="text-center mb-1">
+                <h2 class="titulo-pf">Plan de Estudios 2026</h2>
+                <p class="subtitulo-pf">Lo que estoy aprendiendo y hacia dónde me dirijo</p>
+            </div>
+            <span class="linea-titulo d-block"></span>
+
+            <!-- Alert de contexto -->
+            <div class="alert alert-info-pf mb-4" role="alert">
+                <i class="fa-solid fa-calendar-check me-2"></i>
+                <strong>Meta 2026:</strong> Completar al menos 4 cursos técnicos, obtener 2 certificaciones
+                y construir 3 proyectos funcionales con tecnologías reales.
+            </div>
+
+            <!-- Tabla responsive con progress bars -->
+            <div class="table-responsive">
+                <table class="table tabla-pf table-hover table-bordered align-middle">
+                    <caption class="text-muted small ps-0">Plan académico y de aprendizaje — Corina Acosta, 2026</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col"><i class="fa-solid fa-book me-1"></i>Curso / Tema</th>
+                            <th scope="col">Área</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col" style="min-width:140px">Progreso</th>
+                            <th scope="col">Meta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>JavaScript Avanzado (ES6+)</strong></td>
+                            <td><span class="badge badge-pf-amarillo">Frontend</span></td>
+                            <td><span class="badge bg-warning text-dark">En progreso</span></td>
+                            <td>
+                                <div class="progress progress-pf">
+                                    <div class="progress-bar bg-warning" style="width:65%"
+                                         aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                                </div>
+                            </td>
+                            <td>Jul 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bootstrap 5 Responsivo</strong></td>
+                            <td><span class="badge badge-pf-morado">UI/UX</span></td>
+                            <td><span class="badge bg-warning text-dark">En progreso</span></td>
+                            <td>
+                                <div class="progress progress-pf">
+                                    <div class="progress-bar" style="width:70%; background-color:var(--pf-morado)"
+                                         aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                                </div>
+                            </td>
+                            <td>Jun 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Base de Datos SQL</strong></td>
+                            <td><span class="badge badge-pf-verde">Backend</span></td>
+                            <td><span class="badge bg-success">Completado</span></td>
+                            <td>
+                                <div class="progress progress-pf">
+                                    <div class="progress-bar bg-success" style="width:100%"
+                                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                </div>
+                            </td>
+                            <td>✅ May 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Git y GitHub</strong></td>
+                            <td><span class="badge badge-pf-navy">DevOps</span></td>
+                            <td><span class="badge bg-success">Completado</span></td>
+                            <td>
+                                <div class="progress progress-pf">
+                                    <div class="progress-bar bg-dark" style="width:100%"
+                                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                </div>
+                            </td>
+                            <td>✅ Abr 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>React desde Cero</strong></td>
+                            <td><span class="badge badge-pf-azul">Frontend</span></td>
+                            <td><span class="badge badge-pf-gris">Pendiente</span></td>
+                            <td>
+                                <div class="progress progress-pf">
+                                    <div class="progress-bar bg-secondary" style="width:10%"
+                                         aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+                                </div>
+                            </td>
+                            <td>Ago 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Python para Data Science</strong></td>
+                            <td><span class="badge badge-pf-naranja">Data</span></td>
+                            <td><span class="badge bg-warning text-dark">En progreso</span></td>
+                            <td>
+                                <div class="progress progress-pf">
+                                    <div class="progress-bar bg-warning" style="width:35%"
+                                         aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35%</div>
+                                </div>
+                            </td>
+                            <td>Oct 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TypeScript Básico</strong></td>
+                            <td><span class="badge badge-pf-azul">Frontend</span></td>
+                            <td><span class="badge badge-pf-gris">Pendiente</span></td>
+                            <td>
+                                <div class="progress progress-pf">
+                                    <div class="progress-bar bg-primary" style="width:0%"
+                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            </td>
+                            <td>Dic 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AWS Cloud Practitioner</strong></td>
+                            <td><span class="badge badge-pf-naranja">Cloud</span></td>
+                            <td><span class="badge bg-light text-dark border">Futuro</span></td>
+                            <td>
+                                <div class="progress progress-pf">
+                                    <div class="progress-bar bg-light" style="width:0%"
+                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td>2027</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="separador-pf m-0">
+
+    <!-- ============================================================
+         SECCIÓN 5: MIS METAS
+         Etiquetas: <section>
+         Componentes BS: ACCORDION + CAROUSEL (combinación requerida)
+         El primer accordion contiene un carousel de imágenes/slides
+         Personalización: .accordion-pf, .carousel-pf
+         id: metas
+    ============================================================ -->
+    <section class="seccion-blanca" id="metas">
+        <div class="container">
+
+            <div class="text-center mb-1">
+                <h2 class="titulo-pf">Mis Metas y Objetivos</h2>
+                <p class="subtitulo-pf">A corto, mediano y largo plazo</p>
+            </div>
+            <span class="linea-titulo d-block"></span>
+
+            <!-- ACCORDION CON CAROUSEL DENTRO DEL PRIMER ÍTEM -->
+            <div class="accordion accordion-pf" id="accordionMetas">
+
+                <!-- ===== ÍTEM 1: Corto plazo CON CAROUSEL ===== -->
+                <div class="accordion-item border mb-2 rounded">
+                    <h2 class="accordion-header" id="headingCorto">
+                        <button class="accordion-button accordion-pf fw-semibold" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#metaCorto"
+                                aria-expanded="true" aria-controls="metaCorto">
+                            <i class="fa-solid fa-stopwatch text-primary me-2"></i>
+                            Metas a Corto Plazo (0 – 6 meses)
+                            <span class="badge badge-pf-azul ms-3">2026</span>
+                        </button>
+                    </h2>
+                    <div id="metaCorto" class="accordion-collapse collapse show"
+                         aria-labelledby="headingCorto" data-bs-parent="#accordionMetas">
+                        <div class="accordion-body">
+
+                            <!-- CAROUSEL DENTRO DEL ACCORDION -->
+                            <div id="carouselMetas" class="carousel slide carousel-pf mb-4"
+                                 data-bs-ride="carousel" data-bs-interval="3500">
+
+                                <!-- Indicadores -->
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselMetas" data-bs-slide-to="0"
+                                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselMetas" data-bs-slide-to="1"
+                                            aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselMetas" data-bs-slide-to="2"
+                                            aria-label="Slide 3"></button>
+                                    <button type="button" data-bs-target="#carouselMetas" data-bs-slide-to="3"
+                                            aria-label="Slide 4"></button>
+                                </div>
+
+                                <!-- Slides -->
+                                <div class="carousel-inner rounded">
+
+                                    <!-- Slide 1 -->
+                                    <div class="carousel-item active">
+                                        <div class="carousel-slide d-flex align-items-center justify-content-center text-white text-center p-4"
+                                             style="background: linear-gradient(135deg, #1a73e8, #1558b0); height: 240px; border-radius: 10px;">
+                                            <div>
+                                                <i class="fa-brands fa-js fa-3x mb-3" style="color:#ffdd57"></i>
+                                                <h4 class="fw-bold">Dominar JavaScript ES6+</h4>
+                                                <p class="mb-0 opacity-75">Completar el curso avanzado y construir al menos 3 proyectos prácticos con JS puro</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 2 -->
+                                    <div class="carousel-item">
+                                        <div class="carousel-slide d-flex align-items-center justify-content-center text-white text-center p-4"
+                                             style="background: linear-gradient(135deg, #28a745, #1e7e34); height: 240px; border-radius: 10px;">
+                                            <div>
+                                                <i class="fa-brands fa-bootstrap fa-3x mb-3"></i>
+                                                <h4 class="fw-bold">Bootstrap 5 Avanzado</h4>
+                                                <p class="mb-0 opacity-75">Aplicar Bootstrap en todos los proyectos del portafolio y entregar esta página de proyección</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 3 -->
+                                    <div class="carousel-item">
+                                        <div class="carousel-slide d-flex align-items-center justify-content-center text-white text-center p-4"
+                                             style="background: linear-gradient(135deg, #2c3e50, #34495e); height: 240px; border-radius: 10px;">
+                                            <div>
+                                                <i class="fa-brands fa-github fa-3x mb-3"></i>
+                                                <h4 class="fw-bold">Portafolio en GitHub</h4>
+                                                <p class="mb-0 opacity-75">Publicar PuenteLaboral360 en GitHub Pages con un README profesional y capturas de pantalla</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 4 -->
+                                    <div class="carousel-item">
+                                        <div class="carousel-slide d-flex align-items-center justify-content-center text-white text-center p-4"
+                                             style="background: linear-gradient(135deg, #6f42c1, #5a2d91); height: 240px; border-radius: 10px;">
+                                            <div>
+                                                <i class="fa-brands fa-react fa-3x mb-3"></i>
+                                                <h4 class="fw-bold">Iniciar React</h4>
+                                                <p class="mb-0 opacity-75">Completar el módulo introductorio de React y construir mi primer componente funcional</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Controles del carousel -->
+                                <button class="carousel-control-prev" type="button"
+                                        data-bs-target="#carouselMetas" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                        data-bs-target="#carouselMetas" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Siguiente</span>
+                                </button>
+
+                            </div>
+                            <!-- FIN CAROUSEL -->
+
+                            <!-- Lista de metas del período -->
+                            <ul class="list-group list-group-pf list-group-flush mt-2">
+                                <li class="list-group-item">
+                                    <i class="fa-solid fa-circle-check text-success me-2"></i>
+                                    Completar JavaScript avanzado con proyectos prácticos
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa-solid fa-circle-check text-success me-2"></i>
+                                    Entregar portafolio con Bootstrap 5 funcional
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa-solid fa-circle-half-stroke text-warning me-2"></i>
+                                    Subir PuenteLaboral360 a GitHub con documentación
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa-regular fa-circle text-muted me-2"></i>
+                                    Iniciar el curso de React desde Cero
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== ÍTEM 2: Mediano plazo ===== -->
+                <div class="accordion-item border mb-2 rounded">
+                    <h2 class="accordion-header" id="headingMediano">
+                        <button class="accordion-button accordion-pf collapsed fw-semibold" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#metaMediano"
+                                aria-expanded="false" aria-controls="metaMediano">
+                            <i class="fa-solid fa-chart-line text-success me-2"></i>
+                            Metas a Mediano Plazo (6 – 18 meses)
+                            <span class="badge badge-pf-verde ms-3">2027</span>
+                        </button>
+                    </h2>
+                    <div id="metaMediano" class="accordion-collapse collapse"
+                         aria-labelledby="headingMediano" data-bs-parent="#accordionMetas">
+                        <div class="accordion-body">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <div class="alert alert-success-pf mb-2">
+                                        <i class="fa-solid fa-briefcase me-2"></i>
+                                        <strong>Empleo:</strong> Conseguir mi primer trabajo como
+                                        <em>Junior Frontend Developer</em> o pasantía en empresa tecnológica.
+                                    </div>
+                                    <div class="alert alert-info-pf mb-2">
+                                        <i class="fa-brands fa-react me-2"></i>
+                                        <strong>React:</strong> Completar el curso de React y construir
+                                        una SPA (Single Page Application) funcional.
+                                    </div>
+                                    <div class="alert alert-info-pf mb-0">
+                                        <i class="fa-solid fa-database me-2"></i>
+                                        <strong>Node.js:</strong> Aprender el backend básico para
+                                        construir mis primeras APIs REST.
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <h6 class="fw-bold mb-3" style="color:var(--pf-navy)">Proyectos planeados:</h6>
+                                    <ul class="list-group list-group-pf">
+                                        <li class="list-group-item">
+                                            <i class="fa-solid fa-folder me-2 text-primary"></i>
+                                            Portfolio personal con React
+                                            <span class="badge badge-pf-azul ms-2">React</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="fa-solid fa-folder me-2 text-success"></i>
+                                            API REST simple para gestión de tareas
+                                            <span class="badge badge-pf-verde ms-2">Node.js</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="fa-solid fa-folder me-2 text-warning"></i>
+                                            Rediseño completo de PuenteLaboral360 con React
+                                            <span class="badge badge-pf-amarillo ms-2">Fullstack</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== ÍTEM 3: Largo plazo ===== -->
+                <div class="accordion-item border rounded">
+                    <h2 class="accordion-header" id="headingLargo">
+                        <button class="accordion-button accordion-pf collapsed fw-semibold" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#metaLargo"
+                                aria-expanded="false" aria-controls="metaLargo">
+                            <i class="fa-solid fa-trophy me-2 text-warning"></i>
+                            Metas a Largo Plazo (2 – 5 años)
+                            <span class="badge badge-pf-amarillo ms-3">2028 – 2031</span>
+                        </button>
+                    </h2>
+                    <div id="metaLargo" class="accordion-collapse collapse"
+                         aria-labelledby="headingLargo" data-bs-parent="#accordionMetas">
+                        <div class="accordion-body">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-4 text-center">
+                                    <div class="icono-vision vision-azul mx-auto mb-2">
+                                        <i class="fa-solid fa-layer-group"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Full Stack Developer</h6>
+                                    <p class="text-muted small">Dominar frontend y backend para construir aplicaciones completas de forma independiente</p>
+                                </div>
+                                <div class="col-12 col-md-4 text-center">
+                                    <div class="icono-vision vision-naranja mx-auto mb-2">
+                                        <i class="fa-brands fa-aws"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Certificación AWS</h6>
+                                    <p class="text-muted small">Obtener la certificación AWS Cloud Practitioner y luego Solutions Architect</p>
+                                </div>
+                                <div class="col-12 col-md-4 text-center">
+                                    <div class="icono-vision vision-morado mx-auto mb-2">
+                                        <i class="fa-solid fa-people-group"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Liderar Equipos</h6>
+                                    <p class="text-muted small">Asumir un rol de Tech Lead o Senior Developer en un equipo de desarrollo ágil</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- FIN ACCORDION -->
+
+        </div>
+    </section>
+
+    <hr class="separador-pf m-0">
+
+    <!-- ============================================================
+         SECCIÓN 6: PROYECTOS FUTUROS
+         Etiquetas: <section>, <article>
+         Componentes BS: Grid responsivo + Cards con imagen/badges/botones
+         (COMBINACIÓN REQUERIDA: card + badge + botón + imagen)
+         Personalización: .card-pf, .card-img-top-placeholder
+         id: proyectos
+    ============================================================ -->
+    <section class="seccion-clara" id="proyectos">
+        <div class="container">
+
+            <div class="text-center mb-1">
+                <h2 class="titulo-pf">Proyectos que Quiero Construir</h2>
+                <p class="subtitulo-pf">Ideas concretas que convertiré en código</p>
+            </div>
+            <span class="linea-titulo d-block"></span>
+
+            <!-- Grid responsivo: 1 col móvil → 2 col tablet → 3 col escritorio -->
+            <div class="row g-4">
+
+                <!-- Proyecto 1 -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="card card-pf h-100">
+                        <div class="card-img-top-placeholder"
+                             style="background: linear-gradient(135deg, #1a73e8, #1558b0);">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex gap-1 flex-wrap mb-2">
+                                <span class="badge badge-pf-azul">En curso</span>
+                                <span class="badge badge-pf-amarillo">HTML/CSS/BS5</span>
+                                <span class="badge badge-pf-verde">JavaScript</span>
+                            </div>
+                            <h5 class="card-title">PuenteLaboral360</h5>
+                            <p class="card-text flex-grow-1">
+                                Plataforma educativa y de empleo que conecta estudiantes con empresas
+                                mediante habilidades verificadas. Mi proyecto insignia.
+                            </p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="../../index.html" class="btn btn-pf-primary btn-sm">
+                                    <i class="fa-solid fa-eye me-1"></i>Ver sitio
+                                </a>
+                                <a href="#" class="btn btn-pf-outline btn-sm">
+                                    <i class="fa-brands fa-github me-1"></i>GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="card card-pf h-100">
+                        <div class="card-img-top-placeholder"
+                             style="background: linear-gradient(135deg, #6f42c1, #5a2d91);">
+                            <i class="fa-brands fa-react"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex gap-1 flex-wrap mb-2">
+                                <span class="badge badge-pf-gris">Planificado</span>
+                                <span class="badge badge-pf-morado">React</span>
+                                <span class="badge badge-pf-azul">TypeScript</span>
+                            </div>
+                            <h5 class="card-title">Portfolio Personal React</h5>
+                            <p class="card-text flex-grow-1">
+                                Rediseño completo de mi portafolio usando React, con animaciones,
+                                modo oscuro y despliegue automático en Vercel.
+                            </p>
+                            <div class="d-flex gap-2 mt-3">
+                                <button class="btn btn-pf-primary btn-sm" disabled>
+                                    <i class="fa-solid fa-clock me-1"></i>Próximamente
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="card card-pf h-100">
+                        <div class="card-img-top-placeholder"
+                             style="background: linear-gradient(135deg, #28a745, #1e7e34);">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex gap-1 flex-wrap mb-2">
+                                <span class="badge badge-pf-gris">Planificado</span>
+                                <span class="badge badge-pf-amarillo">React</span>
+                                <span class="badge badge-pf-verde">Node.js</span>
+                                <span class="badge badge-pf-naranja">MongoDB</span>
+                            </div>
+                            <h5 class="card-title">E-Commerce Full Stack</h5>
+                            <p class="card-text flex-grow-1">
+                                Tienda online completa con autenticación, carrito de compras,
+                                panel de administración y pasarela de pago.
+                            </p>
+                            <div class="d-flex gap-2 mt-3">
+                                <button class="btn btn-pf-primary btn-sm" disabled>
+                                    <i class="fa-solid fa-clock me-1"></i>2027
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Proyecto 4 -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="card card-pf h-100">
+                        <div class="card-img-top-placeholder"
+                             style="background: linear-gradient(135deg, #f57c00, #e65100);">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex gap-1 flex-wrap mb-2">
+                                <span class="badge badge-pf-gris">Idea</span>
+                                <span class="badge badge-pf-naranja">Python</span>
+                                <span class="badge badge-pf-azul">Django</span>
+                            </div>
+                            <h5 class="card-title">Sistema Escolar</h5>
+                            <p class="card-text flex-grow-1">
+                                Plataforma de gestión escolar para registrar estudiantes, calificaciones,
+                                asistencia y comunicación docente-familia.
+                            </p>
+                            <div class="d-flex gap-2 mt-3">
+                                <button class="btn btn-pf-primary btn-sm" disabled>
+                                    <i class="fa-solid fa-clock me-1"></i>2027
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Proyecto 5 -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="card card-pf h-100">
+                        <div class="card-img-top-placeholder"
+                             style="background: linear-gradient(135deg, #dc3545, #b02a37);">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex gap-1 flex-wrap mb-2">
+                                <span class="badge badge-pf-gris">Idea</span>
+                                <span class="badge badge-pf-morado">React Native</span>
+                            </div>
+                            <h5 class="card-title">App de Hábitos</h5>
+                            <p class="card-text flex-grow-1">
+                                Aplicación móvil para seguimiento de hábitos de estudio, con
+                                recordatorios, estadísticas y gamificación de objetivos.
+                            </p>
+                            <div class="d-flex gap-2 mt-3">
+                                <button class="btn btn-pf-primary btn-sm" disabled>
+                                    <i class="fa-solid fa-clock me-1"></i>2028
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Proyecto 6 -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="card card-pf h-100">
+                        <div class="card-img-top-placeholder"
+                             style="background: linear-gradient(135deg, #2c3e50, #4a6278);">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex gap-1 flex-wrap mb-2">
+                                <span class="badge badge-pf-gris">Idea</span>
+                                <span class="badge badge-pf-verde">Next.js</span>
+                                <span class="badge badge-pf-azul">MDX</span>
+                            </div>
+                            <h5 class="card-title">Blog Técnico</h5>
+                            <p class="card-text flex-grow-1">
+                                Blog personal donde documentar mi proceso de aprendizaje,
+                                tutoriales y reflexiones sobre desarrollo web.
+                            </p>
+                            <div class="d-flex gap-2 mt-3">
+                                <button class="btn btn-pf-primary btn-sm" disabled>
+                                    <i class="fa-solid fa-clock me-1"></i>2028
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <hr class="separador-pf m-0">
+
+    <!-- ============================================================
+         SECCIÓN 7: CERTIFICACIONES
+         Etiquetas: <section>, <aside>
+         Componentes BS: List Group + Tab Content (secciones informativas)
+         (COMBINACIÓN REQUERIDA: list group conectado a secciones)
+         Personalización: .list-group-pf, .tab-pane-pf
+         id: certificaciones
+    ============================================================ -->
+    <section class="seccion-blanca" id="certificaciones">
+        <div class="container">
+
+            <div class="text-center mb-1">
+                <h2 class="titulo-pf">Certificaciones y Aprendizajes</h2>
+                <p class="subtitulo-pf">Selecciona una certificación para ver más detalles</p>
+            </div>
+            <span class="linea-titulo d-block"></span>
+
+            <div class="row g-4">
+
+                <!-- List Group como navegación -->
+                <div class="col-12 col-md-4">
+                    <div class="list-group list-group-pf" id="listCerts" role="tablist">
+                        <a class="list-group-item list-group-item-action active" id="c1-tab"
+                           data-bs-toggle="list" href="#cert1" role="tab">
+                            <i class="fa-solid fa-database me-2"></i>SQL — Base de Datos
+                            <span class="badge badge-pf-verde ms-2">✓ Obtenido</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action" id="c2-tab"
+                           data-bs-toggle="list" href="#cert2" role="tab">
+                            <i class="fa-brands fa-git-alt me-2"></i>Git & GitHub
+                            <span class="badge badge-pf-verde ms-2">✓ Obtenido</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action" id="c3-tab"
+                           data-bs-toggle="list" href="#cert3" role="tab">
+                            <i class="fa-brands fa-bootstrap me-2"></i>Bootstrap 5
+                            <span class="badge badge-pf-amarillo ms-2">En curso</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action" id="c4-tab"
+                           data-bs-toggle="list" href="#cert4" role="tab">
+                            <i class="fa-brands fa-js me-2"></i>JavaScript Avanzado
+                            <span class="badge badge-pf-amarillo ms-2">En curso</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action" id="c5-tab"
+                           data-bs-toggle="list" href="#cert5" role="tab">
+                            <i class="fa-brands fa-react me-2"></i>React desde Cero
+                            <span class="badge badge-pf-gris ms-2">Pendiente</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action" id="c6-tab"
+                           data-bs-toggle="list" href="#cert6" role="tab">
+                            <i class="fa-brands fa-aws me-2"></i>AWS Cloud Practitioner
+                            <span class="badge badge-pf-gris ms-2">Futuro</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Paneles de información — conectados al list group -->
+                <aside class="col-12 col-md-8">
+                    <div class="tab-content" id="listCertsContent">
+
+                        <!-- Panel 1: SQL -->
+                        <div class="tab-pane fade show active tab-pane-pf" id="cert1" role="tabpanel">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="icono-vision vision-verde" style="width:50px;height:50px;border-radius:10px;">
+                                    <i class="fa-solid fa-database fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0" style="color:var(--pf-navy)">Certificado: Base de Datos SQL</h5>
+                                    <span class="badge badge-pf-verde">Completado — Mayo 2026</span>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-3">Completé el curso de Base de Datos SQL dentro de la plataforma PuenteLaboral360, aprendiendo a diseñar esquemas, realizar consultas avanzadas (JOIN, subqueries), y aplicar normalización de tablas.</p>
+                            <div class="progress progress-pf mb-2"><div class="progress-bar bg-success" style="width:100%">100%</div></div>
+                            <p class="text-muted small mb-3">Instructor: María López — PuenteLaboral360</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-pf-verde">SQL</span>
+                                <span class="badge badge-pf-azul">PostgreSQL</span>
+                                <span class="badge badge-pf-navy">Normalización</span>
+                                <span class="badge badge-pf-naranja">Joins</span>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: Git -->
+                        <div class="tab-pane fade tab-pane-pf" id="cert2" role="tabpanel">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="icono-vision vision-azul" style="width:50px;height:50px;border-radius:10px;">
+                                    <i class="fa-brands fa-git-alt fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0" style="color:var(--pf-navy)">Certificado: Git y GitHub</h5>
+                                    <span class="badge badge-pf-verde">Completado — Abril 2026</span>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-3">Aprendí control de versiones con Git: ramas, merges, resolución de conflictos, pull requests y flujos de trabajo colaborativo con GitHub.</p>
+                            <div class="progress progress-pf mb-2"><div class="progress-bar bg-dark" style="width:100%">100%</div></div>
+                            <p class="text-muted small mb-3">Instructor: Carlos Ruiz — PuenteLaboral360</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-pf-navy">Git</span>
+                                <span class="badge badge-pf-gris">GitHub</span>
+                                <span class="badge badge-pf-azul">Pull Requests</span>
+                            </div>
+                        </div>
+
+                        <!-- Panel 3: Bootstrap -->
+                        <div class="tab-pane fade tab-pane-pf" id="cert3" role="tabpanel">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="icono-vision vision-morado" style="width:50px;height:50px;border-radius:10px;">
+                                    <i class="fa-brands fa-bootstrap fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0" style="color:var(--pf-navy)">En Curso: Bootstrap 5 Responsivo</h5>
+                                    <span class="badge badge-pf-amarillo">En progreso — 70%</span>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-3">Actualmente aprendiendo Bootstrap 5 para construir interfaces responsivas y accesibles, aplicándolo directamente en la página de proyección de PuenteLaboral360.</p>
+                            <div class="progress progress-pf mb-2"><div class="progress-bar" style="width:70%;background-color:var(--pf-morado)">70%</div></div>
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-pf-morado">Bootstrap 5</span>
+                                <span class="badge badge-pf-azul">Grid System</span>
+                                <span class="badge badge-pf-verde">Componentes</span>
+                                <span class="badge badge-pf-naranja">Mobile First</span>
+                            </div>
+                        </div>
+
+                        <!-- Panel 4: JavaScript -->
+                        <div class="tab-pane fade tab-pane-pf" id="cert4" role="tabpanel">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="icono-vision vision-naranja" style="width:50px;height:50px;border-radius:10px;">
+                                    <i class="fa-brands fa-js fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0" style="color:var(--pf-navy)">En Curso: JavaScript Avanzado</h5>
+                                    <span class="badge badge-pf-amarillo">En progreso — 65%</span>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-3">Profundizando en ES6+, promesas, async/await, manipulación del DOM, Fetch API y patrones de diseño en JavaScript para proyectos más complejos.</p>
+                            <div class="progress progress-pf mb-2"><div class="progress-bar bg-warning" style="width:65%">65%</div></div>
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-pf-amarillo">ES6+</span>
+                                <span class="badge badge-pf-naranja">Async/Await</span>
+                                <span class="badge badge-pf-azul">Fetch API</span>
+                                <span class="badge badge-pf-verde">DOM</span>
+                            </div>
+                        </div>
+
+                        <!-- Panel 5: React -->
+                        <div class="tab-pane fade tab-pane-pf" id="cert5" role="tabpanel">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="icono-vision vision-morado" style="width:50px;height:50px;border-radius:10px;">
+                                    <i class="fa-brands fa-react fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0" style="color:var(--pf-navy)">Pendiente: React desde Cero</h5>
+                                    <span class="badge badge-pf-gris">Inicio previsto: Agosto 2026</span>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-3">Próximo gran objetivo: aprender React para construir aplicaciones de una sola página (SPA) con componentes reutilizables, hooks y gestión de estado.</p>
+                            <div class="progress progress-pf mb-2"><div class="progress-bar bg-secondary" style="width:10%">10%</div></div>
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-pf-morado">React</span>
+                                <span class="badge badge-pf-azul">Hooks</span>
+                                <span class="badge badge-pf-gris">Estado</span>
+                            </div>
+                        </div>
+
+                        <!-- Panel 6: AWS -->
+                        <div class="tab-pane fade tab-pane-pf" id="cert6" role="tabpanel">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="icono-vision vision-naranja" style="width:50px;height:50px;border-radius:10px;">
+                                    <i class="fa-brands fa-aws fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0" style="color:var(--pf-navy)">Futuro: AWS Cloud Practitioner</h5>
+                                    <span class="badge bg-light text-dark border">Proyectado: 2027</span>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-3">Meta a mediano plazo: obtener la certificación oficial de AWS para entender el despliegue en la nube, servicios S3, EC2, Lambda y arquitecturas escalables.</p>
+                            <div class="progress progress-pf mb-2"><div class="progress-bar bg-light" style="width:0%">0%</div></div>
+                            <div class="d-flex gap-2">
+                                <span class="badge badge-pf-naranja">AWS</span>
+                                <span class="badge badge-pf-azul">Cloud</span>
+                                <span class="badge badge-pf-verde">S3 · EC2 · Lambda</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </section>
+
+    <hr class="separador-pf m-0">
+
+    <!-- ============================================================
+         SECCIÓN 8: MOTIVACIÓN + MODAL
+         Etiquetas: <section>
+         Componentes BS: Alert + Button → Modal con Form (COMBINACIÓN)
+         Personalización: .seccion-azul, .modal-pf
+         id: motivacion
+    ============================================================ -->
+    <section class="seccion-azul text-center" id="motivacion">
+        <div class="container">
+
+            <h2 class="titulo-pf titulo-pf-blanco mb-3">
+                <i class="fa-solid fa-quote-left me-2 opacity-50"></i>
+                Mi Frase Motivadora
+            </h2>
+
+            <!-- Alert motivacional -->
+            <div class="alert alert-pf-hero mx-auto mb-5" role="alert" style="max-width:700px;">
+                <i class="fa-solid fa-star me-2" style="color:var(--pf-amarillo)"></i>
+                <em>"El código que escribo hoy es el puente que me acercará a quien quiero ser mañana.
+                Cada línea importa, cada error enseña, cada proyecto me hace crecer."</em>
+                <br><strong class="mt-2 d-block">— Corina Acosta</strong>
+            </div>
+
+            <p class="text-white-50 mb-4">
+                ¿Tienes alguna sugerencia, oportunidad de colaboración o simplemente quieres saludar?
+                Estaré encantada de escucharte.
+            </p>
+
+            <!-- Botón que abre el modal con formulario -->
+            <button type="button" class="btn btn-pf-amarillo btn-lg me-3"
+                    data-bs-toggle="modal" data-bs-target="#modalContacto">
+                <i class="fa-solid fa-paper-plane me-2"></i>Enviarme un Mensaje
+            </button>
+            <a href="../contacto/contacto.html" class="btn btn-pf-outline-blanco btn-lg">
+                <i class="fa-solid fa-envelope me-2"></i>Página de Contacto
+            </a>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- ================================================================
+     MODAL — Formulario de contacto dentro del modal (COMBINACIÓN)
+     Componentes BS: Modal + Form
+     Personalización: .modal-pf
+================================================================ -->
+<div class="modal fade modal-pf" id="modalContacto" tabindex="-1"
+     aria-labelledby="modalContactoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalContactoLabel">
+                    <i class="fa-solid fa-envelope me-2"></i>Escríbeme un Mensaje
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <div class="modal-body p-4">
+
+                <div class="alert alert-info-pf mb-4" role="alert">
+                    <i class="fa-solid fa-circle-info me-2"></i>
+                    Te responderé a la brevedad. También puedes contactarme por
+                    <a href="../contacto/contacto.html" class="fw-bold">la página de contacto</a>.
+                </div>
+
+                <!-- FORM dentro del modal -->
+                <form id="formContactoModal" novalidate>
+                    <div class="row g-3">
+
+                        <div class="col-12 col-md-6">
+                            <label for="modalNombre" class="form-label fw-semibold">
+                                <i class="fa-solid fa-user me-1 text-primary"></i>Nombre *
+                            </label>
+                            <input type="text" class="form-control" id="modalNombre"
+                                   placeholder="Tu nombre completo" required>
+                            <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="modalEmail" class="form-label fw-semibold">
+                                <i class="fa-solid fa-envelope me-1 text-primary"></i>Correo *
+                            </label>
+                            <input type="email" class="form-control" id="modalEmail"
+                                   placeholder="tucorreo@ejemplo.com" required>
+                            <div class="invalid-feedback">Ingresa un correo válido.</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="modalAsunto" class="form-label fw-semibold">
+                                <i class="fa-solid fa-tag me-1 text-primary"></i>Asunto *
+                            </label>
+                            <select class="form-select" id="modalAsunto" required>
+                                <option value="" selected disabled>Selecciona un motivo...</option>
+                                <option value="colaboracion">Propuesta de colaboración</option>
+                                <option value="pasantia">Oportunidad de pasantía</option>
+                                <option value="proyecto">Proyecto conjunto</option>
+                                <option value="retroalimentacion">Retroalimentación del portafolio</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <div class="invalid-feedback">Selecciona un asunto.</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="modalMensaje" class="form-label fw-semibold">
+                                <i class="fa-solid fa-comment me-1 text-primary"></i>Mensaje *
+                            </label>
+                            <textarea class="form-control" id="modalMensaje" rows="4"
+                                      placeholder="Escribe tu mensaje aquí..." required></textarea>
+                            <div class="invalid-feedback">El mensaje no puede estar vacío.</div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="modalTerminos" required>
+                                <label class="form-check-label small" for="modalTerminos">
+                                    Acepto que Corina Acosta guarde mi información para responder a este mensaje.
+                                </label>
+                                <div class="invalid-feedback">Debes aceptar para continuar.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark me-1"></i>Cancelar
+                </button>
+                <button type="submit" form="formContactoModal" class="btn btn-pf-primary">
+                    <i class="fa-solid fa-paper-plane me-1"></i>Enviar Mensaje
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================
+     FOOTER
+     Etiqueta semántica: <footer>
+     Personalización: .footer-pf
+================================================================ -->
+<footer class="footer-pf">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Columna 1: Sobre mí -->
+            <div class="col-12 col-md-4">
+                <p class="footer-titulo">Corina Acosta</p>
+                <p class="small">Estudiante de Ingeniería en Software apasionada por el desarrollo web.
+                    Construyendo PuenteLaboral360 como proyecto insignia.</p>
+                <p class="small">
+                    <i class="fa-solid fa-location-dot me-1" style="color:var(--pf-amarillo)"></i>
+                    Quito, Ecuador
+                </p>
+            </div>
+
+            <!-- Columna 2: Navegación -->
+            <div class="col-12 col-md-4">
+                <p class="footer-titulo">Navegación</p>
+                <a href="../../index.html"><i class="fa-solid fa-house me-2"></i>Inicio del Portafolio</a>
+                <a href="../servicios/servicios.html"><i class="fa-solid fa-briefcase me-2"></i>Servicios</a>
+                <a href="../galeria/galeria.html"><i class="fa-solid fa-images me-2"></i>Galería</a>
+                <a href="../contacto/contacto.html"><i class="fa-solid fa-envelope me-2"></i>Contacto</a>
+                <a href="proyeccion.html"><i class="fa-solid fa-rocket me-2"></i>Mi Proyección</a>
+            </div>
+
+            <!-- Columna 3: Tecnologías -->
+            <div class="col-12 col-md-4">
+                <p class="footer-titulo">Tecnologías usadas</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="badge badge-pf-amarillo"><i class="fa-brands fa-html5 me-1"></i>HTML5</span>
+                    <span class="badge badge-pf-azul"><i class="fa-brands fa-css3-alt me-1"></i>CSS3</span>
+                    <span class="badge badge-pf-amarillo"><i class="fa-brands fa-js me-1"></i>JavaScript</span>
+                    <span class="badge badge-pf-morado"><i class="fa-brands fa-bootstrap me-1"></i>Bootstrap 5</span>
+                    <span class="badge badge-pf-navy"><i class="fa-brands fa-font-awesome me-1"></i>Font Awesome</span>
+                    <span class="badge badge-pf-gris"><i class="fa-brands fa-github me-1"></i>GitHub</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-copy text-center">
+            <p class="mb-0">
+                © 2026 <span>PuenteLaboral360</span> — Proyecto de <strong style="color:#ccc;">Corina Acosta</strong>
+                · Construido con <i class="fa-brands fa-bootstrap" style="color:var(--pf-morado)"></i> Bootstrap 5
+                y <i class="fa-solid fa-heart" style="color:#dc3545"></i>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap 5 JS Bundle (incluye Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Validación del formulario del modal -->
+<script>
+    (function () {
+        'use strict';
+        const form = document.getElementById('formContactoModal');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+            } else {
+                form.classList.remove('was-validated');
+                const modal = bootstrap.Modal.getInstance(document.getElementById('modalContacto'));
+                modal.hide();
+                alert('¡Mensaje enviado! Gracias por escribir. Te responderé pronto.');
+            }
+        }, false);
+    })();
+</script>
+
+</body>
+</html>

@@ -171,3 +171,86 @@
     color: #888;
     font-weight: normal;
 }
+
+/* ============================================================
+   RESPONSIVIDAD — MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .layout-dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .sidebar .perfil-mini {
+        display: none;
+    }
+
+    .sidebar nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 8px 12px;
+        justify-content: center;
+        margin-top: 0;
+    }
+
+    .sidebar nav a {
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        padding: 8px 12px;
+        font-size: 13px;
+        border-radius: 5px;
+        flex: 0 1 auto;
+    }
+
+    .sidebar nav a:hover {
+        background-color: #3d5166;
+        color: white;
+    }
+
+    .sidebar nav a.activo {
+        background-color: #1a73e8;
+        color: white;
+        border-left-color: transparent;
+        border-bottom-color: #ffdd57;
+    }
+
+    .contenido-principal {
+        padding: 16px;
+    }
+
+    .cursos-grid {
+        gap: 12px;
+    }
+
+    .curso-card {
+        min-width: 160px;
+    }
+
+    .match-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar nav a {
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+
+    .contenido-principal {
+        padding: 12px;
+    }
+
+    .curso-card {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}

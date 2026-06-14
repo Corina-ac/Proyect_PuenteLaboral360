@@ -1,0 +1,486 @@
+/* ============================================================
+   ARCHIVO: galeria.css
+   Estilos exclusivos de la página de galería (galeria.html).
+   Demuestra el uso de CSS Grid completo para organizar
+   imágenes en mosaicos con diferentes tamaños de celda.
+   Debe cargarse después de general.css.
+   ============================================================ */
+
+/* ============================================================
+   BLOQUE 1: HERO DE GALERÍA
+   Encabezado visual de la página con título y descripción.
+   Identificador único: #hero-galeria
+   ============================================================ */
+
+#hero-galeria {
+    background-color: #1558b0;
+    background-image: linear-gradient(135deg, #1a73e8 0%, #1558b0 60%, #2c3e50 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 56px 20px;
+    box-sizing: border-box;
+}
+
+#hero-galeria h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+#hero-galeria h1 span {
+    color: #ffdd57;
+}
+
+#hero-galeria p {
+    font-size: 16px;
+    color: #cde;
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   BLOQUE 2: FILTROS DE CATEGORÍA DE GALERÍA
+   Pestañas de filtro organizadas con Flexbox horizontal.
+   Flexbox: justify-content, align-items, gap, flex-wrap.
+   Identificador único: #filtros-galeria
+   ============================================================ */
+
+#filtros-galeria {
+    background-color: #ffffff;
+    padding: 24px 20px;
+    border-bottom: 2px solid #e8f0fe;
+    box-sizing: border-box;
+}
+
+.filtros-galeria-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Botón de filtro de categoría */
+.btn-filtro-galeria {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 20px;
+    border: 2px solid #dde3f0;
+    border-radius: 25px;
+    background-color: #ffffff;
+    color: #555;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn-filtro-galeria:hover,
+.btn-filtro-galeria.activo {
+    background-color: #1a73e8;
+    border-color: #1a73e8;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Contador de ítems dentro del botón */
+.btn-filtro-galeria .count {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    padding: 1px 7px;
+    font-size: 11px;
+}
+
+.btn-filtro-galeria:not(:hover):not(.activo) .count {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+}
+
+/* ============================================================
+   BLOQUE 3: GALERÍA PRINCIPAL — MOSAICO CON CSS GRID
+   Grid con columnas de tamaño fijo y filas automáticas.
+   Algunos ítems "destacados" abarcan múltiples columnas/filas.
+   Grid: grid-template-columns, grid-template-rows, gap,
+         grid-column, grid-row (span).
+   Identificador único: #galeria-principal
+   ============================================================ */
+
+#galeria-principal {
+    background-color: #f0f2f5;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+#galeria-principal h2 {
+    font-size: 24px;
+    color: #1a73e8;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+#galeria-principal .subtitulo-galeria {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+/* Grid principal del mosaico — 3 columnas, filas automáticas */
+.galeria-mosaico {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 220px 220px 220px;
+    gap: 14px;
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+/* Ítem base de galería */
+.galeria-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #dde3f0;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #cccccc;
+}
+
+/* Imagen dentro del ítem */
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+    transition: transform 0.35s ease;
+}
+
+.galeria-item:hover img {
+    transform: scale(1.07);
+}
+
+/* Overlay oscuro al hacer hover */
+.galeria-item .galeria-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(26, 83, 176, 0.72);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease;
+}
+
+.galeria-item:hover .galeria-overlay {
+    opacity: 1;
+}
+
+.galeria-overlay h3 {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.galeria-overlay p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.galeria-overlay .categoria-tag {
+    display: inline-block;
+    background-color: #ffdd57;
+    color: #333;
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* --- Ítems destacados que abarcan múltiples celdas --- */
+
+/* Ítem grande: abarca 2 columnas y 2 filas (posición destacada) */
+.galeria-item-grande {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Ítem ancho: abarca 2 columnas, 1 fila */
+.galeria-item-ancho {
+    grid-column: span 2;
+}
+
+/* Ítem alto: abarca 1 columna, 2 filas */
+.galeria-item-alto {
+    grid-row: span 2;
+}
+
+/* ============================================================
+   BLOQUE 4: SEGUNDA GALERÍA — CATÁLOGO EN GRID UNIFORME
+   Grid de 4 columnas uniformes para una segunda sección.
+   Grid: grid-template-columns repeat(4, 1fr), gap.
+   Identificador único: #galeria-catalogo
+   ============================================================ */
+
+#galeria-catalogo {
+    background-color: #ffffff;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+#galeria-catalogo h2 {
+    font-size: 24px;
+    color: #1a73e8;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+#galeria-catalogo .subtitulo-galeria {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+/* Grid de 4 columnas para catálogo de momentos */
+.galeria-catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 16px;
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+/* Tarjeta de catálogo con imagen, título y descripción */
+.catalogo-card {
+    background-color: #f8f9ff;
+    border: 1px solid #dde3f0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.catalogo-card:hover {
+    box-shadow: 0 8px 24px rgba(26, 115, 232, 0.15);
+    transform: translateY(-4px);
+}
+
+/* Imagen de la tarjeta de catálogo */
+.catalogo-card .catalogo-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.catalogo-card:hover .catalogo-img {
+    transform: scale(1.05);
+}
+
+/* Contenido textual de la tarjeta */
+.catalogo-card .catalogo-cuerpo {
+    padding: 14px 16px;
+    box-sizing: border-box;
+}
+
+.catalogo-card .catalogo-cuerpo h4 {
+    font-size: 14px;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.catalogo-card .catalogo-cuerpo p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+/* Badge de categoría dentro de la tarjeta */
+.catalogo-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    border: 1px solid;
+}
+
+.badge-estudiantes  { background-color: #e8f0fe; color: #1a73e8; border-color: #c5d5f5; }
+.badge-empresas     { background-color: #fce8e6; color: #c0392b; border-color: #f5c0c0; }
+.badge-eventos      { background-color: #e6f4ea; color: #28a745; border-color: #b7dfbe; }
+.badge-certificados { background-color: #fff8e1; color: #f57c00; border-color: #ffe082; }
+
+/* ============================================================
+   BLOQUE 5: ESTADÍSTICAS DE LA GALERÍA
+   Fila de números resaltados con Flexbox.
+   Flexbox: justify-content, align-items, gap, flex-wrap.
+   Identificador único: #stats-galeria
+   ============================================================ */
+
+#stats-galeria {
+    background-color: #1a73e8;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+/* Fila de estadísticas con Flexbox */
+.stats-galeria-fila {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.stat-galeria {
+    text-align: center;
+    min-width: 120px;
+}
+
+.stat-galeria .num-galeria {
+    font-size: 38px;
+    font-weight: bold;
+    color: #ffdd57;
+    display: block;
+    line-height: 1;
+}
+
+.stat-galeria .txt-galeria {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 6px;
+    display: block;
+}
+
+/* ============================================================
+   BLOQUE 6: PLACEHOLDER DE IMAGEN (para desarrollo)
+   Fondo de color cuando las imágenes no cargan.
+   Usa height, width, display para dimensionar el espacio.
+   ============================================================ */
+
+.img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: #3a6bbf;
+}
+
+/* Colores de fondo por categoría */
+.placeholder-azul    { background-color: #1a73e8; }
+.placeholder-verde   { background-color: #28a745; }
+.placeholder-naranja { background-color: #f57c00; }
+.placeholder-rojo    { background-color: #c0392b; }
+.placeholder-morado  { background-color: #6f42c1; }
+.placeholder-gris    { background-color: #5a6775; }
+
+/* ============================================================
+   RESPONSIVIDAD — MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+    #hero-galeria {
+        padding: 36px 16px;
+    }
+
+    #hero-galeria h1 {
+        font-size: 28px;
+    }
+
+    /* Mosaico: 3 cols → 2 cols, altura fija → auto */
+    .galeria-mosaico {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .galeria-item {
+        height: 200px;
+    }
+
+    /* Desactivar spans especiales en tablet */
+    .galeria-item-grande {
+        grid-column: 1 / -1;
+        grid-row: span 1;
+    }
+
+    .galeria-item-ancho {
+        grid-column: 1 / -1;
+    }
+
+    .galeria-item-alto {
+        grid-row: span 1;
+    }
+
+    /* Catálogo: 4 → 2 cols */
+    .galeria-catalogo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #galeria-principal {
+        padding: 32px 16px;
+    }
+
+    #galeria-catalogo {
+        padding: 32px 16px;
+    }
+
+    #stats-galeria {
+        padding: 28px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero-galeria h1 {
+        font-size: 22px;
+    }
+
+    /* Mosaico: 1 columna */
+    .galeria-mosaico {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-item {
+        height: 180px;
+    }
+
+    .galeria-item-grande,
+    .galeria-item-ancho,
+    .galeria-item-alto {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    /* Catálogo: 1 col */
+    .galeria-catalogo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-galeria-fila {
+        gap: 20px;
+    }
+
+    .stat-galeria .num-galeria {
+        font-size: 28px;
+    }
+}
