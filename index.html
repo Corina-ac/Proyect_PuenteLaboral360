@@ -16,11 +16,20 @@
 
     <section class="navbar">
         <a href="index.html" class="logo">PuenteLaboral<span>360</span></a>
-        <nav>
+        <button class="navbar-toggle" id="navToggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav class="navbar-links" id="navLinks">
+            <a href="pages/servicios/servicios.html"><i class="fa-solid fa-briefcase"></i> Servicios</a>
+            <a href="pages/galeria/galeria.html"><i class="fa-solid fa-images"></i> Galería</a>
+            <a href="pages/contacto/contacto.html"><i class="fa-solid fa-envelope"></i> Contacto</a>
+            <a href="pages/proyeccion/proyeccion.html"><i class="fa-solid fa-rocket"></i> Mi Proyección</a>
             <a href="pages/login/login.html"><i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</a>
-            <a href="pages/registro/registro.html"><i class="fa-solid fa-user-plus"></i> Registrarse</a>
+            <a href="pages/registro/registro.html" class="btn-nav-registro"><i class="fa-solid fa-user-plus"></i> Registrarse</a>
         </nav>
     </section>
+
+    <hr class="separador-degradado">
 
     <section id="presentacion" class="hero">
         <h1>Bienvenido a <span>PuenteLaboral360</span></h1>
@@ -143,6 +152,52 @@
         </section>
     </section>
 
+    <!-- ====================================================
+         SECCIÓN: INTEGRANTES DEL EQUIPO
+         CSS GRID: grid-template-columns repeat(3, 1fr)
+         grid-template-rows: auto, gap: 28px
+         Demuestra Grid con tarjetas de 3 columnas y
+         badge con position: absolute.
+    ==================================================== -->
+    <section id="equipo">
+        <h2><i class="fa-solid fa-users"></i> Nuestro Equipo</h2>
+        <p class="subtitulo">Las personas detrás de PuenteLaboral360</p>
+
+        <!-- Grid de 3 columnas — CSS Grid -->
+        <section class="equipo-grid">
+
+            <section class="integrante-card pos-relative">
+                <span class="badge-rol">Desarrollo</span>
+                <img src="https://ui-avatars.com/api/?name=Corina+Acosta&background=1a73e8&color=fff&size=80"
+                     alt="Corina Acosta" class="integrante-avatar">
+                <h3>Corina Acosta</h3>
+                <span class="cargo">Desarrolladora Frontend</span>
+                <p>Especialista en HTML, CSS y JavaScript. Lidera el diseño de la interfaz de usuario de PuenteLaboral360.</p>
+            </section>
+
+            <section class="integrante-card pos-relative">
+                <span class="badge-rol">Backend</span>
+                <img src="https://ui-avatars.com/api/?name=Luis+Fernandez&background=28a745&color=fff&size=80"
+                     alt="Luis Fernández" class="integrante-avatar">
+                <h3>Luis Fernández</h3>
+                <span class="cargo">Desarrollador Backend</span>
+                <p>Experto en bases de datos y APIs REST. Responsable del motor de matching y la lógica de negocio.</p>
+            </section>
+
+            <section class="integrante-card pos-relative">
+                <span class="badge-rol">UX/UI</span>
+                <img src="https://ui-avatars.com/api/?name=Ana+Torres&background=f57c00&color=fff&size=80"
+                     alt="Ana Torres" class="integrante-avatar">
+                <h3>Ana Torres</h3>
+                <span class="cargo">Diseñadora UX/UI</span>
+                <p>Experta en experiencia de usuario y prototipado. Define la arquitectura visual e interacciones de la plataforma.</p>
+            </section>
+
+        </section>
+    </section>
+
+    <hr class="separador-degradado">
+
     <section id="multimedia" class="ubicacion">
         <h2><i class="fa-solid fa-location-dot"></i> Encuéntranos</h2>
         <p><center>Conoce nuestra zona de operaciones en Ecuador</center></p>
@@ -197,6 +252,12 @@
     <section class="footer">
         <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
     </section>
+
+    <script>
+        document.getElementById('navToggle').addEventListener('click', function () {
+            document.getElementById('navLinks').classList.toggle('abierto');
+        });
+    </script>
 
 </body>
 
