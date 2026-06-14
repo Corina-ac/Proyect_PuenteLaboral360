@@ -475,3 +475,112 @@ progress:hover {
 .footer span {
     color: #ffdd57;
 }
+
+/* ============================================================
+   BLOQUE 17: RESPONSIVIDAD — MEDIA QUERIES
+   Adapta navbar de dashboards, tablas y contenedores para
+   tablets (≤768px) y móviles (≤480px).
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 16px;
+        gap: 8px;
+    }
+
+    .navbar nav a {
+        font-size: 12px;
+        margin-left: 8px;
+        padding: 4px 8px;
+    }
+
+    .stats-grid {
+        gap: 10px;
+    }
+
+    .stat-box {
+        min-width: 120px;
+    }
+
+    /* Tabla: scroll horizontal para no romper layout */
+    .tabla {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+    .contenedor {
+        margin: 20px auto;
+        padding: 0 14px;
+    }
+
+    .tarjeta {
+        padding: 18px;
+    }
+
+    .encabezado-seccion {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-filtros {
+        flex-direction: column;
+    }
+
+    .form-busqueda {
+        flex-direction: column;
+    }
+
+    .input-busqueda {
+        min-width: 100%;
+    }
+
+    .acciones-candidato {
+        margin-left: 0;
+        min-width: auto;
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 8px 12px;
+    }
+
+    .navbar .logo {
+        font-size: 17px;
+    }
+
+    .navbar nav a {
+        font-size: 11px;
+        margin-left: 4px;
+        padding: 3px 6px;
+    }
+
+    .stats-grid {
+        flex-direction: column;
+    }
+
+    .stat-box {
+        min-width: auto;
+    }
+
+    .stat-box .numero {
+        font-size: 26px;
+    }
+
+    .contenedor {
+        padding: 0 10px;
+        margin: 12px auto;
+    }
+
+    .tarjeta {
+        padding: 14px;
+    }
+
+    .btn {
+        padding: 9px 16px;
+        font-size: 13px;
+    }
+}

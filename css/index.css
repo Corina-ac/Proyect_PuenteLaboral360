@@ -12,19 +12,16 @@
    Sección hero con título, subtítulo y botones de llamada a acción.
    Identificador único: #presentacion
    ============================================================ */
-
 #presentacion {
     background-color: #1a73e8;
     color: white;
     text-align: center;
     padding: 60px 20px;
 }
-
 #presentacion h1 {
     font-size: 38px;
     margin-bottom: 10px;
 }
-
 #presentacion h1 span {
     color: #ffdd57;
 }
@@ -34,14 +31,12 @@
     margin-bottom: 30px;
     color: #cde;
 }
-
 .hero-botones {
     display: flex;
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
 }
-
 /* ============================================================
    BLOQUE 2: BOTONES DE INICIO
    Variantes de botón exclusivas de la página de inicio.
@@ -51,7 +46,6 @@
     padding: 14px 30px;
     font-size: 16px;
 }
-
 .btn-blanco {
     background-color: white;
     color: #1a73e8;
@@ -59,7 +53,6 @@
     text-decoration: none;
     font-weight: bold;
 }
-
 .btn-amarillo {
     background-color: #ffdd57;
     color: #333;
@@ -67,19 +60,16 @@
     text-decoration: none;
     font-weight: bold;
 }
-
 .btn-blanco:hover {
     background-color: #e8f0fe;
     color: #1558b0;
     text-decoration: none;
 }
-
 .btn-amarillo:hover {
     background-color: #f0c800;
     color: #222;
     text-decoration: none;
 }
-
 .btn-cta-inicio {
     margin-top: 10px;
     display: inline-block;
@@ -306,33 +296,50 @@
     display: inline-block;
 }
 
+/* Grid de 4 columnas para estadísticas — Box Model: padding, border, width */
 .stats-inicio {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .stat-inicio {
-    min-width: 120px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 20px 16px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.stat-inicio:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-4px);
 }
 
 .stat-inicio .num {
     font-size: 36px;
     font-weight: bold;
     color: #ffdd57;
+    display: block;
+    line-height: 1.1;
 }
 
 .stat-inicio .txt {
-    font-size: 14px;
+    font-size: 13px;
     color: #cde;
-    margin-top: 4px;
+    margin-top: 6px;
+    display: block;
 }
 
 .icono-estadistica {
     font-size: 28px;
     color: #ffdd57;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    display: block;
 }
 
 /* ============================================================
@@ -521,4 +528,336 @@
 .footer span {
     color: #ffdd57;
     font-weight: bold;
+}
+
+/* ============================================================
+   BLOQUE 11: SECCIÓN INTEGRANTES DEL EQUIPO
+   Grid de tarjetas de integrantes — demuestra CSS Grid completo
+   con grid-template-columns, grid-template-rows y gap.
+   Identificador único: #equipo
+   ============================================================ */
+
+#equipo {
+    background-color: #f0f2f5;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#equipo h2 {
+    font-size: 26px;
+    color: #1a73e8;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #e8f0fe;
+    padding-bottom: 12px;
+    display: inline-block;
+}
+
+#equipo .subtitulo {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+/* Grid de 3 columnas para las tarjetas de integrantes */
+.equipo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 28px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* Tarjeta de cada integrante */
+.integrante-card {
+    background-color: #ffffff;
+    border: 1px solid #dde3f0;
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    position: relative;
+}
+
+.integrante-card:hover {
+    box-shadow: 0 8px 28px rgba(26, 115, 232, 0.18);
+    transform: translateY(-5px);
+}
+
+/* Avatar del integrante */
+.integrante-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 14px;
+    display: block;
+    border: 3px solid #e8f0fe;
+    box-sizing: border-box;
+}
+
+.integrante-card h3 {
+    font-size: 16px;
+    color: #2c3e50;
+    margin-bottom: 4px;
+}
+
+.integrante-card .cargo {
+    font-size: 13px;
+    color: #1a73e8;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.integrante-card p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/* Badge de rol en esquina superior derecha */
+.badge-rol {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #e8f0fe;
+    color: #1a73e8;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    border: 1px solid #c5d5f5;
+}
+
+/* ============================================================
+   BLOQUE 12: SEPARADORES ENTRE SECCIONES
+   Líneas visuales decorativas que dividen partes del documento.
+   ============================================================ */
+
+.separador-degradado {
+    height: 4px;
+    width: 100%;
+    border: none;
+    background: linear-gradient(to right, #1a73e8, #ffdd57, #1a73e8);
+    display: block;
+    margin: 0;
+}
+
+/* ============================================================
+   BLOQUE 13: BARRA DE NAVEGACIÓN - LINKS ADICIONALES
+   Estilos para los nuevos enlaces en la barra de navegación.
+   Flexbox: justify-content, align-items, gap.
+   ============================================================ */
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.navbar-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s, color 0.2s;
+    display: inline-block;
+}
+
+.navbar-links a:hover {
+    background-color: #ffdd57;
+    color: #333333;
+    text-decoration: none;
+}
+
+.navbar-links .btn-nav-registro {
+    background-color: #ffdd57;
+    color: #333333;
+    border-radius: 5px;
+}
+
+.navbar-links .btn-nav-registro:hover {
+    background-color: #f0c800;
+    color: #222;
+}
+
+/* ============================================================
+   BLOQUE 14: BOTÓN HAMBURGUESA
+   Visible solo en móvil para abrir/cerrar el menú.
+   ============================================================ */
+
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    line-height: 1;
+}
+
+.navbar-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================================
+   BLOQUE 15: RESPONSIVIDAD — MEDIA QUERIES
+   Adapta la navbar, hero, estadísticas y grids para
+   tablets (≤768px) y móviles (≤480px).
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Navbar */
+    .navbar {
+        flex-wrap: nowrap;
+        padding: 12px 16px;
+        position: relative;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #1558b0;
+        flex-direction: column;
+        padding: 10px 0;
+        z-index: 999;
+        border-top: 2px solid #ffdd57;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        gap: 0;
+    }
+
+    .navbar-links.abierto {
+        display: flex;
+    }
+
+    .navbar-links a {
+        padding: 12px 20px;
+        font-size: 14px;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .navbar-links a:last-child {
+        border-bottom: none;
+    }
+
+    .navbar-links .btn-nav-registro {
+        border-radius: 0;
+    }
+
+    /* Hero */
+    #presentacion {
+        padding: 50px 16px;
+    }
+
+    #presentacion h1 {
+        font-size: 28px;
+    }
+
+    #presentacion p {
+        font-size: 14px;
+    }
+
+    /* Quiénes somos */
+    #objetivo .acerca-de {
+        flex-direction: column;
+        padding: 32px 20px;
+        gap: 24px;
+    }
+
+    .acerca-galeria {
+        min-width: 100%;
+    }
+
+    /* Estadísticas */
+    .stats-inicio {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    /* Equipo */
+    .equipo-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* Roles */
+    .rol-card {
+        max-width: 100%;
+    }
+
+    /* Mapa */
+    .mapa-contenedor iframe {
+        height: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    #presentacion {
+        padding: 36px 14px;
+    }
+
+    #presentacion h1 {
+        font-size: 22px;
+    }
+
+    .stats-inicio {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .stat-inicio {
+        padding: 14px 10px;
+    }
+
+    .stat-inicio .num {
+        font-size: 26px;
+    }
+
+    .roles-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rol-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .paso {
+        min-width: 130px;
+        max-width: 100%;
+    }
+
+    .mapa-contenedor iframe {
+        height: 220px;
+    }
+
+    .footer p {
+        font-size: 12px;
+    }
+
+    #equipo {
+        padding: 36px 14px;
+    }
 }

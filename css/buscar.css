@@ -242,3 +242,199 @@
 .activo:hover {
     background-color: rgba(255, 255, 255, 0.25);
 }
+
+/* ============================================================
+   BLOQUE 7: GRID DE RESULTADOS
+   Cuando hay muchos resultados, los muestra en cuadrícula 2x2.
+   Grid: grid-template-columns, gap.
+   Clase: .resultados-grid
+   ============================================================ */
+
+/* Vista en cuadrícula — 2 columnas para comparar candidatos */
+.resultados-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+/* La tarjeta de candidato en modo grid se ajusta */
+.resultados-grid .candidato-card {
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.resultados-grid .candidato-card .acciones-candidato {
+    flex-direction: row;
+    justify-content: flex-end;
+    min-width: auto;
+    width: 100%;
+}
+
+/* ============================================================
+   BLOQUE 8: BARRA DE HERRAMIENTAS DE RESULTADOS
+   Controles superiores: contador, orden y cambio de vista.
+   Flexbox: justify-content, align-items, gap.
+   ============================================================ */
+
+.barra-resultados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 12px 16px;
+    background-color: #f8f9ff;
+    border: 1px solid #e8f0fe;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.barra-resultados .contador {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.barra-resultados .contador span {
+    color: #1a73e8;
+}
+
+/* Controles de orden y vista */
+.controles-vista {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.controles-vista select {
+    width: auto;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 0;
+}
+
+/* Botones de cambio de vista (lista / grid) */
+.btn-vista {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-vista:hover,
+.btn-vista.activo-vista {
+    background-color: #1a73e8;
+    color: #ffffff;
+    border-color: #1a73e8;
+}
+
+/* ============================================================
+   BLOQUE 9: PANEL DE ESTADÍSTICAS DE BÚSQUEDA
+   Resumen rápido en Grid de 3 columnas sobre los resultados.
+   Grid: grid-template-columns, gap, padding.
+   ============================================================ */
+
+.stats-busqueda {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.stat-busqueda {
+    background-color: #ffffff;
+    border: 1px solid #dde3f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.stat-busqueda .valor {
+    font-size: 26px;
+    font-weight: bold;
+    color: #1a73e8;
+    display: block;
+    line-height: 1.1;
+}
+
+.stat-busqueda .etiqueta {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+    display: block;
+}
+
+/* ============================================================
+   RESPONSIVIDAD — MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Stats: 3 → 2 cols */
+    .stats-busqueda {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Resultados: grid 2 → 1 col */
+    .resultados-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Candidato card en columna */
+    .candidato-card {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .acciones-candidato {
+        flex-direction: row;
+        justify-content: flex-start;
+        min-width: auto;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .resultados-grid .candidato-card .acciones-candidato {
+        justify-content: flex-start;
+    }
+
+    /* Barra de resultados */
+    .barra-resultados {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* Match grande en la tarjeta */
+    .match-grande {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-busqueda {
+        grid-template-columns: 1fr;
+    }
+
+    .form-filtros .campo-flex-lg,
+    .form-filtros .campo-flex {
+        min-width: 100%;
+    }
+
+    .controles-vista {
+        flex-wrap: wrap;
+    }
+}

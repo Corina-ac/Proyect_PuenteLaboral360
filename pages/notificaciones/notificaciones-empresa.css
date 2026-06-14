@@ -8,3 +8,10 @@
     border-left-color: #ffdd57;
     color: white;
 }
+
+@media (max-width: 768px) {
+    .sidebar nav a.activo {
+        border-left-color: transparent;
+        border-bottom-color: #ffdd57;
+    }
+}
