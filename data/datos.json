@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "nombre": "Certificación Base de Datos SQL",
+    "descripcion": "Curso intensivo en diseño de esquemas, consultas JOIN y normalización.",
+    "estado": "Completado",
+    "fecha": "2026-05-18",
+    "instructor": "María López",
+    "categoria": "Data"
+  },
+  {
+    "id": 2,
+    "nombre": "Certificación Git y GitHub",
+    "descripcion": "Control de versiones, ramas, pull requests y colaboración en equipo.",
+    "estado": "Completado",
+    "fecha": "2026-04-22",
+    "instructor": "Carlos Ruiz",
+    "categoria": "Desarrollo"
+  },
+  {
+    "id": 3,
+    "nombre": "Curso Bootstrap 5 Responsivo",
+    "descripcion": "Maquetación responsiva con componentes, utilidades y personalización visual.",
+    "estado": "En progreso",
+    "fecha": "2026-06-30",
+    "instructor": "Corina Acosta",
+    "categoria": "Frontend"
+  }
+]

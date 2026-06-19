@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<certificaciones>
+  <certificacion>
+    <id>1</id>
+    <nombre>Certificación Base de Datos SQL</nombre>
+    <descripcion>Curso intensivo en diseño de esquemas, consultas JOIN y normalización.</descripcion>
+    <estado>Completado</estado>
+    <fecha>2026-05-18</fecha>
+    <instructor>María López</instructor>
+    <categoria>Data</categoria>
+  </certificacion>
+  <certificacion>
+    <id>2</id>
+    <nombre>Certificación Git y GitHub</nombre>
+    <descripcion>Control de versiones, ramas, pull requests y colaboración en equipo.</descripcion>
+    <estado>Completado</estado>
+    <fecha>2026-04-22</fecha>
+    <instructor>Carlos Ruiz</instructor>
+    <categoria>Desarrollo</categoria>
+  </certificacion>
+  <certificacion>
+    <id>3</id>
+    <nombre>Curso Bootstrap 5 Responsivo</nombre>
+    <descripcion>Maquetación responsiva con componentes, utilidades y personalización visual.</descripcion>
+    <estado>En progreso</estado>
+    <fecha>2026-06-30</fecha>
+    <instructor>Corina Acosta</instructor>
+    <categoria>Frontend</categoria>
+  </certificacion>
+</certificaciones>

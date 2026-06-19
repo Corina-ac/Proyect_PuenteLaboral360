@@ -48,6 +48,10 @@ Proyect_PuenteLaboral360/
 │   ├── crecimiento_personal.jpg
 │   └── instructores_verificados.png
 │
+├── data/
+│   ├── datos.json                      ← Ejemplo de datos simulados en formato JSON
+│   └── datos.xml                       ← Ejemplo de datos simulados en formato XML
+│
 └── pages/
     ├── contacto/
     │   └── contacto.html               ← Formulario de contacto (Flexbox 2 columnas)
@@ -56,7 +60,7 @@ Proyect_PuenteLaboral360/
     ├── servicios/
     │   └── servicios.html              ← Catálogo de servicios y planes
     ├── proyeccion/
-    │   └── index.html                  ← Proyección personal — Bootstrap 5
+    │   └── proyeccion.html             ← Proyección personal — Bootstrap 5
     ├── login/
     │   └── login.html
     ├── registro/
@@ -81,6 +85,7 @@ Proyect_PuenteLaboral360/
 - Grid de roles (Estudiante / Instructor / Empresa)
 - Grid de equipo con badges absolutamente posicionados
 - Mapa embebido y FAQ con `<details>`
+- Sección de datos estructurados con ejemplos de JSON y XML
 
 ### `pages/contacto/contacto.html` — Contacto
 - Layout Flexbox 2 columnas (formulario + datos)

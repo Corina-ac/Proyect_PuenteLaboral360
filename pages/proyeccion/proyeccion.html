@@ -1277,6 +1277,84 @@
     <hr class="separador-pf m-0">
 
     <!-- ============================================================
+         SECCIÓN 8: DATOS ESTRUCTURADOS
+         Etiquetas: <section>, <article>, <pre>, <code>
+         Muestra la relación entre la interfaz y las estructuras JSON/XML.
+    ============================================================ -->
+    <section class="seccion-blanca" id="datos-estructurados">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="titulo-pf">Datos y Estructuras de Intercambio</h2>
+                <p class="subtitulo-pf">Simulación de cómo se organizarían las certificaciones en JSON y XML.</p>
+            </div>
+
+            <div class="row g-4 align-items-start">
+                <div class="col-12 col-lg-6">
+                    <article class="data-card">
+                        <h3>Ejemplo JSON</h3>
+                        <p class="text-muted">Esta estructura describe las certificaciones que se muestran en mi portafolio.</p>
+                        <pre><code>{
+  "id": 1,
+  "nombre": "Certificación Base de Datos SQL",
+  "descripcion": "Curso intensivo en diseño de esquemas, consultas JOIN y normalización.",
+  "estado": "Completado",
+  "fecha": "2026-05-18",
+  "instructor": "María López",
+  "categoria": "Data"
+}</code></pre>
+                    </article>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <article class="data-card">
+                        <h3>Ejemplo XML</h3>
+                        <p class="text-muted">La misma certificación representada en XML para un intercambio de datos alternativo.</p>
+                        <pre><code>&lt;certificacion&gt;
+  &lt;id&gt;1&lt;/id&gt;
+  &lt;nombre&gt;Certificación Base de Datos SQL&lt;/nombre&gt;
+  &lt;descripcion&gt;Curso intensivo en diseño de esquemas, consultas JOIN y normalización.&lt;/descripcion&gt;
+  &lt;estado&gt;Completado&lt;/estado&gt;
+  &lt;fecha&gt;2026-05-18&lt;/fecha&gt;
+  &lt;instructor&gt;María López&lt;/instructor&gt;
+  &lt;categoria&gt;Data&lt;/categoria&gt;
+&lt;/certificacion&gt;</code></pre>
+                    </article>
+                </div>
+            </div>
+
+            <div class="data-relacion mt-4">
+                <h3 class="mb-3">Relación entre la interfaz y los datos</h3>
+                <div class="data-relacion-grid">
+                    <article>
+                        <h4>Elemento de la interfaz</h4>
+                        <ul>
+                            <li>Nombre de la certificación</li>
+                            <li>Descripción</li>
+                            <li>Estado</li>
+                            <li>Fecha</li>
+                            <li>Instructor</li>
+                            <li>Categoría</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h4>Campo JSON / XML</h4>
+                        <ul>
+                            <li><code>nombre</code> / &lt;nombre&gt;</li>
+                            <li><code>descripcion</code> / &lt;descripcion&gt;</li>
+                            <li><code>estado</code> / &lt;estado&gt;</li>
+                            <li><code>fecha</code> / &lt;fecha&gt;</li>
+                            <li><code>instructor</code> / &lt;instructor&gt;</li>
+                            <li><code>categoria</code> / &lt;categoria&gt;</li>
+                        </ul>
+                    </article>
+                </div>
+                <p class="text-muted mt-3">En una etapa posterior, estos datos podrían provenir de un servidor o una API REST. Actualmente se representan de forma simulada como ejemplos en archivos <strong>data/datos.json</strong> y <strong>data/datos.xml</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="separador-pf m-0">
+
+    <!-- ============================================================
          SECCIÓN 8: MOTIVACIÓN + MODAL
          Etiquetas: <section>
          Componentes BS: Alert + Button → Modal con Form (COMBINACIÓN)

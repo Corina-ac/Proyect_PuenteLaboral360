@@ -198,6 +198,63 @@
 
 .titulo-pf-blanco { color: var(--pf-blanco) !important; }
 
+/* ============================================================
+   BLOQUE: DATOS ESTRUCTURADOS
+   ============================================================ */
+.data-card {
+    background-color: var(--pf-fondo);
+    border: 1px solid var(--pf-borde);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 14px 35px rgba(26, 115, 232, 0.08);
+}
+
+.data-card h3 {
+    color: var(--pf-navy);
+    margin-bottom: 12px;
+}
+
+.data-card p {
+    color: #4d5d7a;
+    margin-bottom: 18px;
+}
+
+.data-relacion {
+    background-color: #ffffff;
+    border: 1px solid rgba(26, 115, 232, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.data-relacion-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.data-relacion-grid article {
+    background-color: #f8f9ff;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.data-relacion-grid h4 {
+    color: var(--pf-azul);
+    margin-bottom: 10px;
+}
+
+.data-relacion-grid ul {
+    list-style: disc inside;
+    color: #4d5d7a;
+    line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+    .data-relacion-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 .subtitulo-pf {
     font-size: 1rem;
     color: #666;
