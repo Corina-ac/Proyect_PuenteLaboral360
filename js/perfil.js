@@ -29,18 +29,133 @@ document.addEventListener('DOMContentLoaded', async () => {
     const zonaHabilidades = document.getElementById('habilidades-perfil');
     const zonaCursos = document.getElementById('mis-cursos');
     const indicadores = document.getElementById('indicadores-perfil');
+    const inputHabilidad = document.getElementById('input-habilidad');
+    const btnAgregarHabilidad = document.getElementById('btn-agregar-habilidad');
+    const btnIAHabilidades = document.getElementById('btn-ia-habilidades');
 
+    /* ------------------------------------------------------- habilidades */
+    function pintarHabilidades() {
+        const habilidades = usuario.habilidades || [];
+        if (habilidades.length === 0) {
+            zonaHabilidades.innerHTML = '<p class="nota-seguridad">Aún no has registrado habilidades. Escribe una arriba o usa "Sugerir con IA".</p>';
+            return;
+        }
+        zonaHabilidades.innerHTML = habilidades.map(h =>
+            `<span class="chip" style="display:inline-flex;align-items:center;gap:6px">
+                ${UI.escapar(h)}
+                <button type="button" class="btn-remove-habilidad" data-habilidad="${UI.escapar(h)}"
+                        title="Eliminar" style="background:none;border:none;cursor:pointer;color:#dc3545;font-size:14px;padding:0">&times;</button>
+            </span>`
+        ).join(' ');
+        zonaHabilidades.querySelectorAll('.btn-remove-habilidad').forEach(btn => {
+            btn.addEventListener('click', () => eliminarHabilidad(btn.dataset.habilidad));
+        });
+    }
+
+    function agregarHabilidad(nombre) {
+        const limpio = (nombre || '').trim();
+        if (!limpio) { UI.toast('Escribe el nombre de la habilidad.', 'aviso'); return; }
+        if (limpio.length < 2) { UI.toast('La habilidad debe tener al menos 2 caracteres.', 'aviso'); return; }
+        const habilidades = usuario.habilidades || [];
+        if (habilidades.some(h => h.toLowerCase() === limpio.toLowerCase())) {
+            UI.toast('Ya tienes esa habilidad registrada.', 'aviso'); return;
+        }
+        habilidades.push(limpio);
+        const actualizado = Auth.actualizarPerfil({ habilidades });
+        if (!actualizado) { UI.toast('No se pudo guardar.', 'error'); return; }
+        usuario = actualizado;
+        pintarHabilidades();
+        inputHabilidad.value = '';
+        UI.toast(`Habilidad "${limpio}" agregada.`, 'exito');
+    }
+
+    function eliminarHabilidad(nombre) {
+        const habilidades = (usuario.habilidades || []).filter(h => h !== nombre);
+        const actualizado = Auth.actualizarPerfil({ habilidades });
+        if (!actualizado) { UI.toast('No se pudo eliminar.', 'error'); return; }
+        usuario = actualizado;
+        pintarHabilidades();
+        UI.toast(`Habilidad "${nombre}" eliminada.`, 'info');
+    }
+
+    if (btnAgregarHabilidad) {
+        btnAgregarHabilidad.addEventListener('click', () => agregarHabilidad(inputHabilidad.value));
+    }
+    if (inputHabilidad) {
+        inputHabilidad.addEventListener('keydown', e => {
+            if (e.key === 'Enter') { e.preventDefault(); agregarHabilidad(inputHabilidad.value); }
+        });
+    }
+
+    /* ------------------------------------------------- IA sugerir habilidades */
+    if (btnIAHabilidades) {
+        btnIAHabilidades.addEventListener('click', async () => {
+            btnIAHabilidades.disabled = true;
+            btnIAHabilidades.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analizando…';
+            Swal.fire({ title: 'La IA está analizando tu perfil…', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+
+            const sugeridas = await Api.sugerirHabilidades();
+            Swal.close();
+            btnIAHabilidades.disabled = false;
+            btnIAHabilidades.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Sugerir con IA';
+
+            if (!sugeridas || sugeridas.length === 0) {
+                UI.toast('No se pudieron generar sugerencias.', 'aviso');
+                return;
+            }
+
+            const existentes = (usuario.habilidades || []).map(h => h.toLowerCase());
+            const nuevas = sugeridas.filter(s => !existentes.some(e => e === s.toLowerCase()));
+
+            if (nuevas.length === 0) {
+                Swal.fire({ title: 'Ya tienes todas las habilidades sugeridas', text: 'Tu perfil ya incluye las habilidades que la IA recomendaría.', confirmButtonColor: '#2563eb' });
+                return;
+            }
+
+            const checksHtml = nuevas.map((h, i) =>
+                `<label style="display:flex;align-items:center;gap:8px;padding:8px;background:#f8f9fa;border-radius:6px;margin-bottom:6px;cursor:pointer">
+                    <input type="checkbox" class="chk-habilidad-ia" value="${UI.escapar(h)}" checked style="width:18px;height:18px">
+                    <span style="font-size:14px">${UI.escapar(h)}</span>
+                </label>`
+            ).join('');
+
+            const resultado = await Swal.fire({
+                title: 'Habilidades sugeridas por IA',
+                html: `<p style="text-align:left;font-size:13px;color:#666;margin-bottom:10px">Selecciona las que quieras agregar a tu perfil:</p>${checksHtml}`,
+                width: 480,
+                showCancelButton: true,
+                confirmButtonText: '<i class="fa-solid fa-check"></i> Agregar seleccionadas',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#8b5cf6',
+                preConfirm: () => {
+                    const seleccionadas = [...document.querySelectorAll('.chk-habilidad-ia:checked')].map(cb => cb.value);
+                    if (seleccionadas.length === 0) { Swal.showValidationMessage('Selecciona al menos una habilidad'); return false; }
+                    return seleccionadas;
+                }
+            });
+
+            if (!resultado.isConfirmed) return;
+
+            const habilidadesActuales = usuario.habilidades || [];
+            const combinadas = [...habilidadesActuales, ...resultado.value];
+            const actualizado = Auth.actualizarPerfil({ habilidades: combinadas });
+            if (!actualizado) { UI.toast('No se pudieron guardar las habilidades.', 'error'); return; }
+            usuario = actualizado;
+            pintarHabilidades();
+            UI.toast(`${resultado.value.length} habilidad(es) agregada(s) a tu perfil.`, 'exito');
+        });
+    }
+
+    /* ------------------------------------------------------- IA mejorar perfil (botón existente) */
     const botonMejorarIA = document.createElement('button');
     botonMejorarIA.type = 'button';
     botonMejorarIA.className = 'btn btn-grok btn-sm';
     botonMejorarIA.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Mejorar mi perfil con IA';
     const esEmpresa = usuario.rol === 'empresa';
     if (!esEmpresa) {
-        const wrapperEditar = document.querySelector('.editar-perfil-wrapper');
+        const wrapperEditar = document.querySelector('.acciones-perfil');
         if (wrapperEditar) {
-            wrapperEditar.parentNode.insertBefore(botonMejorarIA, wrapperEditar.nextSibling);
-        } else if (botonEditar && botonEditar.parentNode) {
-            botonEditar.parentNode.insertBefore(botonMejorarIA, botonEditar.nextSibling);
+            wrapperEditar.appendChild(botonMejorarIA);
         }
     }
 
@@ -116,13 +231,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         tablaDatos.innerHTML = filas.map(([etiqueta, valor]) =>
             `<tr><th scope="row">${etiqueta}</th><td>${UI.escapar(valor)}</td></tr>`).join('');
-    }
-
-    function pintarHabilidades() {
-        const habilidades = usuario.habilidades || [];
-        zonaHabilidades.innerHTML = habilidades.length === 0
-            ? '<p class="nota-seguridad">Aún no has registrado habilidades.</p>'
-            : habilidades.map(h => `<span class="chip">${UI.escapar(h)}</span>`).join(' ');
     }
 
     /* ----------------------------------------------------- mis cursos */

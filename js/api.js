@@ -116,6 +116,22 @@ const Api = (() => {
         } catch { return []; }
     }
 
+    async function sugerirHabilidades() {
+        const ctx = _contextoUsuario();
+        const cursos = Datos.cache('cursos') || [];
+        const cursosResumen = cursos.slice(0, 20).map(c => `${c.nombre} (${c.nivel})`).join(', ');
+        const respuesta = await _llamarGrok([
+            { role: 'system', content: `Eres un asistente de carreras tech en PuenteLaboral360.\n\nPerfil del usuario:\n${ctx}\n\nCursos disponibles: ${cursosResumen}\n\nSugiere entre 5 y 10 habilidades tecnicas y blandas que el usuario deberia agregar a su perfil, basandote en su nivel, objetivo, cursos disponibles y rol.\nResponde SOLO con un JSON array de strings. Ejemplo: ["JavaScript","SQL","Comunicación","Git"]\nSin texto adicional, sin markdown, solo el array.` },
+            { role: 'user', content: '¿Qué habilidades debería agregar a mi perfil para mejorar mis oportunidades laborales?' }
+        ]);
+        if (!respuesta) return [];
+        try {
+            const match = respuesta.match(/\[[\s\S]*\]/);
+            if (!match) return [];
+            return JSON.parse(match[0]).filter(h => typeof h === 'string' && h.length > 1);
+        } catch { return []; }
+    }
+
     async function generarDescripcionCurso(titulo, categoria) {
         const respuesta = await _llamarGrok([
             { role: 'system', content: 'Eres el copywriter de PuenteLaboral360, una plataforma de cursos laborales. Genera descripciones profesionales, claras y atractivas para cursos.\nResponde SOLO con el texto de la descripcion, sin comillas ni formato adicional. Maximo 2 oraciones.' },
@@ -243,6 +259,6 @@ const Api = (() => {
 
     return {
         obtenerPaises, obtenerClima, CIUDADES, describirClima,
-        recomendarCursos, mejorarPerfil, generarDescripcionCurso, resumenSistema
+        recomendarCursos, mejorarPerfil, sugerirHabilidades, generarDescripcionCurso, resumenSistema
     };
 })();
