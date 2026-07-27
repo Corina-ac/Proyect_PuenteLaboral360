@@ -2,6 +2,8 @@
 
 Plataforma web educativa y de empleo que conecta estudiantes con empresas mediante habilidades verificadas y certificados reconocidos. Desarrollado como proyecto académico de Ingeniería en Software.
 
+**[Ver sitio en GitHub Pages](https://corina-ac.github.io/Proyect_PuenteLaboral360/)**
+
 ---
 
 ## Descripción
@@ -26,6 +28,7 @@ Plataforma web educativa y de empleo que conecta estudiantes con empresas median
 | Chart.js 4 | Gráficos de cursos por categoría y de usuarios por rol |
 | countries.dev | API de países para la nacionalidad del registro |
 | Open-Meteo | API de clima de las sedes presenciales |
+| Grok (xAI) | IA para recomendaciones, mejora de perfil y generación de contenido |
 | Google Maps Embed | Mapa de ubicación en página de inicio |
 
 ---
@@ -43,7 +46,7 @@ Proyect_PuenteLaboral360/
 │   ├── datos.js                        ← Carga de JSON, cache y operaciones CRUD
 │   ├── auth.js                         ← Sesión, roles y protección de páginas
 │   ├── guardia.js                      ← Control de acceso declarativo por rol
-│   ├── api.js                          ← countries.dev y Open-Meteo
+│   ├── api.js                          ← countries.dev, Open-Meteo y Grok AI
 │   ├── componentes.js                  ← Alertas, notificaciones y estados de carga
 │   ├── main.js                         ← Página de inicio
 │   ├── login.js / registro.js          ← Autenticación y alta de usuarios
