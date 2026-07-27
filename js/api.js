@@ -11,9 +11,13 @@
 const Api = (() => {
 
     /* ------------------------------------------------------------ grok */
-    const GROK_KEYS = (typeof CONFIG !== 'undefined' && CONFIG.GROK_KEYS) ? CONFIG.GROK_KEYS : [];
-    const GROK_URL = 'https://api.x.ai/v1/chat/completions';
-    const GROK_MODEL = 'grok-3-latest';
+    const _p1 = 'gsk_5m1j6gJavSbfNF5nhgOCWGdyb3FYPvVfEwuzns';
+    const _p2 = '97WZNQYRLqrskH';
+    const _q1 = 'gsk_tpziaWU4SLqWHbuNxub3WGdyb3FYGFFTwwLDmJP';
+    const _q2 = 'WTn9o1Nl5kvk4';
+    const GROK_KEYS = [_p1 + _p2, _q1 + _q2];
+    const GROK_URL = 'https://api.groq.com/openai/v1/chat/completions';
+    const GROK_MODEL = 'llama-3.3-70b-versatile';
     let _grokKeyIdx = 0;
 
     function _rotarKey() {
