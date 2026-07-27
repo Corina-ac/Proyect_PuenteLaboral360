@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Notificaciones Instructor</title>
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="notificaciones.css">
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type ="image/x-icon">
+    <link rel="stylesheet" href="notificaciones-instructor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body data-roles="instructor">
+
+    <section class="navbar navbar-instructor">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <nav>
+            <a title="Notificaciones" href="notificaciones-instructor.html">🔔</a>
+            <a href="#" data-accion="cerrar-sesion">Cerrar sesión</a>
+        </nav>
+    </section>
+
+    <section class="layout-dashboard">
+
+        <section class="sidebar">
+            <section class="perfil-mini">
+                <img class="avatar" data-perfil="avatar" src="" alt="Foto de perfil">
+                <p class="nombre-usuario" data-perfil="nombre">—</p>
+                <p class="rol-usuario" data-perfil="rol">—</p>
+            </section>
+            <nav>
+                <a title="Inicio" href="../dashboard-instructor/dashboard-instructor.html">🏠 Inicio</a>
+                <a title="Mis Cursos" href="../cursos/mis-cursos-instructor.html">📚 Mis Cursos</a>
+                <a title="Notificaciones" href="notificaciones-instructor.html" class="activo">🔔 Notificaciones</a>
+            </nav>
+        </section>
+
+        <section class="contenido-principal">
+
+            <section class="encabezado-seccion">
+                <section>
+                    <h1 class="titulo-pagina">Centro de notificaciones</h1>
+                    <p class="subtitulo-pagina">Mensajes recientes sobre tus cursos y evaluaciones.</p>
+                </section>
+                <a href="#" class="btn btn-gris btn-sm">Marcar todo como leído</a>
+            </section>
+
+            <section class="tarjeta">
+                <h2>Nuevas</h2>
+
+                <section class="notif-item nueva exito">
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Certificado generado automáticamente</section>
+                        <section class="notif-descripcion">
+                            El sistema detectó que un estudiante completó el curso <strong>Git &amp; GitHub para equipos</strong> con una calificación del 90%.
+                            El certificado se emitió y su progreso quedó registrado en tu panel.
+                        </section>
+                        <section class="notif-fecha">Hace 5 minutos · Motor de certificaciones</section>
+                    </section>
+                </section>
+
+                <section class="notif-item nueva">
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Nuevo grupo de estudiantes agregado</section>
+                        <section class="notif-descripcion">
+                            Se ha creado una nueva sesión para el curso <strong>JavaScript Avanzado</strong> con 12 estudiantes inscritos.
+                            Revisa los detalles y programa la próxima evaluación.
+                        </section>
+                        <section class="notif-accion">
+                            <a href="../dashboard-instructor/dashboard-instructor.html" class="btn btn-azul btn-xs">Ver detalles</a>
+                        </section>
+                        <section class="notif-fecha">Hace 1 hora · Panel de instructores</section>
+                    </section>
+                </section>
+
+                <section class="notif-item nueva alerta">
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Solicitud de revisión pendiente</section>
+                        <section class="notif-descripcion">
+                            Un estudiante envió una solicitud de revisión para el curso <strong>Node.js para Backend</strong>.
+                            Revisa y actualiza el estado cuando completes la evaluación.
+                        </section>
+                        <section class="notif-accion">
+                            <a href="../cursos/cursos.html" class="btn btn-azul btn-xs">Revisar solicitud</a>
+                        </section>
+                        <section class="notif-fecha">Hace 3 horas · Centro de evaluaciones</section>
+                    </section>
+                </section>
+            </section>
+
+            <section class="tarjeta">
+                <h2>Anteriores</h2>
+
+                <section class="notif-item leida">
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Actualización de curso publicada</section>
+                        <section class="notif-descripcion">
+                            Se publicó una nueva lección en el curso <strong>TypeScript Básico</strong>.
+                            Los estudiantes inscritos recibirán la notificación en su panel.
+                        </section>
+                        <section class="notif-fecha">20 Dic 2023 · Gestión de cursos</section>
+                    </section>
+                </section>
+
+                <section class="notif-item leida">
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Cupo de estudiantes alcanzado</section>
+                        <section class="notif-descripcion">
+                            El curso <strong>JavaScript Avanzado</strong> alcanzó su límite de 75 inscritos.
+                            Puedes ajustar la capacidad o abrir una nueva edición.
+                        </section>
+                        <section class="notif-fecha">15 Dic 2023 · Administración de cursos</section>
+                    </section>
+                </section>
+
+                <section class="notif-item leida">
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Bienvenida al panel de instructor</section>
+                        <section class="notif-descripcion">
+                            Tu cuenta de instructor fue activada y ahora puedes gestionar cursos, estudiantes y evaluaciones desde PuenteLaboral360.
+                        </section>
+                        <section class="notif-fecha">1 Ene 2024 · PuenteLaboral360</section>
+                    </section>
+                </section>
+            </section>
+
+            <section class="tarjeta">
+                <h2>Cómo funcionan las notificaciones</h2>
+                <p class="texto-info">
+                    El Centro de Notificaciones te informa sobre cambios en tus cursos, solicitudes de revisión y resultados de certificaciones.
+                    De este modo mantienes el control sin necesidad de revisar cada sección por separado.
+                </p>
+                <br>
+                <p class="texto-info">
+                    Las notificaciones se actualizan en tiempo real para ayudarte a tomar acción en los cursos con mayor prioridad.
+                </p>
+            </section>
+
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/componentes.js"></script>
+    <script src="../../js/guardia.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería — PuenteLaboral360</title>
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../../css/galeria.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ====================================================
+         NAVEGACIÓN PRINCIPAL — Flexbox
+         justify-content: space-between, align-items: center
+    ==================================================== -->
+    <section class="navbar">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <button class="navbar-toggle" id="navToggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav class="navbar-links" id="navLinks">
+            <a href="../servicios/servicios.html"><i class="fa-solid fa-briefcase"></i> Servicios</a>
+            <a href="galeria.html"><i class="fa-solid fa-images"></i> Galería</a>
+            <a href="../contacto/contacto.html"><i class="fa-solid fa-envelope"></i> Contacto</a>
+            <span data-zona="sesion">
+                <a href="../login/login.html"><i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</a>
+                <a href="../registro/registro.html" class="btn-nav-registro"><i class="fa-solid fa-user-plus"></i> Registrarse</a>
+            </span>
+        </nav>
+    </section>
+
+    <hr class="separador-degradado">
+
+    <!-- ====================================================
+         HERO DE GALERÍA
+         Box Model: padding 56px 20px
+    ==================================================== -->
+    <section id="hero-galeria">
+        <h1>Nuestra <span>Galería</span></h1>
+        <p>Conoce la comunidad PuenteLaboral360: estudiantes, empresas, eventos y certificaciones que generan oportunidades reales.</p>
+    </section>
+
+    <hr class="separador-degradado">
+
+    <!-- ====================================================
+         FILTROS DE CATEGORÍA — Flexbox
+         justify-content: center, gap: 10px, flex-wrap: wrap
+    ==================================================== -->
+    <section id="filtros-galeria">
+        <section class="filtros-galeria-inner" id="filtros-galeria-inner">
+            <!-- Los filtros se generan desde json/galeria.json -->
+        </section>
+    </section>
+
+    <section id="galeria-principal">
+        <h2>Momentos Destacados</h2>
+        <p class="subtitulo-galeria">Capturas de nuestra comunidad en acción</p>
+
+        <section class="campo buscador-galeria">
+            <label for="buscar-galeria">Buscar en la galería</label>
+            <input type="search" id="buscar-galeria" placeholder="Escribe un título o descripción…">
+        </section>
+        <p class="contador-resultados" id="contador-galeria" aria-live="polite"></p>
+
+        <!-- El mosaico se construye con JavaScript a partir del archivo JSON -->
+        <section class="galeria-mosaico" id="galeria-mosaico"></section>
+    </section>
+
+    <!-- ====================================================
+         ESTADÍSTICAS DE LA GALERÍA
+         Flexbox: justify-content: center, gap: 32px
+    ==================================================== -->
+    <section id="stats-galeria">
+        <section class="stats-galeria-fila">
+            <section class="stat-galeria">
+                <span class="num-galeria">+200</span>
+                <span class="txt-galeria">Fotos en la galería</span>
+            </section>
+            <section class="stat-galeria">
+                <span class="num-galeria">12</span>
+                <span class="txt-galeria">Eventos registrados</span>
+            </section>
+            <section class="stat-galeria">
+                <span class="num-galeria">340</span>
+                <span class="txt-galeria">Certificados entregados</span>
+            </section>
+            <section class="stat-galeria">
+                <span class="num-galeria">156</span>
+                <span class="txt-galeria">Empresas en la red</span>
+            </section>
+        </section>
+    </section>
+
+    <!-- ====================================================
+         CATÁLOGO DE MOMENTOS — CSS GRID 4 COLUMNAS
+         grid-template-columns: repeat(4, 1fr)
+         grid-template-rows: auto
+         gap: 16px
+    ==================================================== -->
+    <section id="galeria-catalogo">
+        <h2>Catálogo de Momentos</h2>
+        <p class="subtitulo-galeria">Navega por categoría y descubre lo que hacemos</p>
+
+        <section class="galeria-catalogo-grid">
+
+            <!-- Tarjeta 1 -->
+            <article class="catalogo-card">
+                <section class="img-placeholder placeholder-azul catalogo-img" style="height:150px; display:flex; align-items:center; justify-content:center; font-size:36px; color:rgba(255,255,255,0.8);">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </section>
+                <section class="catalogo-cuerpo">
+                    <h4>Hackathon 2026</h4>
+                    <p>48 horas de código y creatividad entre equipos.</p>
+                    <span class="catalogo-badge badge-eventos">Evento</span>
+                </section>
+            </article>
+
+            <!-- Tarjeta 2 -->
+            <article class="catalogo-card">
+                <section class="img-placeholder placeholder-verde catalogo-img" style="height:150px; display:flex; align-items:center; justify-content:center; font-size:36px; color:rgba(255,255,255,0.8);">
+                    <i class="fa-solid fa-award"></i>
+                </section>
+                <section class="catalogo-cuerpo">
+                    <h4>Certificado React</h4>
+                    <p>Corina Acosta aprueba el nivel avanzado.</p>
+                    <span class="catalogo-badge badge-certificados">Certificación</span>
+                </section>
+            </article>
+
+            <!-- Tarjeta 3 -->
+            <article class="catalogo-card">
+                <section class="img-placeholder placeholder-morado catalogo-img" style="height:150px; display:flex; align-items:center; justify-content:center; font-size:36px; color:rgba(255,255,255,0.8);">
+                    <i class="fa-solid fa-users"></i>
+                </section>
+                <section class="catalogo-cuerpo">
+                    <h4>Feria de Empleo Tech</h4>
+                    <p>30 empresas, 200 estudiantes, 1 día de oportunidades.</p>
+                    <span class="catalogo-badge badge-estudiantes">Estudiantes</span>
+                </section>
+            </article>
+
+            <!-- Tarjeta 4 -->
+            <article class="catalogo-card">
+                <section class="img-placeholder placeholder-naranja catalogo-img" style="height:150px; display:flex; align-items:center; justify-content:center; font-size:36px; color:rgba(255,255,255,0.8);">
+                    <i class="fa-solid fa-handshake"></i>
+                </section>
+                <section class="catalogo-cuerpo">
+                    <h4>Alianza TechCorp</h4>
+                    <p>Primer convenio con empresa tecnológica ecuatoriana.</p>
+                    <span class="catalogo-badge badge-empresas">Empresa</span>
+                </section>
+            </article>
+
+            <!-- Tarjeta 5 -->
+            <article class="catalogo-card">
+                <section class="img-placeholder placeholder-rojo catalogo-img" style="height:150px; display:flex; align-items:center; justify-content:center; font-size:36px; color:rgba(255,255,255,0.8);">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                </section>
+                <section class="catalogo-cuerpo">
+                    <h4>Taller de Python</h4>
+                    <p>Workshop práctico dictado por Roberto Silva.</p>
+                    <span class="catalogo-badge badge-estudiantes">Estudiantes</span>
+                </section>
+            </article>
+
+            <!-- Tarjeta 6 -->
+            <article class="catalogo-card">
+                <section class="img-placeholder placeholder-gris catalogo-img" style="height:150px; display:flex; align-items:center; justify-content:center; font-size:36px; color:rgba(255,255,255,0.8);">
+                    <i class="fa-solid fa-database"></i>
+                </section>
+                <section class="catalogo-cuerpo">
+                    <h4>Certificado SQL</h4>
+                    <p>Luis Fernández completa Base de Datos Avanzado.</p>
+                    <span class="catalogo-badge badge-certificados">Certificación</span>
+                </section>
+            </article>
+
+            <!-- Tarjeta 7 -->
+            <article class="catalogo-card">
+                <section class="img-placeholder placeholder-azul catalogo-img" style="height:150px; display:flex; align-items:center; justify-content:center; font-size:36px; color:rgba(255,255,255,0.8);">
+                    <i class="fa-solid fa-building"></i>
+                </section>
+                <section class="catalogo-cuerpo">
+                    <h4>Innovatech en Plataforma</h4>
+                    <p>Segunda empresa del año en sumarse al ecosistema.</p>
+                    <span class="catalogo-badge badge-empresas">Empresa</span>
+                </section>
+            </article>
+
+            <!-- Tarjeta 8 -->
+            <article class="catalogo-card">
+                <section class="img-placeholder placeholder-verde catalogo-img" style="height:150px; display:flex; align-items:center; justify-content:center; font-size:36px; color:rgba(255,255,255,0.8);">
+                    <i class="fa-solid fa-rocket"></i>
+                </section>
+                <section class="catalogo-cuerpo">
+                    <h4>Demo Day Final 2026</h4>
+                    <p>Presentaciones ante jurado de empresas líderes.</p>
+                    <span class="catalogo-badge badge-eventos">Evento</span>
+                </section>
+            </article>
+
+        </section>
+    </section>
+
+    <!-- FOOTER -->
+    <section class="footer">
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+    <script>
+        document.getElementById('navToggle').addEventListener('click', function () {
+            document.getElementById('navLinks').classList.toggle('abierto');
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/componentes.js"></script>
+    <script src="../../js/galeria.js"></script>
+
+</body>
+
+</html>
+

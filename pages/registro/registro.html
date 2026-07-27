@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Registro</title>
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="stylesheet" href="../../css/registro.css">
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <nav>
+            <a href="../login/login.html">Iniciar Sesión</a>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        <section id="formulario-registro" class="tarjeta">
+            <h1>Crear nueva cuenta</h1>
+            <p class="texto-paso" id="texto-contexto">
+                Completa tus datos para acceder a la plataforma.
+            </p>
+
+            <form id="form-registro" novalidate>
+
+                <!-- ROL: se bloquea cuando se llega desde un plan concreto -->
+                <section class="campo">
+                    <label for="rol">Rol en la plataforma</label>
+                    <select id="rol" name="rol" required>
+                        <option value="">-- Selecciona un rol --</option>
+                        <option value="estudiante">🎓 Estudiante</option>
+                        <option value="instructor">👨‍🏫 Instructor</option>
+                        <option value="empresa">🏢 Empresa / Reclutador</option>
+                    </select>
+                    <p class="nota-seguridad" id="nota-rol"></p>
+                </section>
+
+                <section class="fila-campos">
+                    <section class="campo">
+                        <label for="nombres">Nombres</label>
+                        <input type="text" id="nombres" name="nombres" placeholder="Ej: Ana María" required>
+                    </section>
+                    <section class="campo">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos" placeholder="Ej: García Pérez" required>
+                    </section>
+                </section>
+
+                <section class="campo">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                </section>
+
+                <section class="fila-campos">
+                    <section class="campo">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password"
+                            placeholder="Entre 8 y 16 caracteres" required>
+                    </section>
+                    <section class="campo">
+                        <label for="password2">Confirmar contraseña</label>
+                        <input type="password" id="password2" name="password2"
+                            placeholder="Repite la contraseña" required>
+                    </section>
+                </section>
+
+                <section class="fila-campos">
+                    <!-- Edad permitida: de 16 a 60 años, por ser una plataforma laboral -->
+                    <section class="campo">
+                        <label for="fecha-nacimiento">Fecha de nacimiento</label>
+                        <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+                        <p class="nota-seguridad" id="nota-edad">
+                            Registro habilitado para personas de 16 a 60 años.
+                        </p>
+                    </section>
+                    <section class="campo">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ej: 0991234567">
+                    </section>
+                </section>
+
+                <!-- Nacionalidad: selector personalizado alimentado por countries.dev -->
+                <section class="campo selector-pais">
+                    <label for="buscar-pais">Nacionalidad</label>
+                    <input type="text" id="buscar-pais" placeholder="Escribe para buscar tu país…"
+                        autocomplete="off" role="combobox" aria-expanded="false"
+                        aria-controls="lista-paises" required>
+                    <ul id="lista-paises" class="lista-paises oculto" role="listbox"></ul>
+                    <p class="pais-elegido oculto" id="pais-elegido"></p>
+                    <input type="hidden" id="pais-nombre">
+                    <input type="hidden" id="pais-codigo">
+                    <input type="hidden" id="pais-bandera">
+                </section>
+
+                <section class="campo">
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" id="ciudad" name="ciudad" placeholder="Ej: Quito">
+                </section>
+
+                <section class="campo">
+                    <label for="avatar">Foto de perfil (opcional)</label>
+                    <input type="file" id="avatar" name="avatar" accept="image/*">
+                    <section class="vista-avatar">
+                        <img id="previa-avatar" src="" alt="Vista previa de la foto de perfil">
+                        <span class="nota-seguridad">
+                            Si no subes una foto se generará un avatar con tus iniciales.
+                        </span>
+                    </section>
+                </section>
+
+                <!-- Campos exclusivos del rol estudiante -->
+                <section id="bloque-estudiante" class="bloque-rol oculto">
+                    <section class="campo">
+                        <label>¿Qué tecnologías conoces?</label>
+                        <section class="habilidades-check" id="lista-habilidades"></section>
+                    </section>
+
+                    <section class="campo">
+                        <label>Nivel general de experiencia</label>
+                        <section class="nivel-habilidad">
+                            <label><input type="radio" name="nivel" value="Principiante" checked> Principiante</label>
+                            <label><input type="radio" name="nivel" value="Junior"> Junior</label>
+                            <label><input type="radio" name="nivel" value="Semi-senior"> Semi-senior</label>
+                            <label><input type="radio" name="nivel" value="Senior"> Senior</label>
+                        </section>
+                    </section>
+
+                    <section class="campo">
+                        <label for="objetivo">¿Qué objetivo tienes al unirte?</label>
+                        <select id="objetivo" name="objetivo">
+                            <option>Conseguir mi primer empleo en tecnología</option>
+                            <option>Cambiar de carrera al área tech</option>
+                            <option>Mejorar mis habilidades actuales</option>
+                            <option>Obtener certificaciones reconocidas</option>
+                        </select>
+                    </section>
+                </section>
+
+                <section class="campo campo-terminos">
+                    <label class="check-terminos">
+                        <input type="checkbox" id="terminos" name="terminos" required>
+                        Acepto los términos y condiciones y el tratamiento de mis datos.
+                    </label>
+                </section>
+
+                <section class="nav-pasos">
+                    <a href="../login/login.html" class="btn btn-gris">← Ya tengo cuenta</a>
+                    <button type="submit" class="btn btn-verde" id="btn-registrar">Finalizar Registro →</button>
+                </section>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/config.js"></script>
+    <script src="../../js/api.js"></script>
+    <script src="../../js/componentes.js"></script>
+    <script src="../../js/registro.js"></script>
+</body>
+</html>

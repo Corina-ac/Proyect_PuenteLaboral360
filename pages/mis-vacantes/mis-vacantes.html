@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Mis Vacantes</title>
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type ="image/x-icon">
+    <link rel="stylesheet" href="../dashboard-empresa/dashboard-empresa.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body data-roles="empresa,admin">
+
+    <section class="navbar navbar-empresa">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <nav>
+            <a title="Notificaciones" href="../notificaciones/notificaciones-empresa.html">🔔 </a>
+            <a title="Cerrar sesión" href="#" data-accion="cerrar-sesion">Cerrar sesión</a>
+        </nav>
+    </section>
+
+    <section class="layout-dashboard">
+
+        <section class="sidebar">
+            <section class="perfil-mini">
+                <img class="avatar" data-perfil="avatar" src="" alt="Foto de perfil">
+                <p class="nombre-usuario" data-perfil="nombre">—</p>
+                <p class="rol-usuario" data-perfil="rol">—</p>
+            </section>
+            <nav>
+                <a title="Inicio" href="../dashboard-empresa/dashboard-empresa.html"><span>🏠</span> Inicio</a>
+                <a title="Buscar Talento" href="../buscar-talento/buscar-talento.html"><span>🔍</span> Buscar Talento</a>
+                <a title="Mis Vacantes" href="mis-vacantes.html" class="activo"><span>📌</span> Mis Vacantes</a>
+                <a title="Notificaciones" href="../notificaciones/notificaciones-empresa.html"><span>🔔</span> Notificaciones</a>
+            </nav>
+        </section>
+
+        <section class="contenido-principal">
+
+            <section class="encabezado-seccion">
+                <section>
+                    <h1 class="titulo-pagina">Mis Vacantes</h1>
+                    <p class="subtitulo-pagina">Gestiona tus ofertas de trabajo y revisa postulantes</p>
+                </section>
+                <a title="Publicar vacante" href="#" class="btn btn-rojo btn-accion">+ Publicar vacante</a>
+            </section>
+
+            <section class="stats-grid">
+                <section class="stat-box">
+                    <section class="numero numero-rojo">3</section>
+                    <section class="etiqueta">Vacantes activas</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero numero-rojo">22</section>
+                    <section class="etiqueta">Total postulantes</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero numero-rojo">8</section>
+                    <section class="etiqueta">Perfiles guardados</section>
+                </section>
+                <section class="stat-box">
+                    <section class="numero numero-rojo">2</section>
+                    <section class="etiqueta">Contrataciones este mes</section>
+                </section>
+            </section>
+
+            <section class="tarjeta">
+                <h2>📌 Vacantes activas</h2>
+
+                <section class="candidato-card">
+                    <section class="info-candidato">
+                        <section class="nombre-candidato">Desarrollador Frontend Junior</section>
+                        <section class="detalle-candidato">Tiempo completo · Presencial · Buenos Aires</section>
+                        <section class="habilidades-match">
+                            <span class="habilidad-tag">HTML</span>
+                            <span class="habilidad-tag">CSS</span>
+                            <span class="habilidad-tag">JavaScript</span>
+                            <span class="habilidad-tag">React</span>
+                            <span class="habilidad-tag">Git</span>
+                        </section>
+                        <section class="progreso-grupo">
+                            <span class="texto-info">Publicada el 10/05/2026 · Cierra el 30/05/2026</span>
+                        </section>
+                    </section>
+                    <section class="acciones-candidato">
+                        <section class="conteo-numero">12</section>
+                        <section class="conteo-etiqueta">postulantes</section>
+                        <span class="badge badge-verde badge-bloque">Activa</span>
+                        <a title="Ver candidatos" href="../buscar-talento/buscar-talento.html" class="btn btn-azul">Ver candidatos</a>
+                        <a title="Editar" href="#" class="btn btn-gris">Editar</a>
+                    </section>
+                </section>
+
+                <section class="candidato-card">
+                    <section class="info-candidato">
+                        <section class="nombre-candidato">Analista de Datos Jr.</section>
+                        <section class="detalle-candidato">Tiempo completo · Remoto · Argentina</section>
+                        <section class="habilidades-match">
+                            <span class="habilidad-tag">Python</span>
+                            <span class="habilidad-tag">SQL</span>
+                            <span class="habilidad-tag">Excel</span>
+                            <span class="habilidad-tag">Power BI</span>
+                        </section>
+                        <section class="progreso-grupo">
+                            <span class="texto-info">Publicada el 05/05/2026 · Cierra el 25/05/2026</span>
+                        </section>
+                    </section>
+                    <section class="acciones-candidato">
+                        <section class="conteo-numero">7</section>
+                        <section class="conteo-etiqueta">postulantes</section>
+                        <span class="badge badge-verde badge-bloque">Activa</span>
+                        <a title="Ver candidatos" href="../buscar-talento/buscar-talento.html" class="btn btn-azul">Ver candidatos</a>
+                        <a title="Editar" href="#" class="btn btn-gris">Editar</a>
+                    </section>
+                </section>
+
+                <section class="candidato-card">
+                    <section class="info-candidato">
+                        <section class="nombre-candidato">DevOps Engineer</section>
+                        <section class="detalle-candidato">Tiempo completo · Híbrido · Buenos Aires</section>
+                        <section class="habilidades-match">
+                            <span class="habilidad-tag">Docker</span>
+                            <span class="habilidad-tag">Kubernetes</span>
+                            <span class="habilidad-tag">CI/CD</span>
+                            <span class="habilidad-tag">Linux</span>
+                            <span class="habilidad-tag">AWS</span>
+                        </section>
+                        <section class="progreso-grupo">
+                            <span class="texto-info">Publicada el 12/05/2026 · Cierra el 12/06/2026</span>
+                        </section>
+                    </section>
+                    <section class="acciones-candidato">
+                        <section class="conteo-numero">3</section>
+                        <section class="conteo-etiqueta">postulantes</section>
+                        <span class="badge badge-verde badge-bloque">Activa</span>
+                        <a href="../buscar-talento/buscar-talento.html" class="btn btn-azul">Ver candidatos</a>
+                        <a href="#" class="btn btn-gris">Editar</a>
+                    </section>
+                </section>
+
+            </section>
+
+            <section class="tarjeta">
+                <h2>📁 Vacantes cerradas</h2>
+                <p class="texto-secundario">Historial de posiciones anteriores</p>
+
+                <section class="candidato-card vacante-cerrada">
+                    <section class="info-candidato">
+                        <section class="nombre-candidato">QA Tester Junior</section>
+                        <section class="detalle-candidato">Tiempo completo · Presencial · Buenos Aires</section>
+                        <section class="habilidades-match">
+                            <span class="habilidad-tag">Testing</span>
+                            <span class="habilidad-tag">Selenium</span>
+                            <span class="habilidad-tag">Jira</span>
+                        </section>
+                        <section class="progreso-grupo">
+                            <span class="texto-info">Cerrada el 01/05/2026 · 15 postulantes · 1 contratado</span>
+                        </section>
+                    </section>
+                    <section class="acciones-candidato">
+                        <span class="badge badge-gris badge-bloque">Cerrada</span>
+                        <a href="#" class="btn btn-gris">Ver historial</a>
+                        <a href="#" class="btn btn-azul">Reabrir</a>
+                    </section>
+                </section>
+
+            </section>
+
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/componentes.js"></script>
+    <script src="../../js/guardia.js"></script>
+</body>
+</html>

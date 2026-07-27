@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "nombres": "Maria",
+    "apellidos": "Lopez",
+    "email": "maria.lopez@puentelaboral360.com",
+    "categoriaId": 1,
+    "especialidad": "Desarrollo Frontend con React",
+    "valoracion": 4.9,
+    "cursosDictados": 12,
+    "verificado": true,
+    "iniciales": "ML",
+    "bio": "Instructor especializado en desarrollo frontend con react, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Quito",
+      "pais": "Ecuador",
+      "telefono": "0980000000"
+    }
+  },
+  {
+    "id": 2,
+    "nombres": "Carlos",
+    "apellidos": "Ruiz",
+    "email": "carlos.ruiz@puentelaboral360.com",
+    "categoriaId": 3,
+    "especialidad": "Bases de datos relacionales",
+    "valoracion": 4.7,
+    "cursosDictados": 9,
+    "verificado": true,
+    "iniciales": "CR",
+    "bio": "Instructor especializado en bases de datos relacionales, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Guayaquil",
+      "pais": "Ecuador",
+      "telefono": "0980137891"
+    }
+  },
+  {
+    "id": 3,
+    "nombres": "Roberto",
+    "apellidos": "Silva",
+    "email": "roberto.silva@puentelaboral360.com",
+    "categoriaId": 2,
+    "especialidad": "Node.js y arquitectura de APIs",
+    "valoracion": 4.8,
+    "cursosDictados": 15,
+    "verificado": true,
+    "iniciales": "RS",
+    "bio": "Instructor especializado en node.js y arquitectura de apis, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Cuenca",
+      "pais": "Ecuador",
+      "telefono": "0980275782"
+    }
+  },
+  {
+    "id": 4,
+    "nombres": "Ana",
+    "apellidos": "Torres",
+    "email": "ana.torres@puentelaboral360.com",
+    "categoriaId": 5,
+    "especialidad": "Python aplicado a datos",
+    "valoracion": 4.9,
+    "cursosDictados": 11,
+    "verificado": true,
+    "iniciales": "AT",
+    "bio": "Instructor especializado en python aplicado a datos, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Santo Domingo",
+      "pais": "Ecuador",
+      "telefono": "0980413673"
+    }
+  },
+  {
+    "id": 5,
+    "nombres": "Laura",
+    "apellidos": "Diaz",
+    "email": "laura.diaz@puentelaboral360.com",
+    "categoriaId": 4,
+    "especialidad": "Git, CI/CD y contenedores",
+    "valoracion": 4.6,
+    "cursosDictados": 8,
+    "verificado": true,
+    "iniciales": "LD",
+    "bio": "Instructor especializado en git, ci/cd y contenedores, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Quevedo",
+      "pais": "Ecuador",
+      "telefono": "0980551564"
+    }
+  },
+  {
+    "id": 6,
+    "nombres": "Diego",
+    "apellidos": "Vera",
+    "email": "diego.vera@puentelaboral360.com",
+    "categoriaId": 1,
+    "especialidad": "HTML semantico y CSS moderno",
+    "valoracion": 4.5,
+    "cursosDictados": 7,
+    "verificado": false,
+    "iniciales": "DV",
+    "bio": "Instructor especializado en html semantico y css moderno, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Quito",
+      "pais": "Ecuador",
+      "telefono": "0980689455"
+    }
+  },
+  {
+    "id": 7,
+    "nombres": "Paola",
+    "apellidos": "Mendoza",
+    "email": "paola.mendoza@puentelaboral360.com",
+    "categoriaId": 6,
+    "especialidad": "Investigacion y prototipado UX",
+    "valoracion": 4.8,
+    "cursosDictados": 10,
+    "verificado": true,
+    "iniciales": "PM",
+    "bio": "Instructor especializado en investigacion y prototipado ux, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Guayaquil",
+      "pais": "Ecuador",
+      "telefono": "0980827346"
+    }
+  },
+  {
+    "id": 8,
+    "nombres": "Andres",
+    "apellidos": "Castro",
+    "email": "andres.castro@puentelaboral360.com",
+    "categoriaId": 8,
+    "especialidad": "Seguridad en aplicaciones web",
+    "valoracion": 4.7,
+    "cursosDictados": 6,
+    "verificado": true,
+    "iniciales": "AC",
+    "bio": "Instructor especializado en seguridad en aplicaciones web, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Cuenca",
+      "pais": "Ecuador",
+      "telefono": "0980965237"
+    }
+  },
+  {
+    "id": 9,
+    "nombres": "Gabriela",
+    "apellidos": "Nunez",
+    "email": "gabriela.nunez@puentelaboral360.com",
+    "categoriaId": 7,
+    "especialidad": "Comunicacion profesional",
+    "valoracion": 4.9,
+    "cursosDictados": 14,
+    "verificado": true,
+    "iniciales": "GN",
+    "bio": "Instructor especializado en comunicacion profesional, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Santo Domingo",
+      "pais": "Ecuador",
+      "telefono": "0981103128"
+    }
+  },
+  {
+    "id": 10,
+    "nombres": "Luis",
+    "apellidos": "Paredes",
+    "email": "luis.paredes@puentelaboral360.com",
+    "categoriaId": 2,
+    "especialidad": "Java y Spring Boot",
+    "valoracion": 4.4,
+    "cursosDictados": 5,
+    "verificado": false,
+    "iniciales": "LP",
+    "bio": "Instructor especializado en java y spring boot, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Quevedo",
+      "pais": "Ecuador",
+      "telefono": "0981241019"
+    }
+  },
+  {
+    "id": 11,
+    "nombres": "Veronica",
+    "apellidos": "Salazar",
+    "email": "veronica.salazar@puentelaboral360.com",
+    "categoriaId": 3,
+    "especialidad": "MongoDB y bases NoSQL",
+    "valoracion": 4.6,
+    "cursosDictados": 7,
+    "verificado": true,
+    "iniciales": "VS",
+    "bio": "Instructor especializado en mongodb y bases nosql, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Quito",
+      "pais": "Ecuador",
+      "telefono": "0981378910"
+    }
+  },
+  {
+    "id": 12,
+    "nombres": "Javier",
+    "apellidos": "Moran",
+    "email": "javier.moran@puentelaboral360.com",
+    "categoriaId": 5,
+    "especialidad": "Machine Learning aplicado",
+    "valoracion": 4.8,
+    "cursosDictados": 9,
+    "verificado": true,
+    "iniciales": "JM",
+    "bio": "Instructor especializado en machine learning aplicado, con experiencia dictando cursos en la plataforma.",
+    "contacto": {
+      "ciudad": "Guayaquil",
+      "pais": "Ecuador",
+      "telefono": "0981516801"
+    }
+  }
+]

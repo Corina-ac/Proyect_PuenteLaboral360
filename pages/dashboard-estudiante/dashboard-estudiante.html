@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Dashboard Estudiante</title>
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="dashboard-estudiante.css">
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type ="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body data-roles="estudiante">
+
+    <section class="navbar">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <nav>
+            <a title="Notificaciones" href="../notificaciones/notificaciones.html">🔔 </a>
+            <a href="#" data-accion="cerrar-sesion">Cerrar sesión</a>
+        </nav>
+    </section>
+
+    <section class="layout-dashboard">
+
+        <section class="sidebar">
+            <section class="perfil-mini">
+                <img class="avatar" data-perfil="avatar" src="" alt="Foto de perfil">
+                <p class="nombre-usuario" data-perfil="nombre">—</p>
+                <p class="rol-usuario" data-perfil="rol">—</p>
+            </section>
+            <nav>
+                <a title="Inicio" href="dashboard-estudiante.html" class="activo" id="enlace-inicio"><span class="icono">🏠</span> Inicio</a>
+                <a title="Mis Cursos" href="../cursos/cursos.html"><span class="icono">📚</span> Mis Cursos</a>
+                <a title="Mi Perfil" href="../perfil/perfil.html"><span class="icono">👤</span> Mi Perfil</a>
+                <a title="Notificaciones" href="../notificaciones/notificaciones.html"><span class="icono">🔔</span>Notificación</a>
+            </nav>
+        </section>
+
+        <section class="contenido-principal">
+
+            <section class="bienvenida" id="bienvenida-estudiante"></section>
+
+            <section class="stats-grid" id="stats-estudiante"></section>
+
+            <section class="tarjeta">
+                <h2>Mis cursos en progreso</h2>
+                <section class="cursos-grid" id="cursos-progreso"></section>
+            </section>
+
+            <section class="tarjeta">
+                <h2>🎯 Oportunidades que hacen match contigo</h2>
+                <div id="oportunidades-match"></div>
+            </section>
+
+            <section class="tarjeta">
+                <h2>🏅 Mis habilidades</h2>
+                <section class="habilidades" id="habilidades-estudiante"></section>
+            </section>
+
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/componentes.js"></script>
+    <script src="../../js/guardia.js"></script>
+    <script src="../../js/config.js"></script>
+    <script src="../../js/api.js"></script>
+    <script src="../../js/dashboard-estudiante.js"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+.layout-dashboard {
+    display: flex;
+    min-height: calc(100vh - 55px);
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #2c3e50;
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+
+.sidebar .perfil-mini {
+    text-align: center;
+    padding: 0 15px 20px;
+    border-bottom: 1px solid #3d5166;
+}
+
+.sidebar .avatar {
+    width: 60px;
+    height: 60px;
+    background-color: #1a73e8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 8px;
+}
+
+.sidebar .nombre-usuario { color: white; font-size: 14px; font-weight: bold; }
+.sidebar .rol-usuario { color: #aaa; font-size: 12px; margin-top: 3px; }
+
+.sidebar nav a {
+    display: block;
+    color: #bbb;
+    text-decoration: none;
+    padding: 11px 20px;
+    font-size: 14px;
+    border-left: 3px solid transparent;
+}
+
+.sidebar nav a:hover { background-color: #3d5166; color: white; }
+.sidebar nav a.activo { background-color: #1a73e8; color: white; border-left-color: #ffdd57; }
+
+.contenido-principal {
+    flex: 1;
+    padding: 25px;
+    background-color: #f0f2f5;
+}
+
+/* CABECERA PERFIL */
+.perfil-cabecera {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.avatar-perfil {
+    width: 80px;
+    height: 80px;
+    background-color: #1a73e8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    flex-shrink: 0;
+}
+
+.perfil-datos h1 {
+    font-size: 22px;
+    color: #333;
+}
+
+.perfil-datos p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.perfil-datos .tags-perfil {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* CERTIFICADOS */
+.cert-grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cert-card {
+    background-color: white;
+    border: 2px solid #28a745;
+    border-radius: 8px;
+    padding: 18px;
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    text-align: center;
+}
+
+.cert-card .icono-cert {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.cert-card .titulo-cert {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.cert-card .fecha-cert {
+    font-size: 12px;
+    color: #888;
+}
+
+.cert-card .instructor-cert {
+    font-size: 12px;
+    color: #28a745;
+    margin-top: 4px;
+}
+
+/* BARRA COMPLETADO PERFIL */
+.completado-perfil {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.completado-perfil h3 {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.items-completado {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.item-completado {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.item-completado .check {
+    font-size: 16px;
+}
+
+/* ============================================================
+   RESPONSIVIDAD — MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .layout-dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .sidebar .perfil-mini {
+        display: none;
+    }
+
+    .sidebar nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 8px 12px;
+        justify-content: center;
+        margin-top: 0;
+    }
+
+    .sidebar nav a {
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        padding: 8px 12px;
+        font-size: 13px;
+        border-radius: 5px;
+        flex: 0 1 auto;
+    }
+
+    .sidebar nav a.activo {
+        background-color: #1a73e8;
+        color: white;
+        border-left-color: transparent;
+        border-bottom-color: #ffdd57;
+    }
+
+    .contenido-principal {
+        padding: 16px;
+    }
+
+    .perfil-cabecera {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .perfil-datos .tags-perfil {
+        justify-content: center;
+    }
+
+    .cert-grid {
+        gap: 12px;
+    }
+
+    .cert-card {
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar nav a {
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+
+    .contenido-principal {
+        padding: 12px;
+    }
+
+    .cert-card {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .perfil-datos h1 {
+        font-size: 18px;
+    }
+}

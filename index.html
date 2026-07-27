@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Inicio</title>
+    <link rel="shortcut icon" href="img/educacion-global.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+
+<body>
+
+    <section class="navbar">
+        <a href="index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <button class="navbar-toggle" id="navToggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav class="navbar-links" id="navLinks">
+            <a href="pages/servicios/servicios.html"><i class="fa-solid fa-briefcase"></i> Servicios</a>
+            <a href="pages/galeria/galeria.html"><i class="fa-solid fa-images"></i> Galería</a>
+            <a href="pages/contacto/contacto.html"><i class="fa-solid fa-envelope"></i> Contacto</a>
+            <a href="pages/proyeccion/proyeccion.html"><i class="fa-solid fa-rocket"></i> Mi Proyección</a>
+            <!-- JavaScript sustituye este bloque por el usuario en sesión -->
+            <span data-zona="sesion">
+                <a href="pages/login/login.html"><i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</a>
+                <a href="pages/registro/registro.html" class="btn-nav-registro"><i class="fa-solid fa-user-plus"></i> Registrarse</a>
+            </span>
+        </nav>
+    </section>
+
+    <hr class="separador-degradado">
+
+    <section id="presentacion" class="hero">
+        <h1>Bienvenido a <span>PuenteLaboral360</span></h1>
+        <p ><center>La plataforma que conecta estudiantes con empresas mediante habilidades verificadas</center></p>
+        <section class="hero-botones">
+            <a href="pages/registro/registro.html" class="btn btn-grande btn-amarillo"><i
+                    class="fa-solid fa-rocket"></i> Comenzar Gratis</a>
+            <a href="pages/login/login.html" class="btn btn-grande btn-blanco"><i
+                    class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</a>
+        </section>
+    </section>
+
+    <section id="objetivo" class="acerca-de-wrapper">
+        <section class="acerca-de">
+            <section class="acerca-texto">
+                <h2>¿Quiénes somos?</h2>
+                <p>
+                    <strong>PuenteLaboral360</strong> es una plataforma educativa y de empleo que conecta a
+                    <strong>estudiantes</strong> con <strong>empresas</strong> mediante habilidades verificadas
+                    y certificados reconocidos. Creemos que el talento no debe quedarse oculto por falta
+                    de oportunidades.
+                </p>
+                <p>
+                    Trabajamos con <strong>instructores calificados</strong> que diseñan cursos orientados
+                    al mercado laboral real. Cada habilidad que aprendes queda registrada en tu perfil y
+                    es validada por un experto, dándote una ventaja competitiva frente a otras plataformas.
+                </p>
+                <p>
+                    Nuestro <strong>motor de emparejamiento inteligente</strong> analiza tu perfil
+                    automáticamente y te conecta con empresas que buscan exactamente las habilidades
+                    que tú tienes — sin intermediarios, sin filtros innecesarios.
+                </p>
+                <a href="pages/registro/registro.html" class="btn btn-grande btn-amarillo btn-cta-inicio"><i class="fa-solid fa-star"></i> Únete a
+                    PuenteLaboral360</a>
+            </section>
+            <section class="acerca-galeria">
+                <img src="img/galeria/comunidad-activa.svg"
+                    alt="PuenteLaboral360 - Comunidad de estudiantes" class="acerca-img">
+                <img src="img/galeria/aprendizaje-colaborativo.svg"
+                    alt="PuenteLaboral360 - Aprendizaje colaborativo" class="acerca-img">
+                <img src="img/galeria/conexion-con-empresas.svg" alt="PuenteLaboral360 - Conexión con empresas"
+                    class="acerca-img">
+            </section>
+        </section>
+    </section>
+
+    <section id="como-funciona" class="como-funciona">
+        <h2>¿Cómo funciona?</h2>
+        <section class="pasos">
+            <section class="paso">
+                <section class="icono-paso"><i class="fa-solid fa-user-plus"></i></section>
+                <h3>1. Regístrate</h3>
+                <p>Crea tu perfil y declara tus habilidades actuales</p>
+            </section>
+            <section class="paso">
+                <section class="icono-paso"><i class="fa-solid fa-book-open"></i></section>
+                <h3>2. Aprende</h3>
+                <p>Toma cursos verificados por instructores calificados</p>
+            </section>
+            <section class="paso">
+                <section class="icono-paso"><i class="fa-solid fa-medal"></i></section>
+                <h3>3. Certifícate</h3>
+                <p>Obtén certificados que demuestran tus competencias</p>
+            </section>
+            <section class="paso">
+                <section class="icono-paso"><i class="fa-solid fa-handshake"></i></section>
+                <h3>4. Conéctate</h3>
+                <p>Las empresas te encuentran automáticamente por tu perfil</p>
+            </section>
+        </section>
+    </section>
+
+    <section id="estadisticas" class="estadisticas">
+        <h2>PuenteLaboral360 en números</h2>
+        <section class="stats-inicio" id="stats-inicio">
+            <!-- Cifras calculadas con JavaScript sobre los archivos JSON -->
+        </section>
+
+        <h2>Cursos destacados</h2>
+        <p class="subtitulo">Los mejores valorados del catálogo, cargados desde json/cursos.json</p>
+        <section class="grid-tarjetas" id="cursos-destacados"></section>
+    </section>
+
+    <section id="roles" class="roles">
+        <h2>Accede según tu rol</h2>
+        <section class="roles-grid">
+            <section class="rol-card">
+                <section class="icono-rol"><i class="fa-solid fa-graduation-cap"></i></section>
+                <h3>Estudiante</h3>
+                <p>Aprende, certifícate y muestra tu perfil a empresas</p>
+                <a href="pages/dashboard-estudiante/dashboard-estudiante.html" class="btn btn-azul">Ver demo</a>
+            </section>
+            <section class="rol-card">
+                <section class="icono-rol"><i class="fa-solid fa-chalkboard-user"></i></section>
+                <h3>Instructor</h3>
+                <p>Crea cursos y monitorea el progreso de tus alumnos</p>
+                <a href="pages/dashboard-instructor/dashboard-instructor.html" class="btn btn-azul">Ver demo</a>
+            </section>
+            <section class="rol-card">
+                <section class="icono-rol"><i class="fa-solid fa-building"></i></section>
+                <h3>Empresa</h3>
+                <p>Encuentra talento verificado con el motor de matching</p>
+                <a href="pages/dashboard-empresa/dashboard-empresa.html" class="btn btn-azul">Ver demo</a>
+            </section>
+        </section>
+    </section>
+
+    <!-- ====================================================
+         SECCIÓN: INTEGRANTES DEL EQUIPO
+         CSS GRID: grid-template-columns repeat(3, 1fr)
+         grid-template-rows: auto, gap: 28px
+         Demuestra Grid con tarjetas de 3 columnas y
+         badge con position: absolute.
+    ==================================================== -->
+    <section id="equipo">
+        <h2><i class="fa-solid fa-users"></i> Nuestro Equipo</h2>
+        <p class="subtitulo">Las personas detrás de PuenteLaboral360</p>
+
+        <!-- Grid de 3 columnas — CSS Grid -->
+        <section class="equipo-grid">
+
+            <section class="integrante-card pos-relative">
+                <span class="badge-rol">Desarrollo</span>
+                <img src="https://ui-avatars.com/api/?name=Corina+Acosta&background=1a73e8&color=fff&size=80"
+                     alt="Corina Acosta" class="integrante-avatar">
+                <h3>Corina Acosta</h3>
+                <span class="cargo">Desarrolladora Frontend</span>
+                <p>Especialista en HTML, CSS y JavaScript. Lidera el diseño de la interfaz de usuario de PuenteLaboral360.</p>
+            </section>
+
+            <section class="integrante-card pos-relative">
+                <span class="badge-rol">Backend</span>
+                <img src="https://ui-avatars.com/api/?name=Luis+Fernandez&background=28a745&color=fff&size=80"
+                     alt="Luis Fernández" class="integrante-avatar">
+                <h3>Luis Fernández</h3>
+                <span class="cargo">Desarrollador Backend</span>
+                <p>Experto en bases de datos y APIs REST. Responsable del motor de matching y la lógica de negocio.</p>
+            </section>
+
+            <section class="integrante-card pos-relative">
+                <span class="badge-rol">UX/UI</span>
+                <img src="https://ui-avatars.com/api/?name=Ana+Torres&background=f57c00&color=fff&size=80"
+                     alt="Ana Torres" class="integrante-avatar">
+                <h3>Ana Torres</h3>
+                <span class="cargo">Diseñadora UX/UI</span>
+                <p>Experta en experiencia de usuario y prototipado. Define la arquitectura visual e interacciones de la plataforma.</p>
+            </section>
+
+        </section>
+    </section>
+
+    <hr class="separador-degradado">
+
+    <section id="multimedia" class="ubicacion">
+        <h2><i class="fa-solid fa-location-dot"></i> Encuéntranos</h2>
+        <p><center>Conoce nuestra zona de operaciones en Ecuador</center></p>
+        <section class="mapa-contenedor">
+            <iframe src="https://maps.google.com/maps?q=-0.3866624,-78.413824&z=11&output=embed" allowfullscreen
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación PuenteLaboral360">
+            </iframe>
+        </section>
+        <br>
+        <br>
+        <a href="https://www.google.com/maps/@-0.3866624,-78.413824,11z?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" class="btn-mapa">
+
+            <i class="fa-solid fa-map-location-dot"></i> Ver mapa completo en Google Maps
+        </a>
+    </section>
+
+    <section id="preguntas" class="faq">
+        <h2><i class="fa-solid fa-circle-question"></i> Preguntas Frecuentes</h2>
+<!--Preguntas Frecuentes -->
+        <details>
+            <summary>¿Es gratis registrarse en PuenteLaboral360?</summary>
+            <section class="faq-body">
+                Sí, el registro en PuenteLaboral360 es completamente gratuito para estudiantes. Puedes crear tu perfil,
+                declarar tus habilidades y acceder a cursos básicos sin ningún costo. Algunos cursos avanzados
+                y certificaciones especiales pueden tener un valor adicional.
+            </section>
+        </details>
+
+        <details>
+            <summary>¿Cómo funciona el motor de emparejamiento con empresas?</summary>
+            <section class="faq-body">
+                Nuestro <strong>motor de matching inteligente</strong> analiza automáticamente las habilidades
+                verificadas de tu perfil y las compara con los requisitos de las empresas registradas. Cuando
+                hay una coincidencia, la empresa recibe tu perfil y puede contactarte directamente  sin que
+                tengas que enviar solicitudes manualmente.
+            </section>
+          
+        </details>
+  
+        <details>
+            <summary>¿Los certificados de PuenteLaboral360 son reconocidos por las empresas?</summary>
+            <section class="faq-body">
+                Todos los certificados emitidos por PuenteLaboral360 son validados por <strong>instructores calificados</strong>
+                y están vinculados a competencias concretas medidas durante el curso. Las empresas registradas
+                en nuestra plataforma confían en estos certificados porque cada habilidad queda respaldada
+                con evidencia real de aprendizaje.
+            </section>
+        </details>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+    <script>
+        document.getElementById('navToggle').addEventListener('click', function () {
+            document.getElementById('navLinks').classList.toggle('abierto');
+        });
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/validaciones.js"></script>
+    <script src="js/datos.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/componentes.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

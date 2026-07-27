@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Panel de Administración</title>
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <nav data-zona="sesion"></nav>
+    </header>
+
+    <section class="layout-dashboard">
+
+        <aside class="sidebar">
+            <section class="perfil-mini">
+                <img class="avatar" data-perfil="avatar" src="" alt="Foto del administrador">
+                <p class="nombre-usuario" data-perfil="nombre">—</p>
+                <p class="rol-usuario" data-perfil="rol">—</p>
+            </section>
+            <nav>
+                <a href="admin.html" class="activo"><span>🛡️</span> Panel general</a>
+                <a href="../cursos/cursos.html"><span>📚</span> Catálogo de Cursos</a>
+                <a href="../perfil/perfil.html"><span>👤</span> Mi Perfil</a>
+                <a href="#" data-accion="cerrar-sesion"><span>🚪</span> Cerrar sesión</a>
+            </nav>
+        </aside>
+
+        <main class="contenido-principal">
+
+            <section class="seccion-intro">
+                <h1 class="titulo-pagina">🛡️ Panel de administración</h1>
+                <p class="subtitulo-pagina">
+                    Área restringida. El acceso exige credenciales de administrador
+                    y un código de seguridad adicional.
+                </p>
+            </section>
+
+            <section class="panel-indicadores" id="indicadores-admin" aria-label="Indicadores generales"></section>
+
+            <section class="caja-grafico">
+                <h2>Usuarios por rol</h2>
+                <canvas id="grafico-roles" aria-label="Gráfico de usuarios por rol" role="img"></canvas>
+            </section>
+
+            <section class="tarjeta">
+                <h2>Gestión de usuarios</h2>
+
+                <form class="barra-herramientas" id="barra-admin" role="search">
+                    <section class="campo">
+                        <label for="buscar-usuario">Buscar usuario</label>
+                        <input type="search" id="buscar-usuario" placeholder="Nombre, correo o nacionalidad…">
+                    </section>
+                    <section class="campo">
+                        <label for="filtro-rol">Rol</label>
+                        <select id="filtro-rol">
+                            <option value="">Todos</option>
+                            <option value="estudiante">Estudiante</option>
+                            <option value="instructor">Instructor</option>
+                            <option value="empresa">Empresa</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                    </section>
+                    <section class="campo">
+                        <label for="filtro-estado">Estado</label>
+                        <select id="filtro-estado">
+                            <option value="">Todos</option>
+                            <option value="activo">Activos</option>
+                            <option value="inactivo">Desactivados</option>
+                        </select>
+                    </section>
+                    <section class="campo">
+                        <label for="orden-usuarios">Ordenar por</label>
+                        <select id="orden-usuarios">
+                            <option value="nombre-asc">Nombre (A-Z)</option>
+                            <option value="nombre-desc">Nombre (Z-A)</option>
+                            <option value="fecha-desc">Registro más reciente</option>
+                            <option value="fecha-asc">Registro más antiguo</option>
+                        </select>
+                    </section>
+                    <button type="button" class="btn btn-gris" id="btn-restablecer-admin">🔄 Restablecer datos</button>
+                </form>
+
+                <p class="contador-resultados" id="contador-usuarios" aria-live="polite"></p>
+
+                <section class="contenedor-tabla">
+                    <table class="tabla-datos">
+                        <caption>Usuarios registrados en la plataforma</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Rol</th>
+                                <th scope="col">Nacionalidad</th>
+                                <th scope="col">Edad</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-usuarios"></tbody>
+                    </table>
+                </section>
+            </section>
+
+        </main>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/config.js"></script>
+    <script src="../../js/api.js"></script>
+    <script src="../../js/componentes.js"></script>
+    <script src="../../js/admin.js"></script>
+</body>
+</html>

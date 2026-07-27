@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "titulo": "Comunidad Activa",
+    "categoria": "comunidad",
+    "descripcion": "Estudiantes de la plataforma compartiendo experiencias.",
+    "icono": "👥",
+    "imagen": "img/galeria/comunidad-activa.svg",
+    "alt": "Comunidad Activa - PuenteLaboral360",
+    "fecha": "2026-01-01"
+  },
+  {
+    "id": 2,
+    "titulo": "Aprendizaje Colaborativo",
+    "categoria": "aprendizaje",
+    "descripcion": "Sesiones de estudio en grupo entre estudiantes.",
+    "icono": "📚",
+    "imagen": "img/galeria/aprendizaje-colaborativo.svg",
+    "alt": "Aprendizaje Colaborativo - PuenteLaboral360",
+    "fecha": "2026-02-02"
+  },
+  {
+    "id": 3,
+    "titulo": "Conexion con Empresas",
+    "categoria": "empresas",
+    "descripcion": "Encuentros entre estudiantes y empresas aliadas.",
+    "icono": "🤝",
+    "imagen": "img/techcorp_s.a.png",
+    "alt": "Conexion con Empresas - PuenteLaboral360",
+    "fecha": "2026-03-03"
+  },
+  {
+    "id": 4,
+    "titulo": "Certificaciones Verificadas",
+    "categoria": "certificados",
+    "descripcion": "Certificados emitidos por instructores verificados.",
+    "icono": "🏅",
+    "imagen": "img/certificacion_verificadas.jpg",
+    "alt": "Certificaciones Verificadas - PuenteLaboral360",
+    "fecha": "2026-04-04"
+  },
+  {
+    "id": 5,
+    "titulo": "Demo Day 2026",
+    "categoria": "eventos",
+    "descripcion": "Presentacion de proyectos finales ante empresas.",
+    "icono": "🎤",
+    "imagen": "img/demo_day.jpg",
+    "alt": "Demo Day 2026 - PuenteLaboral360",
+    "fecha": "2026-05-05"
+  },
+  {
+    "id": 6,
+    "titulo": "Instructores Verificados",
+    "categoria": "instructores",
+    "descripcion": "Equipo docente validado por la plataforma.",
+    "icono": "👨‍🏫",
+    "imagen": "img/instructores_verificados.png",
+    "alt": "Instructores Verificados - PuenteLaboral360",
+    "fecha": "2026-06-06"
+  },
+  {
+    "id": 7,
+    "titulo": "Crecimiento Personal",
+    "categoria": "comunidad",
+    "descripcion": "Historias de progreso de nuestros estudiantes.",
+    "icono": "🌱",
+    "imagen": "img/crecimiento_personal.jpg",
+    "alt": "Crecimiento Personal - PuenteLaboral360",
+    "fecha": "2026-07-07"
+  },
+  {
+    "id": 8,
+    "titulo": "Mentorias Uno a Uno",
+    "categoria": "instructores",
+    "descripcion": "Acompanamiento personalizado por instructores.",
+    "icono": "🧭",
+    "imagen": "img/galeria/mentorias-uno-a-uno.svg",
+    "alt": "Mentorias Uno a Uno - PuenteLaboral360",
+    "fecha": "2026-01-08"
+  },
+  {
+    "id": 9,
+    "titulo": "Taller de Portafolio",
+    "categoria": "eventos",
+    "descripcion": "Construccion de portafolios profesionales.",
+    "icono": "💼",
+    "imagen": "img/galeria/taller-de-portafolio.svg",
+    "alt": "Taller de Portafolio - PuenteLaboral360",
+    "fecha": "2026-02-09"
+  },
+  {
+    "id": 10,
+    "titulo": "Ferias de Empleo",
+    "categoria": "empresas",
+    "descripcion": "Ferias laborales con empresas del pais.",
+    "icono": "🏢",
+    "imagen": "img/galeria/ferias-de-empleo.svg",
+    "alt": "Ferias de Empleo - PuenteLaboral360",
+    "fecha": "2026-03-10"
+  },
+  {
+    "id": 11,
+    "titulo": "Hackathon Estudiantil",
+    "categoria": "eventos",
+    "descripcion": "Competencia de desarrollo en 48 horas.",
+    "icono": "⚡",
+    "imagen": "img/galeria/hackathon-estudiantil.svg",
+    "alt": "Hackathon Estudiantil - PuenteLaboral360",
+    "fecha": "2026-04-11"
+  },
+  {
+    "id": 12,
+    "titulo": "Graduaciones",
+    "categoria": "certificados",
+    "descripcion": "Ceremonia de entrega de certificados.",
+    "icono": "🎓",
+    "imagen": "img/galeria/graduaciones.svg",
+    "alt": "Graduaciones - PuenteLaboral360",
+    "fecha": "2026-05-12"
+  }
+]

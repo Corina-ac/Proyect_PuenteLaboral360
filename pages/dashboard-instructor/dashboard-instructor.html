@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Dashboard Instructor</title>
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="dashboard-instructor.css">
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type ="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body data-roles="instructor">
+
+    <section class="navbar navbar-instructor">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <nav>
+            <a title="Notificaciones" href="../notificaciones/notificaciones-instructor.html">🔔</a>
+            <a href="#" data-accion="cerrar-sesion">Cerrar sesión</a>
+        </nav>
+    </section>
+
+    <section class="layout-dashboard">
+
+        <section class="sidebar">
+            <section class="perfil-mini">
+                <img class="avatar" data-perfil="avatar" src="" alt="Foto de perfil">
+                <p class="nombre-usuario" data-perfil="nombre">—</p>
+                <p class="rol-usuario" data-perfil="rol">—</p>
+            </section>
+            <nav>
+                <a title="Inicio" href="dashboard-instructor.html" class="activo" id="enlace-inicio">🏠 Inicio</a>
+                <a title="Mis Cursos" href="../cursos/mis-cursos-instructor.html">📚 Mis Cursos</a>
+                <a title="Notificaciones" href="../notificaciones/notificaciones-instructor.html">🔔 Notificaciones</a>
+            </nav>
+        </section>
+
+        <section class="contenido-principal">
+
+            <section class="seccion-intro">
+                <h1 class="titulo-pagina">Panel del Instructor</h1>
+                <p class="subtitulo-pagina">Monitorea el impacto de tus cursos</p>
+            </section>
+
+            <section class="stats-grid" id="stats-instructor"></section>
+
+            <section class="tarjeta">
+                <h2>Trazabilidad de mis cursos</h2>
+                <div id="tabla-cursos"></div>
+            </section>
+
+            <section class="tarjeta">
+                <h2>Solicitudes de evaluación pendientes</h2>
+                <div id="solicitudes-pendientes"></div>
+            </section>
+
+            <section class="tarjeta">
+                <h2>Mi estado de verificación</h2>
+                <p class="texto-info">Los instructores deben pasar por revisión administrativa para asegurar la calidad de la enseñanza.</p>
+                <div id="estado-verificacion"></div>
+            </section>
+
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/componentes.js"></script>
+    <script src="../../js/guardia.js"></script>
+    <script src="../../js/config.js"></script>
+    <script src="../../js/api.js"></script>
+    <script src="../../js/dashboard-instructor.js"></script>
+</body>
+</html>

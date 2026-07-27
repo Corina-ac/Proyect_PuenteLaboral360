@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "usuarioId": 1,
+    "cursoId": 1,
+    "progreso": 100,
+    "estado": "completado",
+    "calificacion": 7.5,
+    "certificadoEmitido": true,
+    "fechaInscripcion": "2026-01-01"
+  },
+  {
+    "id": 2,
+    "usuarioId": 1,
+    "cursoId": 4,
+    "progreso": 100,
+    "estado": "completado",
+    "calificacion": 8.5,
+    "certificadoEmitido": true,
+    "fechaInscripcion": "2026-02-02"
+  },
+  {
+    "id": 3,
+    "usuarioId": 1,
+    "cursoId": 7,
+    "progreso": 65,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-03-03"
+  },
+  {
+    "id": 4,
+    "usuarioId": 1,
+    "cursoId": 10,
+    "progreso": 30,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-04-04"
+  },
+  {
+    "id": 5,
+    "usuarioId": 1,
+    "cursoId": 13,
+    "progreso": 0,
+    "estado": "inscrito",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-05-05"
+  },
+  {
+    "id": 7,
+    "usuarioId": 2,
+    "cursoId": 9,
+    "progreso": 65,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-02-03"
+  },
+  {
+    "id": 8,
+    "usuarioId": 2,
+    "cursoId": 12,
+    "progreso": 30,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-03-04"
+  },
+  {
+    "id": 9,
+    "usuarioId": 2,
+    "cursoId": 15,
+    "progreso": 0,
+    "estado": "inscrito",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-04-05"
+  },
+  {
+    "id": 10,
+    "usuarioId": 2,
+    "cursoId": 18,
+    "progreso": 100,
+    "estado": "completado",
+    "calificacion": 9.5,
+    "certificadoEmitido": true,
+    "fechaInscripcion": "2026-05-06"
+  },
+  {
+    "id": 11,
+    "usuarioId": 3,
+    "cursoId": 11,
+    "progreso": 65,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-01-03"
+  },
+  {
+    "id": 12,
+    "usuarioId": 3,
+    "cursoId": 14,
+    "progreso": 30,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-02-04"
+  },
+  {
+    "id": 13,
+    "usuarioId": 3,
+    "cursoId": 17,
+    "progreso": 0,
+    "estado": "inscrito",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-03-05"
+  },
+  {
+    "id": 14,
+    "usuarioId": 3,
+    "cursoId": 20,
+    "progreso": 100,
+    "estado": "completado",
+    "calificacion": 9.5,
+    "certificadoEmitido": true,
+    "fechaInscripcion": "2026-04-06"
+  },
+  {
+    "id": 15,
+    "usuarioId": 3,
+    "cursoId": 23,
+    "progreso": 100,
+    "estado": "completado",
+    "calificacion": 7.5,
+    "certificadoEmitido": true,
+    "fechaInscripcion": "2026-05-07"
+  },
+  {
+    "id": 16,
+    "usuarioId": 4,
+    "cursoId": 16,
+    "progreso": 30,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-01-04"
+  },
+  {
+    "id": 17,
+    "usuarioId": 4,
+    "cursoId": 19,
+    "progreso": 0,
+    "estado": "inscrito",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-02-05"
+  },
+  {
+    "id": 18,
+    "usuarioId": 4,
+    "cursoId": 22,
+    "progreso": 100,
+    "estado": "completado",
+    "calificacion": 9.5,
+    "certificadoEmitido": true,
+    "fechaInscripcion": "2026-03-06"
+  },
+  {
+    "id": 19,
+    "usuarioId": 4,
+    "cursoId": 25,
+    "progreso": 100,
+    "estado": "completado",
+    "calificacion": 7.5,
+    "certificadoEmitido": true,
+    "fechaInscripcion": "2026-04-07"
+  },
+  {
+    "id": 20,
+    "usuarioId": 4,
+    "cursoId": 3,
+    "progreso": 65,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-05-08"
+  },
+  {
+    "id": 21,
+    "usuarioId": 5,
+    "cursoId": 21,
+    "progreso": 0,
+    "estado": "inscrito",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-01-05"
+  },
+  {
+    "id": 22,
+    "usuarioId": 5,
+    "cursoId": 24,
+    "progreso": 100,
+    "estado": "completado",
+    "calificacion": 9.5,
+    "certificadoEmitido": true,
+    "fechaInscripcion": "2026-02-06"
+  },
+  {
+    "id": 23,
+    "usuarioId": 5,
+    "cursoId": 2,
+    "progreso": 100,
+    "estado": "completado",
+    "calificacion": 7.5,
+    "certificadoEmitido": true,
+    "fechaInscripcion": "2026-03-07"
+  },
+  {
+    "id": 24,
+    "usuarioId": 5,
+    "cursoId": 5,
+    "progreso": 65,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-04-08"
+  },
+  {
+    "id": 25,
+    "usuarioId": 5,
+    "cursoId": 8,
+    "progreso": 30,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-05-09"
+  },
+  {
+    "id": 26,
+    "usuarioId": 11,
+    "cursoId": 1,
+    "progreso": 100,
+    "estado": "completado",
+    "calificacion": 9.5,
+    "certificadoEmitido": true,
+    "fechaInscripcion": "2026-01-06"
+  },
+  {
+    "id": 27,
+    "usuarioId": 11,
+    "cursoId": 4,
+    "progreso": 100,
+    "estado": "completado",
+    "calificacion": 7.5,
+    "certificadoEmitido": true,
+    "fechaInscripcion": "2026-02-07"
+  },
+  {
+    "id": 28,
+    "usuarioId": 11,
+    "cursoId": 7,
+    "progreso": 65,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-03-08"
+  },
+  {
+    "id": 29,
+    "usuarioId": 11,
+    "cursoId": 10,
+    "progreso": 30,
+    "estado": "en progreso",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-04-09"
+  },
+  {
+    "id": 30,
+    "usuarioId": 11,
+    "cursoId": 13,
+    "progreso": 0,
+    "estado": "inscrito",
+    "calificacion": null,
+    "certificadoEmitido": false,
+    "fechaInscripcion": "2026-05-10"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "nombre": "TechCorp S.A.",
+    "sector": "Tecnologia",
+    "empleados": 240,
+    "verificada": true,
+    "iniciales": "TE",
+    "contacto": {
+      "email": "talento@techcorpsa.com",
+      "telefono": "042000000",
+      "ciudad": "Quito",
+      "pais": "Ecuador"
+    },
+    "fechaRegistro": "2025-01-15"
+  },
+  {
+    "id": 2,
+    "nombre": "DataAndes",
+    "sector": "Analitica de datos",
+    "empleados": 120,
+    "verificada": true,
+    "iniciales": "DA",
+    "contacto": {
+      "email": "talento@dataandes.com",
+      "telefono": "042031546",
+      "ciudad": "Guayaquil",
+      "pais": "Ecuador"
+    },
+    "fechaRegistro": "2025-02-15"
+  },
+  {
+    "id": 3,
+    "nombre": "Innova Software",
+    "sector": "Desarrollo a medida",
+    "empleados": 85,
+    "verificada": true,
+    "iniciales": "IN",
+    "contacto": {
+      "email": "talento@innovasoftware.com",
+      "telefono": "042063093",
+      "ciudad": "Cuenca",
+      "pais": "Ecuador"
+    },
+    "fechaRegistro": "2025-03-15"
+  },
+  {
+    "id": 4,
+    "nombre": "Banco Litoral",
+    "sector": "Servicios financieros",
+    "empleados": 1500,
+    "verificada": false,
+    "iniciales": "BA",
+    "contacto": {
+      "email": "talento@bancolitoral.com",
+      "telefono": "042094640",
+      "ciudad": "Guayaquil",
+      "pais": "Ecuador"
+    },
+    "fechaRegistro": "2025-04-15"
+  },
+  {
+    "id": 5,
+    "nombre": "AgroDigital",
+    "sector": "Agroindustria",
+    "empleados": 60,
+    "verificada": true,
+    "iniciales": "AG",
+    "contacto": {
+      "email": "talento@agrodigital.com",
+      "telefono": "042126186",
+      "ciudad": "Quevedo",
+      "pais": "Ecuador"
+    },
+    "fechaRegistro": "2025-05-15"
+  },
+  {
+    "id": 6,
+    "nombre": "SaludNet",
+    "sector": "Salud digital",
+    "empleados": 310,
+    "verificada": true,
+    "iniciales": "SA",
+    "contacto": {
+      "email": "talento@saludnet.com",
+      "telefono": "042157733",
+      "ciudad": "Quito",
+      "pais": "Ecuador"
+    },
+    "fechaRegistro": "2025-06-15"
+  },
+  {
+    "id": 7,
+    "nombre": "LogiSur",
+    "sector": "Logistica",
+    "empleados": 190,
+    "verificada": true,
+    "iniciales": "LO",
+    "contacto": {
+      "email": "talento@logisur.com",
+      "telefono": "042189280",
+      "ciudad": "Machala",
+      "pais": "Ecuador"
+    },
+    "fechaRegistro": "2025-07-15"
+  },
+  {
+    "id": 8,
+    "nombre": "EduPlus",
+    "sector": "Educacion",
+    "empleados": 45,
+    "verificada": false,
+    "iniciales": "ED",
+    "contacto": {
+      "email": "talento@eduplus.com",
+      "telefono": "042220826",
+      "ciudad": "Santo Domingo",
+      "pais": "Ecuador"
+    },
+    "fechaRegistro": "2025-08-15"
+  },
+  {
+    "id": 9,
+    "nombre": "CloudEC",
+    "sector": "Infraestructura cloud",
+    "empleados": 75,
+    "verificada": true,
+    "iniciales": "CL",
+    "contacto": {
+      "email": "talento@cloudec.com",
+      "telefono": "042252373",
+      "ciudad": "Quito",
+      "pais": "Ecuador"
+    },
+    "fechaRegistro": "2025-09-15"
+  },
+  {
+    "id": 10,
+    "nombre": "RetailMax",
+    "sector": "Comercio",
+    "empleados": 430,
+    "verificada": true,
+    "iniciales": "RE",
+    "contacto": {
+      "email": "talento@retailmax.com",
+      "telefono": "042283920",
+      "ciudad": "Ambato",
+      "pais": "Ecuador"
+    },
+    "fechaRegistro": "2025-10-15"
+  }
+]

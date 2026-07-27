@@ -1,0 +1,17 @@
+/* Overrides del sidebar para el rol Empresa */
+.sidebar .avatar {
+    background-color: #dc3545;
+}
+
+.sidebar nav a.activo {
+    background-color: #dc3545;
+    border-left-color: #ffdd57;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .sidebar nav a.activo {
+        border-left-color: transparent;
+        border-bottom-color: #ffdd57;
+    }
+}

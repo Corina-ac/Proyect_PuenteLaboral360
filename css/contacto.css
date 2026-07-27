@@ -1,0 +1,514 @@
+/* ============================================================
+   ARCHIVO: contacto.css
+   Estilos exclusivos de la página de contacto (contacto.html).
+   Organiza el formulario con Flexbox/Grid y las tarjetas
+   de información de contacto con Flexbox.
+   Debe cargarse después de general.css.
+   ============================================================ */
+
+/* ============================================================
+   BLOQUE 1: HERO DE CONTACTO
+   Encabezado de la página con título y descripción.
+   Identificador único: #hero-contacto
+   ============================================================ */
+
+#hero-contacto {
+    background-color: #1a73e8;
+    color: #ffffff;
+    text-align: center;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+#hero-contacto h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+#hero-contacto h1 span {
+    color: #ffdd57;
+}
+
+#hero-contacto p {
+    font-size: 16px;
+    color: #cde;
+    margin-bottom: 0;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================================
+   BLOQUE 2: CONTENEDOR PRINCIPAL DE CONTACTO
+   Layout de dos columnas con Flexbox:
+   - Columna izquierda: formulario de contacto
+   - Columna derecha: información y tarjetas de contacto
+   Flexbox: display, gap, align-items, flex-wrap.
+   ============================================================ */
+
+#seccion-contacto {
+    background-color: #f0f2f5;
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+.contacto-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Panel del formulario — ocupa más espacio (flex: 2) */
+.contacto-formulario {
+    flex: 2;
+    min-width: 300px;
+    background-color: #ffffff;
+    border: 1px solid #dde3f0;
+    border-radius: 12px;
+    padding: 36px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 16px rgba(26, 115, 232, 0.08);
+}
+
+.contacto-formulario h2 {
+    font-size: 22px;
+    color: #1a73e8;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #e8f0fe;
+    padding-bottom: 10px;
+}
+
+.contacto-formulario .descripcion-form {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 24px;
+}
+
+/* Panel lateral de información — ocupa menos espacio (flex: 1) */
+.contacto-info {
+    flex: 1;
+    min-width: 260px;
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   BLOQUE 3: FORMULARIO ORGANIZADO CON GRID
+   Los campos del formulario se distribuyen en dos columnas
+   usando CSS Grid para mejor aprovechamiento del espacio.
+   Grid: grid-template-columns, grid-template-rows, gap.
+   ============================================================ */
+
+.form-contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 16px 20px;
+}
+
+/* Campos que ocupan todo el ancho (2 columnas) */
+.campo-completo {
+    grid-column: 1 / 3;
+}
+
+/* Grupo de campo: label + input */
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.campo-grupo label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 0;
+}
+
+.campo-grupo input,
+.campo-grupo select,
+.campo-grupo textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 0;
+    background-color: #fafafa;
+    color: #333;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo-grupo input:focus,
+.campo-grupo select:focus,
+.campo-grupo textarea:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.12);
+    outline: none;
+    background-color: #ffffff;
+}
+
+.campo-grupo textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+/* Botón de envío del formulario */
+.btn-enviar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 32px;
+    background-color: #1a73e8;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #1558b0;
+    transform: translateY(-1px);
+}
+
+/* Mensaje de confirmación */
+.mensaje-exito {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-left: 4px solid #28a745;
+    border-radius: 6px;
+    padding: 14px 18px;
+    color: #155724;
+    font-size: 14px;
+    margin-top: 16px;
+    display: none;
+}
+
+/* ============================================================
+   BLOQUE 4: TARJETAS DE INFORMACIÓN DE CONTACTO
+   Flexbox vertical para apilar las tarjetas de info.
+   Cada tarjeta usa Box Model: border, border-radius, padding.
+   ============================================================ */
+
+.info-titulo {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Contenedor vertical de tarjetas — Flexbox en columna */
+.tarjetas-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Tarjeta individual de información */
+.info-card {
+    background-color: #ffffff;
+    border: 1px solid #dde3f0;
+    border-left: 4px solid #1a73e8;
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.info-card:hover {
+    box-shadow: 0 6px 18px rgba(26, 115, 232, 0.12);
+    transform: translateX(4px);
+}
+
+/* Ícono circular de la tarjeta */
+.info-card .icono-card {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 50%;
+    background-color: #e8f0fe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #1a73e8;
+    box-sizing: border-box;
+}
+
+/* Contenido de texto de la tarjeta */
+.info-card .texto-card h4 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 4px;
+}
+
+.info-card .texto-card p {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.info-card .texto-card a {
+    color: #1a73e8;
+    font-size: 13px;
+}
+
+/* ============================================================
+   BLOQUE 5: SECCIÓN DE REDES SOCIALES
+   Íconos de redes dispuestos con Flexbox horizontal.
+   Identificador: #redes-sociales
+   ============================================================ */
+
+#redes-sociales {
+    background-color: #ffffff;
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 1px solid #e8f0fe;
+}
+
+#redes-sociales h2 {
+    font-size: 22px;
+    color: #1a73e8;
+    margin-bottom: 24px;
+}
+
+/* Fila de íconos de redes sociales con Flexbox */
+.redes-lista {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Botón de red social */
+.red-social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.red-social-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+.red-linkedin  { background-color: #0a66c2; color: #ffffff; }
+.red-instagram { background-color: #e4405f; color: #ffffff; }
+.red-twitter   { background-color: #1da1f2; color: #ffffff; }
+.red-facebook  { background-color: #1877f2; color: #ffffff; }
+
+/* ============================================================
+   BLOQUE 6: APART INFORMATIVO (HORARIO Y DATOS)
+   Bloque de texto adicional debajo del formulario.
+   Usa Box Model: width, padding, border, border-radius.
+   ============================================================ */
+
+#bloque-adicional {
+    background-color: #ffffff;
+    padding: 40px 20px;
+}
+
+.bloque-adicional-inner {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+/* Artículo de horario */
+.articulo-horario {
+    flex: 1;
+    min-width: 240px;
+    background-color: #f8f9ff;
+    border: 1px solid #e8f0fe;
+    border-left: 4px solid #ffdd57;
+    border-radius: 10px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.articulo-horario h3 {
+    font-size: 16px;
+    color: #2c3e50;
+    margin-bottom: 12px;
+}
+
+/* Tabla de horario con display flex por filas */
+.fila-horario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e8f0fe;
+    font-size: 13px;
+}
+
+.fila-horario:last-child {
+    border-bottom: none;
+}
+
+.fila-horario .dia {
+    color: #555;
+    font-weight: bold;
+}
+
+.fila-horario .hora {
+    color: #1a73e8;
+    font-weight: bold;
+}
+
+/* Artículo de preguntas frecuentes de contacto */
+.articulo-faq-contacto {
+    flex: 1;
+    min-width: 240px;
+    background-color: #f8f9ff;
+    border: 1px solid #e8f0fe;
+    border-left: 4px solid #1a73e8;
+    border-radius: 10px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.articulo-faq-contacto h3 {
+    font-size: 16px;
+    color: #2c3e50;
+    margin-bottom: 14px;
+}
+
+.articulo-faq-contacto ul {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.articulo-faq-contacto li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px solid #e8f0fe;
+    font-size: 13px;
+    color: #444;
+}
+
+.articulo-faq-contacto li:last-child {
+    border-bottom: none;
+}
+
+.articulo-faq-contacto li i {
+    color: #1a73e8;
+    margin-top: 2px;
+    min-width: 14px;
+}
+
+/* ============================================================
+   RESPONSIVIDAD — MEDIA QUERIES
+   ============================================================ */
+
+@media (max-width: 768px) {
+    #hero-contacto {
+        padding: 36px 16px;
+    }
+
+    #hero-contacto h1 {
+        font-size: 26px;
+    }
+
+    /* Layout de dos columnas → una sola */
+    .contacto-layout {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .contacto-formulario {
+        padding: 22px 18px;
+    }
+
+    /* Grid del formulario: 2 → 1 col */
+    .form-contacto-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-completo {
+        grid-column: 1;
+    }
+
+    #seccion-contacto {
+        padding: 36px 16px;
+    }
+
+    #redes-sociales {
+        padding: 32px 16px;
+    }
+
+    .redes-lista {
+        gap: 12px;
+    }
+
+    .red-social-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    #bloque-adicional {
+        padding: 28px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero-contacto h1 {
+        font-size: 20px;
+    }
+
+    #hero-contacto p {
+        font-size: 14px;
+    }
+
+    .contacto-formulario {
+        padding: 16px 14px;
+    }
+
+    .redes-lista {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .red-social-btn {
+        width: 100%;
+        max-width: 260px;
+        justify-content: center;
+    }
+
+    .btn-enviar {
+        width: 100%;
+        justify-content: center;
+    }
+}

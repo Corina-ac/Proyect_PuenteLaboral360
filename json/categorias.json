@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "nombre": "Frontend",
+    "slug": "frontend",
+    "icono": "🎨",
+    "color": "#3b82f6",
+    "descripcion": "Interfaces web, maquetacion y experiencia de usuario."
+  },
+  {
+    "id": 2,
+    "nombre": "Backend",
+    "slug": "backend",
+    "icono": "⚙️",
+    "color": "#10b981",
+    "descripcion": "Servidores, APIs y logica de negocio."
+  },
+  {
+    "id": 3,
+    "nombre": "Base de Datos",
+    "slug": "base-de-datos",
+    "icono": "🗄️",
+    "color": "#8b5cf6",
+    "descripcion": "Modelado, consultas y administracion de datos."
+  },
+  {
+    "id": 4,
+    "nombre": "DevOps",
+    "slug": "devops",
+    "icono": "🚀",
+    "color": "#f97316",
+    "descripcion": "Integracion continua, contenedores y despliegue."
+  },
+  {
+    "id": 5,
+    "nombre": "Data Science",
+    "slug": "data-science",
+    "icono": "📊",
+    "color": "#ef4444",
+    "descripcion": "Analisis de datos, estadistica y visualizacion."
+  },
+  {
+    "id": 6,
+    "nombre": "Diseno UX/UI",
+    "slug": "diseno",
+    "icono": "🖌️",
+    "color": "#ec4899",
+    "descripcion": "Investigacion de usuarios y diseno de productos digitales."
+  },
+  {
+    "id": 7,
+    "nombre": "Habilidades Blandas",
+    "slug": "habilidades-blandas",
+    "icono": "🤝",
+    "color": "#0ea5e9",
+    "descripcion": "Comunicacion, liderazgo y trabajo en equipo."
+  },
+  {
+    "id": 8,
+    "nombre": "Ciberseguridad",
+    "slug": "ciberseguridad",
+    "icono": "🔐",
+    "color": "#64748b",
+    "descripcion": "Proteccion de sistemas, redes y datos."
+  }
+]

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Notificaciones Empresa</title>
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="notificaciones.css">
+    <link rel="stylesheet" href="notificaciones-empresa.css">
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type ="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body data-roles="empresa">
+
+    <section class="navbar navbar-empresa">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <nav>
+            <a title="Notificaciones" href="notificaciones-empresa.html"> 🔔 </a>
+            <a title="Cerrar sesión" href="#" data-accion="cerrar-sesion">Cerrar sesión</a>
+        </nav>
+    </section>
+
+    <section class="layout-dashboard">
+
+        <section class="sidebar">
+            <section class="perfil-mini">
+                <img class="avatar" data-perfil="avatar" src="" alt="Foto de perfil">
+                <p class="nombre-usuario" data-perfil="nombre">—</p>
+                <p class="rol-usuario" data-perfil="rol">—</p>
+            </section>
+            <nav>
+                <a title="Inicio" href="../dashboard-empresa/dashboard-empresa.html"><span>🏠</span> Inicio</a>
+                <a title="Buscar Talento" href="../buscar-talento/buscar-talento.html"><span>🔍</span> Buscar Talento</a>
+                <a title="Mis Vacantes" href="../mis-vacantes/mis-vacantes.html"><span>📌</span> Mis Vacantes</a>
+                <a title="Notificaciones" href="notificaciones-empresa.html" class="activo"><span>🔔</span> Notificaciones</a>
+            </nav>
+        </section>
+
+        <section class="contenido-principal">
+
+            <section class="encabezado-seccion">
+                <section>
+                    <h1 class="titulo-pagina"> Notificaciones</h1>
+                    <p class="subtitulo-pagina">Actividad reciente de candidatos y vacantes</p>
+                </section>
+                <a title="Marcar todo como leído" href="#" class="btn btn-gris btn-sm">Marcar todo como leído</a>
+            </section>
+
+            <section class="tarjeta">
+                <h2>Nuevas</h2>
+
+                <section class="notif-item nueva exito">
+                    <section class="notif-icono">🎯</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Nuevo candidato con 87% de match</section>
+                        <section class="notif-descripcion">
+                            <strong>Corina Acosta</strong> acaba de obtener su certificado en <strong>Base de Datos SQL</strong>.
+                            Su perfil ahora tiene <strong>87% de compatibilidad</strong> con tu vacante <em>Desarrollador Frontend Junior</em>.
+                        </section>
+                        <section class="notif-accion">
+                            <a title="Ver perfil" href="../perfil/perfil.html" class="btn btn-azul btn-xs">Ver perfil</a>
+                        </section>
+                        <section class="notif-fecha">Hace 10 minutos · Motor de Emparejamiento</section>
+                    </section>
+                </section>
+
+                <section class="notif-item nueva">
+                    <section class="notif-icono">👀</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Un candidato vio tu vacante</section>
+                        <section class="notif-descripcion">
+                            <strong>Carlos Mendoza</strong> revisó tu oferta <em>DevOps Engineer</em>.
+                            Su compatibilidad estimada es del <strong>74%</strong>.
+                        </section>
+                        <section class="notif-accion">
+                            <a title="Ver perfil" href="../perfil/perfil.html" class="btn btn-azul btn-xs">Ver perfil</a>
+                        </section>
+                        <section class="notif-fecha">Hace 2 horas · Actividad de candidatos</section>
+                    </section>
+                </section>
+
+                <section class="notif-item nueva alerta">
+                    <section class="notif-icono">⚠️</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Tu vacante vence en 3 días</section>
+                        <section class="notif-descripcion">
+                            La publicación <em>Analista de Datos Jr.</em> expira el <strong>19 de mayo</strong>.
+                            Renuévala para seguir recibiendo candidatos.
+                        </section>
+                        <section class="notif-accion">
+                            <a title="Renovar vacante" href="#" class="btn btn-rojo btn-xs">Renovar vacante</a>
+                        </section>
+                        <section class="notif-fecha">Hace 5 horas · Sistema de Vacantes</section>
+                    </section>
+                </section>
+
+                <section class="notif-item nueva">
+                    <section class="notif-icono">📋</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">5 nuevos candidatos disponibles</section>
+                        <section class="notif-descripcion">
+                            El motor de emparejamiento encontró <strong>5 nuevos perfiles</strong> compatibles con tu vacante
+                            <em>Desarrollador Frontend Junior</em> esta semana.
+                        </section>
+                        <section class="notif-accion">
+                            <a title="Ver candidatos" href="../dashboard-empresa/dashboard-empresa.html" class="btn btn-azul btn-xs">Ver candidatos</a>
+                        </section>
+                        <section class="notif-fecha">Hoy · Motor de Emparejamiento</section>
+                    </section>
+                </section>
+
+            </section>
+
+            <section class="tarjeta">
+                <h2>Anteriores</h2>
+
+                <section class="notif-item leida">
+                    <section class="notif-icono">💾</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Perfil guardado: Luis Fernández</section>
+                        <section class="notif-descripcion">
+                            Guardaste el perfil de <strong>Luis Fernández</strong> para la vacante <em>Desarrollador Frontend Junior</em>.
+                        </section>
+                        <section class="notif-fecha">14 May 2026 · Gestión de perfiles</section>
+                    </section>
+                </section>
+
+                <section class="notif-item leida">
+                    <section class="notif-icono">📌</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">Vacante publicada correctamente</section>
+                        <section class="notif-descripcion">
+                            Tu vacante <em>DevOps Engineer</em> fue publicada y ya es visible para los candidatos del ecosistema PuenteLaboral360.
+                        </section>
+                        <section class="notif-fecha">10 May 2026 · Sistema de Vacantes</section>
+                    </section>
+                </section>
+
+                <section class="notif-item leida">
+                    <section class="notif-icono">🎉</section>
+                    <section class="notif-contenido">
+                        <section class="notif-titulo">¡Bienvenida TechCorp S.A. a PuenteLaboral360!</section>
+                        <section class="notif-descripcion">
+                            Tu cuenta empresarial fue creada. El motor de emparejamiento ya está buscando talento verificado para tus vacantes.
+                        </section>
+                        <section class="notif-fecha">1 Ene 2026 · PuenteLaboral360</section>
+                    </section>
+                </section>
+
+            </section>
+
+        </section>
+    </section>
+
+    <section class="footer">
+        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/componentes.js"></script>
+    <script src="../../js/guardia.js"></script>
+</body>
+</html>

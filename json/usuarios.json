@@ -1,0 +1,338 @@
+[
+  {
+    "id": 1,
+    "nombres": "Corina",
+    "apellidos": "Acosta",
+    "email": "corina@correo.com",
+    "passwordHash": "h63851b34",
+    "rol": "estudiante",
+    "fechaNacimiento": "2004-03-15",
+    "nacionalidad": {
+      "nombre": "Ecuador",
+      "codigo": "EC",
+      "bandera": "🇪🇨"
+    },
+    "iniciales": "CA",
+    "activo": true,
+    "codigoAccesoHash": null,
+    "contacto": {
+      "telefono": "0990000000",
+      "ciudad": "Quito",
+      "direccion": "Av. Principal 100 y Calle 2"
+    },
+    "preferencias": {
+      "notificaciones": false,
+      "categoriaFavoritaId": 1,
+      "modalidad": "Virtual"
+    },
+    "fechaRegistro": "2026-01-01"
+  },
+  {
+    "id": 2,
+    "nombres": "Ana",
+    "apellidos": "Garcia",
+    "email": "ana@correo.com",
+    "passwordHash": "h63851b34",
+    "rol": "estudiante",
+    "fechaNacimiento": "2002-07-08",
+    "nacionalidad": {
+      "nombre": "Ecuador",
+      "codigo": "EC",
+      "bandera": "🇪🇨"
+    },
+    "iniciales": "AG",
+    "activo": true,
+    "codigoAccesoHash": null,
+    "contacto": {
+      "telefono": "0990234517",
+      "ciudad": "Guayaquil",
+      "direccion": "Av. Principal 107 y Calle 3"
+    },
+    "preferencias": {
+      "notificaciones": true,
+      "categoriaFavoritaId": 2,
+      "modalidad": "Hibrido"
+    },
+    "fechaRegistro": "2026-02-02"
+  },
+  {
+    "id": 3,
+    "nombres": "Kevin",
+    "apellidos": "Zambrano",
+    "email": "kevin@correo.com",
+    "passwordHash": "h63851b34",
+    "rol": "estudiante",
+    "fechaNacimiento": "2001-11-22",
+    "nacionalidad": {
+      "nombre": "Ecuador",
+      "codigo": "EC",
+      "bandera": "🇪🇨"
+    },
+    "iniciales": "KZ",
+    "activo": true,
+    "codigoAccesoHash": null,
+    "contacto": {
+      "telefono": "0990469034",
+      "ciudad": "Cuenca",
+      "direccion": "Av. Principal 114 y Calle 4"
+    },
+    "preferencias": {
+      "notificaciones": true,
+      "categoriaFavoritaId": 3,
+      "modalidad": "Presencial"
+    },
+    "fechaRegistro": "2026-03-03"
+  },
+  {
+    "id": 4,
+    "nombres": "Doris",
+    "apellidos": "Alvarado",
+    "email": "doris@correo.com",
+    "passwordHash": "h63851b34",
+    "rol": "estudiante",
+    "fechaNacimiento": "2005-01-30",
+    "nacionalidad": {
+      "nombre": "Colombia",
+      "codigo": "CO",
+      "bandera": "🇨🇴"
+    },
+    "iniciales": "DA",
+    "activo": true,
+    "codigoAccesoHash": null,
+    "contacto": {
+      "telefono": "0990703551",
+      "ciudad": "Santo Domingo",
+      "direccion": "Av. Principal 121 y Calle 5"
+    },
+    "preferencias": {
+      "notificaciones": false,
+      "categoriaFavoritaId": 4,
+      "modalidad": "Virtual"
+    },
+    "fechaRegistro": "2026-04-04"
+  },
+  {
+    "id": 5,
+    "nombres": "Mateo",
+    "apellidos": "Bravo",
+    "email": "mateo@correo.com",
+    "passwordHash": "h63851b34",
+    "rol": "estudiante",
+    "fechaNacimiento": "2003-09-12",
+    "nacionalidad": {
+      "nombre": "Peru",
+      "codigo": "PE",
+      "bandera": "🇵🇪"
+    },
+    "iniciales": "MB",
+    "activo": true,
+    "codigoAccesoHash": null,
+    "contacto": {
+      "telefono": "0990938068",
+      "ciudad": "Quevedo",
+      "direccion": "Av. Principal 128 y Calle 6"
+    },
+    "preferencias": {
+      "notificaciones": true,
+      "categoriaFavoritaId": 5,
+      "modalidad": "Hibrido"
+    },
+    "fechaRegistro": "2026-05-05"
+  },
+  {
+    "id": 6,
+    "nombres": "Maria",
+    "apellidos": "Lopez",
+    "email": "maria.lopez@puentelaboral360.com",
+    "passwordHash": "h5766851b",
+    "rol": "instructor",
+    "fechaNacimiento": "1990-05-04",
+    "nacionalidad": {
+      "nombre": "Ecuador",
+      "codigo": "EC",
+      "bandera": "🇪🇨"
+    },
+    "iniciales": "ML",
+    "activo": true,
+    "codigoAccesoHash": null,
+    "contacto": {
+      "telefono": "0991172585",
+      "ciudad": "Ambato",
+      "direccion": "Av. Principal 135 y Calle 7"
+    },
+    "preferencias": {
+      "notificaciones": true,
+      "categoriaFavoritaId": 6,
+      "modalidad": "Presencial"
+    },
+    "fechaRegistro": "2026-06-06"
+  },
+  {
+    "id": 7,
+    "nombres": "Roberto",
+    "apellidos": "Silva",
+    "email": "roberto.silva@puentelaboral360.com",
+    "passwordHash": "h5766851b",
+    "rol": "instructor",
+    "fechaNacimiento": "1987-02-19",
+    "nacionalidad": {
+      "nombre": "Ecuador",
+      "codigo": "EC",
+      "bandera": "🇪🇨"
+    },
+    "iniciales": "RS",
+    "activo": true,
+    "codigoAccesoHash": null,
+    "contacto": {
+      "telefono": "0991407102",
+      "ciudad": "Quito",
+      "direccion": "Av. Principal 142 y Calle 8"
+    },
+    "preferencias": {
+      "notificaciones": false,
+      "categoriaFavoritaId": 7,
+      "modalidad": "Virtual"
+    },
+    "fechaRegistro": "2026-01-07"
+  },
+  {
+    "id": 8,
+    "nombres": "Ana",
+    "apellidos": "Torres",
+    "email": "ana.torres@puentelaboral360.com",
+    "passwordHash": "h5766851b",
+    "rol": "instructor",
+    "fechaNacimiento": "1992-12-01",
+    "nacionalidad": {
+      "nombre": "Ecuador",
+      "codigo": "EC",
+      "bandera": "🇪🇨"
+    },
+    "iniciales": "AT",
+    "activo": true,
+    "codigoAccesoHash": null,
+    "contacto": {
+      "telefono": "0991641619",
+      "ciudad": "Guayaquil",
+      "direccion": "Av. Principal 149 y Calle 9"
+    },
+    "preferencias": {
+      "notificaciones": true,
+      "categoriaFavoritaId": 8,
+      "modalidad": "Hibrido"
+    },
+    "fechaRegistro": "2026-02-08"
+  },
+  {
+    "id": 9,
+    "nombres": "Talento",
+    "apellidos": "TechCorp",
+    "email": "rrhh@techcorp.com",
+    "passwordHash": "h94606ab",
+    "rol": "empresa",
+    "fechaNacimiento": "1985-06-25",
+    "nacionalidad": {
+      "nombre": "Ecuador",
+      "codigo": "EC",
+      "bandera": "🇪🇨"
+    },
+    "iniciales": "TT",
+    "activo": true,
+    "codigoAccesoHash": null,
+    "contacto": {
+      "telefono": "0991876136",
+      "ciudad": "Cuenca",
+      "direccion": "Av. Principal 156 y Calle 10"
+    },
+    "preferencias": {
+      "notificaciones": true,
+      "categoriaFavoritaId": 1,
+      "modalidad": "Presencial"
+    },
+    "fechaRegistro": "2026-03-09"
+  },
+  {
+    "id": 10,
+    "nombres": "Seleccion",
+    "apellidos": "DataAndes",
+    "email": "talento@dataandes.com",
+    "passwordHash": "h94606ab",
+    "rol": "empresa",
+    "fechaNacimiento": "1988-08-14",
+    "nacionalidad": {
+      "nombre": "Ecuador",
+      "codigo": "EC",
+      "bandera": "🇪🇨"
+    },
+    "iniciales": "SD",
+    "activo": true,
+    "codigoAccesoHash": null,
+    "contacto": {
+      "telefono": "0992110653",
+      "ciudad": "Santo Domingo",
+      "direccion": "Av. Principal 163 y Calle 11"
+    },
+    "preferencias": {
+      "notificaciones": false,
+      "categoriaFavoritaId": 2,
+      "modalidad": "Virtual"
+    },
+    "fechaRegistro": "2026-04-10"
+  },
+  {
+    "id": 11,
+    "nombres": "Sofia",
+    "apellidos": "Ramirez",
+    "email": "sofia@correo.com",
+    "passwordHash": "h63851b34",
+    "rol": "estudiante",
+    "fechaNacimiento": "1999-04-27",
+    "nacionalidad": {
+      "nombre": "Ecuador",
+      "codigo": "EC",
+      "bandera": "🇪🇨"
+    },
+    "iniciales": "SR",
+    "activo": true,
+    "codigoAccesoHash": null,
+    "contacto": {
+      "telefono": "0992345170",
+      "ciudad": "Quevedo",
+      "direccion": "Av. Principal 170 y Calle 12"
+    },
+    "preferencias": {
+      "notificaciones": true,
+      "categoriaFavoritaId": 3,
+      "modalidad": "Hibrido"
+    },
+    "fechaRegistro": "2026-05-11"
+  },
+  {
+    "id": 12,
+    "nombres": "Administrador",
+    "apellidos": "General",
+    "email": "admin@puentelaboral360.com",
+    "passwordHash": "h114f2b3b",
+    "rol": "admin",
+    "fechaNacimiento": "1986-10-10",
+    "nacionalidad": {
+      "nombre": "Ecuador",
+      "codigo": "EC",
+      "bandera": "🇪🇨"
+    },
+    "iniciales": "AG",
+    "activo": true,
+    "codigoAccesoHash": "h88806a25",
+    "contacto": {
+      "telefono": "0992579687",
+      "ciudad": "Ambato",
+      "direccion": "Av. Principal 177 y Calle 13"
+    },
+    "preferencias": {
+      "notificaciones": true,
+      "categoriaFavoritaId": 4,
+      "modalidad": "Presencial"
+    },
+    "fechaRegistro": "2026-06-12"
+  }
+]
