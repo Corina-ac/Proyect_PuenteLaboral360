@@ -127,8 +127,9 @@ const UI = (() => {
 
     function avatarMultiavatar(nombre) {
         if (!nombre) return null;
-        const limpio = nombre.trim().replace(/\s+/g, '_');
-        return `https://api.multiavatar.com/${encodeURIComponent(limpio)}.svg`;
+        const limpio = nombre.trim().replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_-]/g, '');
+        if (!limpio) return null;
+        return `https://api.multiavatar.com/${limpio}.svg`;
     }
 
     /** Avatar en SVG generado a partir de las iniciales del usuario. */
@@ -160,8 +161,17 @@ const UI = (() => {
      */
     function imagenConRespaldo(img, textoRespaldo, color = '#64748b') {
         if (!img) return;
+        let intentado = false;
         img.addEventListener('error', () => {
-            img.src = avatarDataUri(textoRespaldo, color);
+            if (intentado) return;
+            intentado = true;
+            const iniciales = (textoRespaldo || '?').slice(0, 2).toUpperCase();
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+                <rect width="120" height="120" rx="60" fill="${color}"/>
+                <text x="60" y="62" font-size="46" font-family="Segoe UI, Arial, sans-serif"
+                      font-weight="700" fill="#ffffff" text-anchor="middle"
+                      dominant-baseline="central">${iniciales}</text></svg>`;
+            img.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
             img.classList.add('img-respaldo');
         }, { once: true });
     }
@@ -200,6 +210,9 @@ const UI = (() => {
         }
 
         const config = Auth.ROLES[usuario.rol] || Auth.ROLES.estudiante;
+        const iniciales = usuario.iniciales ||
+            ((usuario.nombres || '?')[0] + (usuario.apellidos || '')[0] || '');
+        const color = (Auth.ROLES[usuario.rol] || {}).color || '#2563eb';
         zona.innerHTML = `
             <a href="${Auth.panelDe(usuario.rol)}" class="enlace-sesion">
                 <img src="${fotoUsuario(usuario)}" alt="Foto de ${escapar(usuario.nombres)}" class="avatar-nav">
@@ -207,6 +220,9 @@ const UI = (() => {
             </a>
             <a href="#" data-accion="cerrar-sesion" class="btn-nav-registro">
                 <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>`;
+
+        const imgNav = zona.querySelector('.avatar-nav');
+        if (imgNav) imagenConRespaldo(imgNav, iniciales, color);
 
         // El boton recien creado tambien necesita su manejador.
         zona.querySelector('[data-accion="cerrar-sesion"]').addEventListener('click', async evento => {
@@ -223,11 +239,15 @@ const UI = (() => {
     function pintarPerfilLateral(usuario) {
         if (!usuario) return;
         const config = Auth.ROLES[usuario.rol] || Auth.ROLES.estudiante;
+        const iniciales = usuario.iniciales ||
+            ((usuario.nombres || '?')[0] + (usuario.apellidos || '')[0] || '');
+        const color = (Auth.ROLES[usuario.rol] || {}).color || '#2563eb';
 
         document.querySelectorAll('[data-perfil="avatar"]').forEach(nodo => {
             if (nodo.tagName === 'IMG') {
                 nodo.src = fotoUsuario(usuario);
                 nodo.alt = `Foto de perfil de ${usuario.nombres}`;
+                imagenConRespaldo(nodo, iniciales, color);
             } else {
                 nodo.textContent = usuario.iniciales || usuario.nombres[0];
             }
