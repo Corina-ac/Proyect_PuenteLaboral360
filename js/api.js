@@ -320,9 +320,17 @@ const Api = (() => {
         return ['Otra ciudad'];
     }
 
+    async function reportarCurso(nombreCurso, razon, detalle) {
+        const respuesta = await _llamarGrok([
+            { role: 'system', content: `Eres un asistente de soporte de PuenteLaboral360. Un estudiante reporto un problema con un curso.\n\nCurso: ${nombreCurso}\nRazon del reporte: ${razon}\nDetalle: ${detalle}\n\nGenera una respuesta profesional confirmando la recepcion del reporte, explicando que sera revisado por el equipo en 48 horas, y brindando un numero de seguimiento ficticio pero realista. Responde en 3-4 oraciones, en espanol, tono amable y profesional.` },
+            { role: 'user', content: `Reporte del curso "${nombreCurso}": ${razon}. ${detalle}` }
+        ]);
+        return respuesta || 'Hemos recibido tu reporte y sera revisado por nuestro equipo.';
+    }
+
     return {
         obtenerPaises, obtenerClima, CIUDADES, describirClima,
         recomendarCursos, mejorarPerfil, sugerirHabilidades, sugerirTrabajos, completarPerfilIA, generarDescripcionCurso, resumenSistema,
-        obtenerCiudades
+        obtenerCiudades, reportarCurso
     };
 })();

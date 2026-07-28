@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Planes y Pagos</title>
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+        .planes-hero { background: linear-gradient(135deg, #1e3a5f, #2563eb); color: #fff; text-align: center; padding: 50px 20px; }
+        .planes-hero h1 { font-size: 32px; margin-bottom: 10px; }
+        .planes-hero p { font-size: 16px; opacity: 0.85; max-width: 600px; margin: 0 auto; }
+        .planes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .plan-card-nuevo { background: #fff; border: 2px solid #e2e8f0; border-radius: 14px; padding: 28px 24px; text-align: center; position: relative; transition: transform 0.2s, box-shadow 0.2s; }
+        .plan-card-nuevo:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .plan-card-nuevo.popular { border-color: #f59e0b; }
+        .plan-card-nuevo.popular::before { content: 'Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #f59e0b; color: #fff; padding: 4px 16px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+        .plan-card-nuevo .plan-icono { font-size: 36px; margin-bottom: 12px; }
+        .plan-card-nuevo h3 { font-size: 20px; margin: 0 0 8px; color: #1e293b; }
+        .plan-card-nuevo .precio { font-size: 28px; font-weight: 700; color: #2563eb; margin: 12px 0; }
+        .plan-card-nuevo .precio span { font-size: 14px; font-weight: 400; color: #64748b; }
+        .plan-card-nuevo ul { list-style: none; padding: 0; margin: 16px 0; text-align: left; }
+        .plan-card-nuevo ul li { padding: 6px 0; font-size: 14px; color: #475569; }
+        .plan-card-nuevo ul li::before { content: '✓ '; color: #16a34a; font-weight: 700; }
+        .plan-card-nuevo .btn-activar { display: block; margin-top: 16px; }
+        .pago-section { background: #f8fafc; padding: 40px 20px; }
+        .pago-form { max-width: 500px; margin: 0 auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 28px; }
+        .pago-form label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 4px; margin-top: 14px; }
+        .pago-form input, .pago-form select { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; box-sizing: border-box; }
+        .pago-form input:focus, .pago-form select:focus { border-color: #2563eb; outline: none; box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+        .pago-form .fila-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .pago-form .btn-pagar { margin-top: 20px; }
+        .oculto { display: none; }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <nav data-zona="sesion"></nav>
+    </header>
+
+    <section class="planes-hero">
+        <h1>Nuestros <span style="color:#ffdd57">Planes</span></h1>
+        <p>Elige el plan que mejor se adapte a tus necesidades y comienza a transformar tu carrera profesional.</p>
+    </section>
+
+    <section class="planes-grid" id="planes-grid">
+        <section class="plan-card-nuevo">
+            <section class="plan-icono">🎓</section>
+            <h3>Estudiante</h3>
+            <p style="color:#64748b;font-size:13px">Acceso basico a cursos y perfil</p>
+            <section class="precio">$0 <span>/Gratis</span></section>
+            <ul>
+                <li>Perfil publico verificado</li>
+                <li>Cursos basicos ilimitados</li>
+                <li>1 certificado basico</li>
+                <li>Matching con empresas</li>
+            </ul>
+            <a href="../registro/registro.html?rol=estudiante" class="btn btn-azul btn-activar" data-plan="estudiante">Comenzar Gratis</a>
+        </section>
+
+        <section class="plan-card-nuevo popular">
+            <section class="plan-icono">🚀</section>
+            <h3>Estudiante Pro</h3>
+            <p style="color:#64748b;font-size:13px">Para estudiantes serios que quieren destacar</p>
+            <section class="precio">$9.99 <span>/mes</span></section>
+            <ul>
+                <li>Todo lo del plan Estudiante</li>
+                <li>Cursos premium ilimitados</li>
+                <li>Certificados PDF descargables</li>
+                <li>Prioridad en matching</li>
+                <li>Badge "Pro" en el perfil</li>
+                <li>Soporte prioritario</li>
+            </ul>
+            <button type="button" class="btn btn-amarillo btn-activar" data-plan="estudiante-pro" onclick="activarPlan('Estudiante Pro', 9.99)">Actualizar a Pro</button>
+        </section>
+
+        <section class="plan-card-nuevo">
+            <section class="plan-icono">👨‍🏫</section>
+            <h3>Instructor</h3>
+            <p style="color:#64748b;font-size:13px">Crea cursos y genera ingresos</p>
+            <section class="precio">$19.99 <span>/mes</span></section>
+            <ul>
+                <li>Creacion de cursos ilimitada</li>
+                <li>Emision de certificados</li>
+                <li>Dashboard de analytics</li>
+                <li>Hasta 500 alumnos por curso</li>
+                <li>Comision del 15% por venta</li>
+            </ul>
+            <button type="button" class="btn btn-azul btn-activar" data-plan="instructor" onclick="activarPlan('Instructor', 19.99)">Ser Instructor</button>
+        </section>
+
+        <section class="plan-card-nuevo">
+            <section class="plan-icono">🏢</section>
+            <h3>Empresa</h3>
+            <p style="color:#64748b;font-size:13px">Encuentra el mejor talento verificado</p>
+            <section class="precio">$29.99 <span>/mes</span></section>
+            <ul>
+                <li>Vacantes ilimitadas</li>
+                <li>Matching inteligente 24/7</li>
+                <li>Perfiles detallados de candidatos</li>
+                <li>Filtros avanzados por habilidad</li>
+                <li>Soporte dedicado</li>
+            </ul>
+            <button type="button" class="btn btn-azul btn-activar" data-plan="empresa" onclick="activarPlan('Empresa', 29.99)">Activar Empresa</button>
+        </section>
+
+        <section class="plan-card-nuevo">
+            <section class="plan-icono">🛡️</section>
+            <h3>Administrador</h3>
+            <p style="color:#64748b;font-size:13px">Control total de la plataforma</p>
+            <section class="precio">$49.99 <span>/mes</span></section>
+            <ul>
+                <li>Gestion completa de usuarios</li>
+                <li>Panel de administracion avanzado</li>
+                <li>Resumen IA del sistema</li>
+                <li>Reportes y estadisticas</li>
+                <li>Soporte 24/7</li>
+            </ul>
+            <button type="button" class="btn btn-gris btn-activar" disabled>Solo acceso administrativo</button>
+        </section>
+    </section>
+
+    <section class="pago-section oculto" id="seccion-pago">
+        <section class="pago-form" id="form-pago">
+            <h2 style="text-align:center;color:#1e293b;margin-top:0">Datos de pago</h2>
+            <p style="text-align:center;font-size:13px;color:#64748b;margin-bottom:16px" id="plan-seleccionado"></p>
+
+            <label for="pago-nombres">Nombres completos</label>
+            <input type="text" id="pago-nombres" placeholder="Nombres y apellidos">
+
+            <label for="pago-email">Correo electronico</label>
+            <input type="email" id="pago-email" placeholder="correo@ejemplo.com">
+
+            <label for="pago-tarjeta">Numero de tarjeta</label>
+            <input type="text" id="pago-tarjeta" placeholder="1234 5678 9012 3456" maxlength="19">
+
+            <section class="fila-2">
+                <div>
+                    <label for="pago-expiracion">Vencimiento</label>
+                    <input type="text" id="pago-expiracion" placeholder="MM/AA" maxlength="5">
+                </div>
+                <div>
+                    <label for="pago-cvv">CVV</label>
+                    <input type="text" id="pago-cvv" placeholder="123" maxlength="4">
+                </div>
+            </section>
+
+            <label for="pago-documento">Cedula / RUC</label>
+            <input type="text" id="pago-documento" placeholder="Ej: 1712345678">
+
+            <button type="button" class="btn btn-azul btn-pagar" id="btn-procesar-pago">
+                <i class="fa-solid fa-lock"></i> Procesar pago
+            </button>
+            <p style="text-align:center;font-size:11px;color:#94a3b8;margin-top:10px">
+                <i class="fa-solid fa-shield-halved"></i> Pago seguro. Simulacion sin cargos reales.
+            </p>
+        </section>
+    </section>
+
+    <footer class="footer">
+        <nav class="footer-links">
+            <a href="../servicios/servicios.html">Servicios</a>
+            <a href="planes.html">Planes</a>
+            <a href="../politica-privacidad/politica-privacidad.html">Privacidad</a>
+            <a href="../contacto/contacto.html">Contacto</a>
+        </nav>
+        <p>&copy; 2026 <span>PuenteLaboral360</span> &mdash; Cerrando la brecha entre educacion y empleo</p>
+        <p class="footer-copy">Hecho con dedicacion para la comunidad latina</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/componentes.js"></script>
+    <script>
+        UI.iniciar();
+
+        let planActual = null;
+        let precioActual = 0;
+
+        function activarPlan(nombre, precio) {
+            const usuario = Auth.usuarioActual();
+            if (!usuario) {
+                Swal.fire({
+                    title: 'Inicia sesion primero',
+                    text: 'Necesitas tener una cuenta para contratar un plan.',
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonText: 'Iniciar sesion',
+                    cancelButtonText: 'Registrarse',
+                    confirmButtonColor: '#2563eb',
+                    cancelButtonColor: '#16a34a'
+                }).then(r => {
+                    if (r.isConfirmed) window.location.href = '../login/login.html';
+                    else if (r.dismiss === Swal.DismissReason.cancel) window.location.href = '../registro/registro.html';
+                });
+                return;
+            }
+            planActual = nombre;
+            precioActual = precio;
+            document.getElementById('seccion-pago').classList.remove('oculto');
+            document.getElementById('plan-seleccionado').textContent = `Plan: ${nombre} — $${precio.toFixed(2)}/mes`;
+            document.getElementById('pago-nombres').value = `${usuario.nombres} ${usuario.apellidos}`;
+            document.getElementById('pago-email').value = usuario.email;
+            document.getElementById('seccion-pago').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.getElementById('btn-procesar-pago')?.addEventListener('click', async () => {
+            const nombres = document.getElementById('pago-nombres').value.trim();
+            const email = document.getElementById('pago-email').value.trim();
+            const tarjeta = document.getElementById('pago-tarjeta').value.trim();
+            const expiracion = document.getElementById('pago-expiracion').value.trim();
+            const cvv = document.getElementById('pago-cvv').value.trim();
+
+            if (!nombres || !email || !tarjeta || !expiracion || !cvv) {
+                UI.toast('Completa todos los campos de pago.', 'error');
+                return;
+            }
+            if (tarjeta.replace(/\s/g, '').length < 16) {
+                UI.toast('Numero de tarjeta invalido.', 'error');
+                return;
+            }
+
+            Swal.fire({ title: 'Procesando pago...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+            await new Promise(r => setTimeout(r, 2000));
+            Swal.fire({
+                title: 'Pago procesado',
+                html: `<p>Tu plan <strong>${planActual}</strong> ha sido activado correctamente.</p>
+                       <p style="font-size:13px;color:#64748b">Monto: $${precioActual.toFixed(2)}/mes (simulado)</p>`,
+                icon: 'success',
+                confirmButtonColor: '#16a34a'
+            });
+            UI.toast(`Plan ${planActual} activado.`, 'exito');
+        });
+    </script>
+</body>
+</html>

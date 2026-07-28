@@ -65,15 +65,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     /* --------------------------------------------- estadisticas */
     function pintarEstadisticas(cursos, matriculas) {
         const certificados = matriculas.filter(m => m.certificadoEmitido).length;
+        const enProgreso = matriculas.filter(m => m.estado === 'en progreso' || m.estado === 'inscrito').length;
+        const completados = matriculas.filter(m => m.estado === 'completado').length;
         const tasa = matriculas.length > 0
             ? Math.round((certificados / matriculas.length) * 100)
             : 0;
+        const promedioCal = certificados > 0
+            ? (matriculas.filter(m => m.certificadoEmitido && m.calificacion)
+                .reduce((s, m) => s + m.calificacion, 0) /
+                matriculas.filter(m => m.certificadoEmitido && m.calificacion).length || 0).toFixed(1)
+            : '—';
+
+        const tasaColor = tasa >= 70 ? '#16a34a' : tasa >= 40 ? '#f59e0b' : '#ef4444';
 
         zonaStats.innerHTML = [
-            ['fa-book', cursos.length, 'Cursos publicados', '#16a34a'],
-            ['fa-users', matriculas.length, 'Total inscritos', '#2563eb'],
-            ['fa-award', certificados, 'Certificados emitidos', '#8b5cf6'],
-            ['fa-chart-line', tasa + '%', 'Tasa de certificación', '#f59e0b']
+            ['fa-book', cursos.length, 'Cursos publicados', '#2563eb'],
+            ['fa-users', matriculas.length, 'Total inscritos', '#8b5cf6'],
+            ['fa-spinner', enProgreso, 'En progreso', '#f59e0b'],
+            ['fa-check-circle', completados, 'Completados', '#10b981'],
+            ['fa-award', certificados, 'Certificados emitidos', '#16a34a'],
+            ['fa-chart-line', tasa + '%', 'Tasa de certificacion', tasaColor],
+            ['fa-star', promedioCal, 'Promedio calificacion', '#0ea5e9']
         ].map(([icono, valor, texto, color]) => `
             <div class="stat-box" style="border-top-color:${color}">
                 <div class="icono-stat" style="color:${color}"><i class="fas ${icono}"></i></div>
@@ -143,14 +155,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             const nombre = estudiante ? `${estudiante.nombres} ${estudiante.apellidos}` : 'Estudiante';
             const nombreCurso = curso ? curso.nombre : 'Curso';
             const clase = m.progreso >= 90 ? 'badge-verde' : 'badge-amarillo';
+            const avatarUrl = estudiante ? UI.fotoUsuario(estudiante) : UI.avatarDataUri('?');
 
             return `
                 <section class="solicitud-card">
-                    <section class="info-sol">
-                        <section class="nombre-sol">${UI.escapar(nombre)}</section>
-                        <section class="detalle-sol">Solicita certificación en: ${UI.escapar(nombreCurso)}</section>
-                        <section class="solicitud-progreso">
-                            <span class="badge ${clase}">Progreso: ${m.progreso}%</span>
+                    <section class="info-sol" style="display:flex;align-items:center;gap:12px">
+                        <img src="${avatarUrl}" alt="" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #e2e8f0;flex-shrink:0">
+                        <section>
+                            <section class="nombre-sol">${UI.escapar(nombre)}</section>
+                            <section class="detalle-sol">Solicita certificacion en: ${UI.escapar(nombreCurso)}</section>
+                            <section class="solicitud-progreso">
+                                <span class="badge ${clase}">Progreso: ${m.progreso}%</span>
+                            </section>
                         </section>
                     </section>
                     <section class="acciones-sol">

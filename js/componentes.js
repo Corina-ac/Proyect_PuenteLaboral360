@@ -278,12 +278,89 @@ const UI = (() => {
         mostrarAvisosPendientes();
     }
 
+    /* -------------------------------------------------- certificado PDF */
+    function descargarCertificadoPDF(usuario, curso, fecha) {
+        if (typeof jspdf === 'undefined' && typeof window.jspdf === 'undefined') {
+            toast('Libreria PDF no disponible. Intenta de nuevo.', 'error');
+            return;
+        }
+        const { jsPDF } = window.jspdf || {};
+        if (!jsPDF) { toast('Libreria PDF no disponible.', 'error'); return; }
+
+        const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+        const w = doc.internal.pageSize.getWidth();
+        const h = doc.internal.pageSize.getHeight();
+
+        doc.setFillColor(30, 41, 59);
+        doc.rect(0, 0, w, h, 'F');
+
+        doc.setFillColor(255, 255, 255);
+        doc.roundedRect(15, 15, w - 30, h - 30, 8, 8, 'F');
+
+        doc.setDrawColor(59, 130, 246);
+        doc.setLineWidth(1.5);
+        doc.roundedRect(20, 20, w - 40, h - 40, 6, 6, 'S');
+
+        doc.setFillColor(59, 130, 246);
+        doc.rect(20, 20, w - 40, 2, 'F');
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(14);
+        doc.setTextColor(100, 116, 139);
+        doc.text('PUENTELABORAL360', w / 2, 38, { align: 'center' });
+
+        doc.setFontSize(28);
+        doc.setTextColor(30, 41, 59);
+        doc.text('CERTIFICADO DE COMPLETACION', w / 2, 52, { align: 'center' });
+
+        doc.setDrawColor(59, 130, 246);
+        doc.setLineWidth(0.5);
+        doc.line(w / 2 - 60, 58, w / 2 + 60, 58);
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(13);
+        doc.setTextColor(71, 85, 105);
+        doc.text('Se certifica que', w / 2, 70, { align: 'center' });
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(22);
+        doc.setTextColor(30, 64, 175);
+        doc.text(`${usuario.nombres} ${usuario.apellidos}`, w / 2, 82, { align: 'center' });
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(13);
+        doc.setTextColor(71, 85, 105);
+        doc.text('ha completado satisfactoriamente el curso', w / 2, 94, { align: 'center' });
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(18);
+        doc.setTextColor(30, 41, 59);
+        doc.text(curso.nombre, w / 2, 106, { align: 'center' });
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(11);
+        doc.setTextColor(100, 116, 139);
+        const duracion = curso.duracionHoras ? `${curso.duracionHoras} horas` : '—';
+        doc.text(`Duracion: ${duracion} | Calificacion: ${curso.calificacion || '—'}/10`, w / 2, 116, { align: 'center' });
+
+        doc.setFontSize(11);
+        doc.text(`Fecha de emision: ${fecha || new Date().toLocaleDateString('es-EC')}`, w / 2, 124, { align: 'center' });
+
+        doc.setFontSize(9);
+        doc.setTextColor(148, 163, 184);
+        doc.text('Certificado emitido por PuenteLaboral360 - Puente entre educacion y empleo', w / 2, h - 35, { align: 'center' });
+        doc.text('Codigo de verificacion: PL360-' + Math.random().toString(36).substring(2, 10).toUpperCase(), w / 2, h - 30, { align: 'center' });
+
+        doc.save(`Certificado-${curso.nombre.replace(/\s+/g, '-')}.pdf`);
+    }
+
     return {
         toast, alerta, error, confirmar, detalle,
         cargando, vacio, fallo,
         escapar, precio, fecha,
         avatarDataUri, avatarMultiavatar, fotoUsuario, imagenConRespaldo,
-        pintarBarraSesion, pintarPerfilLateral, iniciar
+        pintarBarraSesion, pintarPerfilLateral, iniciar,
+        descargarCertificadoPDF
     };
 })();
 

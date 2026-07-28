@@ -104,7 +104,8 @@
                         <!-- Fila 4: Mensaje completo (campo de 2 columnas) -->
                         <section class="campo-grupo campo-completo">
                             <label for="mensaje"><i class="fa-solid fa-comment"></i> Mensaje *</label>
-                            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aqui..." maxlength="500" required oninput="document.getElementById('contador-mensaje').textContent=this.value.length+'/500'"></textarea>
+                            <small id="contador-mensaje" style="display:block;text-align:right;color:#94a3b8;font-size:12px;margin-top:4px">0/500</small>
                         </section>
 
                         <!-- Fila 5: Botón de envío completo -->

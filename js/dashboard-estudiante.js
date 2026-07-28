@@ -196,37 +196,157 @@ document.addEventListener('DOMContentLoaded', async () => {
                             data-nombre="${UI.escapar(nombreCurso)}"
                             data-estudiante="${UI.escapar(usuario.nombres + ' ' + usuario.apellidos)}"
                             data-fecha="${UI.fecha(m.fechaInscripcion)}"
-                            data-calificacion="${m.calificacion || 'Aprobado'}">Ver certificado</button>
+                            data-calificacion="${m.calificacion || 'Aprobado'}"
+                            data-curso-id="${m.cursoId}">Ver certificado</button>
                     </section>
                 </section>`;
         }).join('');
 
         zonaCertificados.querySelectorAll('.btn-ver-certificado').forEach(boton => {
             boton.addEventListener('click', () => {
-                mostrarCertificado(boton.dataset.nombre, boton.dataset.estudiante, boton.dataset.fecha, boton.dataset.calificacion);
+                mostrarCertificado(boton.dataset.nombre, boton.dataset.estudiante, boton.dataset.fecha, boton.dataset.calificacion, boton.dataset.cursoId);
             });
         });
     }
 
-    function mostrarCertificado(nombreCurso, nombreEstudiante, fecha, calificacion) {
+    function mostrarCertificado(nombreCurso, nombreEstudiante, fecha, calificacion, cursoId) {
         Swal.fire({
-            title: '📜 Certificado de Finalización',
+            title: 'Certificado de Finalizacion',
             html: `
                 <section style="text-align:center; padding: 20px; border: 3px solid #16a34a; border-radius: 12px; background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
                     <p style="font-size: 14px; color: #16a34a; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px;">PuenteLaboral360</p>
-                    <h2 style="font-size: 20px; color: #15803d; margin: 10px 0;">Certificado de Finalización</h2>
+                    <h2 style="font-size: 20px; color: #15803d; margin: 10px 0;">Certificado de Finalizacion</h2>
                     <p style="font-size: 14px; color: #333;">Se certifica que</p>
                     <p style="font-size: 22px; font-weight: bold; color: #1a73e8; margin: 8px 0;">${nombreEstudiante}</p>
                     <p style="font-size: 14px; color: #333;">ha completado satisfactoriamente el curso</p>
                     <p style="font-size: 18px; font-weight: bold; color: #333; margin: 8px 0;">${nombreCurso}</p>
-                    <p style="font-size: 13px; color: #666;">Calificación: <strong>${calificacion}</strong></p>
+                    <p style="font-size: 13px; color: #666;">Calificacion: <strong>${calificacion}</strong></p>
                     <p style="font-size: 13px; color: #666;">Fecha: ${fecha}</p>
                     <hr style="border: 1px solid #16a34a; margin: 15px 0;">
-                    <p style="font-size: 12px; color: #888;">Este certificado es válido para fines de postulación laboral.</p>
+                    <p style="font-size: 12px; color: #888;">Este certificado es valido para fines de postulacion laboral.</p>
+                </section>
+                <section style="margin-top:16px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap">
+                    <button type="button" class="btn btn-azul btn-sm" id="btn-descargar-pdf">
+                        <i class="fa-solid fa-file-pdf"></i> Descargar PDF
+                    </button>
+                    <button type="button" class="btn btn-grok btn-sm" id="btn-calificar-curso">
+                        <i class="fa-solid fa-star"></i> Calificar curso
+                    </button>
+                    <button type="button" class="btn btn-gris btn-sm" id="btn-recomendar-curso">
+                        <i class="fa-solid fa-thumbs-up"></i> Recomendar
+                    </button>
+                    <button type="button" class="btn btn-rojo btn-sm" id="btn-reportar-curso">
+                        <i class="fa-solid fa-flag"></i> Reportar
+                    </button>
                 </section>`,
-            width: 600,
-            confirmButtonText: 'Cerrar',
-            confirmButtonColor: '#16a34a'
+            width: 620,
+            showConfirmButton: false,
+            showCloseButton: true,
+            didOpen: () => {
+                document.getElementById('btn-descargar-pdf')?.addEventListener('click', () => {
+                    const cursos = Datos.cache('cursos');
+                    const curso = cursoId ? cursos.find(c => c.id === Number(cursoId)) : null;
+                    UI.descargarCertificadoPDF(
+                        { nombres: usuario.nombres, apellidos: usuario.apellidos },
+                        { nombre: nombreCurso, duracionHoras: curso?.duracionHoras || 40, calificacion },
+                        fecha
+                    );
+                    UI.toast('Certificado PDF descargado.', 'exito');
+                });
+
+                document.getElementById('btn-calificar-curso')?.addEventListener('click', async () => {
+                    const resultado = await Swal.fire({
+                        title: 'Califica este curso',
+                        html: `
+                            <section style="display:flex;gap:8px;justify-content:center;margin:16px 0" id="estrellas-calificacion">
+                                ${[1,2,3,4,5].map(n => `<i class="fa-solid fa-star" style="font-size:32px;color:#d1d5db;cursor:pointer" data-val="${n}"></i>`).join('')}
+                            </section>
+                            <p style="font-size:13px;color:#666" id="texto-calificacion">Selecciona una calificacion</p>`,
+                        showCancelButton: true,
+                        confirmButtonText: 'Enviar calificacion',
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonColor: '#16a34a',
+                        didOpen: () => {
+                            let seleccion = 0;
+                            document.querySelectorAll('#estrellas-calificacion i').forEach(estrella => {
+                                estrella.addEventListener('click', () => {
+                                    seleccion = Number(estrella.dataset.val);
+                                    document.querySelectorAll('#estrellas-calificacion i').forEach((e, i) => {
+                                        e.style.color = i < seleccion ? '#f59e0b' : '#d1d5db';
+                                    });
+                                    document.getElementById('texto-calificacion').textContent = `${seleccion}/5 estrellas`;
+                                });
+                            });
+                            window._calificacionSeleccion = () => seleccion;
+                        },
+                        preConfirm: () => {
+                            const val = window._calificacionSeleccion ? window._calificacionSeleccion() : 0;
+                            if (val === 0) { Swal.showValidationMessage('Selecciona al menos 1 estrella'); return false; }
+                            return val;
+                        }
+                    });
+                    if (resultado.isConfirmed) {
+                        UI.toast(`Curso calificado con ${resultado.value} estrellas. Gracias!`, 'exito');
+                    }
+                });
+
+                document.getElementById('btn-recomendar-curso')?.addEventListener('click', async () => {
+                    const cursos = Datos.cache('cursos');
+                    const cursoActual = cursoId ? cursos.find(c => c.id === Number(cursoId)) : null;
+                    const recomendados = cursos
+                        .filter(c => c.id !== Number(cursoId) && c.estado === 'disponible')
+                        .sort(() => Math.random() - 0.5)
+                        .slice(0, 3);
+                    if (recomendados.length === 0) {
+                        UI.toast('No hay otros cursos para recomendar.', 'info');
+                        return;
+                    }
+                    Swal.fire({
+                        title: 'Cursos recomendados',
+                        html: `<p style="text-align:left;font-size:13px;color:#666;margin-bottom:10px">Basado en "${nombreCurso}", tambien te pueden interesar:</p>
+                        ${recomendados.map(c => `
+                            <section style="text-align:left;padding:10px;background:#f8f9fa;border-radius:8px;margin-bottom:8px;border-left:4px solid #3b82f6">
+                                <strong style="color:#1e293b">${UI.escapar(c.nombre)}</strong>
+                                <p style="margin:4px 0 0;font-size:12px;color:#64748b">${UI.escapar(c.descripcion || '').substring(0, 80)}...</p>
+                                <p style="margin:4px 0 0;font-size:12px;color:#3b82f6">${UI.precio(c.precio)} · ⭐ ${c.valoracion}</p>
+                            </section>`).join('')}`,
+                        confirmButtonText: 'Cerrar',
+                        confirmButtonColor: '#3b82f6'
+                    });
+                });
+
+                document.getElementById('btn-reportar-curso')?.addEventListener('click', async () => {
+                    const resultado = await Swal.fire({
+                        title: 'Reportar problema con el curso',
+                        html: `
+                            <label style="display:block;text-align:left;font-size:13px;font-weight:600;margin-bottom:4px">Razon del reporte</label>
+                            <select id="razon-reporte" class="swal2-select" style="font-size:14px">
+                                <option value="">Seleccionar...</option>
+                                <option value="Contenido desactualizado">Contenido desactualizado</option>
+                                <option value="Errores en el contenido">Errores en el contenido</option>
+                                <option value="Instructor no responde">Instructor no responde</option>
+                                <option value="Certificado no.emitido">Certificado no emitido</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                            <label style="display:block;text-align:left;font-size:13px;font-weight:600;margin:10px 0 4px">Detalle (opcional)</label>
+                            <textarea id="detalle-reporte" class="swal2-textarea" placeholder="Describe el problema..." style="font-size:13px"></textarea>`,
+                        showCancelButton: true,
+                        confirmButtonText: 'Enviar reporte',
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonColor: '#ef4444',
+                        preConfirm: () => {
+                            const razon = document.getElementById('razon-reporte').value;
+                            if (!razon) { Swal.showValidationMessage('Selecciona una razon'); return false; }
+                            return { razon, detalle: document.getElementById('detalle-reporte').value };
+                        }
+                    });
+                    if (resultado.isConfirmed) {
+                        Swal.fire({ title: 'Enviando reporte...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+                        const respuesta = await Api.reportarCurso(nombreCurso, resultado.value.razon, resultado.value.detalle);
+                        Swal.fire({ title: 'Reporte enviado', text: respuesta, confirmButtonColor: '#16a34a' });
+                    }
+                });
+            }
         });
     }
 

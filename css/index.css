@@ -117,17 +117,19 @@
 }
 
 .acerca-galeria {
-    flex: 1;
-    min-width: 280px;
+    flex: 0 0 320px;
+    min-width: 260px;
+    max-width: 340px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    gap: 12px;
+    gap: 8px;
 }
 
 .acerca-img {
     width: 100%;
-    border-radius: 10px;
+    height: 120px;
+    border-radius: 8px;
     object-fit: cover;
     display: block;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
