@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const paisNombre = document.getElementById('pais-nombre');
     const paisCodigo = document.getElementById('pais-codigo');
     const paisBandera = document.getElementById('pais-bandera');
+    const paisBanderaSmall = document.getElementById('pais-bandera-small');
 
     let avatarDataUri = null;
 
@@ -200,8 +201,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         listaPaises.innerHTML = encontrados.map(pais => `
             <li role="option" class="item-pais" data-nombre="${UI.escapar(pais.nombre)}"
-                data-codigo="${UI.escapar(pais.codigo)}" data-bandera="${pais.bandera}">
-                <span class="bandera" aria-hidden="true">${pais.bandera}</span>
+                data-codigo="${UI.escapar(pais.codigo)}" data-bandera="${pais.bandera}"
+                data-bandera-small="${pais.banderaSmall}">
+                <img class="bandera-img" src="${pais.banderaSmall}" alt="${UI.escapar(pais.nombre)}" width="24" height="18" loading="lazy"
+                     onerror="this.style.display='none'">
                 <span>${UI.escapar(pais.nombre)}</span>
                 <span class="region">${UI.escapar(pais.region)}</span>
             </li>`).join('');
@@ -224,8 +227,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         paisNombre.value = item.dataset.nombre;
         paisCodigo.value = item.dataset.codigo;
         paisBandera.value = item.dataset.bandera;
+        if (paisBanderaSmall) paisBanderaSmall.value = item.dataset.banderaSmall;
         inputBuscarPais.value = item.dataset.nombre;
-        paisElegido.innerHTML = `Nacionalidad seleccionada: ${item.dataset.bandera} <strong>${UI.escapar(item.dataset.nombre)}</strong>`;
+        paisElegido.innerHTML = `Nacionalidad seleccionada: <img class="bandera-img" src="${item.dataset.banderaSmall}" width="24" height="18" alt="" onerror="this.style.display='none'"> <strong>${UI.escapar(item.dataset.nombre)}</strong>`;
         paisElegido.classList.remove('oculto');
         listaPaises.classList.add('oculto');
         inputBuscarPais.setAttribute('aria-expanded', 'false');
@@ -385,7 +389,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 nacionalidad: {
                     nombre: paisNombre.value,
                     codigo: paisCodigo.value,
-                    bandera: paisBandera.value
+                    bandera: paisBandera.value,
+                    banderaSmall: paisBanderaSmall ? paisBanderaSmall.value : ''
                 },
                 telefono: inputTelefono.value,
                 ciudad: ciudadFinal,

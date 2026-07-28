@@ -167,7 +167,17 @@ select.campo-valido {
 .item-pais:hover,
 .item-pais:focus { background: #eff6ff; }
 
-.item-pais .bandera { font-size: 20px; }
+.item-pais .bandera-img,
+.pais-elegido .bandera-img,
+.nacionalidad-bandera-img {
+    width: 24px;
+    height: 18px;
+    border-radius: 2px;
+    object-fit: cover;
+    border: 1px solid #e2e8f0;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
 .item-pais .region { font-size: 12px; color: #94a3b8; }
 
 .lista-paises .sin-resultado {

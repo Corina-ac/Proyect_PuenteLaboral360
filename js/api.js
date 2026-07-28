@@ -199,13 +199,17 @@ const Api = (() => {
         }
 
         const paises = crudo
-            .map(pais => ({
-                nombre: pais.name,
-                codigo: pais.cioc || (pais.name || '').slice(0, 3).toUpperCase(),
-                bandera: pais.flag || '🏳️',
-                banderaImg: (pais.flags && (pais.flags.svg || pais.flags.png)) || '',
-                region: pais.region || ''
-            }))
+            .map(pais => {
+                const codigo = (pais.cioc || (pais.name || '').slice(0, 3)).toLowerCase();
+                return {
+                    nombre: pais.name,
+                    codigo: codigo,
+                    bandera: pais.flag || '🏳️',
+                    banderaImg: (pais.flags && (pais.flags.svg || pais.flags.png)) || '',
+                    banderaSmall: `https://flagcdn.com/24x18/${codigo}.png`,
+                    region: pais.region || ''
+                };
+            })
             .filter(pais => pais.nombre)
             .sort((a, b) => a.nombre.localeCompare(b.nombre));
 

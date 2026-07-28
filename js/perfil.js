@@ -200,8 +200,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('email-perfil').textContent = usuario.email;
 
         const pais = usuario.nacionalidad || {};
-        document.getElementById('nacionalidad-perfil').textContent =
-            pais.nombre ? `${pais.bandera || '🏳️'} ${pais.nombre}` : 'Nacionalidad no registrada';
+        const flagHtml = pais.banderaSmall
+            ? `<img class="nacionalidad-bandera-img" src="${pais.banderaSmall}" width="24" height="18" alt="${UI.escapar(pais.nombre || '')}" onerror="this.style.display='none'">`
+            : (pais.bandera || '🏳️');
+        document.getElementById('nacionalidad-perfil').innerHTML =
+            pais.nombre ? `${flagHtml} ${UI.escapar(pais.nombre)}` : 'Nacionalidad no registrada';
 
         UI.pintarPerfilLateral(usuario);
     }
@@ -213,6 +216,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             : '—';
         const contacto = usuario.contacto || {};
         const pais = usuario.nacionalidad || {};
+        const flagHtml = pais.banderaSmall
+            ? `<img class="nacionalidad-bandera-img" src="${pais.banderaSmall}" width="24" height="18" alt="${UI.escapar(pais.nombre || '')}" onerror="this.style.display='none'">`
+            : (pais.bandera || '');
 
         const filas = [
             ['Nombres', usuario.nombres],
@@ -221,7 +227,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             ['Rol', Auth.ROLES[usuario.rol].etiqueta],
             ['Fecha de nacimiento', UI.fecha(usuario.fechaNacimiento)],
             ['Edad', edad],
-            ['Nacionalidad', pais.nombre ? `${pais.bandera || ''} ${pais.nombre}` : '—'],
+            ['Nacionalidad', pais.nombre ? `${flagHtml} ${UI.escapar(pais.nombre)}` : '—'],
             ['Teléfono', contacto.telefono || '—'],
             ['Ciudad', contacto.ciudad || '—'],
             ['Nivel declarado', usuario.nivel || '—'],
