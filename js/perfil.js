@@ -32,6 +32,72 @@ document.addEventListener('DOMContentLoaded', async () => {
     const inputHabilidad = document.getElementById('input-habilidad');
     const btnAgregarHabilidad = document.getElementById('btn-agregar-habilidad');
     const btnIAHabilidades = document.getElementById('btn-ia-habilidades');
+    const btnIACompletar = document.getElementById('btn-ia-completar');
+
+    /* ------------------------------------------------------- IA completar perfil */
+    if (btnIACompletar) {
+        btnIACompletar.addEventListener('click', async () => {
+            btnIACompletar.disabled = true;
+            btnIACompletar.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analizando…';
+            Swal.fire({ title: 'La IA está analizando tu perfil…', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+
+            const sugerencias = await Api.completarPerfilIA();
+            Swal.close();
+            btnIACompletar.disabled = false;
+            btnIACompletar.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Completar con IA';
+
+            if (!sugerencias || sugerencias.length === 0) {
+                UI.toast('Tu perfil ya está completo o la IA no pudo generar sugerencias.', 'info');
+                return;
+            }
+
+            const checksHtml = sugerencias.map(s => {
+                const campos = { nivel: 'Nivel', objetivo: 'Objetivo', ciudad: 'Ciudad', telefono: 'Teléfono', habilidad: 'Habilidad' };
+                return `
+                <section style="text-align:left;margin-bottom:12px;padding:12px;background:#f8f9fa;border-radius:8px;border-left:4px solid #8b5cf6">
+                    <label style="display:flex;align-items:center;gap:8px;margin-bottom:6px;cursor:pointer">
+                        <input type="checkbox" class="chk-completar" value="${UI.escapar(s.campo)}: ${UI.escapar(s.valor)}" checked style="width:18px;height:18px">
+                        <strong style="font-size:13px">${campos[s.campo] || s.campo}</strong>
+                    </label>
+                    <p style="margin:0;font-size:14px;color:#333;padding-left:26px">${UI.escapar(s.valor)}</p>
+                </section>`;
+            }).join('');
+
+            const resultado = await Swal.fire({
+                title: 'Sugerencias para completar tu perfil',
+                html: `<p style="text-align:left;font-size:13px;color:#666;margin-bottom:10px">La IA detectó campos que puedes mejorar. Desmarca los que no quieras aplicar:</p>${checksHtml}`,
+                width: 520,
+                showCancelButton: true,
+                confirmButtonText: '<i class="fa-solid fa-check"></i> Aplicar seleccionados',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#8b5cf6',
+                preConfirm: () => {
+                    const seleccionados = [...document.querySelectorAll('.chk-completar:checked')].map(cb => cb.value);
+                    if (seleccionados.length === 0) { Swal.showValidationMessage('Selecciona al menos una sugerencia'); return false; }
+                    return seleccionados;
+                }
+            });
+
+            if (!resultado.isConfirmed) return;
+
+            const actualizaciones = {};
+            resultado.value.forEach(item => {
+                const [campo, ...resto] = item.split(': ');
+                const valor = resto.join(': ');
+                if (campo === 'nivel') actualizaciones.nivel = valor;
+                else if (campo === 'objetivo') actualizaciones.objetivo = valor;
+                else if (campo === 'ciudad') actualizaciones.contacto = { ...(usuario.contacto || {}), ciudad: valor };
+                else if (campo === 'telefono') actualizaciones.contacto = { ...(usuario.contacto || {}), telefono: valor };
+            });
+
+            const actualizado = Auth.actualizarPerfil(actualizaciones);
+            if (!actualizado) { UI.toast('No se pudieron guardar los cambios.', 'error'); return; }
+            usuario = actualizado;
+            pintarCabecera();
+            pintarDatos();
+            UI.toast('Perfil actualizado con las sugerencias de la IA.', 'exito');
+        });
+    }
 
     /* ------------------------------------------------------- habilidades */
     function pintarHabilidades() {
@@ -382,6 +448,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         pintarDatos();
         UI.toast('Datos actualizados correctamente.', 'exito');
     });
+
+    /* ---------------------------------------------------------- sidebar toggle */
+    const btnAbrir = document.getElementById('btn-abrir-sidebar');
+    const btnCerrar = document.getElementById('btn-cerrar-sidebar');
+    const sidebar = document.getElementById('sidebar-perfil');
+    if (btnAbrir && sidebar) {
+        btnAbrir.addEventListener('click', () => sidebar.classList.add('abierto'));
+    }
+    if (btnCerrar && sidebar) {
+        btnCerrar.addEventListener('click', () => sidebar.classList.remove('abierto'));
+    }
 
     /* ---------------------------------------------------------- inicio */
     pintarCabecera();

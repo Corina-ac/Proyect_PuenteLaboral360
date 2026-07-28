@@ -204,8 +204,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 data-codigo="${UI.escapar(pais.codigo)}" data-bandera="${pais.bandera}"
                 data-bandera-small="${pais.banderaSmall}">
                 <img class="bandera-img" src="${pais.banderaSmall}" alt="${UI.escapar(pais.nombre)}" width="24" height="18" loading="lazy"
-                     onerror="this.style.display='none'">
-                <span>${UI.escapar(pais.nombre)}</span>
+                     onerror="this.outerHTML='<span class=\\'bandera-img\\'>🏳️</span>'">
+                <span class="nombre-pais">${UI.escapar(pais.nombre)}</span>
                 <span class="region">${UI.escapar(pais.region)}</span>
             </li>`).join('');
         listaPaises.classList.remove('oculto');

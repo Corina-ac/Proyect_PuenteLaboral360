@@ -136,6 +136,20 @@ const Api = (() => {
         } catch { return []; }
     }
 
+    async function completarPerfilIA() {
+        const ctx = _contextoUsuario();
+        const respuesta = await _llamarGrok([
+            { role: 'system', content: `Eres un asistente de perfiles profesionales en PuenteLaboral360.\n\nPerfil del usuario:\n${ctx}\n\nEl usuario tiene campos vacios o incompletos. Sugiere valores concretos para cada campo que falte. Responde SOLO con un JSON array de objetos con campos "campo" (nombre del campo: nivel, objetivo, ciudad, telefono, habilidad) y "valor" (la sugerencia concreta). Si un campo ya tiene valor, no lo incluyas. Ejemplo: [{"campo":"nivel","valor":"Intermedio"},{"campo":"objetivo","valor":"Obtener mi primer empleo como desarrollador frontend"}]\nSin texto adicional, sin markdown.` },
+            { role: 'user', content: 'Completa los campos que me faltan en mi perfil profesional.' }
+        ]);
+        if (!respuesta) return [];
+        try {
+            const match = respuesta.match(/\[[\s\S]*\]/);
+            if (!match) return [];
+            return JSON.parse(match[0]);
+        } catch { return []; }
+    }
+
     async function sugerirTrabajos() {
         const ctx = _contextoUsuario();
         const respuesta = await _llamarGrok([
@@ -308,7 +322,7 @@ const Api = (() => {
 
     return {
         obtenerPaises, obtenerClima, CIUDADES, describirClima,
-        recomendarCursos, mejorarPerfil, sugerirHabilidades, sugerirTrabajos, generarDescripcionCurso, resumenSistema,
+        recomendarCursos, mejorarPerfil, sugerirHabilidades, sugerirTrabajos, completarPerfilIA, generarDescripcionCurso, resumenSistema,
         obtenerCiudades
     };
 })();

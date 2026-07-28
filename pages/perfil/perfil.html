@@ -21,7 +21,8 @@
 
     <section class="layout-dashboard">
 
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar-perfil">
+            <button type="button" class="sidebar-cerrar" id="btn-cerrar-sidebar" aria-label="Cerrar menú">&times;</button>
             <section class="perfil-mini">
                 <img class="avatar" data-perfil="avatar" src="" alt="Foto de perfil">
                 <p class="nombre-usuario" data-perfil="nombre">—</p>
@@ -37,6 +38,9 @@
         </aside>
 
         <main class="contenido-principal">
+            <button type="button" class="btn-hamburger" id="btn-abrir-sidebar" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
             <!-- Cabecera del perfil con la foto de la cuenta -->
             <section class="tarjeta cabecera-perfil">
@@ -51,6 +55,9 @@
                     <label for="cambiar-foto" class="btn btn-azul btn-xs">📷 Cambiar foto</label>
                     <input type="file" id="cambiar-foto" accept="image/*" class="oculto">
                     <button type="button" class="btn btn-gris btn-xs" id="btn-editar-perfil">✏️ Editar datos</button>
+                    <button type="button" class="btn btn-grok btn-xs" id="btn-ia-completar">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Completar con IA
+                    </button>
                 </section>
             </section>
 
@@ -100,7 +107,14 @@
     </section>
 
     <footer class="footer">
-        <p>© 2026 <span>PuenteLaboral360</span> — Cerrando la brecha entre educación y empleo</p>
+        <nav class="footer-links">
+            <a href="../servicios/servicios.html">Servicios</a>
+            <a href="../planes/planes.html">Planes</a>
+            <a href="../politica-privacidad/politica-privacidad.html">Privacidad</a>
+            <a href="../contacto/contacto.html">Contacto</a>
+        </nav>
+        <p>&copy; 2026 <span>PuenteLaboral360</span> &mdash; Cerrando la brecha entre educacion y empleo</p>
+        <p class="footer-copy">Hecho con dedicacion para la comunidad latina</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

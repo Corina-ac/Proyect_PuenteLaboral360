@@ -129,7 +129,7 @@ const UI = (() => {
         if (!nombre) return null;
         const limpio = nombre.trim().replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_-]/g, '');
         if (!limpio) return null;
-        return `https://api.multiavatar.com/${limpio}.svg`;
+        return `https://api.dicebear.com/9.x/adventurer/svg?seed=${encodeURIComponent(limpio)}&radius=50&backgroundColor=ffffff`;
     }
 
     /** Avatar en SVG generado a partir de las iniciales del usuario. */

@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </td>
                     <td>${UI.escapar(usuario.email)}</td>
                     <td>${config.icono || ''} ${UI.escapar(config.etiqueta || usuario.rol)}</td>
-                    <td>${pais.bandera || ''} ${UI.escapar(pais.nombre || '—')}</td>
+                    <td>${pais.banderaSmall ? `<img src="${pais.banderaSmall}" width="24" height="18" style="vertical-align:middle;border-radius:2px;border:1px solid #e2e8f0;margin-right:4px" onerror="this.style.display='none'">` : (pais.bandera || '')} ${UI.escapar(pais.nombre || '—')}</td>
                     <td>${edad}</td>
                     <td><span class="chip ${activo ? 'chip-disponible' : 'chip-agotado'}">
                         ${activo ? 'Activo' : 'Desactivado'}</span></td>
@@ -165,22 +165,27 @@ document.addEventListener('DOMContentLoaded', async () => {
         const nacionalidades = new Set(
             usuarios.map(u => (u.nacionalidad || {}).nombre).filter(Boolean)
         ).size;
+        const activos = usuarios.filter(u => u.activo !== false).length;
+        const desactivados = usuarios.length - activos;
 
         const tarjetas = [
-            ['Usuarios totales', usuarios.length, '#2563eb'],
-            ['Estudiantes', porRol('estudiante'), '#3b82f6'],
-            ['Instructores', porRol('instructor'), '#10b981'],
-            ['Empresas', porRol('empresa'), '#8b5cf6'],
-            ['Cuentas activas', usuarios.filter(u => u.activo !== false).length, '#16a34a'],
-            ['Nacionalidades', nacionalidades, '#f59e0b'],
-            ['Cursos publicados', cursos.length, '#0ea5e9'],
-            ['Vacantes abiertas', vacantes.filter(v => v.estado === 'abierta').length, '#ef4444'],
-            ['Matrículas', matriculas.length, '#7c3aed']
+            ['👥', 'Usuarios totales', usuarios.length, '#2563eb'],
+            ['🎓', 'Estudiantes', porRol('estudiante'), '#3b82f6'],
+            ['👨‍🏫', 'Instructores', porRol('instructor'), '#10b981'],
+            ['🏢', 'Empresas', porRol('empresa'), '#8b5cf6'],
+            ['✅', 'Activos', activos, '#16a34a'],
+            ['⛔', 'Desactivados', desactivados, '#ef4444'],
+            ['🌍', 'Nacionalidades', nacionalidades, '#f59e0b'],
+            ['📚', 'Cursos publicados', cursos.length, '#0ea5e9'],
+            ['📌', 'Vacantes abiertas', vacantes.filter(v => v.estado === 'abierta').length, '#ef4444'],
+            ['📝', 'Matriculas', matriculas.length, '#7c3aed']
         ];
 
-        indicadores.innerHTML = tarjetas.map(([etiqueta, valor, color]) => `
+        indicadores.innerHTML = tarjetas.map(([icono, etiqueta, valor, color]) => `
             <section class="indicador" style="border-left-color:${color}">
-                <p class="valor">${valor}</p>
+                <p class="valor" style="display:flex;align-items:center;gap:6px;justify-content:center">
+                    <span style="font-size:18px">${icono}</span> ${valor}
+                </p>
                 <p class="etiqueta">${etiqueta}</p>
             </section>`).join('');
     }
@@ -220,7 +225,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <tbody>
                     <tr><th>Correo</th><td>${UI.escapar(usuario.email)}</td></tr>
                     <tr><th>Rol</th><td>${config.icono || ''} ${UI.escapar(config.etiqueta || '')}</td></tr>
-                    <tr><th>Nacionalidad</th><td>${pais.bandera || ''} ${UI.escapar(pais.nombre || '—')}</td></tr>
+                    <tr><th>Nacionalidad</th><td>${pais.banderaSmall ? `<img src="${pais.banderaSmall}" width="24" height="18" style="vertical-align:middle;border-radius:2px;border:1px solid #e2e8f0;margin-right:4px" onerror="this.style.display='none'">` : (pais.bandera || '')} ${UI.escapar(pais.nombre || '—')}</td></tr>
                     <tr><th>Nacimiento</th><td>${UI.fecha(usuario.fechaNacimiento)}</td></tr>
                     <tr><th>Teléfono</th><td>${UI.escapar(contacto.telefono || '—')}</td></tr>
                     <tr><th>Ciudad</th><td>${UI.escapar(contacto.ciudad || '—')}</td></tr>

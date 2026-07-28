@@ -97,6 +97,55 @@ document.addEventListener('DOMContentLoaded', async () => {
         }).length;
     }
 
+    function obtenerCandidatos(vacante) {
+        const todosEstudiantes = Datos.cache('usuarios').filter(u => u.rol === 'estudiante');
+        const req = (vacante.habilidades || []).map(h => h.toLowerCase());
+        if (req.length === 0) return [];
+        return todosEstudiantes.filter(est => {
+            const hab = (est.habilidades || []).map(h => h.toLowerCase());
+            return req.some(r => hab.some(h => h.includes(r) || r.includes(h)));
+        }).map(est => {
+            const hab = (est.habilidades || []).map(h => h.toLowerCase());
+            const coincidencias = req.filter(r => hab.some(h => h.includes(r) || r.includes(h)));
+            return { ...est, coincidencias, porcentaje: Math.round((coincidencias.length / req.length) * 100) };
+        }).sort((a, b) => b.porcentaje - a.porcentaje);
+    }
+
+    function mostrarCandidatos(vacante) {
+        const candidatos = obtenerCandidatos(vacante);
+        const req = (vacante.habilidades || []).map(h => UI.escapar(h));
+        if (candidatos.length === 0) {
+            UI.detalle(UI.escapar(vacante.titulo), `
+                <section style="text-align:center;padding:20px">
+                    <p style="font-size:40px;margin-bottom:10px">🔍</p>
+                    <p style="color:#64748b">No se encontraron candidatos que coincidan con las habilidades requeridas.</p>
+                    <p style="color:#94a3b8;font-size:13px;margin-top:6px">Habilidades buscadas: ${req.join(', ')}</p>
+                </section>`);
+            return;
+        }
+        const html = `
+            <section style="text-align:left">
+                <p style="font-size:13px;color:#64748b;margin-bottom:12px">
+                    Habilidades requeridas: <strong>${req.join(', ')}</strong>
+                </p>
+                <section style="display:flex;flex-direction:column;gap:10px">
+                    ${candidatos.map(c => `
+                        <section style="display:flex;align-items:center;gap:12px;padding:10px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0">
+                            <img src="${UI.fotoUsuario(c)}" alt="" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #e2e8f0">
+                            <section style="flex:1;min-width:0">
+                                <p style="margin:0;font-weight:600;font-size:14px;color:#1e293b">${UI.escapar(c.nombres)} ${UI.escapar(c.apellidos)}</p>
+                                <p style="margin:2px 0 0;font-size:12px;color:#64748b">${UI.escapar(c.email)}</p>
+                            </section>
+                            <section style="text-align:right;flex-shrink:0">
+                                <span style="display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;background:${c.porcentaje >= 70 ? '#16a34a' : c.porcentaje >= 40 ? '#f59e0b' : '#ef4444'}">${c.porcentaje}% match</span>
+                                <p style="margin:4px 0 0;font-size:11px;color:#94a3b8">${c.coincidencias.length} de ${req.length} habilidades</p>
+                            </section>
+                        </section>`).join('')}
+                </section>
+            </section>`;
+        UI.detalle('Candidatos: ' + vacante.titulo, html);
+    }
+
     /* --------------------------------------------------- renderizar vacantes */
     function renderizarTarjetaVacante(vacante, cerrada = false) {
         const habilidades = Array.isArray(vacante.habilidades) ? vacante.habilidades : [];
@@ -174,7 +223,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const accion = btn.dataset.accion;
 
             if (accion === 'ver-candidatos') {
-                window.location.href = Datos.rutaBase() + 'pages/buscar-talento/buscar-talento.html';
+                const vacante = misVacantes.find(v => Number(v.id) === id);
+                if (vacante) mostrarCandidatos(vacante);
             } else if (accion === 'editar') {
                 const vacante = misVacantes.find(v => Number(v.id) === id);
                 if (vacante) abrirFormularioEdicion(vacante);
