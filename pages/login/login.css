@@ -13,6 +13,9 @@
     padding: 35px 30px;
     width: 100%;
     max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .caja-login .logo-login {

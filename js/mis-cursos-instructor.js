@@ -374,10 +374,43 @@ document.addEventListener('DOMContentLoaded', async () => {
         );
         if (!confirmado) return;
 
+        const mat = matriculas.find(m => m.id === matriculaId);
         Datos.actualizar('matriculas', matriculaId, {
             certificadoEmitido: true,
             estado: 'completado'
         });
+
+        if (mat) {
+            const estudiante = usuarios.find(u => Number(u.id) === Number(mat.usuarioId));
+            const curso = cursos.find(c => Number(c.id) === Number(mat.cursoId));
+            if (estudiante && curso) {
+                const nombreEst = `${estudiante.nombres} ${estudiante.apellidos}`;
+                const nombreCurso = curso.nombre;
+                await Datos.obtener('notificaciones');
+                Datos.agregar('notificaciones', {
+                    id: Date.now(),
+                    rol: 'estudiante',
+                    tipo: 'exito',
+                    icono: '📜',
+                    titulo: '¡Certificado emitido!',
+                    descripcion: `Tu certificado del curso "${nombreCurso}" ha sido emitido por el instructor. ¡Felicitaciones!`,
+                    leida: false,
+                    fecha: new Date().toISOString(),
+                    fuente: 'Servicio de Certificación'
+                });
+                Datos.agregar('notificaciones', {
+                    id: Date.now() + 2,
+                    rol: 'empresa',
+                    tipo: 'info',
+                    icono: '🎓',
+                    titulo: `${nombreEst} obtuvo un certificado`,
+                    descripcion: `${nombreEst} completó el curso "${nombreCurso}" y obtuvo su certificado. Perfil actualizado.`,
+                    leida: false,
+                    fecha: new Date().toISOString(),
+                    fuente: 'Servicio de Certificación'
+                });
+            }
+        }
 
         matriculas = Datos.cache('matriculas');
         const misCursos = filtrarCursos();

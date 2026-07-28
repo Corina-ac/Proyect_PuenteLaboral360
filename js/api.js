@@ -136,6 +136,20 @@ const Api = (() => {
         } catch { return []; }
     }
 
+    async function sugerirTrabajos() {
+        const ctx = _contextoUsuario();
+        const respuesta = await _llamarGrok([
+            { role: 'system', content: `Eres un asistente de empleos en PuenteLaboral360. Analiza el perfil del usuario y sugiere 3-5 empleos que se ajusten a su perfil, nivel, habilidades y cursos completados.\n\nPerfil del usuario:\n${ctx}\n\nResponde SOLO con un JSON array de objetos con campos "cargo", "empresa", "descripcion" (por que le sirve al usuario), y "habilidadesRequeridas" (array de strings). Sin texto adicional, sin markdown.` },
+            { role: 'user', content: 'Sugereme empleos que se ajusten a mi perfil, nivel y habilidades.' }
+        ]);
+        if (!respuesta) return [];
+        try {
+            const match = respuesta.match(/\[[\s\S]*\]/);
+            if (!match) return [];
+            return JSON.parse(match[0]);
+        } catch { return []; }
+    }
+
     async function generarDescripcionCurso(titulo, categoria) {
         const respuesta = await _llamarGrok([
             { role: 'system', content: 'Eres el copywriter de PuenteLaboral360, una plataforma de cursos laborales. Genera descripciones profesionales, claras y atractivas para cursos.\nResponde SOLO con el texto de la descripcion, sin comillas ni formato adicional. Maximo 2 oraciones.' },
@@ -290,7 +304,7 @@ const Api = (() => {
 
     return {
         obtenerPaises, obtenerClima, CIUDADES, describirClima,
-        recomendarCursos, mejorarPerfil, sugerirHabilidades, generarDescripcionCurso, resumenSistema,
+        recomendarCursos, mejorarPerfil, sugerirHabilidades, sugerirTrabajos, generarDescripcionCurso, resumenSistema,
         obtenerCiudades
     };
 })();

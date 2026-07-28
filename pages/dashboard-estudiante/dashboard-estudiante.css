@@ -18,15 +18,14 @@
 }
 
 .sidebar .avatar {
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     background-color: #1a73e8;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
+    display: block;
     margin: 0 auto 8px;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.35);
 }
 
 .sidebar .nombre-usuario {
@@ -159,17 +158,22 @@
 }
 
 .match-porcentaje {
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 800;
     color: #28a745;
     text-align: center;
-    min-width: 70px;
+    min-width: 65px;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .match-porcentaje .texto-match {
     font-size: 11px;
     color: #888;
     font-weight: normal;
+    -webkit-text-fill-color: #888;
 }
 
 /* ============================================================

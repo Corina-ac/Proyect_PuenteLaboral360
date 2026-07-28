@@ -190,14 +190,17 @@ select.campo-valido {
     border-radius: 10px;
     padding: 12px 14px;
     font-size: 13.5px;
+    max-width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
 }
 
-.credenciales-demo summary { cursor: pointer; font-weight: 600; color: #334155; }
+.credenciales-demo summary { cursor: pointer; font-weight: 600; color: #334155; font-size: 13px; }
 
-.tabla-demo { width: 100%; border-collapse: collapse; margin-top: 10px; }
-.tabla-demo caption { text-align: left; font-size: 12px; color: #64748b; padding-bottom: 6px; }
+.tabla-demo { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 11px; }
+.tabla-demo caption { text-align: left; font-size: 11px; color: #64748b; padding-bottom: 6px; }
 .tabla-demo th,
-.tabla-demo td { text-align: left; padding: 6px 4px; border-bottom: 1px solid #e2e8f0; font-size: 12.5px; }
+.tabla-demo td { text-align: left; padding: 5px 4px; border-bottom: 1px solid #e2e8f0; font-size: 11px; word-break: break-all; }
 
 .btn-usar-demo {
     background: none;

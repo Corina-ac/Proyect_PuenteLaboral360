@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const zonaCursos = document.getElementById('cursos-progreso');
     const zonaMatch = document.getElementById('oportunidades-match');
     const zonaHabilidades = document.getElementById('habilidades-estudiante');
+    const zonaSugerenciasIA = document.getElementById('sugerencias-ia');
+    const zonaMeta = document.getElementById('meta-profesional');
+    const zonaCursosRecomendados = document.getElementById('cursos-recomendados');
+    const zonaCertificados = document.getElementById('certificados-estudiante');
 
     async function cargar() {
         UI.cargando(zonaStats, 'Cargando tu panel…');
@@ -36,6 +40,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             pintarCursos(enProgreso);
             pintarMatch(usuario, misMatriculas);
             pintarHabilidades(habilidades, completados);
+            pintarCertificados(certs);
+            pintarSugerenciasIA(usuario);
+            pintarMeta(usuario);
+            pintarCursosRecomendados(usuario);
         } catch (error) {
             UI.fallo(zonaStats, error.message, cargar);
         }
@@ -164,6 +172,237 @@ document.addEventListener('DOMContentLoaded', async () => {
         zonaHabilidades.innerHTML = habilidades.map(h =>
             `<span class="habilidad-tag ${verificadas ? 'habilidad-verificada' : ''}">${UI.escapar(h)} ${verificadas ? '✓' : ''}</span>`
         ).join('') + `<br><br><a href="../perfil/perfil.html" class="btn btn-azul btn-sm">Ver mi perfil completo</a>`;
+    }
+
+    /* --------------------------------------------------- certificados */
+    function pintarCertificados(certificados) {
+        if (certificados.length === 0) {
+            UI.vacio(zonaCertificados, 'Aun no tienes certificados. Completa un curso para obtener uno.', '📜');
+            return;
+        }
+        const cursos = Datos.cache('cursos');
+        zonaCertificados.innerHTML = certificados.map(m => {
+            const curso = cursos.find(c => c.id === m.cursoId);
+            const nombreCurso = curso ? curso.nombre : 'Curso';
+            return `
+                <section class="match-card" style="border-left: 4px solid #16a34a;">
+                    <section class="info-empresa">
+                        <section class="nombre-empresa">📜 ${UI.escapar(nombreCurso)}</section>
+                        <section class="cargo">Completado el ${UI.fecha(m.fechaInscripcion)}</section>
+                        <section class="detalle-candidato">Calificacion: ${m.calificacion || 'Aprobado'}</section>
+                    </section>
+                    <section>
+                        <button type="button" class="btn btn-verde btn-sm btn-ver-certificado"
+                            data-nombre="${UI.escapar(nombreCurso)}"
+                            data-estudiante="${UI.escapar(usuario.nombres + ' ' + usuario.apellidos)}"
+                            data-fecha="${UI.fecha(m.fechaInscripcion)}"
+                            data-calificacion="${m.calificacion || 'Aprobado'}">Ver certificado</button>
+                    </section>
+                </section>`;
+        }).join('');
+
+        zonaCertificados.querySelectorAll('.btn-ver-certificado').forEach(boton => {
+            boton.addEventListener('click', () => {
+                mostrarCertificado(boton.dataset.nombre, boton.dataset.estudiante, boton.dataset.fecha, boton.dataset.calificacion);
+            });
+        });
+    }
+
+    function mostrarCertificado(nombreCurso, nombreEstudiante, fecha, calificacion) {
+        Swal.fire({
+            title: '📜 Certificado de Finalización',
+            html: `
+                <section style="text-align:center; padding: 20px; border: 3px solid #16a34a; border-radius: 12px; background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
+                    <p style="font-size: 14px; color: #16a34a; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px;">PuenteLaboral360</p>
+                    <h2 style="font-size: 20px; color: #15803d; margin: 10px 0;">Certificado de Finalización</h2>
+                    <p style="font-size: 14px; color: #333;">Se certifica que</p>
+                    <p style="font-size: 22px; font-weight: bold; color: #1a73e8; margin: 8px 0;">${nombreEstudiante}</p>
+                    <p style="font-size: 14px; color: #333;">ha completado satisfactoriamente el curso</p>
+                    <p style="font-size: 18px; font-weight: bold; color: #333; margin: 8px 0;">${nombreCurso}</p>
+                    <p style="font-size: 13px; color: #666;">Calificación: <strong>${calificacion}</strong></p>
+                    <p style="font-size: 13px; color: #666;">Fecha: ${fecha}</p>
+                    <hr style="border: 1px solid #16a34a; margin: 15px 0;">
+                    <p style="font-size: 12px; color: #888;">Este certificado es válido para fines de postulación laboral.</p>
+                </section>`,
+            width: 600,
+            confirmButtonText: 'Cerrar',
+            confirmButtonColor: '#16a34a'
+        });
+    }
+
+    /* --------------------------------------------------- sugerencias IA */
+    async function pintarSugerenciasIA(estudiante) {
+        UI.cargando(zonaSugerenciasIA, 'La IA esta analizando tu perfil para sugerirte empleos…');
+        try {
+            const sugerencias = await Api.sugerirTrabajos();
+            if (!sugerencias || sugerencias.length === 0) {
+                UI.vacio(zonaSugerenciasIA, 'No se pudieron generar sugerencias en este momento. Intenta mas tarde.', '🤖');
+                return;
+            }
+            zonaSugerenciasIA.innerHTML = sugerencias.map(s => `
+                <section class="match-card" data-cargo="${UI.escapar(s.cargo)}" data-empresa="${UI.escapar(s.empresa)}">
+                    <section class="info-empresa">
+                        <section class="cargo">${UI.escapar(s.cargo)}</section>
+                        <section class="nombre-empresa">🏢 ${UI.escapar(s.empresa)}</section>
+                        <p class="descripcion-vacante">${UI.escapar(s.descripcion)}</p>
+                        <section class="habilidades-match">
+                            ${(s.habilidadesRequeridas || []).map(h => `<span class="habilidad-tag">${UI.escapar(h)}</span>`).join('')}
+                        </section>
+                    </section>
+                    <section>
+                        <button class="btn btn-azul btn-aplicar" type="button">Aplicar</button>
+                    </section>
+                </section>`).join('');
+
+            zonaSugerenciasIA.querySelectorAll('.btn-aplicar').forEach(boton => {
+                boton.addEventListener('click', async () => {
+                    const card = boton.closest('.match-card');
+                    const cargo = card.dataset.cargo;
+                    const empresa = card.dataset.empresa;
+                    await aplicarTrabajo(estudiante, cargo, empresa, boton);
+                });
+            });
+        } catch (error) {
+            UI.fallo(zonaSugerenciasIA, 'Error al obtener sugerencias de IA.', () => pintarSugerenciasIA(estudiante));
+        }
+    }
+
+    /* --------------------------------------------------- aplicar trabajo */
+    async function aplicarTrabajo(estudiante, cargo, empresa, boton) {
+        const confirmado = await UI.confirmar(
+            '¿Aplicar a este empleo?',
+            `¿Deseas aplicar al puesto de "${cargo}" en ${empresa}?`,
+            'Si, aplicar'
+        );
+        if (!confirmado) return;
+
+        boton.disabled = true;
+        boton.textContent = 'Enviando…';
+
+        try {
+            await Datos.obtener('notificaciones');
+
+            const nombreEstudiante = `${estudiante.nombres} ${estudiante.apellidos}`;
+            const ahora = new Date().toISOString();
+
+            Datos.agregar('notificaciones', {
+                id: Date.now(),
+                rol: 'estudiante',
+                tipo: 'info',
+                icono: '📨',
+                titulo: `Aplicaste a ${cargo}`,
+                descripcion: `Tu perfil ha sido enviado a la empresa ${empresa} para revisión.`,
+                leida: false,
+                fecha: ahora,
+                fuente: 'Sistema de Empleo'
+            });
+
+            Datos.agregar('notificaciones', {
+                id: Date.now() + 1,
+                rol: 'empresa',
+                tipo: 'info',
+                icono: '👤',
+                titulo: `Nuevo postulante: ${nombreEstudiante}`,
+                descripcion: `${nombreEstudiante} aplicó al puesto de ${cargo}. Revisa su perfil.`,
+                leida: false,
+                fecha: ahora,
+                fuente: 'Sistema de Empleo'
+            });
+
+            boton.textContent = '✓ Enviado';
+            UI.toast('Aplicación enviada correctamente');
+        } catch (error) {
+            boton.disabled = false;
+            boton.textContent = 'Aplicar';
+            UI.toast('Error al enviar la aplicación', 'error');
+        }
+    }
+
+    /* --------------------------------------------------- meta profesional */
+    async function pintarMeta(estudiante) {
+        if (!estudiante.objetivo) {
+            zonaMeta.innerHTML = `
+                <section class="estado-vacio">
+                    <p class="estado-icono" aria-hidden="true">🎯</p>
+                    <p>Aun no has definido tu meta profesional.</p>
+                    <a href="../perfil/perfil.html" class="btn btn-azul btn-sm" style="margin-top:12px">Definir mi objetivo</a>
+                </section>`;
+            return;
+        }
+
+        zonaMeta.innerHTML = `<p><strong>Mi objetivo:</strong> ${UI.escapar(estudiante.objetivo)}</p>`;
+        UI.cargando(zonaMeta, 'La IA esta analizando tu objetivo para sugerirte habilidades…');
+        try {
+            const habilidades = await Api.sugerirHabilidades();
+            if (habilidades && habilidades.length > 0) {
+                zonaMeta.innerHTML = `
+                    <p><strong>Mi objetivo:</strong> ${UI.escapar(estudiante.objetivo)}</p>
+                    <p style="margin-top:10px"><strong>Habilidades sugeridas por IA para alcanzarlo:</strong></p>
+                    <section class="habilidades" style="margin-top:8px">
+                        ${habilidades.map(h => `<span class="habilidad-tag">${UI.escapar(h)}</span>`).join('')}
+                    </section>`;
+            } else {
+                zonaMeta.innerHTML = `<p><strong>Mi objetivo:</strong> ${UI.escapar(estudiante.objetivo)}</p>`;
+            }
+        } catch (error) {
+            zonaMeta.innerHTML = `<p><strong>Mi objetivo:</strong> ${UI.escapar(estudiante.objetivo)}</p>`;
+        }
+    }
+
+    /* --------------------------------------------------- cursos recomendados */
+    function pintarCursosRecomendados(estudiante) {
+        const cursos = (Datos.cache('cursos') || []).filter(c => c.estado === 'disponible');
+        const categorias = Datos.cache('categorias') || [];
+        const habilidades = (estudiante.habilidades || []).map(h => h.toLowerCase());
+        const objetivo = (estudiante.objetivo || '').toLowerCase();
+        const misMatriculas = Datos.matriculasDe(estudiante.id).map(m => m.cursoId);
+
+        const cursosFiltrados = cursos
+            .filter(c => !misMatriculas.includes(c.id))
+            .map(c => {
+                const cat = categorias.find(ca => ca.id === c.categoriaId);
+                const nombreCat = cat ? cat.nombre.toLowerCase() : '';
+                const nombreCurso = c.nombre.toLowerCase();
+                let relevancia = 0;
+
+                habilidades.forEach(h => {
+                    if (nombreCurso.includes(h) || nombreCat.includes(h)) relevancia += 30;
+                });
+
+                if (objetivo) {
+                    const palabras = objetivo.split(/\s+/).filter(w => w.length > 3);
+                    palabras.forEach(p => {
+                        if (nombreCurso.includes(p) || nombreCat.includes(p)) relevancia += 20;
+                    });
+                }
+
+                if (c.nivel === estudiante.nivel) relevancia += 10;
+
+                return { ...c, cat: cat ? cat.nombre : 'General', relevancia };
+            })
+            .filter(c => c.relevancia > 0)
+            .sort((a, b) => b.relevancia - a.relevancia)
+            .slice(0, 5);
+
+        if (cursosFiltrados.length === 0) {
+            UI.vacio(zonaCursosRecomendados, 'No se encontraron cursos recomendados para tu perfil actual.', '📚');
+            return;
+        }
+
+        zonaCursosRecomendados.innerHTML = cursosFiltrados.map(c => `
+            <section class="match-card">
+                <section class="info-empresa">
+                    <section class="cargo">${UI.escapar(c.nombre)}</section>
+                    <section class="nombre-empresa">📂 ${UI.escapar(c.cat)}</section>
+                    <section>
+                        <span class="habilidad-tag">${UI.escapar(c.nivel)}</span>
+                        <span class="habilidad-tag">${c.valoracion ? '⭐ ' + c.valoracion : ''}</span>
+                    </section>
+                </section>
+                <section>
+                    <a href="../cursos/cursos.html" class="btn btn-azul btn-sm">Ver curso</a>
+                </section>
+            </section>`).join('');
     }
 
     await cargar();

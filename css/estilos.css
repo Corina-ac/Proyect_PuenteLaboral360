@@ -478,26 +478,20 @@ progress:hover {
 .notif-accion { margin-top: 8px; }
 .solicitud-progreso { margin-top: 6px; }
 
-.footer {
+.footer, .footer-oscuro {
     background-color: #2c3e50;
     color: #bbb;
     text-align: center;
-    padding: 20px;
+    padding: 14px 20px;
     font-size: 13px;
     margin-top: 0;
     border: none;
     border-top: 3px solid #1a73e8;
+    flex-shrink: 0;
 }
 
-.footer-oscuro {
-    background-color: #2c3e50;
-    color: #bbb;
-    text-align: center;
-    padding: 20px;
-    font-size: 13px;
+.layout-dashboard ~ .footer {
     margin-top: 0;
-    border: none;
-    border-top: 3px solid #1a73e8;
 }
 
 .footer span {
