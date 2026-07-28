@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const candidatos = calcularCandidatos(todosEstudiantes, misVacantes, matriculas);
 
             pintarEstadisticas(misVacantes, candidatos);
+            pintarGraficas(candidatos, misVacantes);
             pintarSelectorVacantes(misVacantes);
             pintarCandidatos(candidatos, misVacantes);
         } catch (error) {
@@ -128,6 +129,70 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="numero" style="color:${color}">${valor}</div>
                 <div class="etiqueta">${texto}</div>
             </div>`).join('');
+    }
+
+    /* --------------------------------------------------- graficas */
+    function pintarGraficas(candidatos, vacantes) {
+        if (typeof Chart === 'undefined') return;
+
+        const rangos = { 'Alto (≥70%)': 0, 'Medio (40-69%)': 0, 'Bajo (<40%)': 0 };
+        candidatos.forEach(c => {
+            if (c.match >= 70) rangos['Alto (≥70%)']++;
+            else if (c.match >= 40) rangos['Medio (40-69%)']++;
+            else rangos['Bajo (<40%)']++;
+        });
+
+        if (candidatos.length > 0) {
+            const ctx1 = document.getElementById('chart-match-distribucion');
+            if (ctx1) {
+                new Chart(ctx1, {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(rangos),
+                        datasets: [{
+                            data: Object.values(rangos),
+                            backgroundColor: ['#16a34a', '#f59e0b', '#ef4444'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        cutout: '55%',
+                        plugins: { title: { display: true, text: 'Distribución de compatibilidad', font: { size: 14 } } }
+                    }
+                });
+            }
+        }
+
+        const niveles = { 'Principiante': 0, 'Junior': 0, 'Semi-senior': 0, 'Senior': 0 };
+        candidatos.forEach(c => {
+            const n = c.nivel || 'Principiante';
+            if (niveles.hasOwnProperty(n)) niveles[n]++;
+        });
+
+        if (candidatos.length > 0) {
+            const ctx2 = document.getElementById('chart-nivel-candidatos');
+            if (ctx2) {
+                new Chart(ctx2, {
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(niveles),
+                        datasets: [{
+                            label: 'Candidatos',
+                            data: Object.values(niveles),
+                            backgroundColor: ['#94a3b8', '#3b82f6', '#f59e0b', '#16a34a'],
+                            borderRadius: 6,
+                            barThickness: 32
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: false }, title: { display: true, text: 'Candidatos por nivel', font: { size: 14 } } },
+                        scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                    }
+                });
+            }
+        }
     }
 
     /* --------------------------------------------------- selector vacantes */

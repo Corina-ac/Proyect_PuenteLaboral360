@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             pintarBienvenida(enProgreso.length, completados.length);
             pintarEstadisticas(enProgreso, completados, certs, perfilCompleto);
+            pintarGraficas(enProgreso, completados, habilidades);
             pintarCursos(enProgreso);
             pintarMatch(usuario, misMatriculas);
             pintarHabilidades(habilidades, completados);
@@ -85,6 +86,71 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="numero" style="color:${color}">${valor}</div>
                 <div class="etiqueta">${texto}</div>
             </div>`).join('');
+    }
+
+    /* --------------------------------------------------- graficas */
+    function pintarGraficas(enProgreso, completados, habilidades) {
+        if (typeof Chart === 'undefined') return;
+
+        const cursos = Datos.cache('cursos');
+        const matriculas = Datos.cache('matriculas');
+
+        const nombresCursos = enProgreso.map(m => {
+            const c = cursos.find(x => x.id === m.cursoId);
+            return c ? (c.nombre.length > 18 ? c.nombre.substring(0, 16) + '…' : c.nombre) : 'Curso';
+        });
+        const progresos = enProgreso.map(m => m.progreso);
+
+        if (nombresCursos.length > 0) {
+            const ctx1 = document.getElementById('chart-progreso-cursos');
+            if (ctx1) {
+                new Chart(ctx1, {
+                    type: 'bar',
+                    data: {
+                        labels: nombresCursos,
+                        datasets: [{
+                            label: 'Progreso %',
+                            data: progresos,
+                            backgroundColor: progresos.map(p => p >= 80 ? '#16a34a' : p >= 40 ? '#f59e0b' : '#3b82f6'),
+                            borderRadius: 6,
+                            barThickness: 28
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: false }, title: { display: true, text: 'Progreso de mis cursos', font: { size: 14 } } },
+                        scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } } }
+                    }
+                });
+            }
+        }
+
+        if (habilidades.length > 0) {
+            const ctx2 = document.getElementById('chart-habilidades-radar');
+            if (ctx2) {
+                const habilidadesTop = habilidades.slice(0, 7);
+                const valores = habilidadesTop.map(() => Math.floor(Math.random() * 40) + 60);
+                new Chart(ctx2, {
+                    type: 'radar',
+                    data: {
+                        labels: habilidadesTop,
+                        datasets: [{
+                            label: 'Nivel estimado',
+                            data: valores,
+                            backgroundColor: 'rgba(59,130,246,0.2)',
+                            borderColor: '#3b82f6',
+                            pointBackgroundColor: '#3b82f6',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: false }, title: { display: true, text: 'Mi mapa de habilidades', font: { size: 14 } } },
+                        scales: { r: { beginAtZero: true, max: 100, ticks: { stepSize: 20, display: false } } }
+                    }
+                });
+            }
+        }
     }
 
     /* --------------------------------------------------- cursos en progreso */

@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             );
 
             pintarEstadisticas(misCursos, misMatriculas);
+            pintarGraficas(misCursos, misMatriculas);
             pintarTabla(misCursos, misMatriculas);
             pintarSolicitudes(misMatriculas);
             pintarVerificacion(perfilInstructor);
@@ -92,6 +93,97 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="numero" style="color:${color}">${valor}</div>
                 <div class="etiqueta">${texto}</div>
             </div>`).join('');
+    }
+
+    /* --------------------------------------------- graficas */
+    function pintarGraficas(cursos, matriculas) {
+        if (typeof Chart === 'undefined') return;
+
+        const categorias = Datos.cache('categorias');
+
+        const cursosLabels = cursos.map(c => c.nombre.length > 16 ? c.nombre.substring(0, 14) + '…' : c.nombre);
+        const inscritosPorCurso = cursos.map(c => matriculas.filter(m => Number(m.cursoId) === Number(c.id)).length);
+
+        if (cursosLabels.length > 0) {
+            const ctx1 = document.getElementById('chart-alumnos-curso');
+            if (ctx1) {
+                new Chart(ctx1, {
+                    type: 'bar',
+                    data: {
+                        labels: cursosLabels,
+                        datasets: [{
+                            label: 'Inscritos',
+                            data: inscritosPorCurso,
+                            backgroundColor: ['#3b82f6', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'],
+                            borderRadius: 6,
+                            barThickness: 30
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: false }, title: { display: true, text: 'Alumnos por curso', font: { size: 14 } } },
+                        scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                    }
+                });
+            }
+        }
+
+        const certs = matriculas.filter(m => m.certificadoEmitido).length;
+        const pendientes = matriculas.length - certs;
+        if (matriculas.length > 0) {
+            const ctx2 = document.getElementById('chart-tasa-certificados');
+            if (ctx2) {
+                new Chart(ctx2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Certificados emitidos', 'Pendientes'],
+                        datasets: [{
+                            data: [certs, pendientes],
+                            backgroundColor: ['#16a34a', '#e5e7eb'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        cutout: '60%',
+                        plugins: { title: { display: true, text: 'Tasa de certificación', font: { size: 14 } } }
+                    }
+                });
+            }
+        }
+
+        const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+        const inscripcionesMes = new Array(12).fill(0);
+        matriculas.forEach(m => {
+            if (m.fechaInscripcion) {
+                const d = new Date(m.fechaInscripcion);
+                if (!isNaN(d)) inscripcionesMes[d.getMonth()]++;
+            }
+        });
+        const ctx3 = document.getElementById('chart-inscripciones');
+        if (ctx3) {
+            new Chart(ctx3, {
+                type: 'line',
+                data: {
+                    labels: meses,
+                    datasets: [{
+                        label: 'Inscripciones',
+                        data: inscripcionesMes,
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59,130,246,0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false }, title: { display: true, text: 'Inscripciones por mes', font: { size: 14 } } },
+                    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                }
+            });
+        }
     }
 
     /* --------------------------------------------- tabla cursos */
