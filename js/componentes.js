@@ -125,6 +125,12 @@ const UI = (() => {
         return d.toLocaleDateString('es-EC', { day: '2-digit', month: 'long', year: 'numeric' });
     }
 
+    function avatarMultiavatar(nombre) {
+        if (!nombre) return null;
+        const limpio = nombre.trim().replace(/\s+/g, '_');
+        return `https://api.multiavatar.com/${encodeURIComponent(limpio)}.svg`;
+    }
+
     /** Avatar en SVG generado a partir de las iniciales del usuario. */
     function avatarDataUri(iniciales, color = '#2563eb') {
         const texto = (iniciales || '?').slice(0, 2).toUpperCase();
@@ -136,14 +142,16 @@ const UI = (() => {
         return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
     }
 
-    /** Imagen del usuario: la que subio, o el avatar generado con sus iniciales. */
+    /** Imagen del usuario: la que subio, o multiavatar, o respaldo con iniciales. */
     function fotoUsuario(usuario) {
         if (!usuario) return avatarDataUri('?');
         if (usuario.avatar) return usuario.avatar;
         const iniciales = usuario.iniciales ||
             ((usuario.nombres || '?')[0] + (usuario.apellidos || '')[0] || '');
         const color = (Auth.ROLES[usuario.rol] || {}).color || '#2563eb';
-        return avatarDataUri(iniciales, color);
+        const respaldo = avatarDataUri(iniciales, color);
+        const multiUrl = avatarMultiavatar(usuario.nombres + ' ' + (usuario.apellidos || ''));
+        return multiUrl || respaldo;
     }
 
     /**
@@ -254,7 +262,7 @@ const UI = (() => {
         toast, alerta, error, confirmar, detalle,
         cargando, vacio, fallo,
         escapar, precio, fecha,
-        avatarDataUri, fotoUsuario, imagenConRespaldo,
+        avatarDataUri, avatarMultiavatar, fotoUsuario, imagenConRespaldo,
         pintarBarraSesion, pintarPerfilLateral, iniciar
     };
 })();

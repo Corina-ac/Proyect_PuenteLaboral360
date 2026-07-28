@@ -19,7 +19,8 @@ const Datos = (() => {
         empresas: 'empresas.json',
         vacantes: 'vacantes.json',
         matriculas: 'matriculas.json',
-        galeria: 'galeria.json'
+        galeria: 'galeria.json',
+        notificaciones: 'notificaciones.json'
     };
 
     /**

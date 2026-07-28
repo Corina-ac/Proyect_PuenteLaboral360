@@ -261,8 +261,36 @@ const Api = (() => {
         };
     }
 
+    /* ------------------------------------------------------------ ciudades */
+    const CIUDADES_POR_PAIS = {
+        'EC': ['Quito', 'Guayaquil', 'Cuenca', 'Santo Domingo', 'Machala', 'Manta', 'Portoviejo', 'Ambato', 'Riobamba', 'Loja', 'Ibarra', 'Quevedo', 'Esmeraldas', 'Latacunga', 'Ambato'],
+        'CO': ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena', 'Cúcuta', 'Bucaramanga', 'Pereira', 'Santa Marta', 'Ibagué', 'Pasto', 'Manizales', 'Villavicencio', 'Neiva', 'Armenia'],
+        'MX': ['Ciudad de México', 'Guadalajara', 'Monterrey', 'Puebla', 'Tijuana', 'León', 'Ciudad Juárez', 'Zapopan', 'Mérida', 'San Luis Potosí', 'Querétaro', 'Aguascalientes', 'Morelia', 'Cancún', 'Veracruz'],
+        'PE': ['Lima', 'Arequipa', 'Trujillo', 'Chiclayo', 'Cusco', 'Piura', 'Iquitos', 'Huancayo', 'Chimbote', 'Pucallpa', 'Tacna', 'Ica', 'Cajamarca', 'Sullana', 'Ayacucho'],
+        'AR': ['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza', 'Tucumán', 'La Plata', 'Mar del Plata', 'Salta', 'Santa Fe', 'San Juan', 'Resistencia', 'Corrientes', 'Neuquén', 'Posadas', 'Bahía Blanca'],
+        'CL': ['Santiago', 'Valparaíso', 'Concepción', 'Antofagasta', 'Temuco', 'Rancagua', 'Talca', 'Iquique', 'Osorno', 'Puerto Montt', 'Arica', 'Chillán', 'Calama', 'Punta Arenas', 'Copiapó'],
+        'ES': ['Madrid', 'Barcelona', 'Valencia', 'Sevilla', 'Zaragoza', 'Málaga', 'Murcia', 'Palma', 'Las Palmas', 'Bilbao', 'Alicante', 'Córdoba', 'Valladolid', 'Vigo', 'Gijón'],
+        'US': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'San Antonio', 'San Diego', 'Dallas', 'San Jose', 'Austin', 'Miami', 'Seattle', 'Denver', 'Boston', 'Atlanta']
+    };
+
+    async function obtenerCiudades(codigoPais) {
+        if (!codigoPais) return [];
+        const cod = codigoPais.toUpperCase();
+        if (CIUDADES_POR_PAIS[cod]) return CIUDADES_POR_PAIS[cod];
+        try {
+            const resp = await fetch(`https://countries.dev/countries/${cod}`);
+            if (!resp.ok) return [];
+            const data = await resp.json();
+            if (data && data.cities && Array.isArray(data.cities)) {
+                return data.cities.map(c => typeof c === 'string' ? c : c.name || c.city || '').filter(Boolean).slice(0, 50);
+            }
+        } catch (e) { /* fallback */ }
+        return ['Otra ciudad'];
+    }
+
     return {
         obtenerPaises, obtenerClima, CIUDADES, describirClima,
-        recomendarCursos, mejorarPerfil, sugerirHabilidades, generarDescripcionCurso, resumenSistema
+        recomendarCursos, mejorarPerfil, sugerirHabilidades, generarDescripcionCurso, resumenSistema,
+        obtenerCiudades
     };
 })();

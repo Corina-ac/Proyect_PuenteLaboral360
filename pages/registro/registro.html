@@ -99,9 +99,14 @@
                     <input type="hidden" id="pais-bandera">
                 </section>
 
-                <section class="campo">
-                    <label for="ciudad">Ciudad</label>
-                    <input type="text" id="ciudad" name="ciudad" placeholder="Ej: Quito">
+                <section class="campo selector-ciudad">
+                    <label for="buscar-ciudad">Ciudad</label>
+                    <input type="text" id="buscar-ciudad" placeholder="Primero selecciona un país" disabled
+                        autocomplete="off" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false">
+                    <ul id="lista-ciudades" class="lista-paises oculto" role="listbox"></ul>
+                    <p class="pais-elegido oculto" id="ciudada-elegida"></p>
+                    <input type="hidden" id="ciudad-nombre" name="ciudad">
+                    <input type="text" id="ciudad" name="ciudad-fallback" placeholder="Ej: Quito" class="oculto">
                 </section>
 
                 <section class="campo">
