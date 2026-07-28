@@ -400,7 +400,48 @@ document.addEventListener('DOMContentLoaded', async () => {
             certificadoEmitido: false,
             fechaInscripcion: new Date().toISOString().slice(0, 10)
         });
-        UI.toast(`Te inscribiste en ${curso.nombre}.`, 'exito');
+
+        try {
+            await Datos.obtener('instructores', 'notificaciones');
+            const instructores = Datos.cache('instructores');
+            const instructor = instructores.find(i => i.id === curso.instructorId);
+            if (instructor) {
+                Datos.agregar('notificaciones', {
+                    id: Date.now(),
+                    rol: 'instructor',
+                    tipo: 'info',
+                    icono: '👤',
+                    titulo: 'Nuevo estudiante inscrito',
+                    descripcion: `${usuario.nombres} ${usuario.apellidos} se inscribio en tu curso "${curso.nombre}".`,
+                    leida: false,
+                    fecha: new Date().toISOString(),
+                    fuente: 'Sistema de Inscripcion'
+                });
+            }
+        } catch (e) { /* notificaciones opcionales */ }
+
+        const resultado = await Swal.fire({
+            title: 'Inscripción exitosa',
+            text: `Te inscribiste en "${curso.nombre}".`,
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: 'Comenzar curso',
+            cancelButtonText: 'Seguir explorando',
+            confirmButtonColor: '#16a34a',
+            cancelButtonColor: '#6b7280'
+        });
+
+        if (resultado.isConfirmed) {
+            await Datos.obtener('matriculas');
+            const mat = Datos.cache('matriculas').find(m =>
+                Number(m.usuarioId) === Number(usuario.id) && Number(m.cursoId) === Number(curso.id));
+            if (mat) {
+                const nuevoProgreso = Math.min(mat.progreso + 15, 100);
+                const nuevoEstado = nuevoProgreso >= 100 ? 'completado' : nuevoProgreso > 0 ? 'en progreso' : 'inscrito';
+                Datos.actualizar('matriculas', mat.id, { progreso: nuevoProgreso, estado: nuevoEstado });
+            }
+            UI.toast(`¡Bienvenido a "${curso.nombre}"! Progreso actualizado.`, 'exito');
+        }
     }
 
     async function crear() {

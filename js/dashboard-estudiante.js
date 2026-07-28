@@ -173,6 +173,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 : m.progreso === 0
                 ? '<span class="badge badge-amarillo">Nuevo</span>'
                 : '';
+            const botonCurso = m.progreso === 0
+                ? `<button type="button" class="btn btn-verde btn-xs btn-comenzar-dashboard" data-matricula-id="${m.id}">Comenzar curso</button>`
+                : `<button type="button" class="btn btn-azul btn-xs btn-continuar-dashboard" data-matricula-id="${m.id}">Continuar curso</button>`;
 
             return `
                 <section class="curso-card">
@@ -182,9 +185,24 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <span>Progreso</span><span>${m.progreso}%</span>
                     </section>
                     <progress title="Progreso: ${m.progreso}%" value="${m.progreso}" max="100" class="${clase}"></progress>
-                    <br>${badge}
+                    <br>${badge}<br>${botonCurso}
                 </section>`;
         }).join('');
+
+        zona.querySelectorAll('.btn-comenzar-dashboard, .btn-continuar-dashboard').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const matriculaId = Number(btn.dataset.matriculaId);
+                await Datos.obtener('matriculas');
+                const mat = Datos.cache('matriculas').find(m => m.id === matriculaId);
+                if (!mat) return;
+                const incremento = Math.floor(Math.random() * 25) + 10;
+                const nuevoProgreso = Math.min(mat.progreso + incremento, 100);
+                const nuevoEstado = nuevoProgreso >= 100 ? 'completado' : 'en progreso';
+                Datos.actualizar('matriculas', matriculaId, { progreso: nuevoProgreso, estado: nuevoEstado });
+                await cargar();
+                UI.toast(`Progreso actualizado: ${nuevoProgreso}%`, 'exito');
+            });
+        });
 
         if (zona !== zonaCursos) zonaCursos.innerHTML = zona.outerHTML;
     }

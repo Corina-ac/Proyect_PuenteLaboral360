@@ -220,83 +220,132 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     /* ---------------------------------------------------- formularios */
-    async function formularioCurso(curso = null) {
+    function construirFormularioInline(curso = null) {
         const esEdicion = curso !== null;
         const opcionesCategoria = categorias.map(c =>
-            `<option value="${c.id}" ${curso && curso.categoriaId === c.id ? 'selected' : ''}>${c.nombre}</option>`
+            `<option value="${c.id}" ${curso && curso.categoriaId === c.id ? 'selected' : ''}>${c.icono} ${UI.escapar(c.nombre)}</option>`
         ).join('');
         const opcionesNivel = ['Basico', 'Intermedio', 'Avanzado'].map(n =>
             `<option value="${n}" ${curso && curso.nivel === n ? 'selected' : ''}>${n}</option>`
         ).join('');
 
-        const resultado = await Swal.fire({
-            title: esEdicion ? 'Editar curso' : 'Registrar nuevo curso',
-            width: 620,
-            html: `
-                <section class="form-swal">
-                    <label for="f-nombre">Nombre del curso</label>
-                    <input id="f-nombre" class="swal2-input" value="${curso ? UI.escapar(curso.nombre) : ''}">
+        return `
+        <section class="tarjeta" id="formulario-curso-inline" style="border:2px solid #2563eb;margin-bottom:20px">
+            <h2>${esEdicion ? '✏️ Editar curso' : '➕ Crear nuevo curso'}</h2>
+            <form id="form-curso-instructor" style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
+                <section class="campo">
+                    <label for="f-nombre"><strong>Nombre del curso *</strong></label>
+                    <input type="text" id="f-nombre" value="${curso ? UI.escapar(curso.nombre) : ''}"
+                           placeholder="Ej: JavaScript Avanzado" required minlength="5"
+                           style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px">
+                </section>
+                <section class="campo">
+                    <label for="f-descripcion"><strong>Descripcion *</strong></label>
+                    <textarea id="f-descripcion" rows="3" placeholder="Describe el curso..."
+                              required minlength="10"
+                              style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;resize:vertical">${curso ? UI.escapar(curso.descripcion) : ''}</textarea>
+                </section>
+                <section style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                    <section class="campo">
+                        <label for="f-categoria"><strong>Categoria</strong></label>
+                        <select id="f-categoria" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px">${opcionesCategoria}</select>
+                    </section>
+                    <section class="campo">
+                        <label for="f-nivel"><strong>Nivel</strong></label>
+                        <select id="f-nivel" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px">${opcionesNivel}</select>
+                    </section>
+                </section>
+                <section style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                    <section class="campo">
+                        <label for="f-precio"><strong>Precio (USD, 0 = gratis)</strong></label>
+                        <input type="number" id="f-precio" min="0" max="5000"
+                               value="${curso ? curso.precio : 0}"
+                               style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px">
+                    </section>
+                    <section class="campo">
+                        <label for="f-duracion"><strong>Duracion (horas)</strong></label>
+                        <input type="number" id="f-duracion" min="1" max="500"
+                               value="${curso ? curso.duracionHoras : 10}"
+                               style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px">
+                    </section>
+                </section>
+                <section style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+                    <button type="button" class="btn btn-gris btn-sm" id="btn-cancelar-formulario">Cancelar</button>
+                    <button type="submit" class="btn btn-azul btn-sm">${esEdicion ? 'Guardar cambios' : 'Registrar curso'}</button>
+                </section>
+            </form>
+        </section>`;
+    }
 
-                    <label for="f-descripcion">Descripción</label>
-                    <textarea id="f-descripcion" class="swal2-textarea">${curso ? UI.escapar(curso.descripcion) : ''}</textarea>
+    function mostrarFormulario(curso = null) {
+        const formContainer = document.createElement('section');
+        formContainer.innerHTML = construirFormularioInline(curso);
+        const formElement = formContainer.firstElementChild;
 
-                    <label for="f-categoria">Categoría</label>
-                    <select id="f-categoria" class="swal2-select">${opcionesCategoria}</select>
+        const encabezado = document.querySelector('.encabezado-seccion');
+        if (encabezado) {
+            encabezado.insertAdjacentElement('afterend', formElement);
+        }
 
-                    <label for="f-nivel">Nivel</label>
-                    <select id="f-nivel" class="swal2-select">${opcionesNivel}</select>
+        formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-                    <label for="f-precio">Precio (USD, 0 = gratis)</label>
-                    <input id="f-precio" type="number" min="0" max="5000" class="swal2-input"
-                           value="${curso ? curso.precio : 0}">
+        const form = document.getElementById('form-curso-instructor');
+        const btnCancelar = document.getElementById('btn-cancelar-formulario');
 
-                    <label for="f-duracion">Duración (horas)</label>
-                    <input id="f-duracion" type="number" min="1" max="500" class="swal2-input"
-                           value="${curso ? curso.duracionHoras : 10}">
-                </section>`,
-            focusConfirm: false,
-            showCancelButton: true,
-            confirmButtonText: esEdicion ? 'Guardar cambios' : 'Registrar curso',
-            cancelButtonText: 'Cancelar',
-            confirmButtonColor: '#2563eb',
-            preConfirm: () => {
-                const nombre = document.getElementById('f-nombre').value.trim();
-                const descripcion = document.getElementById('f-descripcion').value.trim();
-                const precio = document.getElementById('f-precio').value;
-                const duracion = document.getElementById('f-duracion').value;
+        btnCancelar.addEventListener('click', () => formElement.remove());
 
-                if (nombre.length < 5) {
-                    Swal.showValidationMessage('El nombre debe tener al menos 5 caracteres.');
-                    return false;
-                }
-                const repetido = cursos.some(c =>
-                    c.nombre.toLowerCase() === nombre.toLowerCase() && (!curso || c.id !== curso.id));
-                if (repetido) {
-                    Swal.showValidationMessage('Ya existe un curso registrado con ese nombre.');
-                    return false;
-                }
-                if (descripcion.length < 10) {
-                    Swal.showValidationMessage('La descripción debe tener al menos 10 caracteres.');
-                    return false;
-                }
-                const validoPrecio = Validaciones.validarNumero(precio, 'El precio', 0, 5000);
-                if (!validoPrecio.valido) { Swal.showValidationMessage(validoPrecio.mensaje); return false; }
-                const validaDuracion = Validaciones.validarNumero(duracion, 'La duración', 1, 500);
-                if (!validaDuracion.valido) { Swal.showValidationMessage(validaDuracion.mensaje); return false; }
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('f-nombre').value.trim();
+            const descripcion = document.getElementById('f-descripcion').value.trim();
+            const precio = document.getElementById('f-precio').value;
+            const duracion = document.getElementById('f-duracion').value;
 
-                return {
-                    nombre,
-                    descripcion,
-                    categoriaId: Number(document.getElementById('f-categoria').value),
-                    instructorId: perfilInstructor.id,
-                    nivel: document.getElementById('f-nivel').value,
-                    precio: Number(precio),
-                    duracionHoras: Number(duracion)
-                };
+            if (nombre.length < 5) { UI.toast('El nombre debe tener al menos 5 caracteres.', 'error'); return; }
+            const repetido = cursos.some(c =>
+                c.nombre.toLowerCase() === nombre.toLowerCase() && (!curso || c.id !== curso.id));
+            if (repetido) { UI.toast('Ya existe un curso con ese nombre.', 'error'); return; }
+            if (descripcion.length < 10) { UI.toast('La descripcion debe tener al menos 10 caracteres.', 'error'); return; }
+
+            const datos = {
+                nombre,
+                descripcion,
+                categoriaId: Number(document.getElementById('f-categoria').value),
+                instructorId: perfilInstructor.id,
+                nivel: document.getElementById('f-nivel').value,
+                precio: Number(precio),
+                duracionHoras: Number(duracion)
+            };
+
+            if (curso) {
+                const { instructorId, ...cambios } = datos;
+                Datos.actualizar('cursos', curso.id, cambios);
+                UI.toast('Curso actualizado.', 'exito');
+            } else {
+                const cat = categorias.find(c => c.id === datos.categoriaId);
+                Datos.agregar('cursos', {
+                    ...datos,
+                    modalidad: 'Virtual',
+                    valoracion: 0,
+                    cupos: 20,
+                    estado: 'disponible',
+                    icono: cat ? cat.icono : '📘',
+                    imagen: '',
+                    certificado: true,
+                    fechaRegistro: new Date().toISOString().slice(0, 10)
+                });
+                UI.toast('Curso registrado correctamente.', 'exito');
             }
-        });
 
-        return resultado.isConfirmed ? resultado.value : null;
+            formElement.remove();
+            cursos = Datos.cache('cursos');
+            matriculas = Datos.cache('matriculas');
+            const misCursos = filtrarCursos();
+            const misMatriculas = filtrarMatriculas(misCursos);
+            pintarEstadisticas(misCursos, misMatriculas);
+            pintarCursos(misCursos, misMatriculas);
+            pintarSolicitudes(misCursos, misMatriculas);
+        });
     }
 
     /* ---------------------------------------------------- acciones */
@@ -324,46 +373,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     async function crearCurso() {
-        const datos = await formularioCurso();
-        if (!datos) return;
-
-        const cat = categorias.find(c => c.id === datos.categoriaId);
-        Datos.agregar('cursos', {
-            ...datos,
-            modalidad: 'Virtual',
-            valoracion: 0,
-            cupos: 20,
-            estado: 'disponible',
-            icono: cat ? cat.icono : '📘',
-            imagen: '',
-            certificado: true,
-            fechaRegistro: new Date().toISOString().slice(0, 10)
-        });
-
-        cursos = Datos.cache('cursos');
-        matriculas = Datos.cache('matriculas');
-        const misCursos = filtrarCursos();
-        const misMatriculas = filtrarMatriculas(misCursos);
-        pintarEstadisticas(misCursos, misMatriculas);
-        pintarCursos(misCursos, misMatriculas);
-        UI.toast('Curso registrado correctamente.', 'exito');
+        mostrarFormulario(null);
     }
 
     async function editarCurso(curso) {
-        const datos = await formularioCurso(curso);
-        if (!datos) return;
-
-        const { instructorId, ...cambios } = datos;
-        Datos.actualizar('cursos', curso.id, cambios);
-
-        cursos = Datos.cache('cursos');
-        matriculas = Datos.cache('matriculas');
-        const misCursos = filtrarCursos();
-        const misMatriculas = filtrarMatriculas(misCursos);
-        pintarEstadisticas(misCursos, misMatriculas);
-        pintarCursos(misCursos, misMatriculas);
-        pintarSolicitudes(misCursos, misMatriculas);
-        UI.toast('Curso actualizado.', 'exito');
+        mostrarFormulario(curso);
     }
 
     async function aprobarCertificacion(matriculaId) {

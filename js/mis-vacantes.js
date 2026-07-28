@@ -441,8 +441,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         btnPublicar.addEventListener('click', evento => {
             evento.preventDefault();
             if (!empresaPerfil) {
-                UI.toast('No se encontro el perfil de tu empresa.', 'error');
-                return;
+                empresaPerfil = { id: Date.now(), nombre: usuario.nombres || 'Mi Empresa', contacto: { email: usuario.email } };
+                Datos.agregar('empresas', empresaPerfil);
             }
             abrirFormularioPublicacion();
         });

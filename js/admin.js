@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </td>
                     <td>${UI.escapar(usuario.email)}</td>
                     <td>${config.icono || ''} ${UI.escapar(config.etiqueta || usuario.rol)}</td>
-                    <td>${pais.banderaSmall ? `<img src="${pais.banderaSmall}" width="24" height="18" style="vertical-align:middle;border-radius:2px;border:1px solid #e2e8f0;margin-right:4px" onerror="this.style.display='none'">` : (pais.bandera || '')} ${UI.escapar(pais.nombre || '—')}</td>
+                    <td>${renderizarBandera(pais)} ${UI.escapar(pais.nombre || '—')}</td>
                     <td>${edad}</td>
                     <td><span class="chip ${activo ? 'chip-disponible' : 'chip-agotado'}">
                         ${activo ? 'Activo' : 'Desactivado'}</span></td>
@@ -212,6 +212,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     /* --------------------------------------------------------- acciones */
+    function renderizarBandera(pais) {
+        if (pais.banderaSmall) {
+            return `<img src="${pais.banderaSmall}" width="24" height="18" style="vertical-align:middle;border-radius:2px;border:1px solid #e2e8f0;margin-right:4px" onerror="this.onerror=null;this.src='https://flagcdn.com/24x18/${(pais.codigo||'').toLowerCase()}.png';this.onerror=function(){this.style.display='none'}">`;
+        }
+        if (pais.codigo) {
+            const codigo = pais.codigo.toLowerCase();
+            return `<img src="https://flagcdn.com/24x18/${codigo}.png" width="24" height="18" style="vertical-align:middle;border-radius:2px;border:1px solid #e2e8f0;margin-right:4px" onerror="this.style.display='none'">`;
+        }
+        return pais.bandera || '';
+    }
+
     async function verDetalle(usuario) {
         const config = Auth.ROLES[usuario.rol] || {};
         const contacto = usuario.contacto || {};
@@ -225,7 +236,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <tbody>
                     <tr><th>Correo</th><td>${UI.escapar(usuario.email)}</td></tr>
                     <tr><th>Rol</th><td>${config.icono || ''} ${UI.escapar(config.etiqueta || '')}</td></tr>
-                    <tr><th>Nacionalidad</th><td>${pais.banderaSmall ? `<img src="${pais.banderaSmall}" width="24" height="18" style="vertical-align:middle;border-radius:2px;border:1px solid #e2e8f0;margin-right:4px" onerror="this.style.display='none'">` : (pais.bandera || '')} ${UI.escapar(pais.nombre || '—')}</td></tr>
+                    <tr><th>Nacionalidad</th><td>${renderizarBandera(pais)} ${UI.escapar(pais.nombre || '—')}</td></tr>
                     <tr><th>Nacimiento</th><td>${UI.fecha(usuario.fechaNacimiento)}</td></tr>
                     <tr><th>Teléfono</th><td>${UI.escapar(contacto.telefono || '—')}</td></tr>
                     <tr><th>Ciudad</th><td>${UI.escapar(contacto.ciudad || '—')}</td></tr>

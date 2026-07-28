@@ -212,50 +212,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    /* ------------------------------------------------------- IA mejorar perfil (botón existente) */
-    const botonMejorarIA = document.createElement('button');
-    botonMejorarIA.type = 'button';
-    botonMejorarIA.className = 'btn btn-grok btn-sm';
-    botonMejorarIA.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Mejorar mi perfil con IA';
-    const esEmpresa = usuario.rol === 'empresa';
-    if (!esEmpresa) {
-        const wrapperEditar = document.querySelector('.acciones-perfil');
-        if (wrapperEditar) {
-            wrapperEditar.appendChild(botonMejorarIA);
-        }
-    }
-
-    botonMejorarIA.addEventListener('click', async () => {
-        botonMejorarIA.disabled = true;
-        botonMejorarIA.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analizando tu perfil…';
-        Swal.fire({
-            title: 'Analizando tu perfil…',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            didOpen: () => Swal.showLoading()
-        });
-        const sugerencias = await Api.mejorarPerfil();
-        Swal.close();
-        botonMejorarIA.disabled = false;
-        botonMejorarIA.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Mejorar mi perfil con IA';
-        if (!sugerencias || sugerencias.length === 0) {
-            UI.toast('No se pudieron generar sugerencias.', 'aviso');
-            return;
-        }
-        const html = sugerencias.map((s, i) => `
-            <section style="text-align:left;margin-bottom:12px;padding:10px;background:#f8f9fa;border-radius:8px;border-left:4px solid #8b5cf6">
-                <p style="margin:0 0 4px"><strong>${i + 1}. ${UI.escapar(s.campo)}</strong></p>
-                <p style="margin:0;color:#555">${UI.escapar(s.consejo)}</p>
-            </section>`).join('');
-        Swal.fire({
-            title: 'Sugerencias para tu perfil',
-            html,
-            width: 560,
-            confirmButtonText: '¡Gracias!',
-            confirmButtonColor: '#2563eb'
-        });
-    });
-
     /* ------------------------------------------------------- cabecera */
     function pintarCabecera() {
         const config = Auth.ROLES[usuario.rol];
@@ -319,6 +275,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 zonaCursos.innerHTML = matriculas.map(matricula => {
                     const curso = matricula.curso;
                     const categoria = Datos.categoriaDe(curso);
+                    const botonCurso = matricula.estado === 'completado'
+                        ? `<span class="badge badge-verde">Completado</span>`
+                        : matricula.progreso > 0
+                        ? `<button type="button" class="btn btn-azul btn-sm btn-continuar-curso" data-matricula-id="${matricula.id}">Continuar curso</button>`
+                        : `<button type="button" class="btn btn-verde btn-sm btn-comenzar-curso" data-matricula-id="${matricula.id}">Comenzar curso</button>`;
                     return `
                     <article class="tarjeta-item">
                         <img src="${Datos.recurso(curso.imagen)}" alt="${UI.escapar(curso.nombre)}"
@@ -331,12 +292,28 @@ document.addEventListener('DOMContentLoaded', async () => {
                                       title="${matricula.progreso}%"></progress>
                             <p class="tarjeta-meta">${matricula.progreso}% completado
                                 ${matricula.certificadoEmitido ? '· 🏅 Certificado emitido' : ''}</p>
+                            ${botonCurso}
                         </section>
                     </article>`;
                 }).join('');
 
                 zonaCursos.querySelectorAll('img[data-respaldo]').forEach(img =>
                     UI.imagenConRespaldo(img, img.dataset.respaldo));
+
+                zonaCursos.querySelectorAll('.btn-comenzar-curso, .btn-continuar-curso').forEach(btn => {
+                    btn.addEventListener('click', async () => {
+                        const matriculaId = Number(btn.dataset.matriculaId);
+                        await Datos.obtener('matriculas');
+                        const mat = Datos.cache('matriculas').find(m => m.id === matriculaId);
+                        if (!mat) return;
+                        const incremento = Math.floor(Math.random() * 25) + 10;
+                        const nuevoProgreso = Math.min(mat.progreso + incremento, 100);
+                        const nuevoEstado = nuevoProgreso >= 100 ? 'completado' : 'en progreso';
+                        Datos.actualizar('matriculas', matriculaId, { progreso: nuevoProgreso, estado: nuevoEstado });
+                        await pintarCursos();
+                        UI.toast(`Progreso actualizado: ${nuevoProgreso}%`, 'exito');
+                    });
+                });
             }
 
             pintarIndicadores(matriculas);
