@@ -1,0 +1,495 @@
+.detalle-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+.detalle-hero {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: #fff;
+    padding: 0;
+    border-radius: 0 0 24px 24px;
+    margin: 0 -20px 30px;
+}
+
+.detalle-hero-contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 20px 32px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.breadcrumb a {
+    color: #93c5fd;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.breadcrumb .sep {
+    color: #64748b;
+}
+
+.breadcrumb span:last-child {
+    color: #cbd5e1;
+}
+
+#curso-titulo {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    line-height: 1.2;
+}
+
+.detalle-subtitulo {
+    font-size: 15px;
+    color: #94a3b8;
+    margin: 0 0 14px;
+    line-height: 1.5;
+}
+
+.detalle-rating-linea {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: 14px;
+}
+
+.detalle-rating-linea .estrellas {
+    color: #f59e0b;
+    font-size: 15px;
+}
+
+.detalle-rating-linea .rating-numero {
+    color: #fbbf24;
+    font-weight: 700;
+}
+
+.detalle-rating-linea .rating-count {
+    color: #94a3b8;
+}
+
+.detalle-meta-hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+    color: #cbd5e1;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-categoria {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 28px;
+    align-items: start;
+}
+
+.detalle-principal {
+    min-width: 0;
+}
+
+.grid-aprender {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.aprender-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.4;
+}
+
+.aprender-item i {
+    color: #16a34a;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.acordeon {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.acordeon-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.acordeon-item[open] {
+    border-color: #93c5fd;
+}
+
+.acordeon-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    color: #1e293b;
+    list-style: none;
+    background: #f8fafc;
+}
+
+.acordeon-titulo::-webkit-details-marker {
+    display: none;
+}
+
+.acordeon-titulo::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 12px;
+    color: #64748b;
+    transition: transform 0.2s;
+}
+
+.acordeon-item[open] .acordeon-titulo::after {
+    transform: rotate(180deg);
+}
+
+.acordeon-item[open] .acordeon-titulo {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.acordeon-duracion {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 400;
+}
+
+.acordeon-contenido {
+    list-style: none;
+    margin: 0;
+    padding: 6px 16px 14px;
+}
+
+.acordeon-contenido li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.acordeon-contenido li:last-child {
+    border-bottom: none;
+}
+
+.acordeon-contenido li i {
+    color: #3b82f6;
+}
+
+#lista-requisitos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#lista-requisitos li {
+    padding: 6px 0;
+    font-size: 14px;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#lista-requisitos li i {
+    color: #16a34a;
+}
+
+.resumen-opiniones {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    padding: 16px 0;
+}
+
+.resumen-score {
+    text-align: center;
+    min-width: 130px;
+}
+
+.score-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: #b45309;
+    display: block;
+    line-height: 1;
+}
+
+.estrellas-grandes {
+    color: #f59e0b;
+    font-size: 18px;
+    display: block;
+    margin: 4px 0;
+}
+
+.score-total {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.resumen-barras {
+    flex: 1;
+}
+
+.barra-estrellas-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.barra-label {
+    min-width: 40px;
+    color: #475569;
+    white-space: nowrap;
+}
+
+.barra-fondo {
+    flex: 1;
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.barra-lleno {
+    height: 100%;
+    background: #f59e0b;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+}
+
+.barra-num {
+    min-width: 24px;
+    text-align: right;
+    color: #64748b;
+}
+
+.lista-opiniones {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.opinion-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.opinion-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.opinion-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #3b82f6;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.opinion-header strong {
+    font-size: 14px;
+    color: #1e293b;
+    display: block;
+}
+
+.opinion-estrellas {
+    color: #f59e0b;
+    font-size: 12px;
+}
+
+.opinion-item p {
+    font-size: 14px;
+    color: #475569;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.card-sidebar {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    background: #e2e8f0;
+}
+
+.card-sidebar-precio {
+    padding: 16px 20px 4px;
+}
+
+.precio-valor {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.precio-grande {
+    font-size: 24px;
+}
+
+.card-sidebar .btn-full {
+    display: block;
+    width: calc(100% - 40px);
+    margin: 12px 20px;
+    text-align: center;
+    font-size: 16px;
+    padding: 12px 20px;
+}
+
+.btn-lg {
+    font-size: 16px;
+    padding: 12px 24px;
+}
+
+.card-sidebar-detalles,
+.card-sidebar-cert {
+    padding: 4px 20px 16px;
+}
+
+.sidebar-detalles-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-detalles-lista li {
+    padding: 7px 0;
+    font-size: 13px;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #f8fafc;
+}
+
+.sidebar-detalles-lista li i {
+    width: 16px;
+    color: #64748b;
+}
+
+.card-sidebar-cert p {
+    font-size: 13px;
+    color: #475569;
+    margin: 0;
+    padding: 8px 0;
+    border-top: 1px solid #f1f5f9;
+}
+
+@media (max-width: 900px) {
+    .detalle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-sidebar {
+        position: static;
+    }
+
+    .detalle-hero {
+        margin: 0 -20px 20px;
+    }
+
+    .detalle-hero-contenido {
+        padding: 24px 20px;
+    }
+
+    #curso-titulo {
+        font-size: 24px;
+    }
+
+    .grid-aprender {
+        grid-template-columns: 1fr;
+    }
+
+    .resumen-opiniones {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .resumen-score {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .detalle-hero {
+        margin: 0 -10px 16px;
+    }
+
+    .detalle-container {
+        padding: 0 10px 30px;
+    }
+
+    #curso-titulo {
+        font-size: 20px;
+    }
+
+    .detalle-meta-hero {
+        gap: 10px;
+        font-size: 12px;
+    }
+}

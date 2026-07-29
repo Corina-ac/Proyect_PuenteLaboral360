@@ -214,5 +214,65 @@
     "leida": true,
     "fecha": "2026-07-10T09:00:00",
     "fuente": "Sistema de Vacantes"
+  },
+  {
+    "id": 19,
+    "rol": "admin",
+    "usuarioId": null,
+    "tipo": "exito",
+    "icono": "\ud83d\udc65",
+    "titulo": "Nuevo usuario registrado",
+    "descripcion": "Un nuevo estudiante se registró en la plataforma. El sistema de emparejamiento ya está analizando su perfil para oportunidades laborales.",
+    "leida": false,
+    "fecha": "2026-07-26T10:30:00",
+    "fuente": "Sistema de Registro"
+  },
+  {
+    "id": 20,
+    "rol": "admin",
+    "usuarioId": null,
+    "tipo": "info",
+    "icono": "\ud83d\udcca",
+    "titulo": "Resumen semanal de actividad",
+    "descripcion": "Esta semana se registraron <strong>3 nuevos usuarios</strong>, se publicaron <strong>2 cursos</strong> y se abrieron <strong>4 vacantes</strong>. La plataforma creció un 12%.",
+    "leida": false,
+    "fecha": "2026-07-26T08:00:00",
+    "fuente": "Panel de Administración"
+  },
+  {
+    "id": 21,
+    "rol": "admin",
+    "usuarioId": null,
+    "tipo": "alerta",
+    "icono": "\u26a0\ufe0f",
+    "titulo": "Curso pendiente de revisión",
+    "descripcion": "El instructor <strong>Prof. Laura Díaz</strong> envió un nuevo curso <strong>React Avanzado</strong> para aprobación. Revisa el contenido y publícalo si cumple los estándares.",
+    "leida": false,
+    "fecha": "2026-07-25T16:00:00",
+    "fuente": "Gestión de Cursos"
+  },
+  {
+    "id": 22,
+    "rol": "admin",
+    "usuarioId": null,
+    "tipo": "exito",
+    "icono": "\ud83c\udfc6",
+    "titulo": "Meta de registros alcanzada",
+    "descripcion": "La plataforma superó la meta mensual de <strong>10 nuevos usuarios</strong>. El crecimiento sostenido demuestra la demanda del ecosistema PuenteLaboral360.",
+    "leida": true,
+    "fecha": "2026-07-20T09:00:00",
+    "fuente": "Métricas de Plataforma"
+  },
+  {
+    "id": 23,
+    "rol": "admin",
+    "usuarioId": null,
+    "tipo": "info",
+    "icono": "\ud83d\udd10",
+    "titulo": "Sistema actualizado correctamente",
+    "descripcion": "La versión 2.1 de PuenteLaboral360 fue desplegada exitosamente. Incluye mejoras en el motor de emparejamiento y la generación automática de certificados.",
+    "leida": true,
+    "fecha": "2026-07-15T03:00:00",
+    "fuente": "Sistema de Actualizaciones"
   }
 ]

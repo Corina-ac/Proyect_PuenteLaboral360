@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Detalle del Curso</title>
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="detalle-curso.css">
+</head>
+<body>
+    <header class="navbar">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <nav data-zona="sesion"></nav>
+    </header>
+
+    <main class="detalle-container">
+        <section class="detalle-hero" id="detalle-hero">
+            <section class="detalle-hero-contenido">
+                <nav class="breadcrumb" id="breadcrumb"></nav>
+                <h1 id="curso-titulo">Cargando…</h1>
+                <p id="curso-desc-corta" class="detalle-subtitulo"></p>
+                <section class="detalle-rating-linea" id="detalle-rating"></section>
+                <section class="detalle-meta-hero" id="detalle-meta-hero"></section>
+            </section>
+        </section>
+
+        <section class="detalle-grid">
+            <section class="detalle-principal">
+                <section class="tarjeta" id="seccion-que-aprenderas">
+                    <h2>Lo que aprenderás</h2>
+                    <section class="grid-aprender" id="grid-aprender"></section>
+                </section>
+
+                <section class="tarjeta" id="seccion-plan-estudios">
+                    <h2>Plan de estudios</h2>
+                    <p class="subtitulo-pagina" id="info-modulos"></p>
+                    <section class="acordeon" id="acordeon-curso"></section>
+                </section>
+
+                <section class="tarjeta" id="seccion-requisitos">
+                    <h2>Requisitos</h2>
+                    <ul id="lista-requisitos"></ul>
+                </section>
+
+                <section class="tarjeta" id="seccion-opiniones">
+                    <h2>Opiniones de estudiantes</h2>
+                    <section class="resumen-opiniones" id="resumen-opiniones"></section>
+                    <section class="lista-opiniones" id="lista-opiniones"></section>
+                </section>
+            </section>
+
+            <aside class="detalle-sidebar">
+                <section class="card-sidebar" id="card-inscripcion">
+                    <section class="card-sidebar-preview" id="card-preview"></section>
+                    <section class="card-sidebar-precio" id="card-precio"></section>
+                    <button type="button" class="btn btn-verde btn-lg btn-full" id="btn-inscribirse">
+                        <i class="fa-solid fa-shopping-cart"></i> Inscribirse ahora
+                    </button>
+                    <section class="card-sidebar-detalles" id="card-detalles"></section>
+                    <section class="card-sidebar-cert" id="card-cert"></section>
+                </section>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <nav class="footer-links">
+            <a href="../servicios/servicios.html">Servicios</a>
+            <a href="../planes/planes.html">Planes</a>
+            <a href="../politica-privacidad/politica-privacidad.html">Privacidad</a>
+            <a href="../contacto/contacto.html">Contacto</a>
+        </nav>
+        <p>&copy; 2026 <span>PuenteLaboral360</span> &mdash; Cerrando la brecha entre educación y empleo</p>
+        <p class="footer-copy">Hecho con dedicación para la comunidad latina</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/api.js"></script>
+    <script src="../../js/componentes.js"></script>
+    <script src="detalle-curso.js"></script>
+</body>
+</html>

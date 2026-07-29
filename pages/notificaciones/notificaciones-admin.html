@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Notificaciones Admin</title>
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="notificaciones.css">
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body data-roles="admin">
+
+    <header class="navbar">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <nav data-zona="sesion"></nav>
+    </header>
+
+    <section class="layout-dashboard">
+
+        <aside class="sidebar">
+            <section class="perfil-mini">
+                <img class="avatar" data-perfil="avatar" src="" alt="Foto del administrador">
+                <p class="nombre-usuario" data-perfil="nombre">—</p>
+                <p class="rol-usuario" data-perfil="rol">—</p>
+            </section>
+            <nav>
+                <a href="../admin/admin.html"><span>🛡️</span> Panel general</a>
+                <a href="../cursos/cursos.html"><span>📚</span> Catálogo de Cursos</a>
+                <a href="notificaciones-admin.html" class="activo"><span>🔔</span> Notificaciones</a>
+                <a href="../perfil/perfil.html"><span>👤</span> Mi Perfil</a>
+                <a href="#" data-accion="cerrar-sesion"><span>🚪</span> Cerrar sesión</a>
+            </nav>
+        </aside>
+
+        <section class="contenido-principal">
+
+            <section class="encabezado-seccion">
+                <section>
+                    <h1 class="titulo-pagina">Centro de Notificaciones</h1>
+                    <p class="subtitulo-pagina">Alertas del sistema y actividad de la plataforma</p>
+                </section>
+                <a href="#" class="btn btn-gris btn-sm" data-accion="marcar-leido">Marcar todo como leído</a>
+            </section>
+
+            <section class="tarjeta">
+                <h2>Nuevas</h2>
+            </section>
+
+            <section class="tarjeta">
+                <h2>Anteriores</h2>
+            </section>
+
+            <section class="tarjeta">
+                <h2>¿Cómo funcionan las notificaciones?</h2>
+                <p class="texto-info">
+                    Como administrador, recibes alertas sobre <strong>registros de usuarios</strong>,
+                    <strong>nuevos cursos publicados</strong>, <strong>vacantes abiertas</strong> y
+                    <strong>eventos del sistema</strong>. Las notificaciones se generan automáticamente
+                    por los microservicios de PuenteLaboral360.
+                </p>
+            </section>
+
+        </section>
+    </section>
+
+    <footer class="footer">
+        <nav class="footer-links">
+            <a href="../servicios/servicios.html">Servicios</a>
+            <a href="../planes/planes.html">Planes</a>
+            <a href="../politica-privacidad/politica-privacidad.html">Privacidad</a>
+            <a href="../contacto/contacto.html">Contacto</a>
+        </nav>
+        <p>&copy; 2026 <span>PuenteLaboral360</span> &mdash; Cerrando la brecha entre educacion y empleo</p>
+        <p class="footer-copy">Hecho con dedicacion para la comunidad latina</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/componentes.js"></script>
+    <script src="../../js/guardia.js"></script>
+    <script src="../../js/notificaciones.js"></script>
+</body>
+</html>

@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const inputFecha = document.getElementById('fecha-nacimiento');
     const notaEdad = document.getElementById('nota-edad');
     const inputTelefono = document.getElementById('telefono');
-    const inputCiudad = document.getElementById('ciudad');
     const inputTerminos = document.getElementById('terminos');
     const inputAvatar = document.getElementById('avatar');
     const previaAvatar = document.getElementById('previa-avatar');
@@ -107,84 +106,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         UI.toast('No se pudo cargar la lista de países.', 'error');
     }
 
-    /* -------------------------------------------------- API de ciudades */
-    const buscarCiudad = document.getElementById('buscar-ciudad');
-    const listaCiudades = document.getElementById('lista-ciudades');
-    const ciudadElegida = document.getElementById('ciudada-elegida');
-    const ciudadNombre = document.getElementById('ciudad-nombre');
-    let ciudadesCargadas = [];
-
-    async function cargarCiudadesPorPais(codigoPais) {
-        if (!buscarCiudad || !listaCiudades) return;
-        if (!codigoPais) {
-            buscarCiudad.disabled = true;
-            buscarCiudad.placeholder = 'Primero selecciona un país';
-            return;
-        }
-        buscarCiudad.disabled = true;
-        buscarCiudad.placeholder = 'Cargando ciudades…';
-        try {
-            ciudadesCargadas = await Api.obtenerCiudades(codigoPais);
-            buscarCiudad.disabled = false;
-            buscarCiudad.placeholder = ciudadesCargadas.length > 0
-                ? `Escribe para buscar tu ciudad (${ciudadesCargadas.length} disponibles)…`
-                : 'Escribe tu ciudad manualmente';
-        } catch (e) {
-            ciudadesCargadas = [];
-            buscarCiudad.disabled = false;
-            buscarCiudad.placeholder = 'Escribe tu ciudad manualmente';
-        }
-    }
-
-    function pintarCiudades(filtro = '') {
-        if (!listaCiudades) return;
-        const texto = filtro.trim().toLowerCase();
-        const encontrados = texto === ''
-            ? ciudadesCargadas.slice(0, 20)
-            : ciudadesCargadas.filter(c => c.toLowerCase().includes(texto)).slice(0, 20);
-
-        if (encontrados.length === 0) {
-            listaCiudades.innerHTML = '<li class="sin-resultado">No se encontraron ciudades con ese nombre.</li>';
-            listaCiudades.classList.remove('oculto');
-            return;
-        }
-
-        listaCiudades.innerHTML = encontrados.map(nombre => `
-            <li role="option" class="item-ciudad" data-nombre="${UI.escapar(nombre)}">
-                <span>📍 ${UI.escapar(nombre)}</span>
-            </li>`).join('');
-        listaCiudades.classList.remove('oculto');
-    }
-
-    if (buscarCiudad) {
-        buscarCiudad.addEventListener('input', () => {
-            ciudadNombre.value = '';
-            if (ciudadElegida) ciudadElegida.classList.add('oculto');
-            pintarCiudades(buscarCiudad.value);
-        });
-        buscarCiudad.addEventListener('focus', () => pintarCiudades(buscarCiudad.value));
-    }
-
-    if (listaCiudades) {
-        listaCiudades.addEventListener('click', evento => {
-            const item = evento.target.closest('.item-ciudad');
-            if (!item) return;
-            ciudadNombre.value = item.dataset.nombre;
-            if (buscarCiudad) buscarCiudad.value = item.dataset.nombre;
-            if (ciudadElegida) {
-                ciudadElegida.innerHTML = `Ciudad seleccionada: <strong>${UI.escapar(item.dataset.nombre)}</strong>`;
-                ciudadElegida.classList.remove('oculto');
-            }
-            listaCiudades.classList.add('oculto');
-        });
-    }
-
-    document.addEventListener('click', evento => {
-        if (!evento.target.closest('.selector-ciudad') && listaCiudades) {
-            listaCiudades.classList.add('oculto');
-        }
-    });
-
     /** Dibuja la lista desplegable de paises filtrada. */
     function pintarPaises(filtro = '') {
         const texto = filtro.trim().toLowerCase();
@@ -233,7 +154,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         paisElegido.classList.remove('oculto');
         listaPaises.classList.add('oculto');
         inputBuscarPais.setAttribute('aria-expanded', 'false');
-        cargarCiudadesPorPais(item.dataset.codigo);
     });
 
     // Cerrar la lista al hacer clic fuera o con la tecla Escape.
@@ -285,7 +205,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     Validaciones.enVivo(inputApellidos, valor => Validaciones.validarTexto(valor, 'El apellido'), 'Apellido valido ✔');
     Validaciones.enVivo(inputEmail, Validaciones.validarEmail, 'Correo con formato correcto ✔');
     Validaciones.enVivo(inputTelefono, Validaciones.validarTelefono, 'Telefono valido ✔');
-    Validaciones.enVivo(inputCiudad, valor => Validaciones.validarTexto(valor, 'La ciudad'), 'Ciudad valida ✔');
 
     // Contrasena: ademas del formato, se informa la fuerza estimada.
     inputPassword.addEventListener('input', () => {
@@ -378,7 +297,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 document.querySelectorAll('input[name="habilidad"]:checked')
             ).map(check => check.value);
 
-        const ciudadFinal = ciudadNombre && ciudadNombre.value ? ciudadNombre.value : inputCiudad.value;
         const usuario = await Auth.registrar({
                 rol,
                 nombres: inputNombres.value,
@@ -393,7 +311,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     banderaSmall: paisBanderaSmall ? paisBanderaSmall.value : ''
                 },
                 telefono: inputTelefono.value,
-                ciudad: ciudadFinal,
                 avatar: avatarDataUri,
                 habilidades,
                 nivel: document.querySelector('input[name="nivel"]:checked')?.value || 'Principiante',

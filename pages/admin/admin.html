@@ -10,6 +10,196 @@
     <link rel="shortcut icon" href="../../img/educacion-global.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+        /* ── Welcome banner ── */
+        .banner-bienvenida {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            border-radius: 14px;
+            padding: 28px 32px;
+            color: #ffffff;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .banner-bienvenida::before {
+            content: '';
+            position: absolute;
+            top: -40px; right: -40px;
+            width: 160px; height: 160px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .banner-bienvenida::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: 30%;
+            width: 220px; height: 220px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+        .banner-texto h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+        .banner-texto p { font-size: 14px; opacity: 0.8; }
+        .banner-fecha { font-size: 13px; opacity: 0.7; white-space: nowrap; position: relative; z-index: 1; }
+
+        /* ── Quick actions row ── */
+        .acciones-rapidas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+        .btn-accion {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px 16px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #0f172a;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+        }
+        .btn-accion:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            border-color: #cbd5e1;
+        }
+        .btn-accion .icono-accion {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* ── Charts grid ── */
+        .grid-graficos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+        @media (max-width: 768px) { .grid-graficos { grid-template-columns: 1fr; } }
+
+        /* ── Activity feed ── */
+        .feed-actividad {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .feed-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .feed-item:last-child { border-bottom: none; }
+        .feed-icono {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .feed-texto { flex: 1; font-size: 13.5px; color: #334155; line-height: 1.45; }
+        .feed-texto strong { color: #0f172a; }
+        .feed-hora { font-size: 12px; color: #94a3b8; white-space: nowrap; margin-top: 2px; }
+
+        /* ── Stat mini-cards ── */
+        .stat-mini {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        .stat-mini .stat-numero {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .stat-mini .stat-label {
+            font-size: 12px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Animated counter ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .indicador { animation: fadeUp 0.4s ease both; }
+        .indicador:nth-child(2) { animation-delay: 0.05s; }
+        .indicador:nth-child(3) { animation-delay: 0.10s; }
+        .indicador:nth-child(4) { animation-delay: 0.15s; }
+        .indicador:nth-child(5) { animation-delay: 0.20s; }
+        .indicador:nth-child(6) { animation-delay: 0.25s; }
+        .indicador:nth-child(7) { animation-delay: 0.30s; }
+        .indicador:nth-child(8) { animation-delay: 0.35s; }
+        .indicador:nth-child(9) { animation-delay: 0.40s; }
+        .indicador:nth-child(10) { animation-delay: 0.45s; }
+
+        .indicador .valor {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.1;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        /* ── System status bar ── */
+        .barra-estado {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 10px 16px;
+            margin-bottom: 22px;
+            font-size: 13px;
+            color: #166534;
+        }
+        .barra-estado .punto-verde {
+            width: 8px; height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        @media (max-width: 768px) {
+            .banner-bienvenida { padding: 20px; }
+            .banner-texto h2 { font-size: 18px; }
+            .acciones-rapidas { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .acciones-rapidas { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
@@ -29,7 +219,7 @@
             <nav>
                 <a href="admin.html" class="activo"><span>🛡️</span> Panel general</a>
                 <a href="../cursos/cursos.html"><span>📚</span> Catálogo de Cursos</a>
-                <a href="../notificaciones/notificaciones.html"><span>🔔</span> Notificaciones</a>
+                <a href="../notificaciones/notificaciones-admin.html"><span>🔔</span> Notificaciones</a>
                 <a href="../perfil/perfil.html"><span>👤</span> Mi Perfil</a>
                 <a href="#" data-accion="cerrar-sesion"><span>🚪</span> Cerrar sesión</a>
             </nav>
@@ -37,21 +227,63 @@
 
         <main class="contenido-principal">
 
-            <section class="seccion-intro">
-                <h1 class="titulo-pagina">🛡️ Panel de administración</h1>
-                <p class="subtitulo-pagina">
-                    Área restringida. El acceso exige credenciales de administrador
-                    y un código de seguridad adicional.
-                </p>
+            <!-- Banner de bienvenida -->
+            <section class="banner-bienvenida" id="banner-bienvenida">
+                <section class="banner-texto">
+                    <h2 id="banner-saludo">Buenos días, Administrador</h2>
+                    <p>Este es el resumen de tu plataforma PuenteLaboral360.</p>
+                </section>
+                <section class="banner-fecha" id="banner-fecha"></section>
             </section>
 
+            <!-- Estado del sistema -->
+            <section class="barra-estado">
+                <span class="punto-verde"></span>
+                <span>Sistema operativo — Todos los servicios funcionando correctamente</span>
+            </section>
+
+            <!-- Acciones rápidas -->
+            <section class="acciones-rapidas" id="acciones-rapidas">
+                <a href="../cursos/cursos.html" class="btn-accion">
+                    <span class="icono-accion" style="background:#eff6ff;color:#2563eb">📚</span>
+                    <span>Ver Cursos</span>
+                </a>
+                <a href="../notificaciones/notificaciones-admin.html" class="btn-accion">
+                    <span class="icono-accion" style="background:#fef3c7;color:#d97706">🔔</span>
+                    <span>Notificaciones</span>
+                </a>
+                <a href="../buscar-talento/buscar-talento.html" class="btn-accion">
+                    <span class="icono-accion" style="background:#f0fdf4;color:#16a34a">🔍</span>
+                    <span>Buscar Talento</span>
+                </a>
+                <a href="../perfil/perfil.html" class="btn-accion">
+                    <span class="icono-accion" style="background:#faf5ff;color:#9333ea">👤</span>
+                    <span>Mi Perfil</span>
+                </a>
+            </section>
+
+            <!-- Indicadores KPI -->
             <section class="panel-indicadores" id="indicadores-admin" aria-label="Indicadores generales"></section>
 
-            <section class="caja-grafico">
-                <h2>Usuarios por rol</h2>
-                <canvas id="grafico-roles" aria-label="Gráfico de usuarios por rol" role="img"></canvas>
+            <!-- Gráficos -->
+            <section class="grid-graficos">
+                <section class="caja-grafico">
+                    <h2>Usuarios por rol</h2>
+                    <canvas id="grafico-roles" aria-label="Gráfico de usuarios por rol" role="img"></canvas>
+                </section>
+                <section class="caja-grafico">
+                    <h2>Cursos por estado</h2>
+                    <canvas id="grafico-cursos" aria-label="Gráfico de cursos por estado" role="img"></canvas>
+                </section>
             </section>
 
+            <!-- Actividad reciente -->
+            <section class="tarjeta">
+                <h2>Actividad reciente</h2>
+                <ul class="feed-actividad" id="feed-actividad"></ul>
+            </section>
+
+            <!-- Gestión de usuarios -->
             <section class="tarjeta">
                 <h2>Gestión de usuarios</h2>
 

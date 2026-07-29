@@ -3,6 +3,8 @@
 
    Esta pagina esta protegida por rol: cualquier usuario que no sea admin es
    devuelto a su propio panel, incluso si escribe la URL directamente.
+   Incluye: banner de bienvenida, contadores animados, feed de actividad,
+   graficos Chart.js y gestion completa de usuarios.
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -12,6 +14,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     UI.pintarPerfilLateral(administrador);
 
+    /* ────────────────────────────────────── banner bienvenida */
+    const bannerSaludo = document.getElementById('banner-saludo');
+    const bannerFecha = document.getElementById('banner-fecha');
+
+    function actualizarBanner() {
+        const hora = new Date().getHours();
+        let saludo = 'Buenos días';
+        if (hora >= 12 && hora < 19) saludo = 'Buenas tardes';
+        else if (hora >= 19) saludo = 'Buenas noches';
+        bannerSaludo.textContent = `${saludo}, ${administrador.nombres}`;
+        const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        bannerFecha.textContent = new Date().toLocaleDateString('es-EC', opciones);
+    }
+    actualizarBanner();
+    setInterval(actualizarBanner, 30000);
+
+    /* ────────────────────────────────────── DOM refs */
     const cuerpoTabla = document.getElementById('tabla-usuarios');
     const buscador = document.getElementById('buscar-usuario');
     const filtroRol = document.getElementById('filtro-rol');
@@ -20,7 +39,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const contador = document.getElementById('contador-usuarios');
     const indicadores = document.getElementById('indicadores-admin');
     const botonRestablecer = document.getElementById('btn-restablecer-admin');
+    const feedActividad = document.getElementById('feed-actividad');
 
+    /* ────────────────────────────────────── boton IA */
     const botonResumenIA = document.createElement('button');
     botonResumenIA.type = 'button';
     botonResumenIA.className = 'btn btn-grok btn-sm';
@@ -61,15 +82,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
+    /* ────────────────────────────────────── state */
     let usuarios = [];
     let cursos = [];
     let vacantes = [];
     let matriculas = [];
-    let grafico = null;
+    let graficoRoles = null;
+    let graficoCursos = null;
 
+    /* ────────────────────────────────────── cargar datos */
     async function cargar() {
-        // El aviso de carga va dentro del propio tbody: escribirlo en la tabla
-        // completa eliminaria el tbody y las filas se perderian.
         cuerpoTabla.innerHTML =
             '<tr><td colspan="7">Cargando la información del sistema…</td></tr>';
         try {
@@ -86,6 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    /* ────────────────────────────────────── filtrar / ordenar */
     function filtrar() {
         const texto = buscador.value.trim().toLowerCase();
         const rol = filtroRol.value;
@@ -114,6 +137,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    /* ────────────────────────────────────── vista: tabla */
     function aplicarVista() {
         const visibles = ordenar(filtrar());
 
@@ -157,9 +181,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         contador.textContent = `Mostrando ${visibles.length} de ${usuarios.length} usuarios registrados.`;
         pintarIndicadores();
-        pintarGrafico();
+        pintarGraficos();
+        pintarFeedActividad();
     }
 
+    /* ────────────────────────────────────── contadores animados */
+    function animarContador(elemento, destino, duracion = 800) {
+        const inicio = performance.now();
+        const paso = timestamp => {
+            const progreso = Math.min((timestamp - inicio) / duracion, 1);
+            const eased = 1 - Math.pow(1 - progreso, 3);
+            elemento.textContent = Math.round(eased * destino);
+            if (progreso < 1) requestAnimationFrame(paso);
+        };
+        requestAnimationFrame(paso);
+    }
+
+    /* ────────────────────────────────────── indicadores KPI */
     function pintarIndicadores() {
         const porRol = rol => usuarios.filter(u => u.rol === rol).length;
         const nacionalidades = new Set(
@@ -178,40 +216,138 @@ document.addEventListener('DOMContentLoaded', async () => {
             ['🌍', 'Nacionalidades', nacionalidades, '#f59e0b'],
             ['📚', 'Cursos publicados', cursos.length, '#0ea5e9'],
             ['📌', 'Vacantes abiertas', vacantes.filter(v => v.estado === 'abierta').length, '#ef4444'],
-            ['📝', 'Matriculas', matriculas.length, '#7c3aed']
+            ['📝', 'Matrículas', matriculas.length, '#7c3aed']
         ];
 
         indicadores.innerHTML = tarjetas.map(([icono, etiqueta, valor, color]) => `
             <section class="indicador" style="border-left-color:${color}">
                 <p class="valor" style="display:flex;align-items:center;gap:6px;justify-content:center">
-                    <span style="font-size:18px">${icono}</span> ${valor}
+                    <span style="font-size:18px">${icono}</span> <span class="counter" data-valor="${valor}">0</span>
                 </p>
                 <p class="etiqueta">${etiqueta}</p>
             </section>`).join('');
+
+        indicadores.querySelectorAll('.counter').forEach(el => {
+            animarContador(el, parseInt(el.dataset.valor, 10));
+        });
     }
 
-    function pintarGrafico() {
+    /* ────────────────────────────────────── graficos */
+    function pintarGraficos() {
+        pintarGraficoRoles();
+        pintarGraficoCursos();
+    }
+
+    function pintarGraficoRoles() {
         const lienzo = document.getElementById('grafico-roles');
         if (!lienzo || typeof Chart === 'undefined') return;
 
         const roles = Object.keys(Auth.ROLES);
         const valores = roles.map(rol => usuarios.filter(u => u.rol === rol).length);
 
-        if (grafico) grafico.destroy();
-        grafico = new Chart(lienzo, {
+        if (graficoRoles) graficoRoles.destroy();
+        graficoRoles = new Chart(lienzo, {
             type: 'doughnut',
             data: {
                 labels: roles.map(rol => Auth.ROLES[rol].etiqueta),
                 datasets: [{
                     data: valores,
-                    backgroundColor: roles.map(rol => Auth.ROLES[rol].color)
+                    backgroundColor: roles.map(rol => Auth.ROLES[rol].color),
+                    borderWidth: 2,
+                    borderColor: '#ffffff',
+                    hoverOffset: 8
                 }]
             },
-            options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+            options: {
+                responsive: true,
+                cutout: '55%',
+                plugins: {
+                    legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true } }
+                }
+            }
         });
     }
 
-    /* --------------------------------------------------------- acciones */
+    function pintarGraficoCursos() {
+        const lienzo = document.getElementById('grafico-cursos');
+        if (!lienzo || typeof Chart === 'undefined') return;
+
+        const estados = {};
+        cursos.forEach(c => {
+            const e = c.estado || 'sin estado';
+            estados[e] = (estados[e] || 0) + 1;
+        });
+
+        const etiquetas = Object.keys(estados);
+        const valores = Object.values(estados);
+        const colores = ['#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#64748b'];
+
+        if (graficoCursos) graficoCursos.destroy();
+        graficoCursos = new Chart(lienzo, {
+            type: 'bar',
+            data: {
+                labels: etiquetas.map(e => e.charAt(0).toUpperCase() + e.slice(1)),
+                datasets: [{
+                    label: 'Cursos',
+                    data: valores,
+                    backgroundColor: colores.slice(0, etiquetas.length),
+                    borderRadius: 6,
+                    maxBarThickness: 50
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                }
+            }
+        });
+    }
+
+    /* ────────────────────────────────────── feed de actividad */
+    function pintarFeedActividad() {
+        const eventos = [];
+
+        usuarios.slice().sort((a, b) => (b.fechaRegistro || '').localeCompare(a.fechaRegistro || '')).slice(0, 5).forEach(u => {
+            const config = Auth.ROLES[u.rol] || {};
+            eventos.push({
+                icono: config.icono || '👤',
+                color: config.color || '#64748b',
+                texto: `<strong>${UI.escapar(u.nombres)} ${UI.escapar(u.apellidos)}</strong> se registró como <strong>${UI.escapar(config.etiqueta || u.rol)}</strong>`,
+                fecha: u.fechaRegistro
+            });
+        });
+
+        matriculas.slice().sort((a, b) => (b.fecha || '').localeCompare(a.fecha || '')).slice(0, 3).forEach(m => {
+            const u = usuarios.find(us => Number(us.id) === Number(m.usuarioId));
+            const c = cursos.find(cs => Number(cs.id) === Number(m.cursoId));
+            if (u && c) {
+                eventos.push({
+                    icono: '📝',
+                    color: '#7c3aed',
+                    texto: `<strong>${UI.escapar(u.nombres)}</strong> se matriculó en <strong>${UI.escapar(c.nombre)}</strong>`,
+                    fecha: m.fecha
+                });
+            }
+        });
+
+        eventos.sort((a, b) => (b.fecha || '').localeCompare(a.fecha || ''));
+
+        if (eventos.length === 0) {
+            feedActividad.innerHTML = '<li class="feed-item"><span class="feed-texto">No hay actividad reciente.</span></li>';
+            return;
+        }
+
+        feedActividad.innerHTML = eventos.slice(0, 8).map(ev => `
+            <li class="feed-item">
+                <span class="feed-icono" style="background:${ev.color}20;color:${ev.color}">${ev.icono}</span>
+                <span class="feed-texto">${ev.texto}</span>
+                <span class="feed-hora">${UI.fecha(ev.fecha)}</span>
+            </li>`).join('');
+    }
+
+    /* ────────────────────────────────────── acciones tabla */
     function renderizarBandera(pais) {
         if (pais.banderaSmall) {
             return `<img src="${pais.banderaSmall}" width="24" height="18" style="vertical-align:middle;border-radius:2px;border:1px solid #e2e8f0;margin-right:4px" onerror="this.onerror=null;this.src='https://flagcdn.com/24x18/${(pais.codigo||'').toLowerCase()}.png';this.onerror=function(){this.style.display='none'}">`;
@@ -273,7 +409,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         );
         if (!confirmado) return;
 
-        // Se eliminan tambien los registros relacionados para no dejar huerfanos.
         const restantes = Datos.cache('matriculas')
             .filter(m => Number(m.usuarioId) !== Number(usuario.id));
         Datos.guardar('matriculas', restantes);
@@ -285,7 +420,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         UI.toast('Usuario eliminado del sistema.', 'info');
     }
 
-    /* ----------------------------------------------------------- eventos */
+    /* ────────────────────────────────────── eventos */
     buscador.addEventListener('input', aplicarVista);
     filtroRol.addEventListener('change', aplicarVista);
     filtroEstado.addEventListener('change', aplicarVista);

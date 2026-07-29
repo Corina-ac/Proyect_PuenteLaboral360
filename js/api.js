@@ -182,7 +182,7 @@ const Api = (() => {
 
     /* ------------------------------------------------------------ paises */
     const URL_PAISES = 'https://countries.dev/countries';
-    const CACHE_PAISES = 'cachePaises';
+    const CACHE_PAISES = 'cachePaises_v2';
 
     /**
      * Descarga el listado de paises y lo normaliza a { nombre, codigo, bandera,
@@ -214,7 +214,7 @@ const Api = (() => {
 
         const paises = crudo
             .map(pais => {
-                const codigo = (pais.cioc || (pais.name || '').slice(0, 3)).toLowerCase();
+                const codigo = (pais.cca2 || pais.cioc || (pais.name || '').slice(0, 2)).toLowerCase();
                 return {
                     nombre: pais.name,
                     codigo: codigo,

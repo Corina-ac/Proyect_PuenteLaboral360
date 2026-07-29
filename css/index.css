@@ -303,6 +303,13 @@
     display: inline-block;
 }
 
+/* Grid centrado para cursos destacados en el index */
+#estadisticas .grid-tarjetas {
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
 /* Grid de 4 columnas para estadísticas — Box Model: padding, border, width */
 .stats-inicio {
     display: grid;
@@ -347,6 +354,112 @@
     color: #ffdd57;
     margin-bottom: 8px;
     display: block;
+}
+
+/* ── Categorias filtro ── */
+.categorias-filtro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.btn-cat {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btn-cat:hover { background: rgba(255,255,255,0.22); transform: translateY(-1px); }
+.btn-cat.active { background: #ffffff; color: #1a73e8; font-weight: 700; border-color: #ffffff; }
+
+/* ── Tarjetas Udemy-style ── */
+.tarjeta-udemy .tarjeta-img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.tarjeta-udemy .tarjeta-img-wrapper img {
+    height: 160px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-udemy:hover .tarjeta-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.badge-cert {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #f59e0b;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+.tarjeta-instructor {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+}
+
+.tarjeta-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+}
+
+.rating-numero {
+    font-weight: 700;
+    color: #b45309;
+}
+
+.estrellas {
+    color: #f59e0b;
+    font-size: 12px;
+}
+
+.num-reviews {
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.tarjeta-meta-udemy {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.tarjeta-footer-udemy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.precio-gratis {
+    color: #16a34a;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .categorias-filtro { gap: 6px; }
+    .btn-cat { font-size: 12px; padding: 5px 12px; }
 }
 
 /* ============================================================
