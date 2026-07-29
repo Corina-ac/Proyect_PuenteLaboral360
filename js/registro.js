@@ -13,8 +13,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (Auth.redirigirSiAutenticado()) return;
 
     const formulario = document.getElementById('form-registro');
-    const selectRol = document.getElementById('rol');
+    const radiosRol = document.querySelectorAll('input[name="rol"]');
     const notaRol = document.getElementById('nota-rol');
+    const errorRol = document.getElementById('error-rol');
     const textoContexto = document.getElementById('texto-contexto');
     const inputNombres = document.getElementById('nombres');
     const inputApellidos = document.getElementById('apellidos');
@@ -24,12 +25,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     const inputFecha = document.getElementById('fecha-nacimiento');
     const notaEdad = document.getElementById('nota-edad');
     const inputTelefono = document.getElementById('telefono');
+    const inputSector = document.getElementById('sector');
     const inputTerminos = document.getElementById('terminos');
     const inputAvatar = document.getElementById('avatar');
     const previaAvatar = document.getElementById('previa-avatar');
     const bloqueEstudiante = document.getElementById('bloque-estudiante');
+    const bloqueInstructor = document.getElementById('bloque-instructor');
     const listaHabilidades = document.getElementById('lista-habilidades');
+    const selectEspecialidad = document.getElementById('especialidad');
+    const inputBio = document.getElementById('bio');
     const botonRegistrar = document.getElementById('btn-registrar');
+
+    // Contenedores y etiquetas que cambian segun el rol elegido.
+    const campoApellidos = document.getElementById('campo-apellidos');
+    const campoFecha = document.getElementById('campo-fecha');
+    const campoSector = document.getElementById('campo-sector');
+    const labelNombres = document.getElementById('label-nombres');
+    const labelEmail = document.getElementById('label-email');
+    const labelAvatar = document.getElementById('label-avatar');
+    const labelPais = document.getElementById('label-pais');
+    const leyendaDatos = document.getElementById('leyenda-datos');
+    const leyendaUbicacion = document.getElementById('leyenda-ubicacion');
+    const leyendaPerfil = document.getElementById('leyenda-perfil');
+
+    /** Rol marcado en las tarjetas, o cadena vacia si no hay ninguno. */
+    function rolSeleccionado() {
+        const marcado = document.querySelector('input[name="rol"]:checked');
+        return marcado ? marcado.value : '';
+    }
 
     // Selector de pais
     const inputBuscarPais = document.getElementById('buscar-pais');
@@ -50,9 +73,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const plan = parametros.get('plan');
 
     if (rolFijo && Auth.ROLES[rolFijo] && rolFijo !== 'admin') {
-        selectRol.value = rolFijo;
-        selectRol.disabled = true;
-        // Un select deshabilitado no se envia, pero aqui se lee por JavaScript.
+        // Se marca la tarjeta correspondiente y se bloquean las demas, de modo
+        // que el rol quede fijado al del plan elegido en la pagina de planes.
+        radiosRol.forEach(radio => {
+            radio.checked = radio.value === rolFijo;
+            radio.disabled = radio.value !== rolFijo;
+        });
+        document.getElementById('tarjetas-rol').classList.add('rol-bloqueado');
+
         const config = Auth.ROLES[rolFijo];
         notaRol.textContent = `Registro exclusivo para el rol ${config.etiqueta}.`;
         if (plan) {
@@ -72,22 +100,86 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Las opciones se generan desde las categorias del JSON, no desde el HTML.
     try {
         const categorias = await Datos.obtener('categorias');
+
         listaHabilidades.innerHTML = categorias.map(categoria => `
             <label class="check-habilidad">
                 <input type="checkbox" name="habilidad" value="${UI.escapar(categoria.nombre)}">
                 ${categoria.icono} ${UI.escapar(categoria.nombre)}
             </label>`).join('');
+
+        // El instructor elige su especialidad de esas mismas categorias.
+        selectEspecialidad.innerHTML = '<option value="">-- Selecciona tu área --</option>' +
+            categorias.map(categoria =>
+                `<option value="${UI.escapar(categoria.nombre)}">${categoria.icono} ${UI.escapar(categoria.nombre)}</option>`
+            ).join('');
     } catch (error) {
         listaHabilidades.innerHTML =
             `<p class="mensaje-error">No se pudieron cargar las áreas: ${UI.escapar(error.message)}</p>`;
     }
 
-    /** Muestra el bloque de habilidades solo para el rol estudiante. */
-    function ajustarBloquesPorRol() {
-        bloqueEstudiante.classList.toggle('oculto', selectRol.value !== 'estudiante');
+    /**
+     * Adapta el formulario al rol elegido.
+     *
+     * Una empresa no tiene apellidos ni fecha de nacimiento, de modo que esos
+     * campos se ocultan y dejan de validarse; en su lugar aparece el sector.
+     * Las etiquetas tambien cambian para hablar el idioma de cada rol
+     * ("Nombres" frente a "Nombre de la empresa").
+     */
+    function ajustarFormularioPorRol() {
+        const rol = rolSeleccionado();
+        const esEmpresa = rol === 'empresa';
+
+        // --- Campos que aparecen o desaparecen -------------------------------
+        campoApellidos.classList.toggle('oculto', esEmpresa);
+        campoFecha.classList.toggle('oculto', esEmpresa);
+        campoSector.classList.toggle('oculto', !esEmpresa);
+
+        // Un campo oculto no debe seguir siendo obligatorio ni conservar
+        // errores de una seleccion anterior.
+        inputApellidos.required = !esEmpresa;
+        inputFecha.required = !esEmpresa;
+        if (esEmpresa) {
+            Validaciones.limpiarError(inputApellidos);
+            Validaciones.limpiarOk(inputApellidos);
+            Validaciones.limpiarError(inputFecha);
+            Validaciones.limpiarOk(inputFecha);
+        }
+
+        // --- Bloques propios de cada rol -------------------------------------
+        bloqueEstudiante.classList.toggle('oculto', rol !== 'estudiante');
+        bloqueInstructor.classList.toggle('oculto', rol !== 'instructor');
+
+        // --- Etiquetas adaptadas al rol --------------------------------------
+        if (esEmpresa) {
+            labelNombres.textContent = 'Nombre de la empresa';
+            inputNombres.placeholder = 'Ej: TechCorp S.A.';
+            labelEmail.textContent = 'Correo corporativo';
+            inputEmail.placeholder = 'Ej: talento@techcorp.com';
+            labelAvatar.textContent = 'Logo de la empresa (opcional)';
+            labelPais.textContent = 'País';
+            leyendaDatos.textContent = 'Datos de la empresa';
+            leyendaUbicacion.textContent = 'Ubicación de la empresa';
+            leyendaPerfil.textContent = 'Perfil de la empresa';
+        } else {
+            labelNombres.textContent = 'Nombres';
+            inputNombres.placeholder = 'Ej: Ana María';
+            labelEmail.textContent = 'Correo electrónico';
+            inputEmail.placeholder = 'correo@ejemplo.com';
+            labelAvatar.textContent = 'Foto de perfil (opcional)';
+            labelPais.textContent = 'Nacionalidad';
+            leyendaDatos.textContent = 'Datos personales';
+            leyendaUbicacion.textContent = 'Ubicación';
+            leyendaPerfil.textContent = rol === 'instructor'
+                ? 'Tu experiencia como instructor'
+                : 'Tu perfil';
+        }
+
+        // Al elegir un rol desaparece el aviso de "falta seleccionar".
+        if (rol) errorRol.classList.add('oculto');
     }
-    selectRol.addEventListener('change', ajustarBloquesPorRol);
-    ajustarBloquesPorRol();
+
+    radiosRol.forEach(radio => radio.addEventListener('change', ajustarFormularioPorRol));
+    ajustarFormularioPorRol();
 
     /* -------------------------------------------------- API de paises */
     let paises = [];
@@ -105,6 +197,109 @@ document.addEventListener('DOMContentLoaded', async () => {
         Validaciones.mostrarError(inputBuscarPais, error.message);
         UI.toast('No se pudo cargar la lista de países.', 'error');
     }
+
+    /* -------------------------------------------------- API de ciudades */
+    const buscarCiudad = document.getElementById('buscar-ciudad');
+    const listaCiudades = document.getElementById('lista-ciudades');
+    const ciudadElegida = document.getElementById('ciudad-elegida');
+    const ciudadNombre = document.getElementById('ciudad-nombre');
+    let ciudadesCargadas = [];
+
+    /**
+     * Habilita el campo de ciudad con las ciudades del pais elegido.
+     * Cuando el pais no esta en el listado propio, el campo queda igualmente
+     * habilitado para escribir la ciudad a mano.
+     */
+    async function cargarCiudadesPorPais(codigoPais) {
+        if (!buscarCiudad || !listaCiudades) return;
+
+        // Un cambio de pais invalida la ciudad elegida antes.
+        buscarCiudad.value = '';
+        ciudadNombre.value = '';
+        if (ciudadElegida) ciudadElegida.classList.add('oculto');
+        listaCiudades.classList.add('oculto');
+
+        if (!codigoPais) {
+            ciudadesCargadas = [];
+            buscarCiudad.disabled = true;
+            buscarCiudad.placeholder = 'Selecciona antes tu país';
+            return;
+        }
+
+        buscarCiudad.disabled = true;
+        buscarCiudad.placeholder = 'Cargando ciudades…';
+        try {
+            ciudadesCargadas = await Api.obtenerCiudades(codigoPais);
+        } catch (error) {
+            ciudadesCargadas = [];
+        }
+
+        buscarCiudad.disabled = false;
+        buscarCiudad.placeholder = ciudadesCargadas.length > 0
+            ? `Escribe o elige entre ${ciudadesCargadas.length} ciudades…`
+            : 'Escribe el nombre de tu ciudad';
+    }
+
+    function pintarCiudades(filtro = '') {
+        if (!listaCiudades) return;
+        // Sin listado para ese pais, la ciudad se escribe libremente.
+        if (ciudadesCargadas.length === 0) {
+            listaCiudades.classList.add('oculto');
+            return;
+        }
+
+        const texto = filtro.trim().toLowerCase();
+        const encontrados = texto === ''
+            ? ciudadesCargadas.slice(0, 20)
+            : ciudadesCargadas.filter(c => c.toLowerCase().includes(texto)).slice(0, 20);
+
+        if (encontrados.length === 0) {
+            listaCiudades.innerHTML =
+                '<li class="sin-resultado">No hay coincidencias. Puedes escribir tu ciudad.</li>';
+            listaCiudades.classList.remove('oculto');
+            return;
+        }
+
+        listaCiudades.innerHTML = encontrados.map(nombre => `
+            <li role="option" class="item-ciudad" data-nombre="${UI.escapar(nombre)}">
+                <span>📍 ${UI.escapar(nombre)}</span>
+            </li>`).join('');
+        listaCiudades.classList.remove('oculto');
+    }
+
+    if (buscarCiudad) {
+        buscarCiudad.addEventListener('input', () => {
+            // Lo escrito vale como ciudad aunque no se elija de la lista: asi
+            // funciona tambien para paises sin listado propio.
+            ciudadNombre.value = buscarCiudad.value.trim();
+            if (ciudadElegida) ciudadElegida.classList.add('oculto');
+            pintarCiudades(buscarCiudad.value);
+        });
+        buscarCiudad.addEventListener('focus', () => pintarCiudades(buscarCiudad.value));
+        buscarCiudad.addEventListener('keydown', evento => {
+            if (evento.key === 'Escape') listaCiudades.classList.add('oculto');
+        });
+    }
+
+    if (listaCiudades) {
+        listaCiudades.addEventListener('click', evento => {
+            const item = evento.target.closest('.item-ciudad');
+            if (!item) return;
+            ciudadNombre.value = item.dataset.nombre;
+            if (buscarCiudad) buscarCiudad.value = item.dataset.nombre;
+            if (ciudadElegida) {
+                ciudadElegida.innerHTML = `Ciudad seleccionada: <strong>${UI.escapar(item.dataset.nombre)}</strong>`;
+                ciudadElegida.classList.remove('oculto');
+            }
+            listaCiudades.classList.add('oculto');
+        });
+    }
+
+    document.addEventListener('click', evento => {
+        if (!evento.target.closest('.selector-ciudad') && listaCiudades) {
+            listaCiudades.classList.add('oculto');
+        }
+    });
 
     /** Dibuja la lista desplegable de paises filtrada. */
     function pintarPaises(filtro = '') {
@@ -154,6 +349,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         paisElegido.classList.remove('oculto');
         listaPaises.classList.add('oculto');
         inputBuscarPais.setAttribute('aria-expanded', 'false');
+        cargarCiudadesPorPais(item.dataset.codigo);
     });
 
     // Cerrar la lista al hacer clic fuera o con la tecla Escape.
@@ -201,7 +397,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
     // Evento 'input': el usuario ve el resultado mientras escribe, sin esperar
     // a pulsar "Finalizar Registro".
-    Validaciones.enVivo(inputNombres, valor => Validaciones.validarTexto(valor, 'El nombre'), 'Nombre valido ✔');
+    // El nombre de una empresa admite numeros y signos (TechCorp S.A., 3M),
+    // asi que solo se valida su longitud minima.
+    Validaciones.enVivo(inputNombres, valor => rolSeleccionado() === 'empresa'
+        ? (valor.trim().length >= 2
+            ? { valido: true, mensaje: '' }
+            : { valido: false, mensaje: 'El nombre de la empresa debe tener al menos 2 caracteres.' })
+        : Validaciones.validarTexto(valor, 'El nombre'), 'Nombre valido ✔');
     Validaciones.enVivo(inputApellidos, valor => Validaciones.validarTexto(valor, 'El apellido'), 'Apellido valido ✔');
     Validaciones.enVivo(inputEmail, Validaciones.validarEmail, 'Correo con formato correcto ✔');
     Validaciones.enVivo(inputTelefono, Validaciones.validarTelefono, 'Telefono valido ✔');
@@ -246,18 +448,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     formulario.addEventListener('submit', async evento => {
         evento.preventDefault();
 
-        const rol = selectRol.value;
+        const rol = rolSeleccionado();
+        const esEmpresa = rol === 'empresa';
         let valido = true;
 
         if (!rol) {
-            Validaciones.mostrarError(selectRol, 'Selecciona un rol.');
+            errorRol.classList.remove('oculto');
             valido = false;
         } else {
-            Validaciones.limpiarError(selectRol);
+            errorRol.classList.add('oculto');
         }
 
-        valido = Validaciones.aplicar(inputNombres, Validaciones.validarTexto(inputNombres.value, 'El nombre')) && valido;
-        valido = Validaciones.aplicar(inputApellidos, Validaciones.validarTexto(inputApellidos.value, 'El apellido')) && valido;
+        // El nombre de una empresa puede llevar numeros y puntos (TechCorp S.A.).
+        const nombreValido = esEmpresa
+            ? (inputNombres.value.trim().length >= 2
+                ? { valido: true, mensaje: '' }
+                : { valido: false, mensaje: 'Indica el nombre de la empresa.' })
+            : Validaciones.validarTexto(inputNombres.value, 'El nombre');
+        valido = Validaciones.aplicar(inputNombres, nombreValido) && valido;
+
+        // Apellidos y fecha de nacimiento no aplican al rol empresa.
+        if (!esEmpresa) {
+            valido = Validaciones.aplicar(inputApellidos,
+                Validaciones.validarTexto(inputApellidos.value, 'El apellido')) && valido;
+
+            const resultadoEdad = Validaciones.validarFechaNacimiento(inputFecha.value);
+            valido = Validaciones.aplicar(inputFecha, resultadoEdad) && valido;
+        }
+
         valido = Validaciones.aplicar(inputEmail, Validaciones.validarEmail(inputEmail.value)) && valido;
         valido = Validaciones.aplicar(inputPassword, Validaciones.validarPassword(inputPassword.value)) && valido;
 
@@ -265,9 +483,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             ? { valido: true, mensaje: '' }
             : { valido: false, mensaje: 'Las contrasenas no coinciden.' };
         valido = Validaciones.aplicar(inputPassword2, igualdad) && valido;
-
-        const resultadoEdad = Validaciones.validarFechaNacimiento(inputFecha.value);
-        valido = Validaciones.aplicar(inputFecha, resultadoEdad) && valido;
 
         valido = Validaciones.aplicar(inputTelefono, Validaciones.validarTelefono(inputTelefono.value)) && valido;
 
@@ -297,13 +512,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                 document.querySelectorAll('input[name="habilidad"]:checked')
             ).map(check => check.value);
 
-        const usuario = await Auth.registrar({
+            // La ciudad puede venir de la lista o escrita a mano.
+            const ciudadFinal = (ciudadNombre.value || buscarCiudad.value || '').trim();
+
+            const usuario = await Auth.registrar({
                 rol,
                 nombres: inputNombres.value,
-                apellidos: inputApellidos.value,
+                // Una empresa no tiene apellidos.
+                apellidos: esEmpresa ? '' : inputApellidos.value,
                 email: inputEmail.value,
                 password: inputPassword.value,
-                fechaNacimiento: inputFecha.value,
+                fechaNacimiento: esEmpresa ? '' : inputFecha.value,
                 nacionalidad: {
                     nombre: paisNombre.value,
                     codigo: paisCodigo.value,
@@ -311,10 +530,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                     banderaSmall: paisBanderaSmall ? paisBanderaSmall.value : ''
                 },
                 telefono: inputTelefono.value,
+                ciudad: ciudadFinal,
                 avatar: avatarDataUri,
                 habilidades,
                 nivel: document.querySelector('input[name="nivel"]:checked')?.value || 'Principiante',
-                objetivo: document.getElementById('objetivo')?.value || ''
+                objetivo: document.getElementById('objetivo')?.value || '',
+                // Campos propios de cada rol.
+                sector: esEmpresa ? inputSector.value.trim() : '',
+                especialidad: rol === 'instructor' ? selectEspecialidad.value : '',
+                bio: rol === 'instructor' ? inputBio.value.trim() : ''
             });
 
             const config = Auth.ROLES[usuario.rol];

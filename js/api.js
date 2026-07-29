@@ -310,19 +310,15 @@ const Api = (() => {
         'US': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'San Antonio', 'San Diego', 'Dallas', 'San Jose', 'Austin', 'Miami', 'Seattle', 'Denver', 'Boston', 'Atlanta']
     };
 
+    /**
+     * Devuelve las ciudades principales de un pais a partir de su codigo ISO
+     * de dos letras (EC, CO, MX...). Para los paises de la region se usa el
+     * listado propio; para el resto se devuelve un arreglo vacio y el
+     * formulario deja escribir la ciudad a mano.
+     */
     async function obtenerCiudades(codigoPais) {
         if (!codigoPais) return [];
-        const cod = codigoPais.toUpperCase();
-        if (CIUDADES_POR_PAIS[cod]) return CIUDADES_POR_PAIS[cod];
-        try {
-            const resp = await fetch(`https://countries.dev/countries/${cod}`);
-            if (!resp.ok) return [];
-            const data = await resp.json();
-            if (data && data.cities && Array.isArray(data.cities)) {
-                return data.cities.map(c => typeof c === 'string' ? c : c.name || c.city || '').filter(Boolean).slice(0, 50);
-            }
-        } catch (e) { /* fallback */ }
-        return ['Otra ciudad'];
+        return CIUDADES_POR_PAIS[codigoPais.toUpperCase()] || [];
     }
 
     async function reportarCurso(nombreCurso, razon, detalle) {

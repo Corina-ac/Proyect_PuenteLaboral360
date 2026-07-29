@@ -30,126 +30,218 @@
 
             <form id="form-registro" novalidate>
 
-                <!-- ROL: se bloquea cuando se llega desde un plan concreto -->
-                <section class="campo">
-                    <label for="rol">Rol en la plataforma</label>
-                    <select id="rol" name="rol" required>
-                        <option value="">-- Selecciona un rol --</option>
-                        <option value="estudiante">🎓 Estudiante</option>
-                        <option value="instructor">👨‍🏫 Instructor</option>
-                        <option value="empresa">🏢 Empresa / Reclutador</option>
-                    </select>
+                <!-- ============================================================
+                     BLOQUE 1 — TIPO DE CUENTA
+                     Tarjetas seleccionables construidas con radios: son
+                     accesibles con teclado y no necesitan JavaScript para
+                     mantener el estado marcado.
+                     ============================================================ -->
+                <fieldset class="bloque-form bloque-roles">
+                    <legend>¿Cómo vas a usar la plataforma?</legend>
+
+                    <div class="tarjetas-rol" id="tarjetas-rol">
+                        <input type="radio" name="rol" id="rol-estudiante" value="estudiante" class="rol-radio" required>
+                        <label for="rol-estudiante" class="tarjeta-rol">
+                            <span class="rol-icono" aria-hidden="true">🎓</span>
+                            <span class="rol-titulo">Estudiante</span>
+                            <span class="rol-desc">Aprende y certifica tus habilidades</span>
+                        </label>
+
+                        <input type="radio" name="rol" id="rol-instructor" value="instructor" class="rol-radio">
+                        <label for="rol-instructor" class="tarjeta-rol">
+                            <span class="rol-icono" aria-hidden="true">👨‍🏫</span>
+                            <span class="rol-titulo">Instructor</span>
+                            <span class="rol-desc">Crea cursos y forma talento</span>
+                        </label>
+
+                        <input type="radio" name="rol" id="rol-empresa" value="empresa" class="rol-radio">
+                        <label for="rol-empresa" class="tarjeta-rol">
+                            <span class="rol-icono" aria-hidden="true">🏢</span>
+                            <span class="rol-titulo">Empresa</span>
+                            <span class="rol-desc">Publica vacantes y busca talento</span>
+                        </label>
+                    </div>
+
                     <p class="nota-seguridad" id="nota-rol"></p>
-                </section>
+                    <p class="mensaje-error oculto" id="error-rol" role="alert">
+                        Selecciona cómo vas a usar la plataforma.
+                    </p>
+                </fieldset>
 
-                <section class="fila-campos">
-                    <section class="campo">
-                        <label for="nombres">Nombres</label>
-                        <input type="text" id="nombres" name="nombres" placeholder="Ej: Ana María" required>
-                    </section>
-                    <section class="campo">
-                        <label for="apellidos">Apellidos</label>
-                        <input type="text" id="apellidos" name="apellidos" placeholder="Ej: García Pérez" required>
-                    </section>
-                </section>
+                <!-- ============================================================
+                     BLOQUE 2 — DATOS DE LA CUENTA
+                     ============================================================ -->
+                <fieldset class="bloque-form">
+                    <legend id="leyenda-datos">Datos personales</legend>
 
-                <section class="campo">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
-                </section>
+                    <div class="fila-campos">
+                        <div class="campo" id="campo-nombres">
+                            <label for="nombres" id="label-nombres">Nombres</label>
+                            <input type="text" id="nombres" name="nombres" placeholder="Ej: Ana María" required>
+                        </div>
+                        <div class="campo" id="campo-apellidos">
+                            <label for="apellidos">Apellidos</label>
+                            <input type="text" id="apellidos" name="apellidos" placeholder="Ej: García Pérez" required>
+                        </div>
+                    </div>
 
-                <section class="fila-campos">
-                    <section class="campo">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password" name="password"
-                            placeholder="Entre 8 y 16 caracteres" required>
-                    </section>
-                    <section class="campo">
-                        <label for="password2">Confirmar contraseña</label>
-                        <input type="password" id="password2" name="password2"
-                            placeholder="Repite la contraseña" required>
-                    </section>
-                </section>
+                    <!-- Solo para el rol empresa -->
+                    <div class="campo oculto" id="campo-sector">
+                        <label for="sector">Sector de la empresa</label>
+                        <input type="text" id="sector" name="sector" placeholder="Ej: Tecnología, Salud, Educación">
+                    </div>
 
-                <section class="fila-campos">
-                    <!-- Edad permitida: de 16 a 60 años, por ser una plataforma laboral -->
-                    <section class="campo">
+                    <div class="fila-campos">
+                        <div class="campo" id="campo-email">
+                            <label for="email" id="label-email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        <div class="campo" id="campo-telefono">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="Ej: 0991234567">
+                        </div>
+                    </div>
+
+                    <!-- Edad permitida: de 16 a 60 años, por ser una plataforma laboral.
+                         Se oculta para el rol empresa. -->
+                    <div class="campo" id="campo-fecha">
                         <label for="fecha-nacimiento">Fecha de nacimiento</label>
                         <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
                         <p class="nota-seguridad" id="nota-edad">
                             Registro habilitado para personas de 16 a 60 años.
                         </p>
-                    </section>
-                    <section class="campo">
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" id="telefono" name="telefono" placeholder="Ej: 0991234567">
-                    </section>
-                </section>
+                    </div>
+                </fieldset>
 
-                <!-- Nacionalidad: selector personalizado alimentado por countries.dev -->
-                <section class="campo selector-pais">
-                    <label for="buscar-pais">Nacionalidad</label>
-                    <input type="text" id="buscar-pais" placeholder="Escribe para buscar tu país…"
-                        autocomplete="off" role="combobox" aria-expanded="false"
-                        aria-controls="lista-paises" required>
-                    <ul id="lista-paises" class="lista-paises oculto" role="listbox"></ul>
-                    <p class="pais-elegido oculto" id="pais-elegido"></p>
-                    <input type="hidden" id="pais-nombre">
-                    <input type="hidden" id="pais-codigo">
-                    <input type="hidden" id="pais-bandera">
-                    <input type="hidden" id="pais-bandera-small">
-                </section>
+                <!-- ============================================================
+                     BLOQUE 3 — SEGURIDAD
+                     ============================================================ -->
+                <fieldset class="bloque-form">
+                    <legend>Seguridad</legend>
 
-                <section class="campo">
-                    <label for="avatar">Foto de perfil (opcional)</label>
-                    <input type="file" id="avatar" name="avatar" accept="image/*">
-                    <section class="vista-avatar">
-                        <img id="previa-avatar" src="" alt="Vista previa de la foto de perfil">
-                        <span class="nota-seguridad">
-                            Si no subes una foto se generará un avatar con tus iniciales.
-                        </span>
-                    </section>
-                </section>
+                    <div class="fila-campos">
+                        <div class="campo">
+                            <label for="password">Contraseña</label>
+                            <input type="password" id="password" name="password"
+                                placeholder="Entre 8 y 16 caracteres" required>
+                        </div>
+                        <div class="campo">
+                            <label for="password2">Confirmar contraseña</label>
+                            <input type="password" id="password2" name="password2"
+                                placeholder="Repite la contraseña" required>
+                        </div>
+                    </div>
+                </fieldset>
 
-                <!-- Campos exclusivos del rol estudiante -->
-                <section id="bloque-estudiante" class="bloque-rol oculto">
-                    <section class="campo">
-                        <label>¿Qué tecnologías conoces?</label>
-                        <section class="habilidades-check" id="lista-habilidades"></section>
-                    </section>
+                <!-- ============================================================
+                     BLOQUE 4 — UBICACIÓN
+                     El país se obtiene de la API countries.dev; al elegirlo se
+                     habilita el selector de ciudad con las ciudades de ese país.
+                     ============================================================ -->
+                <fieldset class="bloque-form">
+                    <legend id="leyenda-ubicacion">Ubicación</legend>
 
-                    <section class="campo">
-                        <label>Nivel general de experiencia</label>
-                        <section class="nivel-habilidad">
-                            <label><input type="radio" name="nivel" value="Principiante" checked> Principiante</label>
-                            <label><input type="radio" name="nivel" value="Junior"> Junior</label>
-                            <label><input type="radio" name="nivel" value="Semi-senior"> Semi-senior</label>
-                            <label><input type="radio" name="nivel" value="Senior"> Senior</label>
-                        </section>
-                    </section>
+                    <div class="fila-campos">
+                        <div class="campo selector-pais">
+                            <label for="buscar-pais" id="label-pais">Nacionalidad</label>
+                            <input type="text" id="buscar-pais" placeholder="Escribe para buscar tu país…"
+                                autocomplete="off" role="combobox" aria-expanded="false"
+                                aria-controls="lista-paises" required>
+                            <ul id="lista-paises" class="lista-paises oculto" role="listbox"></ul>
+                            <p class="pais-elegido oculto" id="pais-elegido"></p>
+                            <input type="hidden" id="pais-nombre">
+                            <input type="hidden" id="pais-codigo">
+                            <input type="hidden" id="pais-bandera">
+                            <input type="hidden" id="pais-bandera-small">
+                        </div>
 
-                    <section class="campo">
-                        <label for="objetivo">¿Qué objetivo tienes al unirte?</label>
-                        <select id="objetivo" name="objetivo">
-                            <option>Conseguir mi primer empleo en tecnología</option>
-                            <option>Cambiar de carrera al área tech</option>
-                            <option>Mejorar mis habilidades actuales</option>
-                            <option>Obtener certificaciones reconocidas</option>
-                        </select>
-                    </section>
-                </section>
+                        <div class="campo selector-ciudad">
+                            <label for="buscar-ciudad">Ciudad</label>
+                            <input type="text" id="buscar-ciudad" placeholder="Selecciona antes tu país" disabled
+                                autocomplete="off" role="combobox" aria-expanded="false"
+                                aria-controls="lista-ciudades">
+                            <ul id="lista-ciudades" class="lista-paises oculto" role="listbox"></ul>
+                            <p class="pais-elegido oculto" id="ciudad-elegida"></p>
+                            <input type="hidden" id="ciudad-nombre" name="ciudad">
+                        </div>
+                    </div>
+                </fieldset>
 
-                <section class="campo campo-terminos">
-                    <label class="check-terminos">
+                <!-- ============================================================
+                     BLOQUE 5 — PERFIL
+                     Su contenido cambia segun el rol elegido arriba.
+                     ============================================================ -->
+                <fieldset class="bloque-form">
+                    <legend id="leyenda-perfil">Tu perfil</legend>
+
+                    <div class="campo">
+                        <label for="avatar" id="label-avatar">Foto de perfil (opcional)</label>
+                        <div class="vista-avatar">
+                            <img id="previa-avatar" src="" alt="Vista previa de la foto de perfil">
+                            <input type="file" id="avatar" name="avatar" accept="image/*">
+                        </div>
+                    </div>
+
+                    <!-- Campos exclusivos del rol estudiante -->
+                    <div id="bloque-estudiante" class="bloque-rol oculto">
+                        <div class="campo">
+                            <label>¿Qué tecnologías conoces?</label>
+                            <div class="habilidades-check" id="lista-habilidades"></div>
+                        </div>
+
+                        <div class="campo">
+                            <label>Nivel general de experiencia</label>
+                            <div class="nivel-habilidad">
+                                <label><input type="radio" name="nivel" value="Principiante" checked> Principiante</label>
+                                <label><input type="radio" name="nivel" value="Junior"> Junior</label>
+                                <label><input type="radio" name="nivel" value="Semi-senior"> Semi-senior</label>
+                                <label><input type="radio" name="nivel" value="Senior"> Senior</label>
+                            </div>
+                        </div>
+
+                        <div class="campo">
+                            <label for="objetivo">¿Qué objetivo tienes al unirte?</label>
+                            <select id="objetivo" name="objetivo">
+                                <option>Conseguir mi primer empleo en tecnología</option>
+                                <option>Cambiar de carrera al área tech</option>
+                                <option>Mejorar mis habilidades actuales</option>
+                                <option>Obtener certificaciones reconocidas</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Campos exclusivos del rol instructor -->
+                    <div id="bloque-instructor" class="bloque-rol oculto">
+                        <div class="campo">
+                            <label for="especialidad">Especialidad</label>
+                            <select id="especialidad" name="especialidad">
+                                <option value="">-- Selecciona tu área --</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label for="bio">Sobre ti</label>
+                            <textarea id="bio" name="bio" rows="3"
+                                placeholder="Cuéntanos tu experiencia dictando cursos o trabajando en el área."></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="campo campo-terminos">
+                    <label class="check-terminos" for="terminos">
                         <input type="checkbox" id="terminos" name="terminos" required>
-                        Acepto los términos y condiciones y el tratamiento de mis datos.
+                        <span>
+                            Acepto los términos y condiciones y el tratamiento de mis datos según la
+                            <a href="../politica-privacidad/politica-privacidad.html" target="_blank"
+                               rel="noopener">política de privacidad</a>.
+                        </span>
                     </label>
-                </section>
+                </div>
 
-                <section class="nav-pasos">
+                <div class="nav-pasos">
                     <a href="../login/login.html" class="btn btn-gris">← Ya tengo cuenta</a>
                     <button type="submit" class="btn btn-verde" id="btn-registrar">Finalizar Registro →</button>
-                </section>
+                </div>
             </form>
         </section>
     </main>
@@ -171,6 +263,7 @@
     <script src="../../js/validaciones.js"></script>
     <script src="../../js/datos.js"></script>
     <script src="../../js/auth.js"></script>
+    <script src="../../js/config.js"></script>
     <script src="../../js/api.js"></script>
     <script src="../../js/componentes.js"></script>
     <script src="../../js/registro.js"></script>
