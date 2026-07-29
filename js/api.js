@@ -214,13 +214,18 @@ const Api = (() => {
 
         const paises = crudo
             .map(pais => {
-                const codigo = (pais.cca2 || pais.cioc || (pais.name || '').slice(0, 2)).toLowerCase();
+                // Se usa alpha2Code: es el codigo ISO de DOS letras (EC, CO, MX)
+                // que necesitan tanto flagcdn.com como el listado de ciudades.
+                // Esta API no expone el campo cca2, y cioc trae tres letras
+                // (ECU, COL), que ninguno de los dos usos acepta.
+                const codigo = (pais.alpha2Code || '').toLowerCase();
                 return {
                     nombre: pais.name,
                     codigo: codigo,
+                    codigo3: (pais.alpha3Code || pais.cioc || '').toLowerCase(),
                     bandera: pais.flag || '🏳️',
                     banderaImg: (pais.flags && (pais.flags.svg || pais.flags.png)) || '',
-                    banderaSmall: `https://flagcdn.com/24x18/${codigo}.png`,
+                    banderaSmall: codigo ? `https://flagcdn.com/24x18/${codigo}.png` : '',
                     region: pais.region || ''
                 };
             })
