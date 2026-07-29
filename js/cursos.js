@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!usuario) return;
 
     UI.pintarPerfilLateral(usuario);
-    document.getElementById('enlace-inicio').href = Auth.panelDe(usuario.rol);
+    const enlaceInicio = document.getElementById('enlace-inicio');
+    if (enlaceInicio) enlaceInicio.href = Auth.panelDe(usuario.rol);
 
     // Solo instructores y administradores gestionan el catalogo.
     const puedeGestionar = ['instructor', 'admin'].includes(usuario.rol);
@@ -28,7 +29,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const selectOrden = document.getElementById('orden');
     const botonLimpiar = document.getElementById('btn-limpiar');
     const botonNuevo = document.getElementById('btn-nuevo');
-    const botonRestablecer = document.getElementById('btn-restablecer');
     const contador = document.getElementById('contador-resultados');
     const panelIndicadores = document.getElementById('panel-indicadores');
     const selectorCiudades = document.getElementById('selector-ciudades');
@@ -491,26 +491,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         UI.toast('Curso eliminado del catálogo.', 'info');
     }
 
-    async function restablecer() {
-        const confirmado = await UI.confirmar(
-            'Restablecer los datos originales',
-            'Se descartarán todos los cambios guardados y se volverán a cargar los archivos JSON. ¿Continuar?',
-            'Sí, restablecer'
-        );
-        if (!confirmado) return;
-
-        try {
-            const total = await Datos.restablecer();
-            cursos = Datos.cache('cursos');
-            categorias = Datos.cache('categorias');
-            instructores = Datos.cache('instructores');
-            pintarOpcionesCategoria();
-            aplicarVista();
-            UI.toast(`${total} registros restablecidos desde los archivos JSON.`, 'exito');
-        } catch (error) {
-            UI.error('No se pudieron restablecer los datos', error.message);
-        }
-    }
+    // El restablecimiento de los datos originales se hace desde el panel de
+    // administracion (Datos.restablecer): afecta a todas las colecciones y
+    // borraria el progreso de cualquier estudiante, de modo que no procede
+    // ofrecerlo en el catalogo de cursos.
 
     /* ----------------------------------------------------------- eventos */
     // Busqueda en tiempo real.
@@ -529,7 +513,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     botonNuevo.addEventListener('click', crear);
-    botonRestablecer.addEventListener('click', restablecer);
 
     /* ------------------------------------------------------- recomendar */
     let idsRecomendados = [];

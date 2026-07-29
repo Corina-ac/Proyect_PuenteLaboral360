@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!usuario) return;
 
     UI.pintarPerfilLateral(usuario);
-    document.getElementById('enlace-inicio').href = Auth.panelDe(usuario.rol);
+    const enlaceInicio = document.getElementById('enlace-inicio');
+    if (enlaceInicio) enlaceInicio.href = Auth.panelDe(usuario.rol);
 
     const zonaStats = document.getElementById('stats-instructor');
     const zonaTabla = document.getElementById('tabla-cursos');
@@ -126,6 +127,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 });
             }
+        } else {
+            UI.graficoVacio('chart-alumnos-curso',
+                'Cuando publiques tu primer curso verás aquí cuántos alumnos tiene.', {
+                    titulo: 'Alumnos por curso',
+                    icono: '👨‍🎓',
+                    accion: { texto: 'Crear un curso', href: '../cursos/mis-cursos-instructor.html' }
+                });
         }
 
         const certs = matriculas.filter(m => m.certificadoEmitido).length;
@@ -150,6 +158,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 });
             }
+        } else {
+            UI.graficoVacio('chart-tasa-certificados',
+                'Todavía no hay matrículas en tus cursos.', {
+                    titulo: 'Tasa de certificación',
+                    icono: '🏅'
+                });
         }
 
         const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
@@ -161,7 +175,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
         const ctx3 = document.getElementById('chart-inscripciones');
-        if (ctx3) {
+        // Sin matriculas la linea seria plana en cero, que no informa de nada.
+        if (matriculas.length === 0) {
+            UI.graficoVacio('chart-inscripciones',
+                'Aquí verás la evolución de las inscripciones mes a mes.', {
+                    titulo: 'Inscripciones por mes',
+                    icono: '📈'
+                });
+        } else if (ctx3) {
             new Chart(ctx3, {
                 type: 'line',
                 data: {

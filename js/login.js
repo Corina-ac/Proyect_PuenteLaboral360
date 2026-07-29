@@ -141,10 +141,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const resultado = await Auth.iniciarSesion(email, password, inputCodigo.value);
 
             if (resultado.ok) {
+                // Hito importante: se confirma solo con el modal. Acompanarlo de
+                // un toast mostraria el mismo mensaje dos veces a la vez.
                 const config = Auth.ROLES[resultado.usuario.rol];
-                UI.toast(`Bienvenido/a, ${resultado.usuario.nombres}.`, 'exito');
                 await UI.alerta(
-                    `${config.icono} Acceso concedido`,
+                    `${config.icono} Bienvenido/a, ${resultado.usuario.nombres}`,
                     `Ingresaste como ${config.etiqueta}. Te llevamos a tu panel.`,
                     'success'
                 );

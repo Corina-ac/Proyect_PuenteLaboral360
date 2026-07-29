@@ -13,21 +13,59 @@ const UI = (() => {
         aviso: 'linear-gradient(to right, #b45309, #f59e0b)'
     };
 
-    /** Notificacion breve con Toastify. */
+    // Control de avisos repetidos: sin esto, una accion que se repite (recargar
+    // una lista, reintentar una peticion) llena la pantalla con el mismo texto.
+    const MS_ANTIDUPLICADO = 2000;   // ventana en la que un mensaje no se repite
+    const MAXIMO_VISIBLES = 3;       // avisos simultaneos antes de cerrar el mas viejo
+
+    const ultimoAviso = new Map();   // mensaje -> instante en que se mostro
+    let visibles = [];               // instancias de Toastify aun en pantalla
+
+    /**
+     * Notificacion breve con Toastify.
+     *
+     * Se descarta el mensaje si es identico a uno mostrado hace menos de dos
+     * segundos, y cuando ya hay tres en pantalla se cierra el mas antiguo, de
+     * modo que los avisos nunca se acumulan unos sobre otros.
+     */
     function toast(mensaje, tipo = 'exito') {
         if (typeof Toastify === 'undefined') {
             console.log(`[${tipo}] ${mensaje}`);
             return;
         }
-        Toastify({
+
+        const ahora = Date.now();
+        const clave = `${tipo}|${mensaje}`;
+
+        // 1. Mismo aviso repetido en un intervalo corto: se ignora.
+        const anterior = ultimoAviso.get(clave);
+        if (anterior && ahora - anterior < MS_ANTIDUPLICADO) return;
+        ultimoAviso.set(clave, ahora);
+
+        // Se limpian las marcas viejas para que el mapa no crezca sin control.
+        ultimoAviso.forEach((instante, k) => {
+            if (ahora - instante > MS_ANTIDUPLICADO * 5) ultimoAviso.delete(k);
+        });
+
+        // 2. Se respeta el maximo de avisos simultaneos.
+        while (visibles.length >= MAXIMO_VISIBLES) {
+            const masViejo = visibles.shift();
+            try { masViejo.hideToast(); } catch (error) { /* ya se habia cerrado */ }
+        }
+
+        const aviso = Toastify({
             text: mensaje,
             duration: 3000,
             gravity: 'top',
             position: 'right',
             close: true,
             stopOnFocus: true,
-            style: { background: COLORES_TOAST[tipo] || COLORES_TOAST.info, borderRadius: '8px' }
-        }).showToast();
+            style: { background: COLORES_TOAST[tipo] || COLORES_TOAST.info, borderRadius: '8px' },
+            callback: () => { visibles = visibles.filter(t => t !== aviso); }
+        });
+
+        visibles.push(aviso);
+        aviso.showToast();
     }
 
     /* ------------------------------------------------------ alertas modales */
@@ -92,6 +130,40 @@ const UI = (() => {
                 <p class="estado-icono" aria-hidden="true">${icono}</p>
                 <p>${mensaje}</p>
             </section>`;
+    }
+
+    /**
+     * Sustituye un <canvas> sin datos por un aviso explicando que no hay nada
+     * que representar todavia. Un lienzo en blanco parece un fallo de carga;
+     * este estado deja claro que el grafico esta bien y solo falta informacion,
+     * y ofrece la accion que permite generarla.
+     *
+     *   UI.graficoVacio('chart-progreso', 'Aun no tienes cursos en progreso',
+     *                   { icono: '📚', accion: { texto: 'Ver catálogo', href: '...' } });
+     */
+    function graficoVacio(idCanvas, mensaje, opciones = {}) {
+        const lienzo = document.getElementById(idCanvas);
+        if (!lienzo) return;
+
+        const { icono = '📊', accion = null, titulo = '' } = opciones;
+        const contenedor = lienzo.parentElement;
+        if (!contenedor) return;
+
+        // Si ya se pinto el aviso, no se duplica al volver a renderizar.
+        if (contenedor.querySelector('.grafico-vacio')) return;
+
+        const enlace = accion
+            ? `<a href="${accion.href}" class="btn btn-azul btn-xs">${escapar(accion.texto)}</a>`
+            : '';
+
+        lienzo.style.display = 'none';
+        contenedor.insertAdjacentHTML('beforeend', `
+            <section class="grafico-vacio" role="status">
+                ${titulo ? `<p class="grafico-vacio-titulo">${escapar(titulo)}</p>` : ''}
+                <p class="grafico-vacio-icono" aria-hidden="true">${icono}</p>
+                <p class="grafico-vacio-texto">${escapar(mensaje)}</p>
+                ${enlace}
+            </section>`);
     }
 
     /** Mensaje de error de carga, con boton para reintentar. */
@@ -235,9 +307,91 @@ const UI = (() => {
         });
     }
 
+    /* ---------------------------------------------- menu lateral por rol */
+    /**
+     * Menu de cada rol, definido en un unico lugar.
+     *
+     * Antes cada pagina llevaba su propia copia del menu escrita a mano, y las
+     * copias acabaron diferenciandose entre si (distinto numero de opciones y
+     * distintos nombres para la misma seccion). Al generarlo desde aqui, todas
+     * las paginas de un rol muestran siempre lo mismo.
+     *
+     * Las rutas se guardan desde la raiz del proyecto; Datos.rutaBase() se
+     * encarga de adaptarlas a la profundidad de cada pagina.
+     */
+    const MENUS = {
+        estudiante: [
+            { icono: '🏠', texto: 'Inicio', ruta: 'pages/dashboard-estudiante/dashboard-estudiante.html' },
+            { icono: '📚', texto: 'Cursos', ruta: 'pages/cursos/cursos.html' },
+            { icono: '👤', texto: 'Mi Perfil', ruta: 'pages/perfil/perfil.html' },
+            { icono: '🔔', texto: 'Notificaciones', ruta: 'pages/notificaciones/notificaciones.html' }
+        ],
+        instructor: [
+            { icono: '🏠', texto: 'Inicio', ruta: 'pages/dashboard-instructor/dashboard-instructor.html' },
+            { icono: '📚', texto: 'Mis Cursos', ruta: 'pages/cursos/mis-cursos-instructor.html' },
+            { icono: '👤', texto: 'Mi Perfil', ruta: 'pages/perfil/perfil.html' },
+            { icono: '🔔', texto: 'Notificaciones', ruta: 'pages/notificaciones/notificaciones-instructor.html' }
+        ],
+        empresa: [
+            { icono: '🏠', texto: 'Inicio', ruta: 'pages/dashboard-empresa/dashboard-empresa.html' },
+            { icono: '🔍', texto: 'Buscar Talento', ruta: 'pages/buscar-talento/buscar-talento.html' },
+            { icono: '📌', texto: 'Mis Vacantes', ruta: 'pages/mis-vacantes/mis-vacantes.html' },
+            { icono: '🔔', texto: 'Notificaciones', ruta: 'pages/notificaciones/notificaciones-empresa.html' }
+        ],
+        admin: [
+            { icono: '🏠', texto: 'Inicio', ruta: 'pages/admin/admin.html' },
+            { icono: '📚', texto: 'Cursos', ruta: 'pages/cursos/cursos.html' },
+            { icono: '🔍', texto: 'Buscar Talento', ruta: 'pages/buscar-talento/buscar-talento.html' },
+            { icono: '🔔', texto: 'Notificaciones', ruta: 'pages/notificaciones/notificaciones-admin.html' }
+        ]
+    };
+
+    /**
+     * Dibuja el menu lateral del rol en sesion y marca como activa la opcion
+     * que corresponde a la pagina abierta, comparando el nombre del archivo.
+     */
+    function pintarMenuLateral(usuario) {
+        if (!usuario) return;
+        const nav = document.querySelector('.sidebar nav');
+        if (!nav) return;
+
+        const base = Datos.rutaBase();
+        const opciones = MENUS[usuario.rol] || MENUS.estudiante;
+        const archivoActual = window.location.pathname.split('/').pop();
+
+        const enlaces = opciones.map((op, indice) => {
+            const archivo = op.ruta.split('/').pop();
+            const esActual = archivo === archivoActual;
+            const activo = esActual ? ' class="activo"' : '';
+            const actual = esActual ? ' aria-current="page"' : '';
+            // La primera opcion conserva el id "enlace-inicio": varias paginas
+            // lo buscan despues de pintar el menu y sin el fallaria su script.
+            const id = indice === 0 ? ' id="enlace-inicio"' : '';
+            return `<a href="${base}${op.ruta}"${id}${activo}${actual}>` +
+                   `<span class="icono" aria-hidden="true">${op.icono}</span> ${escapar(op.texto)}</a>`;
+        }).join('\n                ');
+
+        nav.innerHTML = enlaces +
+            `\n                <a href="#" data-accion="cerrar-sesion">` +
+            `<span class="icono" aria-hidden="true">🚪</span> Cerrar sesión</a>`;
+
+        // El enlace de cierre se acaba de crear, asi que necesita su manejador.
+        const salir = nav.querySelector('[data-accion="cerrar-sesion"]');
+        if (salir) salir.addEventListener('click', async evento => {
+            evento.preventDefault();
+            if (!await confirmar('Cerrar sesion', '¿Deseas salir de tu cuenta?', 'Si, salir')) return;
+            Auth.cerrarSesion();
+            window.location.href = base + 'index.html';
+        });
+    }
+
     /** Rellena las tarjetas de perfil de las barras laterales de los paneles. */
     function pintarPerfilLateral(usuario) {
         if (!usuario) return;
+
+        // El menu se dibuja junto al perfil: toda pagina con barra lateral ya
+        // llama a esta funcion, de modo que ninguna se queda sin menu.
+        pintarMenuLateral(usuario);
         const config = Auth.ROLES[usuario.rol] || Auth.ROLES.estudiante;
         const iniciales = usuario.iniciales ||
             ((usuario.nombres || '?')[0] + (usuario.apellidos || '')[0] || '');
@@ -364,10 +518,10 @@ const UI = (() => {
 
     return {
         toast, alerta, error, confirmar, detalle,
-        cargando, vacio, fallo,
+        cargando, vacio, fallo, graficoVacio,
         escapar, precio, fecha,
         avatarDataUri, avatarMultiavatar, fotoUsuario, imagenConRespaldo,
-        pintarBarraSesion, pintarPerfilLateral, iniciar,
+        pintarBarraSesion, pintarPerfilLateral, pintarMenuLateral, MENUS, iniciar,
         descargarCertificadoPDF
     };
 })();

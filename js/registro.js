@@ -188,9 +188,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         paises = await Api.obtenerPaises();
-        inputBuscarPais.placeholder = 'Escribe para buscar tu país…';
+        // No se avisa de la carga correcta: el propio desplegable ya la evidencia.
+        inputBuscarPais.placeholder = `Escribe para buscar entre ${paises.length} países…`;
         inputBuscarPais.disabled = false;
-        UI.toast(`${paises.length} países cargados desde la API.`, 'info');
     } catch (error) {
         inputBuscarPais.disabled = false;
         inputBuscarPais.placeholder = 'Escribe tu país manualmente';
@@ -541,8 +541,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 bio: rol === 'instructor' ? inputBio.value.trim() : ''
             });
 
+            // Hito importante: basta el modal, sin duplicar el aviso con un toast.
             const config = Auth.ROLES[usuario.rol];
-            UI.toast('Cuenta creada correctamente.', 'exito');
             await UI.alerta(
                 '¡Registro completado!',
                 `${usuario.nombres}, tu cuenta de ${config.etiqueta} fue creada. ` +

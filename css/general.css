@@ -149,6 +149,106 @@ nav a:hover {
 }
 
 /* ============================================================
+   BLOQUE 6B: BARRA SUPERIOR (definición única)
+
+   La barra se repite en todas las vistas, de modo que su altura se
+   fija aquí una sola vez. Antes cada hoja (estilos.css, index.css,
+   registro.css) la redefinía con paddings distintos y la barra se
+   encogía o crecía al cambiar de página.
+
+   La altura se sostiene con min-height y no con el padding, para que
+   un logo o un enlace más grande no la desplacen.
+   ============================================================ */
+
+:root {
+    --altura-navbar: 62px;
+    --altura-navbar-tablet: 56px;
+    --altura-navbar-movil: 52px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-sizing: border-box;
+    min-height: var(--altura-navbar);
+    padding: 0 30px;
+    margin: 0;
+    background-color: #1a73e8;
+}
+
+.navbar .logo {
+    display: inline-flex;
+    align-items: center;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.navbar .logo span {
+    color: #ffdd57;
+}
+
+/* El <nav> interior no aporta relleno propio: la altura la marca la barra. */
+.navbar nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 0;
+    background-color: transparent;
+}
+
+.navbar nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-left: 0;
+}
+
+.navbar nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Variantes de color por rol: cambian el fondo, nunca el tamaño. */
+.navbar-empresa { background-color: #c0392b; }
+.navbar-instructor { background-color: #218838; }
+
+@media (max-width: 768px) {
+    .navbar {
+        min-height: var(--altura-navbar-tablet);
+        padding: 0 16px;
+    }
+
+    .navbar .logo { font-size: 19px; }
+    .navbar nav a { font-size: 13px; padding: 6px 10px; }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        min-height: var(--altura-navbar-movil);
+        padding: 0 12px;
+    }
+
+    .navbar .logo { font-size: 17px; }
+    .navbar nav a { font-size: 12px; padding: 5px 8px; }
+}
+
+/* ============================================================
    BLOQUE 7: CONTENIDO PRINCIPAL
    Estilos para main, section, article y aside.
    ============================================================ */

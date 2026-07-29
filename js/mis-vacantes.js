@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!usuario) return;
 
     UI.pintarPerfilLateral(usuario);
-    document.getElementById('enlace-inicio').href = Auth.panelDe(usuario.rol);
+    const enlaceInicio = document.getElementById('enlace-inicio');
+    if (enlaceInicio) enlaceInicio.href = Auth.panelDe(usuario.rol);
 
     const statsGrid = document.querySelector('.stats-grid');
     const tarjetas = document.querySelectorAll('.tarjeta');

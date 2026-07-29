@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!usuario) return;
 
     UI.pintarPerfilLateral(usuario);
-    document.getElementById('enlace-inicio').href = Auth.panelDe(usuario.rol);
+    const enlaceInicio = document.getElementById('enlace-inicio');
+    if (enlaceInicio) enlaceInicio.href = Auth.panelDe(usuario.rol);
 
     const zonaBienvenida = document.getElementById('bienvenida-estudiante');
     const zonaStats = document.getElementById('stats-estudiante');
@@ -164,6 +165,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 });
             }
+        } else {
+            UI.graficoVacio('chart-progreso-cursos',
+                'Cuando te inscribas en un curso verás aquí tu avance.', {
+                    titulo: 'Progreso de mis cursos',
+                    icono: '📚',
+                    accion: { texto: 'Ver catálogo', href: '../cursos/cursos.html' }
+                });
         }
 
         if (habilidades.length > 0) {
@@ -191,6 +199,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 });
             }
+        } else {
+            UI.graficoVacio('chart-habilidades-radar',
+                'Añade tus habilidades al perfil para ver tu mapa de competencias.', {
+                    titulo: 'Mi mapa de habilidades',
+                    icono: '🎯',
+                    accion: { texto: 'Editar mi perfil', href: '../perfil/perfil.html' }
+                });
         }
     }
 

@@ -25,42 +25,12 @@ body {
 
 /* ============================================================
    BLOQUE 2: NAVBAR
-   Barra de navegación superior, logo, enlaces y variantes por rol.
+
+   La barra superior se define una sola vez en general.css, incluida
+   su altura y su comportamiento responsivo. Aqui no se repite: al
+   estar duplicada en varias hojas, cada pagina la mostraba con una
+   altura distinta segun los archivos que cargara.
    ============================================================ */
-
-.navbar {
-    background-color: #1a73e8;
-    padding: 14px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0;
-}
-
-.navbar .logo {
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.navbar .logo span {
-    color: #ffdd57;
-}
-
-.navbar nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
-}
-
-.navbar nav a:hover {
-    text-decoration: underline;
-}
-
-.navbar-empresa { background-color: #c0392b; }
-.navbar-instructor { background-color: #218838; }
 
 /* ============================================================
    BLOQUE 3: CONTENEDOR Y TARJETAS
@@ -575,16 +545,7 @@ progress:hover {
    ============================================================ */
 
 @media (max-width: 768px) {
-    .navbar {
-        padding: 10px 16px;
-        gap: 8px;
-    }
-
-    .navbar nav a {
-        font-size: 12px;
-        margin-left: 8px;
-        padding: 4px 8px;
-    }
+    /* El comportamiento responsivo de la barra vive en general.css. */
 
     .stats-grid {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -637,19 +598,7 @@ progress:hover {
 }
 
 @media (max-width: 480px) {
-    .navbar {
-        padding: 8px 12px;
-    }
-
-    .navbar .logo {
-        font-size: 17px;
-    }
-
-    .navbar nav a {
-        font-size: 11px;
-        margin-left: 4px;
-        padding: 3px 6px;
-    }
+    /* El comportamiento responsivo de la barra vive en general.css. */
 
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);

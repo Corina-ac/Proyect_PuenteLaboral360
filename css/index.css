@@ -601,25 +601,11 @@
    Barra de navegación principal de la página de inicio.
    ============================================================ */
 
+/* La disposicion y la altura de la barra vienen de general.css. Aqui solo
+   se cambia el tono de fondo propio de las paginas publicas: redefinir el
+   padding hacia que la barra midiera distinto que en el resto del sitio. */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #1558b0;
-    padding: 14px 30px;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.navbar .logo {
-    font-size: 22px;
-    font-weight: bold;
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.navbar .logo span {
-    color: #ffdd57;
 }
 
 .navbar .logo:hover {
@@ -840,9 +826,10 @@
 @media (max-width: 768px) {
     /* Navbar */
     .navbar {
-        flex-wrap: nowrap;
-        padding: 12px 16px;
+        /* El menu desplegable se posiciona respecto a la barra; la altura y el
+           relleno siguen viniendo de general.css. */
         position: relative;
+        flex-wrap: nowrap;
     }
 
     .navbar-toggle {

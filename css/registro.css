@@ -404,11 +404,8 @@
 
 /* ------------------------------------------- tableta (768 x 1024) */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 12px 16px;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
+    /* La barra superior se define en general.css: no se redefine aqui
+       para que conserve la misma altura que en el resto de vistas. */
 
     .contenedor {
         padding: 16px 10px;
@@ -478,14 +475,6 @@
 }
 
 @media (max-width: 480px) {
-    .navbar {
-        padding: 10px 12px;
-    }
-
-    .navbar .logo {
-        font-size: 18px;
-    }
-
     .contenedor {
         padding: 10px 8px;
         min-height: unset;

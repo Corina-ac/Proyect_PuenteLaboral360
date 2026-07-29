@@ -87,10 +87,13 @@
 
                 <p class="contador-resultados" id="contador-resultados" aria-live="polite"></p>
 
-                <section class="acciones-catalogo">
-                    <button type="button" class="btn btn-verde" id="btn-nuevo">➕ Nuevo curso</button>
-                    <button type="button" class="btn btn-gris" id="btn-restablecer">🔄 Restablecer datos del JSON</button>
-                </section>
+                <div class="acciones-catalogo">
+                    <!-- Solo el instructor y la administracion crean cursos.
+                         El restablecimiento de datos vive en el panel de
+                         administracion: borra el progreso de todos los
+                         estudiantes y no corresponde al catalogo. -->
+                    <button type="button" class="btn btn-verde oculto" id="btn-nuevo">➕ Nuevo curso</button>
+                </div>
             </section>
 
             <!-- Gráfico generado con Chart.js -->

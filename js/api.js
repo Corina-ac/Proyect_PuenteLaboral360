@@ -11,20 +11,33 @@
 const Api = (() => {
 
     /* ------------------------------------------------------------ grok */
-    const _p1 = 'gsk_5m1j6gJavSbfNF5nhgOCWGdyb3FYPvVfEwuzns';
-    const _p2 = '97WZNQYRLqrskH';
-    const _q1 = 'gsk_tpziaWU4SLqWHbuNxub3WGdyb3FYGFFTwwLDmJP';
-    const _q2 = 'WTn9o1Nl5kvk4';
-    const GROK_KEYS = [_p1 + _p2, _q1 + _q2];
+    // Las claves NO se escriben aqui. Se leen de js/config.js, un archivo
+    // ignorado por git (ver .gitignore) que cada quien crea a partir de
+    // js/config.example.js. Si no existe, las funciones de IA se desactivan
+    // solas y el resto de la aplicacion sigue funcionando con normalidad.
+    const GROK_KEYS = (typeof CONFIG !== 'undefined' && Array.isArray(CONFIG.GROK_KEYS))
+        ? CONFIG.GROK_KEYS.filter(k => k && !k.startsWith('tu-api-key'))
+        : [];
     const GROK_URL = 'https://api.groq.com/openai/v1/chat/completions';
     const GROK_MODEL = 'llama-3.3-70b-versatile';
     let _grokKeyIdx = 0;
+
+    /** Indica si la IA esta configurada; las paginas la usan para ocultar botones. */
+    function hayIA() {
+        return GROK_KEYS.length > 0;
+    }
 
     function _rotarKey() {
         _grokKeyIdx = (_grokKeyIdx + 1) % GROK_KEYS.length;
     }
 
     async function _llamarGrok(messages) {
+        // Sin claves configuradas no se intenta la peticion.
+        if (GROK_KEYS.length === 0) {
+            console.info('IA no configurada: copia js/config.example.js como js/config.js.');
+            return null;
+        }
+
         let intentos = 0;
         while (intentos < GROK_KEYS.length) {
             try {
@@ -136,18 +149,97 @@ const Api = (() => {
         } catch { return []; }
     }
 
-    async function completarPerfilIA() {
-        const ctx = _contextoUsuario();
-        const respuesta = await _llamarGrok([
-            { role: 'system', content: `Eres un asistente de perfiles profesionales en PuenteLaboral360.\n\nPerfil del usuario:\n${ctx}\n\nEl usuario tiene campos vacios o incompletos. Sugiere valores concretos para cada campo que falte. Responde SOLO con un JSON array de objetos con campos "campo" (nombre del campo: nivel, objetivo, ciudad, telefono, habilidad) y "valor" (la sugerencia concreta). Si un campo ya tiene valor, no lo incluyas. Ejemplo: [{"campo":"nivel","valor":"Intermedio"},{"campo":"objetivo","valor":"Obtener mi primer empleo como desarrollador frontend"}]\nSin texto adicional, sin markdown.` },
-            { role: 'user', content: 'Completa los campos que me faltan en mi perfil profesional.' }
+    /**
+     * Analiza la empleabilidad del usuario contra las vacantes reales del
+     * sistema: cuantas cubre hoy, que habilidades le faltan para las demas y
+     * que cursos del catalogo se las darian.
+     *
+     * A diferencia de rellenar campos del perfil, aqui la IA aporta algo que
+     * el usuario no puede saber por si mismo: el cruce entre lo que tiene y lo
+     * que el mercado de la plataforma esta pidiendo.
+     */
+    async function analizarEmpleabilidad() {
+        const sesion = Storage.leer('sesion', null);
+        if (!sesion) return null;
+
+        const usuarios = Datos.cache('usuarios') || [];
+        const usuario = usuarios.find(u => u.id === sesion.id) || sesion;
+        const habilidades = (usuario.habilidades || []).map(h => h.toLowerCase());
+
+        const vacantes = (Datos.cache('vacantes') || []).filter(v => v.estado === 'abierta');
+        const cursos = (Datos.cache('cursos') || []).filter(c => c.estado === 'disponible');
+        const empresas = Datos.cache('empresas') || [];
+
+        if (vacantes.length === 0) return null;
+
+        // El cruce se calcula aqui, con datos reales, y no se le pide al
+        // modelo: asi las cifras que se muestran son siempre exactas.
+        const analizadas = vacantes.map(v => {
+            const requeridas = (v.habilidades || []);
+            const cubiertas = requeridas.filter(r =>
+                habilidades.some(h => h.includes(r.toLowerCase()) || r.toLowerCase().includes(h)));
+            const faltantes = requeridas.filter(r => !cubiertas.includes(r));
+            const empresa = empresas.find(e => e.id === v.empresaId);
+            return {
+                titulo: v.titulo,
+                empresa: empresa ? empresa.nombre : 'Empresa',
+                salario: v.salario,
+                ciudad: v.ciudad,
+                porcentaje: requeridas.length
+                    ? Math.round((cubiertas.length / requeridas.length) * 100)
+                    : 0,
+                faltantes
+            };
+        }).sort((a, b) => b.porcentaje - a.porcentaje);
+
+        const califican = analizadas.filter(v => v.porcentaje >= 70);
+
+        // Habilidades que mas se repiten entre las que le faltan.
+        const conteo = {};
+        analizadas.forEach(v => v.faltantes.forEach(f => {
+            conteo[f] = (conteo[f] || 0) + 1;
+        }));
+        const brechas = Object.entries(conteo)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 5)
+            .map(([nombre, veces]) => {
+                // Curso del catalogo que cubre esa habilidad.
+                const curso = cursos.find(c =>
+                    `${c.nombre} ${c.descripcion || ''}`.toLowerCase().includes(nombre.toLowerCase()));
+                return { habilidad: nombre, vacantes: veces, curso: curso ? curso.nombre : null };
+            });
+
+        const salarios = analizadas.filter(v => v.salario).map(v => v.salario);
+        const resumen = {
+            totalVacantes: analizadas.length,
+            califican: califican.length,
+            mejores: analizadas.slice(0, 3),
+            brechas,
+            salarioMedio: salarios.length
+                ? Math.round(salarios.reduce((a, b) => a + b, 0) / salarios.length)
+                : 0
+        };
+
+        // La IA solo redacta la lectura del resultado, no inventa las cifras.
+        const consejo = await _llamarGrok([
+            {
+                role: 'system',
+                content: 'Eres un orientador laboral de PuenteLaboral360. Recibes el analisis ya calculado ' +
+                    'del perfil de un estudiante frente a las vacantes abiertas. Redacta en espanol una lectura ' +
+                    'breve y concreta en 2 o 3 oraciones: donde esta hoy y cual seria su siguiente paso. ' +
+                    'No inventes cifras ni repitas los numeros literalmente. Tono directo y alentador, sin exagerar.'
+            },
+            {
+                role: 'user',
+                content: `Perfil: ${usuario.nombres}, nivel ${usuario.nivel || 'sin definir'}, ` +
+                    `habilidades: ${(usuario.habilidades || []).join(', ') || 'ninguna'}.\n` +
+                    `Califica para ${resumen.califican} de ${resumen.totalVacantes} vacantes abiertas.\n` +
+                    `Habilidades que mas le faltan: ${brechas.map(b => b.habilidad).join(', ') || 'ninguna'}.`
+            }
         ]);
-        if (!respuesta) return [];
-        try {
-            const match = respuesta.match(/\[[\s\S]*\]/);
-            if (!match) return [];
-            return JSON.parse(match[0]);
-        } catch { return []; }
+
+        resumen.consejo = consejo;
+        return resumen;
     }
 
     async function sugerirTrabajos() {
@@ -331,7 +423,9 @@ const Api = (() => {
 
     return {
         obtenerPaises, obtenerClima, CIUDADES, describirClima,
-        recomendarCursos, mejorarPerfil, sugerirHabilidades, sugerirTrabajos, completarPerfilIA, generarDescripcionCurso, resumenSistema,
+        hayIA,
+        recomendarCursos, mejorarPerfil, sugerirHabilidades, sugerirTrabajos,
+        analizarEmpleabilidad, generarDescripcionCurso, resumenSistema,
         obtenerCiudades, reportarCurso
     };
 })();

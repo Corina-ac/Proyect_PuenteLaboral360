@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!empresaUsuario) return;
 
     UI.pintarPerfilLateral(empresaUsuario);
-    document.getElementById('enlace-inicio').href = Auth.panelDe(empresaUsuario.rol);
+    const enlaceInicio = document.getElementById('enlace-inicio');
+    if (enlaceInicio) enlaceInicio.href = Auth.panelDe(empresaUsuario.rol);
 
     const zonaStats = document.getElementById('stats-empresa');
     const zonaFiltros = document.getElementById('filtros-vacante');
@@ -162,6 +163,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 });
             }
+        } else {
+            UI.graficoVacio('chart-match-distribucion',
+                'Publica una vacante para ver qué tan bien encajan los candidatos.', {
+                    titulo: 'Distribución de compatibilidad',
+                    icono: '🎯',
+                    accion: { texto: 'Publicar vacante', href: '../mis-vacantes/mis-vacantes.html' }
+                });
         }
 
         const niveles = { 'Principiante': 0, 'Junior': 0, 'Semi-senior': 0, 'Senior': 0 };
@@ -192,6 +200,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 });
             }
+        } else {
+            UI.graficoVacio('chart-nivel-candidatos',
+                'Aún no hay candidatos que coincidan con tus vacantes.', {
+                    titulo: 'Candidatos por nivel',
+                    icono: '👥',
+                    accion: { texto: 'Buscar talento', href: '../buscar-talento/buscar-talento.html' }
+                });
         }
     }
 

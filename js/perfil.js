@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     UI.pintarPerfilLateral(usuario);
-    document.getElementById('enlace-inicio').href = Auth.panelDe(usuario.rol);
+    const enlaceInicio = document.getElementById('enlace-inicio');
+    if (enlaceInicio) enlaceInicio.href = Auth.panelDe(usuario.rol);
 
     const fotoPerfil = document.getElementById('foto-perfil');
     const inputFoto = document.getElementById('cambiar-foto');
@@ -34,68 +35,108 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btnIAHabilidades = document.getElementById('btn-ia-habilidades');
     const btnIACompletar = document.getElementById('btn-ia-completar');
 
-    /* ------------------------------------------------------- IA completar perfil */
+    // Sin claves configuradas, las funciones de IA no pueden responder: se
+    // ocultan en lugar de dejar botones que fallarian al pulsarlos.
+    if (!Api.hayIA()) {
+        [btnIAHabilidades, btnIACompletar].forEach(b => b && b.classList.add('oculto'));
+    }
+
+    /* --------------------------------------------- analisis de empleabilidad */
+    /**
+     * Sustituye al antiguo "completar perfil con IA", que proponia inventar
+     * datos que solo el propio usuario conoce (su ciudad, su telefono).
+     *
+     * Aqui la IA responde una pregunta que el estudiante si se hace y que no
+     * puede contestar solo: cuantas de las vacantes abiertas cubre hoy, que
+     * habilidades le faltan para el resto y que cursos se las darian.
+     */
     if (btnIACompletar) {
         btnIACompletar.addEventListener('click', async () => {
             btnIACompletar.disabled = true;
             btnIACompletar.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analizando…';
-            Swal.fire({ title: 'La IA está analizando tu perfil…', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+            Swal.fire({
+                title: 'Analizando tu empleabilidad…',
+                text: 'Comparando tu perfil con las vacantes abiertas.',
+                allowOutsideClick: false,
+                didOpen: () => Swal.showLoading()
+            });
 
-            const sugerencias = await Api.completarPerfilIA();
+            // El analisis necesita las vacantes y las empresas en cache.
+            await Datos.obtenerVarias('vacantes', 'empresas', 'cursos', 'usuarios');
+            const analisis = await Api.analizarEmpleabilidad();
+
             Swal.close();
             btnIACompletar.disabled = false;
-            btnIACompletar.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Completar con IA';
+            btnIACompletar.innerHTML = '<i class="fa-solid fa-chart-line"></i> Analizar mi empleabilidad';
 
-            if (!sugerencias || sugerencias.length === 0) {
-                UI.toast('Tu perfil ya está completo o la IA no pudo generar sugerencias.', 'info');
+            if (!analisis) {
+                UI.error('No se pudo completar el análisis',
+                    'No hay vacantes abiertas con las que comparar tu perfil en este momento.');
                 return;
             }
 
-            const checksHtml = sugerencias.map(s => {
-                const campos = { nivel: 'Nivel', objetivo: 'Objetivo', ciudad: 'Ciudad', telefono: 'Teléfono', habilidad: 'Habilidad' };
-                return `
-                <section style="text-align:left;margin-bottom:12px;padding:12px;background:#f8f9fa;border-radius:8px;border-left:4px solid #8b5cf6">
-                    <label style="display:flex;align-items:center;gap:8px;margin-bottom:6px;cursor:pointer">
-                        <input type="checkbox" class="chk-completar" value="${UI.escapar(s.campo)}: ${UI.escapar(s.valor)}" checked style="width:18px;height:18px">
-                        <strong style="font-size:13px">${campos[s.campo] || s.campo}</strong>
-                    </label>
-                    <p style="margin:0;font-size:14px;color:#333;padding-left:26px">${UI.escapar(s.valor)}</p>
-                </section>`;
-            }).join('');
+            const porcentaje = analisis.totalVacantes
+                ? Math.round((analisis.califican / analisis.totalVacantes) * 100)
+                : 0;
+            const color = porcentaje >= 50 ? '#16a34a' : porcentaje >= 20 ? '#f59e0b' : '#ef4444';
 
-            const resultado = await Swal.fire({
-                title: 'Sugerencias para completar tu perfil',
-                html: `<p style="text-align:left;font-size:13px;color:#666;margin-bottom:10px">La IA detectó campos que puedes mejorar. Desmarca los que no quieras aplicar:</p>${checksHtml}`,
-                width: 520,
+            const mejoresHtml = analisis.mejores.map(v => `
+                <div style="text-align:left;padding:10px 12px;background:#f8fafc;border-radius:8px;
+                            margin-bottom:8px;border-left:4px solid ${v.porcentaje >= 70 ? '#16a34a' : '#f59e0b'}">
+                    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+                        <strong style="font-size:14px">${UI.escapar(v.titulo)}</strong>
+                        <span style="font-weight:700;color:${v.porcentaje >= 70 ? '#16a34a' : '#f59e0b'}">${v.porcentaje}%</span>
+                    </div>
+                    <p style="margin:2px 0 0;font-size:12px;color:#64748b">
+                        ${UI.escapar(v.empresa)}${v.ciudad ? ' · ' + UI.escapar(v.ciudad) : ''}${v.salario ? ' · $' + v.salario : ''}
+                    </p>
+                </div>`).join('');
+
+            const brechasHtml = analisis.brechas.length === 0
+                ? '<p style="font-size:13px;color:#16a34a;text-align:left">Cubres todas las habilidades solicitadas.</p>'
+                : analisis.brechas.map(b => `
+                    <div style="text-align:left;padding:8px 12px;background:#fffbeb;border-radius:8px;
+                                margin-bottom:6px;border-left:4px solid #f59e0b">
+                        <strong style="font-size:13px">${UI.escapar(b.habilidad)}</strong>
+                        <span style="font-size:12px;color:#64748b"> · la piden ${b.vacantes} vacante${b.vacantes !== 1 ? 's' : ''}</span>
+                        ${b.curso ? `<p style="margin:2px 0 0;font-size:12px;color:#2563eb">📚 Curso: ${UI.escapar(b.curso)}</p>` : ''}
+                    </div>`).join('');
+
+            await Swal.fire({
+                title: 'Tu empleabilidad hoy',
+                width: 580,
+                html: `
+                    <div style="text-align:center;margin-bottom:16px">
+                        <p style="font-size:40px;font-weight:700;color:${color};margin:0">
+                            ${analisis.califican}<span style="font-size:22px;color:#94a3b8">/${analisis.totalVacantes}</span>
+                        </p>
+                        <p style="font-size:13px;color:#64748b;margin:0">
+                            vacantes abiertas para las que ya calificas
+                            ${analisis.salarioMedio ? ` · salario medio $${analisis.salarioMedio}` : ''}
+                        </p>
+                    </div>
+
+                    ${analisis.consejo
+                        ? `<p style="text-align:left;font-size:13px;color:#334155;background:#eff6ff;
+                                     border-left:4px solid #2563eb;border-radius:8px;padding:12px;margin-bottom:16px">
+                             ${UI.escapar(analisis.consejo)}
+                           </p>`
+                        : ''}
+
+                    <p style="text-align:left;font-weight:700;font-size:14px;margin:0 0 8px">Vacantes que más se ajustan</p>
+                    ${mejoresHtml}
+
+                    <p style="text-align:left;font-weight:700;font-size:14px;margin:16px 0 8px">Lo que te falta</p>
+                    ${brechasHtml}`,
+                confirmButtonText: 'Ver catálogo de cursos',
                 showCancelButton: true,
-                confirmButtonText: '<i class="fa-solid fa-check"></i> Aplicar seleccionados',
-                cancelButtonText: 'Cancelar',
-                confirmButtonColor: '#8b5cf6',
-                preConfirm: () => {
-                    const seleccionados = [...document.querySelectorAll('.chk-completar:checked')].map(cb => cb.value);
-                    if (seleccionados.length === 0) { Swal.showValidationMessage('Selecciona al menos una sugerencia'); return false; }
-                    return seleccionados;
-                }
+                cancelButtonText: 'Cerrar',
+                confirmButtonColor: '#2563eb',
+                cancelButtonColor: '#6b7280',
+                reverseButtons: true
+            }).then(r => {
+                if (r.isConfirmed) window.location.href = '../cursos/cursos.html';
             });
-
-            if (!resultado.isConfirmed) return;
-
-            const actualizaciones = {};
-            resultado.value.forEach(item => {
-                const [campo, ...resto] = item.split(': ');
-                const valor = resto.join(': ');
-                if (campo === 'nivel') actualizaciones.nivel = valor;
-                else if (campo === 'objetivo') actualizaciones.objetivo = valor;
-                else if (campo === 'ciudad') actualizaciones.contacto = { ...(usuario.contacto || {}), ciudad: valor };
-                else if (campo === 'telefono') actualizaciones.contacto = { ...(usuario.contacto || {}), telefono: valor };
-            });
-
-            const actualizado = Auth.actualizarPerfil(actualizaciones);
-            if (!actualizado) { UI.toast('No se pudieron guardar los cambios.', 'error'); return; }
-            usuario = actualizado;
-            pintarCabecera();
-            pintarDatos();
-            UI.toast('Perfil actualizado con las sugerencias de la IA.', 'exito');
         });
     }
 
@@ -166,7 +207,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             btnIAHabilidades.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Sugerir con IA';
 
             if (!sugeridas || sugeridas.length === 0) {
-                UI.toast('No se pudieron generar sugerencias.', 'aviso');
+                // Se distingue la falta de configuracion de un fallo del servicio:
+                // antes ambos casos mostraban el mismo aviso y no habia forma de
+                // saber por que no aparecia nada.
+                if (!Api.hayIA()) {
+                    UI.error('Asistente no disponible',
+                        'Las funciones de inteligencia artificial no están configuradas en esta instalación.');
+                } else {
+                    UI.error('No se pudieron generar sugerencias',
+                        'El asistente no respondió. Vuelve a intentarlo en unos segundos.');
+                }
                 return;
             }
 
