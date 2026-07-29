@@ -215,26 +215,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             return `
                 <section class="candidato-card">
-                    <section class="info-candidato">
-                        <section class="nombre-candidato">${UI.escapar(est.nombres)} ${UI.escapar(est.apellidos)}</section>
-                        <section class="detalle-candidato">
+                    <div class="info-candidato">
+                        <div class="nombre-candidato">${UI.escapar(est.nombres)} ${UI.escapar(est.apellidos)}</div>
+                        <div class="detalle-candidato">
                             <span class="badge ${nivelClase}">${UI.escapar(est.nivel)}</span>
                             · ${est.certs} certificado${est.certs !== 1 ? 's' : ''}
                             · ${est.habilidades.length > 0 ? est.habilidades.slice(0, 4).join(', ') : 'Sin habilidades'}
-                        </section>
+                        </div>
                         <section>
                             ${est.habilidades.slice(0, 5).map(h =>
                                 `<span class="habilidad-tag">${UI.escapar(h)}</span>`
                             ).join('')}
                         </section>
-                    </section>
-                    <section class="acciones-candidato">
-                        <section class="match-grande ${clase}">
+                    </div>
+                    <div class="acciones-candidato">
+                        <div class="match-grande ${clase}">
                             ${est.match}%<span class="etiqueta-match">de match</span>
-                        </section>
+                        </div>
                         <button type="button" class="btn btn-azul btn-xs" data-accion="ver-perfil" data-id="${est.id}">Ver perfil</button>
                         <button type="button" class="btn btn-verde btn-xs" data-accion="contactar" data-id="${est.id}">Contactar</button>
-                    </section>
+                    </div>
                 </section>`;
         }).join('');
 

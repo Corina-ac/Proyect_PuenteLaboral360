@@ -1,324 +1,254 @@
 # PuenteLaboral360
 
-Plataforma web educativa y de empleo que conecta estudiantes con empresas mediante habilidades verificadas y certificados reconocidos. Desarrollado como proyecto académico de Ingeniería en Software.
+Plataforma web que conecta estudiantes con empresas mediante habilidades verificadas y certificados reconocidos. Proyecto integrador de la asignatura **Fundamentos Web** — Ingeniería en Software.
 
-**[Ver sitio en GitHub Pages](https://corina-ac.github.io/Proyect_PuenteLaboral360/)**
+**Autora:** Corina Acosta
+**Quito, Ecuador — 2026**
+
+---
+
+## Enlaces del proyecto
+
+| Recurso | Enlace |
+|---|---|
+| Repositorio | https://github.com/Corina-ac/Proyect_PuenteLaboral360 |
+| Aplicación publicada | **[corina-ac.github.io/Proyect_PuenteLaboral360](https://corina-ac.github.io/Proyect_PuenteLaboral360/)** |
 
 ---
 
 ## Descripción
 
-**PuenteLaboral360** permite a los estudiantes crear un perfil, aprender con cursos verificados, obtener certificados y ser encontrados automáticamente por empresas según sus habilidades. Incluye roles diferenciados para estudiantes, instructores y empresas.
+**PuenteLaboral360** aborda un problema concreto: muchos estudiantes terminan su formación sin poder demostrar lo que saben hacer, y muchas empresas no logran encontrar perfiles que encajen con lo que necesitan.
 
----
+La plataforma resuelve esa distancia con un circuito completo. El estudiante crea su perfil, se matricula en cursos, avanza en ellos y obtiene certificados descargables en PDF. Cada habilidad certificada queda registrada en su perfil. Las empresas publican vacantes y buscan talento con un motor de emparejamiento que compara las habilidades del estudiante con los requisitos de cada vacante y calcula un porcentaje de coincidencia. Los instructores gestionan sus cursos y siguen el progreso de sus matriculados.
 
-## Tecnologías
+### Usuarios a los que se dirige
 
-| Tecnología | Uso |
+| Rol | Qué puede hacer |
 |---|---|
-| HTML5 | Estructura semántica de todas las páginas |
-| CSS3 | Estilos base, Flexbox, Grid, Box Model |
-| Bootstrap 5.3 | Framework responsivo — página de proyección |
-| Font Awesome 6.5 | Iconografía en todo el sitio |
-| JavaScript (ES6+) | Manipulación del DOM, eventos, fetch y módulos por archivo |
-| JSON + fetch | Ocho archivos en `/json` como fuente inicial de datos |
-| localStorage | Persistencia de los datos y de la sesión entre recargas |
-| SweetAlert2 | Confirmaciones, formularios modales y detalles |
-| Toastify | Notificaciones breves de cada operación |
-| Chart.js 4 | Gráficos de cursos por categoría y de usuarios por rol |
-| countries.dev | API de países para la nacionalidad del registro |
-| Open-Meteo | API de clima de las sedes presenciales |
-| Grok (xAI) | IA para recomendaciones, mejora de perfil y generación de contenido |
-| Google Maps Embed | Mapa de ubicación en página de inicio |
+| 🎓 **Estudiante** | Explorar el catálogo, matricularse, avanzar en cursos, obtener certificados PDF, gestionar su perfil y ver vacantes afines |
+| 👨‍🏫 **Instructor** | Crear y editar cursos, revisar sus matriculados, calificar y consultar estadísticas |
+| 🏢 **Empresa** | Publicar y administrar vacantes, buscar talento con filtros y contactar candidatos |
+| 🛡️ **Administrador** | Gestionar todas las cuentas, activar o desactivar usuarios, ver indicadores globales y restablecer el sistema |
 
 ---
 
-## Estructura de Carpetas
+## Objetivo
+
+Integrar HTML semántico, diseño responsivo, JavaScript, archivos JSON, almacenamiento local, librerías y APIs externas en una aplicación web coherente y funcional, demostrando la evolución del proyecto a lo largo de los tres parciales.
+
+---
+
+## Tecnologías utilizadas
+
+| Tecnología | Uso en el proyecto |
+|---|---|
+| HTML5 | Estructura semántica: `header`, `nav`, `main`, `section`, `article`, `aside`, `footer` |
+| CSS3 | Box Model, Flexbox, Grid, posicionamiento y media queries |
+| JavaScript (ES6+) | Toda la lógica: DOM, eventos, `fetch`, CRUD y validaciones |
+| Bootstrap 5.3 | Framework responsivo en la página *Mi Proyección* |
+| Font Awesome 6.5 | Iconografía |
+| localStorage | Persistencia de datos entre sesiones |
+
+El código JavaScript se organiza en módulos con patrón IIFE. No requiere compilación ni gestor de paquetes.
+
+---
+
+## Librerías incorporadas
+
+| Librería | Finalidad | Dónde se usa |
+|---|---|---|
+| **SweetAlert2** | Confirmar eliminaciones, restablecer datos, mostrar detalles y errores | `js/componentes.js` (envuelta en el objeto `UI`) |
+| **Toastify** | Notificaciones breves de éxito, error, aviso e información | `js/componentes.js` |
+| **Chart.js** | 9 gráficos: progreso de cursos, mapa de habilidades, usuarios por rol, vacantes y matrículas | Los 4 paneles |
+| **jsPDF** | Generar los certificados de finalización descargables | `js/componentes.js` |
+
+---
+
+## APIs consumidas
+
+### 1. countries.dev — Nacionalidad
+
+```
+https://countries.dev/countries
+```
+
+Alimenta el selector de nacionalidad del formulario de registro. Incluye campo de búsqueda que filtra los países mientras se escribe, muestra la bandera junto al nombre y guarda el país elegido dentro del registro del usuario. El listado se cachea en `localStorage` para no repetir la petición.
+
+**Implementación:** `js/api.js` → `obtenerPaises()`
+
+### 2. Open-Meteo — Clima
+
+```
+https://api.open-meteo.com/v1/forecast?latitude=-0.18&longitude=-78.47&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=auto
+```
+
+Muestra temperatura, humedad, viento y estado del cielo de las ciudades donde la plataforma dicta cursos presenciales: Quito, Guayaquil, Santo Domingo, Quevedo y Cuenca. El usuario cambia de ciudad y se lanza una nueva consulta.
+
+**Justificación:** permite a quien va a asistir a un curso presencial planificar su traslado.
+**Implementación:** `js/api.js` → `obtenerClima()`
+
+### 3. Groq — Asistente de IA *(complemento opcional)*
+
+Genera recomendaciones de cursos, sugerencias de habilidades y empleos afines al perfil. Requiere una clave propia: si no se configura, la aplicación funciona con normalidad y estas funciones simplemente no se activan (ver *Configuración opcional*).
+
+Las tres integraciones controlan el estado de carga, verifican `response.ok` y muestran mensajes comprensibles ante cualquier fallo.
+
+---
+
+## Funcionalidades
+
+### Datos y persistencia
+- Carga de 9 archivos JSON mediante `fetch`
+- Relaciones entre archivos resueltas por identificador con `find()`, `filter()` y `map()`
+- Copia a `localStorage` en la primera ejecución y lectura desde ahí en las siguientes
+- Restablecimiento de los datos originales, con confirmación previa
+
+### Operaciones sobre los datos
+- **Registro** de cursos, vacantes, matrículas y usuarios, con validación e identificador automático
+- **Modificación** de cursos, vacantes, perfil y progreso
+- **Eliminación** de usuarios y cursos, con confirmación mediante SweetAlert2
+- La interfaz y los gráficos se actualizan tras cada operación
+
+### Búsqueda y presentación
+- Búsqueda en tiempo real (evento `input`) en catálogo, panel de administración, galería y búsqueda de talento
+- Filtros combinables: categoría, nivel, estado, rol, certificados y vacante asociada
+- Ordenamiento por nombre, precio, valoración, fecha y porcentaje de coincidencia
+- Detalles de cada registro en modal
+- Paneles de indicadores calculados con `map()`, `filter()`, `reduce()` y `some()`
+
+### Cuentas y seguridad
+- Registro con validación de nombres, correo, contraseña, edad (16 a 60 años) y nacionalidad
+- Inicio de sesión que **deduce el rol** del usuario registrado, sin pedirlo
+- Segundo código de seguridad exclusivo del administrador
+- Protección de páginas declarativa mediante `<body data-roles="...">`
+- Las contraseñas nunca se guardan en texto plano
+
+### Robustez
+- Estados de carga, vacío y error con opción de reintentar
+- Imágenes con respaldo automático generado en SVG
+- Manejo de archivo no encontrado, respuesta inválida, falta de conexión y JSON mal formado
+
+---
+
+## Estructura de carpetas
 
 ```
 Proyect_PuenteLaboral360/
 │
-├── index.html                          ← Página principal
+├── index.html                     ← Página principal
+├── 404.html                       ← Redirección para GitHub Pages
+├── README.md
 │
-├── js/                                 ← Lógica de la aplicación
-│   ├── storage.js                      ← Acceso a localStorage
-│   ├── validaciones.js                 ← Validaciones y hash de contraseñas
-│   ├── datos.js                        ← Carga de JSON, cache y operaciones CRUD
-│   ├── auth.js                         ← Sesión, roles y protección de páginas
-│   ├── guardia.js                      ← Control de acceso declarativo por rol
-│   ├── api.js                          ← countries.dev, Open-Meteo y Grok AI
-│   ├── componentes.js                  ← Alertas, notificaciones y estados de carga
-│   ├── main.js                         ← Página de inicio
-│   ├── login.js / registro.js          ← Autenticación y alta de usuarios
-│   ├── cursos.js                       ← Catálogo con búsqueda, filtros y CRUD
-│   ├── perfil.js                       ← Perfil del usuario en sesión
-│   ├── galeria.js                      ← Mosaico dinámico
-│   └── admin.js                        ← Panel de administración
+├── json/                          ← Fuente inicial de datos (145 registros)
+│   ├── cursos.json                    (24)  archivo principal
+│   ├── matriculas.json                (29)
+│   ├── vacantes.json                  (20)
+│   ├── notificaciones.json            (18)
+│   ├── usuarios.json                  (12)
+│   ├── instructores.json              (12)
+│   ├── galeria.json                   (12)
+│   ├── empresas.json                  (10)
+│   └── categorias.json                 (8)
 │
-├── json/                               ← Fuente inicial de datos (129 registros)
-│   ├── cursos.json                     ← Archivo principal (25 registros)
-│   ├── categorias.json
-│   ├── instructores.json
-│   ├── usuarios.json
-│   ├── empresas.json
-│   ├── vacantes.json
-│   ├── matriculas.json
-│   └── galeria.json
+├── js/
+│   ├── storage.js                 ← Acceso a localStorage (prefijo pl360_)
+│   ├── validaciones.js            ← Reglas de validación de formularios
+│   ├── datos.js                   ← Carga de JSON, CRUD y relaciones
+│   ├── auth.js                    ← Sesión, roles y protección de páginas
+│   ├── componentes.js             ← Interfaz común: alertas, avatares, PDF
+│   ├── guardia.js                 ← Control de acceso declarativo
+│   ├── api.js                     ← Consumo de APIs externas
+│   ├── config.example.js          ← Plantilla de configuración de claves
+│   └── (un archivo por página)
 │
 ├── css/
-│   ├── general.css                     ← Estilos base globales (Box Model, Flex, Grid)
-│   ├── estilos.css                     ← Estilos complementarios del sitio
-│   ├── index.css                       ← Estilos específicos de inicio
-│   ├── contacto.css                    ← Layout Flexbox + Grid del formulario de contacto
-│   ├── buscar.css                      ← Grid de resultados de búsqueda
-│   ├── galeria.css                     ← Grid mosaico con span para galería
-│   ├── servicios.css                   ← Tarjetas Flexbox y Grid de beneficios
-│   ├── proyeccion.css                  ← Personalización Bootstrap 5 (página de proyección)
-│   └── componentes.css                 ← Componentes generados por JavaScript
+│   ├── general.css                ← Estilos base y etiquetas semánticas
+│   ├── estilos.css                ← Componentes compartidos
+│   ├── componentes.css            ← Alertas, chips, estados
+│   └── (uno por página)
 │
 ├── img/
-│   ├── educacion-global.ico            ← Favicon del sitio
-│   ├── certificacion_verificadas.jpg
-│   ├── demo_day.jpg
-│   ├── techcorp_s.a.png
-│   ├── crecimiento_personal.jpg
-│   └── instructores_verificados.png
+│   ├── cursos/                    ← Portadas en SVG
+│   └── galeria/
 │
-├── data/
-│   ├── datos.json                      ← Ejemplo de datos simulados en formato JSON
-│   └── datos.xml                       ← Ejemplo de datos simulados en formato XML
+├── data/                          ← Ejemplos JSON y XML del primer parcial
 │
 └── pages/
-    ├── contacto/
-    │   └── contacto.html               ← Formulario de contacto (Flexbox 2 columnas)
-    ├── galeria/
-    │   └── galeria.html                ← Galería con Grid mosaico
-    ├── servicios/
-    │   └── servicios.html              ← Catálogo de servicios y planes
-    ├── proyeccion/
-    │   └── proyeccion.html             ← Proyección personal — Bootstrap 5
-    ├── login/
-    │   └── login.html
-    ├── registro/
-    │   └── registro.html
-    ├── buscar/
-    │   └── buscar.html
-    ├── dashboard-estudiante/
-    ├── dashboard-instructor/
-    ├── dashboard-empresa/
-    ├── admin/                          ← Panel de administración
-    └── ...
+    ├── login/          registro/         perfil/
+    ├── cursos/         galeria/          servicios/
+    ├── contacto/       planes/           proyeccion/
+    ├── dashboard-estudiante/  dashboard-instructor/  dashboard-empresa/
+    ├── admin/          buscar-talento/   mis-vacantes/
+    ├── notificaciones/ politica-privacidad/
 ```
-
----
-
-## Páginas principales
-
-### `index.html` — Inicio
-- Navbar con Flexbox
-- Sección hero con CTA
-- Grid de estadísticas (4 columnas)
-- Sección "¿Cómo funciona?" con pasos
-- Grid de roles (Estudiante / Instructor / Empresa)
-- Grid de equipo con badges absolutamente posicionados
-- Mapa embebido y FAQ con `<details>`
-- Sección de datos estructurados con ejemplos de JSON y XML
-
-### `pages/contacto/contacto.html` — Contacto
-- Layout Flexbox 2 columnas (formulario + datos)
-- Grid interno para campos del formulario
-- Tarjetas de información con borde izquierdo
-
-### `pages/galeria/galeria.html` — Galería
-- Grid mosaico 3×3 con `grid-column: span 2` y `grid-row: span 2`
-- Overlay con `position: absolute` e `inset: 0`
-- Catálogo de 4 columnas
-
-### `pages/servicios/servicios.html` — Servicios
-- Tarjetas Flexbox con `flex: 1`
-- Grid 2×2 de beneficios
-- Proceso en fila con `::after` como línea conectora
-- Planes de precios con badge centrado por `transform: translateX(-50%)`
-
-### `pages/proyeccion/index.html` — Mi Proyección *(Bootstrap 5)*
-- Navbar responsivo con toggler (hamburguesa en móvil)
-- Hero con Alert dismissible y Badges de tecnologías
-- Cards de visión/misión/propósito (Grid 3 columnas)
-- Barras de progreso para habilidades frontend y backend
-- Tabla responsiva con progress bars integradas
-- Accordion con Carousel dentro del primer ítem
-- Grid de proyectos con Cards (imagen + badges + botones)
-- List Group conectado a paneles de certificaciones (Tab Content)
-- Modal con formulario completo de contacto
-- Footer de 3 columnas
-
----
-
-## Conceptos de Maquetación Aplicados
-
-### Box Model
-- `box-sizing: border-box` en selector universal `*`
-- `padding`, `margin`, `border`, `border-radius` en todos los componentes
-- `max-width` en contenedores para limitar el ancho máximo
-
-### Flexbox
-- Navbar: `display: flex; justify-content: space-between; align-items: center`
-- Layout de contacto: dos columnas con `flex: 2` y `flex: 1`
-- Redes sociales: `justify-content: center; gap: 20px; flex-wrap: wrap`
-- Proceso de pasos: `justify-content: center; align-items: flex-start`
-
-### CSS Grid
-- Estadísticas inicio: `grid-template-columns: repeat(4, 1fr)`
-- Galería mosaico: `repeat(3, 1fr)` con `span 2` en ítems destacados
-- Formulario de contacto: `grid-template-columns: 1fr 1fr`
-- Equipo: `grid-template-columns: repeat(3, 1fr)` con `gap: 28px`
-- Catálogo: `repeat(4, 1fr)`
-
-### Posicionamiento
-- `position: relative` en tarjetas contenedoras
-- `position: absolute` para badges flotantes y overlays
-- `inset: 0` para cubrir toda la tarjeta en overlays de galería
-
-### Pseudo-elementos
-- `.proceso-paso:not(:last-child)::after` — línea horizontal conectora entre pasos
-
----
-
-## Funcionalidades JavaScript (tercer parcial)
-
-| Requisito | Dónde se evidencia |
-|---|---|
-| Manipulación del DOM | Todas las tarjetas, tablas y filtros se generan desde JavaScript |
-| Manejo de eventos | `click`, `submit`, `input`, `change`, `focus`, `keydown`, `DOMContentLoaded` y `error` |
-| Eventos delegados | `js/cursos.js`, `js/admin.js`, `js/galeria.js`, `js/registro.js` |
-| Lectura de JSON con fetch | `js/datos.js` → `descargar()` |
-| Búsqueda en tiempo real | Catálogo, galería y panel de administración (evento `input`) |
-| Filtros | Categoría y nivel en cursos; rol y estado en administración |
-| Ordenamiento | Siete criterios en el catálogo, cuatro en administración |
-| Registro de elementos | Alta de cursos y registro de usuarios |
-| Modificación | Edición de cursos y de datos del perfil |
-| Eliminación | Baja de cursos y de usuarios, con confirmación previa |
-| Validación de formularios | `js/validaciones.js` |
-| localStorage | `js/storage.js` (prefijo `pl360_`) |
-| APIs externas | countries.dev y Open-Meteo (`js/api.js`) |
-| Librerías | SweetAlert2, Toastify y Chart.js |
-| Manejo de errores | `try/catch`, verificación de `response.ok` y mensajes al usuario |
-| Indicadores de carga | `UI.cargando()` con spinner accesible |
-| Notificaciones | `UI.toast()` en cada operación |
-| Restablecer datos | Botón en el catálogo y en el panel de administración |
-
----
-
-## Archivos JSON
-
-La carpeta `json/` contiene **129 registros** distribuidos en ocho archivos.
-El archivo principal, `cursos.json`, tiene **25 registros**.
-
-| Archivo | Registros | Contenido |
-|---|---|---|
-| `cursos.json` | 25 | Archivo principal del catálogo |
-| `matriculas.json` | 30 | Relación entre usuarios y cursos |
-| `vacantes.json` | 20 | Ofertas laborales publicadas |
-| `instructores.json` | 12 | Docentes de la plataforma |
-| `usuarios.json` | 12 | Cuentas registradas y sus roles |
-| `galeria.json` | 12 | Imágenes de la galería |
-| `empresas.json` | 10 | Empresas aliadas |
-| `categorias.json` | 8 | Áreas de formación |
-
-### Relaciones entre archivos
-
-Los archivos no se llaman entre sí: las relaciones se resuelven con JavaScript
-después de cargarlos con `fetch`, usando `find()`, `filter()` y `map()`.
-
-```
-cursos.categoriaId    → categorias.id
-cursos.instructorId   → instructores.id
-matriculas.usuarioId  → usuarios.id
-matriculas.cursoId    → cursos.id
-vacantes.empresaId    → empresas.id
-vacantes.categoriaId  → categorias.id
-```
-
-Los registros incluyen además objetos anidados, como `usuarios.contacto`,
-`usuarios.nacionalidad`, `usuarios.preferencias` y `empresas.contacto`.
-
-Las rutas de las imágenes se almacenan dentro de los JSON (`cursos.imagen`,
-`galeria.imagen`) y JavaScript las lee para construir las etiquetas `<img>`.
-
----
-
-## Roles y control de acceso
-
-El inicio de sesión **no pregunta el rol**: lo deduce del usuario registrado en
-`usuarios.json` o en `localStorage`. Si el correo no existe, la aplicación
-ofrece ir al formulario de registro.
-
-| Rol | Panel de inicio | Acceso |
-|---|---|---|
-| 🎓 Estudiante | `dashboard-estudiante` | Catálogo, perfil, notificaciones |
-| 👨‍🏫 Instructor | `dashboard-instructor` | Sus cursos, alta y edición del catálogo |
-| 🏢 Empresa | `dashboard-empresa` | Vacantes y buscador de talento |
-| 🛡️ Administrador | `admin` | Gestión de usuarios y de todo el sistema |
-
-Cada página privada declara sus roles autorizados en la etiqueta `<body>`:
-
-```html
-<body data-roles="instructor,admin">
-```
-
-`js/guardia.js` verifica la sesión antes de mostrar el contenido. Sin sesión se
-redirige al inicio de sesión; con un rol distinto se devuelve al panel propio.
-
-### Seguridad del administrador
-
-La cuenta de administrador exige un **segundo código de acceso** además de la
-contraseña. Las contraseñas no se guardan en texto plano: se almacena un hash
-(`Validaciones.hashSimple`). Al tratarse de una aplicación que se ejecuta solo
-en el navegador, este mecanismo es didáctico y no sustituye una autenticación
-real de servidor.
-
-### Cuentas de prueba
-
-| Rol | Correo | Contraseña |
-|---|---|---|
-| Estudiante | `corina@correo.com` | `Estudiante123.` |
-| Instructor | `maria.lopez@puentelaboral360.com` | `Instructor123.` |
-| Empresa | `rrhh@techcorp.com` | `Empresa123.` |
-| Administrador | `admin@puentelaboral360.com` | `Admin1234.` más el código `PL360-ADMIN` |
-
----
-
-## Registro de usuarios
-
-- Validación de edad: solo se admiten personas de **16 a 60 años**, por tratarse
-  de una plataforma de formación y colocación laboral. El campo de fecha limita
-  el rango con `min` y `max`, y la validación se repite antes de guardar.
-- Nacionalidad obtenida de `https://countries.dev/countries` mediante un
-  selector personalizado con búsqueda y banderas.
-- Foto de perfil opcional, guardada como data URI; si no se sube ninguna se
-  genera un avatar SVG con las iniciales del usuario.
-- Cuando se llega desde un plan concreto (`registro.html?rol=estudiante`), el
-  rol queda fijado y no puede cambiarse.
 
 ---
 
 ## Cómo ejecutar el proyecto
 
-1. Clonar o descargar el repositorio.
-2. Abrir la carpeta en Visual Studio Code.
-3. Iniciar **Live Server** sobre `index.html` (clic derecho, *Open with Live Server*).
-4. Navegar entre páginas usando el menú.
+El proyecto lee los archivos JSON con `fetch`, por lo que **debe abrirse desde un servidor local**. Al abrir `index.html` con doble clic el navegador bloquea esas peticiones por seguridad.
 
-> **Importante:** el proyecto debe ejecutarse con Live Server o un servidor local
-> equivalente. Al abrir los archivos con `file://` el navegador bloquea `fetch`
-> y los archivos JSON no se cargan.
->
-> Requiere conexión a internet para las librerías por CDN y para las dos APIs externas.
+### Opción A — Live Server (recomendada)
+
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/Corina-ac/Proyect_PuenteLaboral360.git
+   ```
+2. Abrir la carpeta en Visual Studio Code.
+3. Instalar la extensión **Live Server**.
+4. Clic derecho sobre `index.html` → *Open with Live Server*.
+
+### Opción B — Python
+
+```bash
+cd Proyect_PuenteLaboral360
+python -m http.server 8000
+```
+Luego abrir `http://localhost:8000`.
+
+### Configuración opcional (asistente de IA)
+
+Las funciones de inteligencia artificial requieren una clave propia. Sin ella el proyecto funciona igual, solo que esas sugerencias no se generan.
+
+1. Copiar `js/config.example.js` como `js/config.js`.
+2. Colocar dentro una clave obtenida en https://console.groq.com/keys
+
+> `js/config.js` está en `.gitignore`: las claves no se suben al repositorio.
 
 ---
 
-## Autor
+## Cuentas de prueba
 
-**Corina Acosta**  
-Estudiante de Ingeniería en Software  
-Quito, Ecuador — 2026
+La propia pantalla de inicio de sesión muestra una cuenta por rol con su contraseña. Basta con hacer clic sobre el correo para rellenar el formulario.
+
+| Rol | Contraseña |
+|---|---|
+| Estudiante | `Estudiante123.` |
+| Instructor | `Instructor123.` |
+| Empresa | `Empresa123.` |
+| Administrador | `Admin1234.` + código `PL360-ADMIN` |
+
+---
+
+## Evolución del proyecto
+
+| Parcial | Aportación |
+|---|---|
+| **Primero** | Estructura con HTML semántico, formularios con `label`, tablas con encabezados e imágenes con `alt` |
+| **Segundo** | Diseño responsivo con media queries para móvil (375 px), tableta (768 px) y escritorio (1366 px) |
+| **Tercero** | JavaScript: manipulación del DOM, eventos, carga de JSON, `localStorage`, CRUD, librerías y APIs |
+
+En la versión final, el contenido que antes estaba escrito directamente en el HTML —tarjetas de cursos, tablas de usuarios, galería, vacantes y candidatos— se genera desde JavaScript a partir de los archivos JSON. El HTML conserva únicamente los contenedores.
+
+---
+
+## Notas sobre el alcance
+
+Se trata de un proyecto **frontend con fines académicos**:
+
+- No hay servidor ni base de datos: `localStorage` cumple ese papel.
+- Las contraseñas se guardan transformadas, pero con una función que no alcanza el nivel de un sistema en producción.
+- Los datos de cada persona quedan en su propio navegador.
+
+Las mejoras naturales serían incorporar un backend con base de datos real, autenticación con tokens y despliegue en un servicio de alojamiento con dominio propio.

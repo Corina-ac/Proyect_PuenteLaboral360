@@ -37,65 +37,115 @@
 }
 
 /* ============================================================
-   BLOQUE 2: INDICADORES DE PASOS
-   Barra de progreso visual que muestra el paso actual del registro.
+   BLOQUE 2: AGRUPACIÓN DEL FORMULARIO
+   Cada <fieldset> reúne los campos de un mismo tema para que el
+   formulario no se lea como una lista larga de entradas sueltas.
    ============================================================ */
 
-.pasos-registro {
+.bloque-form {
+    border: none;
+    border-top: 1px solid #e8f0fe;
+    padding: 22px 0 4px;
+    margin: 0;
+}
+
+/* El primer bloque no necesita línea superior. */
+.bloque-form:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.bloque-form legend {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e3a5f;
+    padding: 0;
+    margin-bottom: 16px;
+}
+
+/* ============================================================
+   BLOQUE 2B: TARJETAS DE ROL
+   Sustituyen al antiguo <select>. Se construyen con radios reales:
+   el radio se oculta visualmente y el <label> asociado es la tarjeta,
+   de modo que el control sigue siendo accesible con teclado.
+   ============================================================ */
+
+.tarjetas-rol {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
-.paso-indicador {
+/* El radio se oculta sin sacarlo del árbol de accesibilidad. */
+.rol-radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.tarjeta-rol {
+    flex: 1;
+    min-width: 150px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
+    text-align: center;
+    gap: 4px;
+    padding: 18px 14px;
+    background-color: #ffffff;
+    border: 2px solid #d1d5db;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.15s, background-color 0.15s, transform 0.15s;
 }
 
-.circulo {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: bold;
-    background-color: #e0e0e0;
-    color: #888;
-    border: 2px solid transparent;
+.tarjeta-rol:hover {
+    border-color: #1a73e8;
+    background-color: #f8fbff;
+    transform: translateY(-2px);
 }
 
-.circulo.activo {
-    background-color: #1a73e8;
-    color: white;
-    border-color: #1558b0;
+.tarjeta-rol .rol-icono {
+    font-size: 30px;
+    line-height: 1;
 }
 
-.circulo.completado {
-    background-color: #28a745;
-    color: white;
-    border-color: #1e7e34;
+.tarjeta-rol .rol-titulo {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
 }
 
-.paso-indicador .nombre-paso {
-    font-size: 13px;
-    color: #666;
+.tarjeta-rol .rol-desc {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.4;
 }
 
-.paso-indicador .nombre-paso.activo {
-    color: #1a73e8;
-    font-weight: bold;
+/* Tarjeta elegida: el selector :checked + label evita usar JavaScript. */
+.rol-radio:checked + .tarjeta-rol {
+    border-color: #1a73e8;
+    background-color: #e8f0fe;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.18);
 }
 
-.linea-paso {
-    width: 30px;
-    height: 2px;
-    background-color: #ddd;
-    margin-bottom: 3px;
+.rol-radio:checked + .tarjeta-rol .rol-titulo {
+    color: #1558b0;
+}
+
+/* Contorno visible al recorrer el formulario con el teclado. */
+.rol-radio:focus-visible + .tarjeta-rol {
+    outline: 3px solid rgba(26, 115, 232, 0.35);
+    outline-offset: 2px;
+}
+
+/* Cuando se llega desde un plan, el rol queda fijado. */
+.tarjetas-rol.rol-bloqueado .rol-radio:not(:checked) + .tarjeta-rol {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 /* ============================================================
@@ -214,6 +264,88 @@
     margin-top: 6px;
 }
 
+/* Dos campos por fila en escritorio; en móvil pasan a una columna. */
+.fila-campos {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.fila-campos > .campo {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Bloques que aparecen solo para ciertos roles. */
+.bloque-rol {
+    padding-top: 4px;
+}
+
+/* ------------------------------------------------------- avatar */
+.vista-avatar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.vista-avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e8f0fe;
+    flex-shrink: 0;
+    background-color: #f8f9fa;
+}
+
+.vista-avatar input[type="file"] {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ------------------------------------------- términos y condiciones */
+.campo-terminos {
+    background-color: #f8fbff;
+    border: 1px solid #e8f0fe;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 20px;
+}
+
+/* align-items: center mantiene la casilla a la altura del texto en lugar
+   de quedar pegada al borde superior del párrafo. */
+.check-terminos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.5;
+    cursor: pointer;
+    margin: 0;
+}
+
+.check-terminos input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin: 0;
+    accent-color: #1a73e8;
+    cursor: pointer;
+}
+
+.check-terminos a {
+    color: #1a73e8;
+    font-weight: 600;
+}
+
+/* ------------------------------------------------ textarea de bio */
+.campo textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
 /* ============================================================
    BLOQUE 6: NAVEGACIÓN ENTRE PASOS
    Botones para avanzar o retroceder en el formulario multi-etapa.
@@ -270,6 +402,7 @@
    Media queries para tablets (≤768px) y móviles (≤480px).
    ============================================================ */
 
+/* ------------------------------------------- tableta (768 x 1024) */
 @media (max-width: 768px) {
     .navbar {
         padding: 12px 16px;
@@ -285,8 +418,11 @@
         padding: 22px 16px;
     }
 
-    .linea-paso {
-        width: 18px;
+    /* Las tres tarjetas de rol ya no caben en fila con holgura:
+       pasan a dos columnas y la última ocupa el ancho completo. */
+    .tarjeta-rol {
+        min-width: calc(50% - 6px);
+        padding: 14px 12px;
     }
 
     .nav-pasos {
@@ -300,6 +436,44 @@
         text-align: center;
         display: block;
         box-sizing: border-box;
+    }
+}
+
+/* --------------------------------------------- móvil (375 x 667) */
+@media (max-width: 600px) {
+    /* Un campo por fila: dos no caben legibles a este ancho. */
+    .fila-campos {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .fila-campos > .campo {
+        min-width: 100%;
+    }
+
+    /* Las tarjetas de rol se apilan y se vuelven horizontales para
+       ocupar menos alto: icono a la izquierda y texto a la derecha. */
+    .tarjetas-rol {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .tarjeta-rol {
+        min-width: 100%;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 12px;
+        padding: 12px 14px;
+        flex-wrap: wrap;
+    }
+
+    .tarjeta-rol .rol-icono {
+        font-size: 24px;
+    }
+
+    .tarjeta-rol .rol-desc {
+        flex-basis: 100%;
     }
 }
 
@@ -322,27 +496,13 @@
         border-radius: 8px;
     }
 
+    #formulario-registro h1,
     #formulario-registro h2 {
         font-size: 18px;
     }
 
-    .pasos-registro {
-        gap: 4px;
-        margin-bottom: 20px;
-    }
-
-    .linea-paso {
-        width: 10px;
-    }
-
-    .paso-indicador .nombre-paso {
-        font-size: 11px;
-    }
-
-    .circulo {
-        width: 28px;
-        height: 28px;
-        font-size: 12px;
+    .bloque-form legend {
+        font-size: 14px;
     }
 
     .texto-paso {
@@ -358,6 +518,14 @@
     .nivel-habilidad label {
         font-size: 12px;
         padding: 5px 10px;
+    }
+
+    .check-terminos {
+        font-size: 13px;
+    }
+
+    .vista-avatar {
+        flex-wrap: wrap;
     }
 
     .footer {

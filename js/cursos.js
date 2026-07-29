@@ -130,21 +130,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             ${esRecomendado ? '<span class="badge-grok"><i class="fa-solid fa-star"></i> Recomendado</span>' : ''}
             <img src="${Datos.recurso(curso.imagen)}" alt="Imagen del curso ${UI.escapar(curso.nombre)}"
                  loading="lazy" data-respaldo="${curso.icono}">
-            <section class="tarjeta-cuerpo">
+            <div class="tarjeta-cuerpo">
                 <span class="chip ${agotado ? 'chip-agotado' : 'chip-disponible'}">
                     ${agotado ? 'Agotado' : 'Disponible'}
                 </span>
                 <h3 class="tarjeta-titulo">${UI.escapar(curso.nombre)}</h3>
                 <p class="tarjeta-desc">${UI.escapar(curso.descripcion)}</p>
-                <section class="tarjeta-meta">
+                <div class="tarjeta-meta">
                     <span>${categoria ? categoria.icono + ' ' + UI.escapar(categoria.nombre) : 'Sin categoría'}</span>
                     <span>👨‍🏫 ${instructor ? UI.escapar(instructor.nombres + ' ' + instructor.apellidos) : 'Por asignar'}</span>
                     <span>⭐ ${curso.valoracion}</span>
                     <span>⏱️ ${curso.duracionHoras} h</span>
                     <span>📶 ${UI.escapar(curso.nivel)}</span>
-                </section>
+                </div>
                 <p class="etiqueta-precio">${UI.precio(curso.precio)}</p>
-                <section class="tarjeta-acciones">
+                <div class="tarjeta-acciones">
                     <button type="button" class="btn btn-azul btn-xs" data-accion="detalle">Ver detalles</button>
                     ${usuario.rol === 'estudiante'
                         ? `<button type="button" class="btn btn-verde btn-xs" data-accion="inscribir"
@@ -154,8 +154,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         ? `<button type="button" class="btn btn-gris btn-xs" data-accion="editar">Editar</button>
                            <button type="button" class="btn btn-rojo btn-xs" data-accion="eliminar">Eliminar</button>`
                         : ''}
-                </section>
-            </section>
+                </div>
+            </div>
         </article>`;
     }
 
@@ -201,10 +201,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         ];
 
         panelIndicadores.innerHTML = tarjetas.map(([etiqueta, valor, color]) => `
-            <section class="indicador" style="border-left-color:${color}">
+            <div class="indicador" style="border-left-color:${color}">
                 <p class="valor">${valor}</p>
                 <p class="etiqueta">${etiqueta}</p>
-            </section>`).join('');
+            </div>`).join('');
     }
 
     /* ---------------------------------------------------------- grafico */

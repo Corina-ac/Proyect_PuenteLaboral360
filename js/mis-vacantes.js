@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             [stats.perfilesGuardados, 'Perfiles guardados'],
             [stats.contrataciones, 'Contrataciones este mes']
         ].map(([valor, etiqueta]) => `
-            <section class="stat-box">
-                <section class="numero numero-rojo">${valor}</section>
-                <section class="etiqueta">${UI.escapar(etiqueta)}</section>
-            </section>`).join('');
+            <div class="stat-box">
+                <div class="numero numero-rojo">${valor}</div>
+                <div class="etiqueta">${UI.escapar(etiqueta)}</div>
+            </div>`).join('');
     }
 
     /* -------------------------------------------------- contar postulantes */
@@ -176,22 +176,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         return `
             <section class="candidato-card${clase}">
-                <section class="info-candidato">
-                    <section class="nombre-candidato">${UI.escapar(vacante.titulo)}</section>
-                    <section class="detalle-candidato">${UI.escapar(vacante.jornada || '')} · ${UI.escapar(vacante.modalidad || '')} · ${UI.escapar(vacante.ciudad || '')}</section>
-                    <section class="habilidades-match">
+                <div class="info-candidato">
+                    <div class="nombre-candidato">${UI.escapar(vacante.titulo)}</div>
+                    <div class="detalle-candidato">${UI.escapar(vacante.jornada || '')} · ${UI.escapar(vacante.modalidad || '')} · ${UI.escapar(vacante.ciudad || '')}</div>
+                    <div class="habilidades-match">
                         ${habilidades.map(h => `<span class="habilidad-tag">${UI.escapar(h)}</span>`).join('')}
-                    </section>
-                    <section class="progreso-grupo">
+                    </div>
+                    <div class="progreso-grupo">
                         <span class="texto-info">${infoExtra}</span>
-                    </section>
-                </section>
-                <section class="acciones-candidato">
+                    </div>
+                </div>
+                <div class="acciones-candidato">
                     <section class="conteo-numero">${postulantes}</section>
                     <section class="conteo-etiqueta">postulantes</section>
                     <span class="badge ${badgeClase} badge-bloque">${badgeTexto}</span>
                     ${botones}
-                </section>
+                </div>
             </section>`;
     }
 

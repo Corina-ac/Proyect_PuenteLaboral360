@@ -22,49 +22,49 @@
         </nav>
     </section>
 
-    <section class="layout-dashboard">
+    <div class="layout-dashboard">
 
-        <section class="sidebar">
-            <section class="perfil-mini">
+        <aside class="sidebar">
+            <div class="perfil-mini">
                 <img class="avatar" data-perfil="avatar" src="" alt="Foto de perfil">
                 <p class="nombre-usuario" data-perfil="nombre">—</p>
                 <p class="rol-usuario" data-perfil="rol">—</p>
-            </section>
+            </div>
             <nav>
                 <a title="Inicio" href="dashboard-empresa.html" class="activo" id="enlace-inicio"><span>🏠</span> Inicio</a>
                 <a title="Buscar Talento" href="../buscar-talento/buscar-talento.html"><span>🔍</span> Buscar Talento</a>
                 <a title="Mis Vacantes" href="../mis-vacantes/mis-vacantes.html"><span>📌</span> Mis Vacantes</a>
                 <a title="Notificaciones" href="../notificaciones/notificaciones-empresa.html"><span>🔔</span> Notificaciones</a>
             </nav>
-        </section>
+        </aside>
 
-        <section class="contenido-principal">
+        <main class="contenido-principal">
 
             <section class="seccion-intro">
                 <h1 class="titulo-pagina">Motor de Emparejamiento de Talento</h1>
                 <p class="subtitulo-pagina">Candidatos verificados ordenados por compatibilidad con tu vacante</p>
             </section>
 
-            <section class="stats-grid" id="stats-empresa"></section>
+            <div class="stats-grid" id="stats-empresa"></div>
 
             <section class="tarjeta">
                 <h2>Analisis de talento</h2>
-                <section class="charts-row">
-                    <section class="chart-box"><canvas id="chart-match-distribucion"></canvas></section>
-                    <section class="chart-box"><canvas id="chart-nivel-candidatos"></canvas></section>
-                </section>
+                <div class="charts-row">
+                    <div class="chart-box"><canvas id="chart-match-distribucion"></canvas></div>
+                    <div class="chart-box"><canvas id="chart-nivel-candidatos"></canvas></div>
+                </div>
             </section>
 
             <section class="tarjeta" id="filtros-vacante">
                 <h2>Filtrar por vacante</h2>
                 <section class="form-filtros">
-                    <section class="campo campo-flex-lg">
+                    <div class="campo campo-flex-lg">
                         <label>Vacante activa</label>
                         <select id="select-vacante-empresa">
                             <option value="">Todas las vacantes</option>
                         </select>
-                    </section>
-                    <section class="campo campo-flex">
+                    </div>
+                    <div class="campo campo-flex">
                         <label>Nivel mínimo</label>
                         <select id="select-nivel-empresa">
                             <option value="">Todos</option>
@@ -73,7 +73,7 @@
                             <option value="Semi-senior">Semi-senior</option>
                             <option value="Senior">Senior</option>
                         </select>
-                    </section>
+                    </div>
                     <button type="button" class="btn btn-rojo btn-filtro" id="btn-buscar-candidatos">Buscar</button>
                 </section>
             </section>
@@ -83,8 +83,8 @@
                 <p class="texto-secundario">Ordenados por porcentaje de compatibilidad</p>
                 <div id="lista-candidatos"></div>
             </section>
-        </section>
-    </section>
+        </main>
+    </div>
 
     <footer class="footer">
         <nav class="footer-links">
@@ -106,6 +106,7 @@
     <script src="../../js/auth.js"></script>
     <script src="../../js/componentes.js"></script>
     <script src="../../js/guardia.js"></script>
+    <script src="../../js/config.js"></script>
     <script src="../../js/api.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="../../js/dashboard-empresa.js"></script>

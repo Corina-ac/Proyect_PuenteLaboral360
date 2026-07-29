@@ -116,3 +116,79 @@
     border-color: #1a73e8;
     color: #1a73e8;
 }
+
+/* ============================================================
+   DISEÑO RESPONSIVO
+   Referencias: escritorio 1366x768, tableta 768x1024, movil 375x667.
+   ============================================================ */
+
+/* ---------------------------------------------- tableta (768 x 1024) */
+@media (max-width: 992px) {
+    .pagina-login {
+        /* En pantallas bajas conviene separar la caja del borde superior
+           en lugar de centrarla verticalmente. */
+        align-items: flex-start;
+        padding: 32px 20px;
+    }
+
+    .caja-login {
+        max-width: 460px;
+        max-height: none;
+    }
+}
+
+/* ------------------------------------------------ movil (375 x 667) */
+@media (max-width: 600px) {
+    .pagina-login {
+        padding: 20px 14px;
+    }
+
+    .caja-login {
+        padding: 26px 20px;
+        max-width: 100%;
+        border-radius: 12px;
+    }
+
+    .caja-login .logo-login {
+        font-size: 24px;
+    }
+
+    .caja-login h1,
+    .caja-login h2 {
+        font-size: 15px;
+    }
+
+    /* Objetivo tactil mas comodo en el boton principal. */
+    .btn-login {
+        padding: 13px;
+        font-size: 16px;
+    }
+
+    /* La tabla de cuentas de prueba tiene tres columnas: en movil se
+       desplaza horizontalmente para no romper el ancho de la pagina. */
+    .tabla-demo {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 12px;
+    }
+
+    .accesos-rapidos {
+        flex-direction: column;
+    }
+
+    .acceso-btn {
+        text-align: center;
+    }
+}
+
+/* --------------------------------- pantallas muy estrechas (< 360px) */
+@media (max-width: 360px) {
+    .caja-login {
+        padding: 20px 14px;
+    }
+
+    .caja-login .logo-login {
+        font-size: 21px;
+    }
+}

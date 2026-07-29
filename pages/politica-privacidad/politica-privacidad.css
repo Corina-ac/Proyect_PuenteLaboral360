@@ -1,0 +1,201 @@
+/* ============================================================================
+   politica-privacidad.css — Estilos de la pagina de privacidad
+   Diseño de una sola columna, pensado para lectura larga.
+   ========================================================================== */
+
+.privacidad-hero {
+    background: linear-gradient(135deg, #1e3a5f, #2563eb);
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.privacidad-hero h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.privacidad-hero h1 span {
+    color: #ffdd57;
+}
+
+.privacidad-hero p {
+    font-size: 16px;
+    opacity: 0.9;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.privacidad-hero .fecha-actualizacion {
+    font-size: 13px;
+    opacity: 0.75;
+    margin-top: 14px;
+}
+
+/* ------------------------------------------------------------- contenido */
+.privacidad-contenido {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+}
+
+/* Aviso destacado sobre la naturaleza academica del proyecto. */
+.aviso-academico {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+}
+
+.aviso-academico h2 {
+    font-size: 17px;
+    color: #1e3a5f;
+    margin: 0 0 8px;
+}
+
+.aviso-academico p {
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.bloque-privacidad {
+    margin-bottom: 34px;
+}
+
+.bloque-privacidad h2 {
+    font-size: 20px;
+    color: #1e293b;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.bloque-privacidad p,
+.bloque-privacidad li {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.75;
+}
+
+.bloque-privacidad ul,
+.bloque-privacidad ol {
+    padding-left: 22px;
+    margin: 12px 0;
+}
+
+.bloque-privacidad li {
+    margin-bottom: 8px;
+}
+
+.bloque-privacidad code {
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.bloque-privacidad a {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+/* Parrafo que reconoce una limitacion tecnica del proyecto. */
+.nota-limitacion {
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 14px;
+}
+
+/* ---------------------------------------------------------------- tablas */
+.tabla-privacidad {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+    font-size: 14px;
+}
+
+.tabla-privacidad caption {
+    caption-side: top;
+    text-align: left;
+    font-size: 13px;
+    color: #64748b;
+    padding-bottom: 8px;
+    font-style: italic;
+}
+
+.tabla-privacidad th,
+.tabla-privacidad td {
+    border: 1px solid #e2e8f0;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.tabla-privacidad thead th {
+    background: #f8fafc;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.tabla-privacidad tbody tr:nth-child(even) {
+    background: #fcfdfe;
+}
+
+/* ============================================================ responsive */
+
+/* Tableta: aproximadamente 768 x 1024. */
+@media (max-width: 992px) {
+    .privacidad-contenido {
+        max-width: 100%;
+        padding: 32px 24px 50px;
+    }
+
+    .privacidad-hero h1 {
+        font-size: 28px;
+    }
+}
+
+/* Movil: aproximadamente 375 x 667. */
+@media (max-width: 600px) {
+    .privacidad-hero {
+        padding: 36px 16px;
+    }
+
+    .privacidad-hero h1 {
+        font-size: 23px;
+    }
+
+    .privacidad-hero p {
+        font-size: 14px;
+    }
+
+    .privacidad-contenido {
+        padding: 26px 16px 44px;
+    }
+
+    .bloque-privacidad h2 {
+        font-size: 17px;
+    }
+
+    .bloque-privacidad p,
+    .bloque-privacidad li {
+        font-size: 14px;
+    }
+
+    /* Las tablas anchas se desplazan en horizontal en lugar de desbordar. */
+    .tabla-privacidad {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .aviso-academico {
+        padding: 16px 18px;
+    }
+}

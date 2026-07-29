@@ -19,14 +19,14 @@
         <nav data-zona="sesion"></nav>
     </header>
 
-    <section class="layout-dashboard">
+    <div class="layout-dashboard">
 
         <aside class="sidebar">
-            <section class="perfil-mini">
+            <div class="perfil-mini">
                 <img class="avatar" data-perfil="avatar" src="" alt="Foto de perfil">
                 <p class="nombre-usuario" data-perfil="nombre">—</p>
                 <p class="rol-usuario" data-perfil="rol">—</p>
-            </section>
+            </div>
             <nav>
                 <a href="#" id="enlace-inicio"><span>🏠</span> Inicio</a>
                 <a href="cursos.html" class="activo"><span>📚</span> Catálogo de Cursos</a>
@@ -53,15 +53,15 @@
             <section class="tarjeta">
                 <h2>Buscar y filtrar</h2>
                 <form class="barra-herramientas" id="barra-herramientas" role="search">
-                    <section class="campo">
+                    <div class="campo">
                         <label for="buscador">Búsqueda en tiempo real</label>
                         <input type="search" id="buscador" placeholder="Nombre, descripción, instructor o categoría…">
-                    </section>
-                    <section class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="filtro-categoria">Categoría</label>
                         <select id="filtro-categoria"><option value="">Todas</option></select>
-                    </section>
-                    <section class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="filtro-nivel">Nivel</label>
                         <select id="filtro-nivel">
                             <option value="">Todos</option>
@@ -69,8 +69,8 @@
                             <option value="Intermedio">Intermedio</option>
                             <option value="Avanzado">Avanzado</option>
                         </select>
-                    </section>
-                    <section class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="orden">Ordenar por</label>
                         <select id="orden">
                             <option value="nombre-asc">Nombre (A-Z)</option>
@@ -81,7 +81,7 @@
                             <option value="fecha-desc">Más recientes</option>
                             <option value="fecha-asc">Más antiguos</option>
                         </select>
-                    </section>
+                    </div>
                     <button type="button" class="btn btn-gris" id="btn-limpiar">Limpiar</button>
                 </form>
 
@@ -102,19 +102,19 @@
             <!-- Tarjetas generadas dinámicamente -->
             <section class="tarjeta">
                 <h2>Resultados</h2>
-                <section class="grid-tarjetas" id="grid-cursos"></section>
+                <div class="grid-tarjetas" id="grid-cursos"></div>
             </section>
 
             <!-- Clima de las sedes presenciales (API Open-Meteo) -->
             <section class="tarjeta">
                 <h2>Clima en nuestras sedes presenciales</h2>
                 <p class="subtitulo-pagina">Consulta el clima antes de asistir a un curso presencial.</p>
-                <section class="selector-ciudades" id="selector-ciudades"></section>
+                <div class="selector-ciudades" id="selector-ciudades"></div>
                 <section id="panel-clima"></section>
             </section>
 
         </main>
-    </section>
+    </div>
 
     <footer class="footer">
         <nav class="footer-links">
@@ -134,6 +134,7 @@
     <script src="../../js/validaciones.js"></script>
     <script src="../../js/datos.js"></script>
     <script src="../../js/auth.js"></script>
+    <script src="../../js/config.js"></script>
     <script src="../../js/api.js"></script>
     <script src="../../js/componentes.js"></script>
     <script src="../../js/cursos.js"></script>

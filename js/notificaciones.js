@@ -28,12 +28,12 @@ const Notificaciones = (() => {
 
         return `
             <section class="notif-item ${estado}${claseExtra}">
-                <section class="notif-icono">${notif.icono}</section>
-                <section class="notif-contenido">
-                    <section class="notif-titulo">${UI.escapar(notif.titulo)}</section>
-                    <section class="notif-descripcion">${notif.descripcion}</section>
-                    <section class="notif-fecha">${UI.fecha(notif.fecha)} · ${UI.escapar(notif.fuente)}</section>
-                </section>
+                <div class="notif-icono">${notif.icono}</div>
+                <div class="notif-contenido">
+                    <div class="notif-titulo">${UI.escapar(notif.titulo)}</div>
+                    <div class="notif-descripcion">${notif.descripcion}</div>
+                    <div class="notif-fecha">${UI.fecha(notif.fecha)} · ${UI.escapar(notif.fuente)}</div>
+                </div>
             </section>`;
     }
 

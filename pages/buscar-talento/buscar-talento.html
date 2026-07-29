@@ -23,23 +23,23 @@
         </nav>
     </section>
 
-    <section class="layout-dashboard">
+    <div class="layout-dashboard">
 
-        <section class="sidebar">
-            <section class="perfil-mini">
+        <aside class="sidebar">
+            <div class="perfil-mini">
                 <img class="avatar" data-perfil="avatar" src="" alt="Foto de perfil">
                 <p class="nombre-usuario" data-perfil="nombre">—</p>
                 <p class="rol-usuario" data-perfil="rol">—</p>
-            </section>
+            </div>
             <nav>
                 <a title="Inicio" href="../dashboard-empresa/dashboard-empresa.html"><span>🏠</span> Inicio</a>
                 <a title="Buscar Talento" href="buscar-talento.html" class="activo"><span>🔍</span> Buscar Talento</a>
                 <a title="Mis Vacantes" href="../mis-vacantes/mis-vacantes.html"><span>📌</span> Mis Vacantes</a>
                 <a title="Notificaciones" href="../notificaciones/notificaciones-empresa.html"><span>🔔</span> Notificaciones</a>
             </nav>
-        </section>
+        </aside>
 
-        <section class="contenido-principal">
+        <main class="contenido-principal">
 
             <section class="seccion-intro">
                 <h1 class="titulo-pagina">Buscar Talento</h1>
@@ -48,14 +48,23 @@
 
             <section id="filtros-busqueda" class="tarjeta">
                 <h2>🔎 Filtros de búsqueda</h2>
-                <section class="form-filtros">
-                    <section class="campo campo-flex-lg">
+
+                <div class="campo campo-busqueda">
+                    <label for="buscar-candidato">Buscar candidato</label>
+                    <input type="search" id="buscar-candidato"
+                           placeholder="Nombre, correo, ciudad o habilidad…"
+                           autocomplete="off">
+                    <p class="texto-ayuda">Los resultados se filtran mientras escribes.</p>
+                </div>
+
+                <div class="form-filtros">
+                    <div class="campo campo-flex-lg">
                         <label>Habilidad principal</label>
                         <select id="filtro-habilidad">
                             <option value="">Todas</option>
                         </select>
-                    </section>
-                    <section class="campo campo-flex">
+                    </div>
+                    <div class="campo campo-flex">
                         <label>Nivel de experiencia</label>
                         <select id="filtro-nivel-exp">
                             <option value="">Todos</option>
@@ -64,8 +73,8 @@
                             <option value="Semi-senior">Semi-senior</option>
                             <option value="Senior">Senior</option>
                         </select>
-                    </section>
-                    <section class="campo campo-flex">
+                    </div>
+                    <div class="campo campo-flex">
                         <label>Certificados mínimos</label>
                         <select id="filtro-certificados">
                             <option value="">Cualquiera</option>
@@ -73,24 +82,38 @@
                             <option value="2">Al menos 2</option>
                             <option value="3">3 o más</option>
                         </select>
-                    </section>
-                    <section class="campo campo-flex">
+                    </div>
+                    <div class="campo campo-flex">
                         <label>Vacante asociada</label>
                         <select id="filtro-vacante-asociada">
                             <option value="">Sin filtrar</option>
                         </select>
-                    </section>
+                    </div>
+                    <div class="campo campo-flex">
+                        <label for="orden-candidatos">Ordenar por</label>
+                        <select id="orden-candidatos">
+                            <option value="match-desc">Mayor coincidencia</option>
+                            <option value="match-asc">Menor coincidencia</option>
+                            <option value="certs-desc">Más certificados</option>
+                            <option value="nombre-asc">Nombre (A–Z)</option>
+                            <option value="nombre-desc">Nombre (Z–A)</option>
+                            <option value="fecha-desc">Registro más reciente</option>
+                        </select>
+                    </div>
                     <button type="button" class="btn btn-rojo btn-filtro" id="btn-buscar-talento">Buscar</button>
-                </section>
+                    <button type="button" class="btn btn-gris btn-filtro" id="btn-limpiar-talento">Limpiar</button>
+                </div>
             </section>
 
-            <section id="resultados-candidatos" class="tarjeta">
+            <section class="tarjeta">
                 <h2>👥 Candidatos disponibles</h2>
-                <p class="texto-secundario" id="contador-candidatos"></p>
+                <p class="texto-secundario" id="contador-candidatos" role="status" aria-live="polite"></p>
+                <!-- JavaScript inserta aquí las tarjetas de cada candidato -->
+                <div id="resultados-candidatos"></div>
             </section>
 
-        </section>
-    </section>
+        </main>
+    </div>
 
     <footer class="footer">
         <nav class="footer-links">
@@ -112,6 +135,7 @@
     <script src="../../js/auth.js"></script>
     <script src="../../js/componentes.js"></script>
     <script src="../../js/guardia.js"></script>
+    <script src="../../js/config.js"></script>
     <script src="../../js/api.js"></script>
     <script src="../../js/buscar-talento.js"></script>
 </body>

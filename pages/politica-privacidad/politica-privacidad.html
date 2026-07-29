@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuenteLaboral360 - Política de Privacidad</title>
+    <meta name="description" content="Política de privacidad de PuenteLaboral360: qué datos se recogen, dónde se almacenan y cómo ejercer tus derechos.">
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="../../css/componentes.css">
+    <link rel="stylesheet" href="politica-privacidad.css">
+    <link rel="shortcut icon" href="../../img/educacion-global.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
+        <nav data-zona="sesion"></nav>
+    </header>
+
+    <main>
+
+        <section class="privacidad-hero">
+            <h1>Política de <span>Privacidad</span></h1>
+            <p>Cómo tratamos la información que nos confías dentro de PuenteLaboral360.</p>
+            <p class="fecha-actualizacion">Última actualización: 28 de julio de 2026</p>
+        </section>
+
+        <section class="privacidad-contenido">
+
+            <aside class="aviso-academico" aria-label="Aviso sobre la naturaleza del proyecto">
+                <h2><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Aviso importante</h2>
+                <p>
+                    PuenteLaboral360 es un <strong>proyecto académico</strong> desarrollado para la
+                    asignatura de Fundamentos Web. No es un servicio comercial en producción.
+                    Toda la información se guarda <strong>únicamente en tu propio navegador</strong>
+                    y nunca se envía a un servidor propio de la plataforma.
+                </p>
+            </aside>
+
+            <article class="bloque-privacidad">
+                <h2>1. Qué información recogemos</h2>
+                <p>Al registrarte y usar la plataforma se almacenan los siguientes datos:</p>
+                <table class="tabla-privacidad">
+                    <caption>Datos recogidos según la sección de la plataforma</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Dato</th>
+                            <th scope="col">Dónde se recoge</th>
+                            <th scope="col">Para qué se usa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nombres y apellidos</td>
+                            <td>Formulario de registro</td>
+                            <td>Identificarte en tu perfil y certificados</td>
+                        </tr>
+                        <tr>
+                            <td>Correo electrónico</td>
+                            <td>Formulario de registro</td>
+                            <td>Iniciar sesión e identificar tu cuenta</td>
+                        </tr>
+                        <tr>
+                            <td>Contraseña</td>
+                            <td>Formulario de registro</td>
+                            <td>Se guarda transformada, nunca en texto legible</td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de nacimiento</td>
+                            <td>Formulario de registro</td>
+                            <td>Verificar la edad mínima de acceso (16 años)</td>
+                        </tr>
+                        <tr>
+                            <td>Nacionalidad</td>
+                            <td>Selector de países</td>
+                            <td>Mostrar tu país en el perfil y en estadísticas</td>
+                        </tr>
+                        <tr>
+                            <td>Teléfono y ciudad</td>
+                            <td>Perfil</td>
+                            <td>Que las empresas puedan contactarte</td>
+                        </tr>
+                        <tr>
+                            <td>Habilidades y objetivo</td>
+                            <td>Perfil</td>
+                            <td>Recomendarte cursos y vacantes afines</td>
+                        </tr>
+                        <tr>
+                            <td>Progreso y certificados</td>
+                            <td>Cursos y matrículas</td>
+                            <td>Registrar tu avance y emitir certificados</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <article class="bloque-privacidad">
+                <h2>2. Dónde se almacena tu información</h2>
+                <p>
+                    Todos los datos se guardan en el <strong>almacenamiento local
+                    (<code>localStorage</code>) de tu navegador</strong>, bajo claves que empiezan
+                    con el prefijo <code>pl360_</code>. Esto significa que:
+                </p>
+                <ul>
+                    <li>La información permanece en el dispositivo que estés usando.</li>
+                    <li>No viaja a ningún servidor de la plataforma.</li>
+                    <li>Si abres el proyecto en otro navegador u ordenador, no verás esos datos.</li>
+                    <li>Si limpias los datos de navegación, la información se borra por completo.</li>
+                </ul>
+            </article>
+
+            <article class="bloque-privacidad">
+                <h2>3. Tu contraseña</h2>
+                <p>
+                    La contraseña <strong>nunca se guarda tal como la escribes</strong>. Antes de
+                    almacenarla se transforma mediante una función de resumen con sal, de modo que
+                    en el almacenamiento solo queda un código irreversible.
+                </p>
+                <p>
+                    Además, cuando inicias sesión, ese código de contraseña se elimina de los datos
+                    de la sesión activa, por lo que no queda accesible mientras navegas.
+                </p>
+                <p class="nota-limitacion">
+                    <strong>Limitación conocida:</strong> al tratarse de un proyecto académico sin
+                    servidor, la transformación empleada no alcanza el nivel de seguridad de un
+                    sistema real. Por eso te pedimos que <strong>no reutilices aquí contraseñas
+                    que uses en otros servicios</strong>.
+                </p>
+            </article>
+
+            <article class="bloque-privacidad">
+                <h2>4. Servicios externos que consultamos</h2>
+                <p>
+                    Para funcionar, la plataforma consulta algunos servicios públicos de terceros.
+                    En estas consultas <strong>no se envían tus datos personales</strong>.
+                </p>
+                <table class="tabla-privacidad">
+                    <caption>Servicios externos utilizados por la plataforma</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Servicio</th>
+                            <th scope="col">Para qué se usa</th>
+                            <th scope="col">Qué se le envía</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>countries.dev</td>
+                            <td>Lista de países y banderas del registro</td>
+                            <td>Nada personal: solo la petición del listado</td>
+                        </tr>
+                        <tr>
+                            <td>Open-Meteo</td>
+                            <td>Clima de las ciudades con cursos presenciales</td>
+                            <td>Coordenadas fijas de la ciudad elegida</td>
+                        </tr>
+                        <tr>
+                            <td>Groq (IA)</td>
+                            <td>Recomendaciones de cursos, empleos y habilidades</td>
+                            <td>Datos de perfil no identificativos: nivel, habilidades y objetivo</td>
+                        </tr>
+                        <tr>
+                            <td>DiceBear</td>
+                            <td>Generar avatares ilustrados</td>
+                            <td>Tu nombre, usado como semilla del dibujo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <article class="bloque-privacidad">
+                <h2>5. Quién puede ver tus datos</h2>
+                <ul>
+                    <li><strong>Empresas y reclutadores:</strong> ven tu nombre, habilidades, nivel, certificados, ciudad y teléfono en la sección de búsqueda de talento.</li>
+                    <li><strong>Instructores:</strong> ven el nombre y el progreso de quienes se matriculan en sus cursos.</li>
+                    <li><strong>Administración:</strong> puede consultar y gestionar todas las cuentas registradas.</li>
+                </ul>
+                <p>Tu contraseña no es visible para ningún perfil, incluido el de administración.</p>
+            </article>
+
+            <article class="bloque-privacidad">
+                <h2>6. Tus derechos</h2>
+                <ul>
+                    <li><strong>Acceder:</strong> consulta toda tu información desde <a href="../perfil/perfil.html">Mi Perfil</a>.</li>
+                    <li><strong>Rectificar:</strong> edita tus datos en cualquier momento desde esa misma sección.</li>
+                    <li><strong>Eliminar:</strong> solicita a la administración la baja de tu cuenta, o borra los datos del sitio desde tu navegador.</li>
+                    <li><strong>Portabilidad:</strong> tus datos son legibles en el almacenamiento local del navegador en formato JSON.</li>
+                </ul>
+            </article>
+
+            <article class="bloque-privacidad">
+                <h2>7. Cómo borrar toda tu información</h2>
+                <p>Puedes eliminar por completo los datos guardados de dos maneras:</p>
+                <ol>
+                    <li>Desde las herramientas de tu navegador, borrando los datos del sitio.</li>
+                    <li>Con la opción <strong>Restablecer datos</strong> del catálogo de cursos o del panel de administración, que devuelve la plataforma a su estado inicial.</li>
+                </ol>
+            </article>
+
+            <article class="bloque-privacidad">
+                <h2>8. Contacto</h2>
+                <p>
+                    Para cualquier consulta sobre esta política puedes escribirnos desde el
+                    <a href="../contacto/contacto.html">formulario de contacto</a>.
+                </p>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <nav class="footer-links">
+            <a href="../servicios/servicios.html">Servicios</a>
+            <a href="../planes/planes.html">Planes</a>
+            <a href="politica-privacidad.html">Privacidad</a>
+            <a href="../contacto/contacto.html">Contacto</a>
+        </nav>
+        <p>&copy; 2026 <span>PuenteLaboral360</span> &mdash; Cerrando la brecha entre educacion y empleo</p>
+        <p class="footer-copy">Hecho con dedicacion para la comunidad latina</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/storage.js"></script>
+    <script src="../../js/validaciones.js"></script>
+    <script src="../../js/datos.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/componentes.js"></script>
+</body>
+</html>

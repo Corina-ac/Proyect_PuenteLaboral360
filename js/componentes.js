@@ -349,7 +349,15 @@ const UI = (() => {
         doc.setFontSize(9);
         doc.setTextColor(148, 163, 184);
         doc.text('Certificado emitido por PuenteLaboral360 - Puente entre educacion y empleo', w / 2, h - 35, { align: 'center' });
-        doc.text('Codigo de verificacion: PL360-' + Math.random().toString(36).substring(2, 10).toUpperCase(), w / 2, h - 30, { align: 'center' });
+        // El codigo se deriva del estudiante y del curso, no del azar: al volver a
+        // descargar el mismo certificado se obtiene siempre el mismo codigo, que es
+        // lo que permitiria verificarlo.
+        const codigoVerificacion = Validaciones
+            .hashSimple(`${usuario.id}-${curso.id}-${usuario.email}`)
+            .replace('h', '')
+            .toUpperCase()
+            .padStart(8, '0');
+        doc.text('Codigo de verificacion: PL360-' + codigoVerificacion, w / 2, h - 30, { align: 'center' });
 
         doc.save(`Certificado-${curso.nombre.replace(/\s+/g, '-')}.pdf`);
     }

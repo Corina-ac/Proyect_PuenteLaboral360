@@ -18,7 +18,7 @@
          NAVEGACIÓN PRINCIPAL — Flexbox (justify-content,
          align-items, gap, flex-wrap)
     ==================================================== -->
-    <section class="navbar">
+    <header class="navbar">
         <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
         <button class="navbar-toggle" id="navToggle" aria-label="Abrir menú">
             <i class="fa-solid fa-bars"></i>
@@ -30,234 +30,238 @@
             <a href="../login/login.html"><i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</a>
             <a href="../registro/registro.html" class="btn-nav-registro"><i class="fa-solid fa-user-plus"></i> Registrarse</a>
         </nav>
-    </section>
+    </header>
 
-    <hr class="separador-degradado">
 
-    <!-- ====================================================
-         HERO DE CONTACTO
-         Box Model: padding (50px 20px), width 100%
-    ==================================================== -->
-    <section id="hero-contacto">
-        <h1>Ponte en <span>Contacto</span></h1>
-        <p>¿Tienes dudas, sugerencias o quieres saber más sobre PuenteLaboral360? Escríbenos y te respondemos a la brevedad.</p>
-    </section>
+    <main>
+        <hr class="separador-degradado">
 
-    <hr class="separador-degradado">
+        <!-- ====================================================
+             HERO DE CONTACTO
+             Box Model: padding (50px 20px), width 100%
+        ==================================================== -->
+        <section id="hero-contacto">
+            <h1>Ponte en <span>Contacto</span></h1>
+            <p>¿Tienes dudas, sugerencias o quieres saber más sobre PuenteLaboral360? Escríbenos y te respondemos a la brevedad.</p>
+        </section>
 
-    <!-- ====================================================
-         SECCIÓN PRINCIPAL DE CONTACTO
-         Layout: Flexbox (flex-wrap, gap, align-items)
-         - Columna izquierda (flex:2): formulario
-         - Columna derecha (flex:1): tarjetas de info
-    ==================================================== -->
-    <section id="seccion-contacto">
-        <article class="contacto-layout">
+        <hr class="separador-degradado">
 
-            <!-- FORMULARIO CON GRID DE CAMPOS -->
-            <section class="contacto-formulario">
-                <h2><i class="fa-solid fa-paper-plane"></i> Envíanos un Mensaje</h2>
-                <p class="descripcion-form">
-                    Completa el formulario y uno de nuestros asesores te responderá dentro de las próximas 24 horas hábiles.
-                </p>
+        <!-- ====================================================
+             SECCIÓN PRINCIPAL DE CONTACTO
+             Layout: Flexbox (flex-wrap, gap, align-items)
+             - Columna izquierda (flex:2): formulario
+             - Columna derecha (flex:1): tarjetas de info
+        ==================================================== -->
+        <section id="seccion-contacto">
+            <article class="contacto-layout">
 
-                <!-- Formulario con campos en Grid (2 columnas) -->
-                <form action="#" method="post">
-                    <section class="form-contacto-grid">
+                <!-- FORMULARIO CON GRID DE CAMPOS -->
+                <section class="contacto-formulario">
+                    <h2><i class="fa-solid fa-paper-plane"></i> Envíanos un Mensaje</h2>
+                    <p class="descripcion-form">
+                        Completa el formulario y uno de nuestros asesores te responderá dentro de las próximas 24 horas hábiles.
+                    </p>
 
-                        <!-- Fila 1: Nombre + Apellido (2 columnas) -->
-                        <section class="campo-grupo">
-                            <label for="nombre"><i class="fa-solid fa-user"></i> Nombre *</label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    <!-- Formulario con campos en Grid (2 columnas) -->
+                    <form action="#" method="post">
+                        <section class="form-contacto-grid">
+
+                            <!-- Fila 1: Nombre + Apellido (2 columnas) -->
+                            <section class="campo-grupo">
+                                <label for="nombre"><i class="fa-solid fa-user"></i> Nombre *</label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                            </section>
+
+                            <section class="campo-grupo">
+                                <label for="apellido"><i class="fa-solid fa-user"></i> Apellido *</label>
+                                <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+                            </section>
+
+                            <!-- Fila 2: Email + Teléfono (2 columnas) -->
+                            <section class="campo-grupo">
+                                <label for="email"><i class="fa-solid fa-envelope"></i> Correo electrónico *</label>
+                                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+                            </section>
+
+                            <section class="campo-grupo">
+                                <label for="telefono"><i class="fa-solid fa-phone"></i> Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="+593 9 XXXX XXXX">
+                            </section>
+
+                            <!-- Fila 3: Asunto completo (campo de 2 columnas) -->
+                            <section class="campo-grupo campo-completo">
+                                <label for="asunto"><i class="fa-solid fa-tag"></i> Asunto *</label>
+                                <select id="asunto" name="asunto" required>
+                                    <option value="">Selecciona un tema...</option>
+                                    <option value="info">Información general</option>
+                                    <option value="estudiante">Soy estudiante y tengo dudas</option>
+                                    <option value="empresa">Soy empresa y quiero registrarme</option>
+                                    <option value="instructor">Quiero ser instructor</option>
+                                    <option value="soporte">Soporte técnico</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </section>
+
+                            <!-- Fila 4: Mensaje completo (campo de 2 columnas) -->
+                            <section class="campo-grupo campo-completo">
+                                <label for="mensaje"><i class="fa-solid fa-comment"></i> Mensaje *</label>
+                                <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aqui..." maxlength="500" required oninput="document.getElementById('contador-mensaje').textContent=this.value.length+'/500'"></textarea>
+                                <small id="contador-mensaje" style="display:block;text-align:right;color:#94a3b8;font-size:12px;margin-top:4px">0/500</small>
+                            </section>
+
+                            <!-- Fila 5: Botón de envío completo -->
+                            <section class="campo-completo">
+                                <button type="submit" class="btn-enviar">
+                                    <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
+                                </button>
+                            </section>
+
+                        </section>
+                    </form>
+
+                    <section class="mensaje-exito">
+                        <i class="fa-solid fa-circle-check"></i> ¡Mensaje enviado! Te contactaremos pronto.
+                    </section>
+                </section>
+
+                <!-- TARJETAS DE INFORMACIÓN — Flexbox columna -->
+                <aside class="contacto-info">
+                    <h3 class="info-titulo"><i class="fa-solid fa-circle-info"></i> Información de Contacto</h3>
+
+                    <section class="tarjetas-info">
+
+                        <!-- Tarjeta: Email -->
+                        <section class="info-card">
+                            <section class="icono-card">
+                                <i class="fa-solid fa-envelope"></i>
+                            </section>
+                            <div class="texto-card">
+                                <h4>Correo Electrónico</h4>
+                                <p><a href="mailto:contacto@puentelaboral360.com">contacto@puentelaboral360.com</a></p>
+                                <p><a href="mailto:soporte@puentelaboral360.com">soporte@puentelaboral360.com</a></p>
+                            </div>
                         </section>
 
-                        <section class="campo-grupo">
-                            <label for="apellido"><i class="fa-solid fa-user"></i> Apellido *</label>
-                            <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+                        <!-- Tarjeta: Teléfono -->
+                        <section class="info-card">
+                            <section class="icono-card">
+                                <i class="fa-solid fa-phone"></i>
+                            </section>
+                            <div class="texto-card">
+                                <h4>Teléfono</h4>
+                                <p>+593 2 555-0100</p>
+                                <p>+593 98 765-4321 (WhatsApp)</p>
+                            </div>
                         </section>
 
-                        <!-- Fila 2: Email + Teléfono (2 columnas) -->
-                        <section class="campo-grupo">
-                            <label for="email"><i class="fa-solid fa-envelope"></i> Correo electrónico *</label>
-                            <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+                        <!-- Tarjeta: Dirección -->
+                        <section class="info-card">
+                            <section class="icono-card">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </section>
+                            <div class="texto-card">
+                                <h4>Dirección</h4>
+                                <p>Av. Amazonas N37-29 y Unión Nacional</p>
+                                <p>Quito, Pichincha — Ecuador</p>
+                            </div>
                         </section>
 
-                        <section class="campo-grupo">
-                            <label for="telefono"><i class="fa-solid fa-phone"></i> Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono" placeholder="+593 9 XXXX XXXX">
-                        </section>
-
-                        <!-- Fila 3: Asunto completo (campo de 2 columnas) -->
-                        <section class="campo-grupo campo-completo">
-                            <label for="asunto"><i class="fa-solid fa-tag"></i> Asunto *</label>
-                            <select id="asunto" name="asunto" required>
-                                <option value="">Selecciona un tema...</option>
-                                <option value="info">Información general</option>
-                                <option value="estudiante">Soy estudiante y tengo dudas</option>
-                                <option value="empresa">Soy empresa y quiero registrarme</option>
-                                <option value="instructor">Quiero ser instructor</option>
-                                <option value="soporte">Soporte técnico</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </section>
-
-                        <!-- Fila 4: Mensaje completo (campo de 2 columnas) -->
-                        <section class="campo-grupo campo-completo">
-                            <label for="mensaje"><i class="fa-solid fa-comment"></i> Mensaje *</label>
-                            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aqui..." maxlength="500" required oninput="document.getElementById('contador-mensaje').textContent=this.value.length+'/500'"></textarea>
-                            <small id="contador-mensaje" style="display:block;text-align:right;color:#94a3b8;font-size:12px;margin-top:4px">0/500</small>
-                        </section>
-
-                        <!-- Fila 5: Botón de envío completo -->
-                        <section class="campo-completo">
-                            <button type="submit" class="btn-enviar">
-                                <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
-                            </button>
+                        <!-- Tarjeta: Horario -->
+                        <section class="info-card">
+                            <section class="icono-card">
+                                <i class="fa-solid fa-clock"></i>
+                            </section>
+                            <div class="texto-card">
+                                <h4>Horario de Atención</h4>
+                                <p>Lunes a Viernes: 08:00 – 18:00</p>
+                                <p>Sábados: 09:00 – 13:00</p>
+                            </div>
                         </section>
 
                     </section>
-                </form>
+                </aside>
 
-                <section class="mensaje-exito">
-                    <i class="fa-solid fa-circle-check"></i> ¡Mensaje enviado! Te contactaremos pronto.
-                </section>
+            </article>
+        </section>
+
+        <!-- ====================================================
+             BLOQUE ADICIONAL: HORARIO Y FAQ
+             Artículos en fila con Flexbox
+             Box Model: border-left, padding, border-radius
+        ==================================================== -->
+        <section id="bloque-adicional">
+            <section class="bloque-adicional-inner">
+
+                <article class="articulo-horario">
+                    <h3><i class="fa-solid fa-calendar-days"></i> Horario Completo</h3>
+                    <section class="fila-horario">
+                        <span class="dia">Lunes – Viernes</span>
+                        <span class="hora">08:00 – 18:00</span>
+                    </section>
+                    <section class="fila-horario">
+                        <span class="dia">Sábados</span>
+                        <span class="hora">09:00 – 13:00</span>
+                    </section>
+                    <section class="fila-horario">
+                        <span class="dia">Domingos</span>
+                        <span class="hora">Cerrado</span>
+                    </section>
+                    <section class="fila-horario">
+                        <span class="dia">Feriados</span>
+                        <span class="hora">Solo online</span>
+                    </section>
+                </article>
+
+                <article class="articulo-faq-contacto">
+                    <h3><i class="fa-solid fa-circle-question"></i> Preguntas Rápidas</h3>
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            ¿Cuánto tarda la respuesta? — Máximo 24 horas hábiles.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            ¿Hay soporte en español? — Sí, 100% en español.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            ¿Puedo agendar una demo? — Sí, escríbenos por WhatsApp.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            ¿Hay soporte técnico? — Sí, por correo y chat en la plataforma.
+                        </li>
+                    </ul>
+                </article>
+
             </section>
-
-            <!-- TARJETAS DE INFORMACIÓN — Flexbox columna -->
-            <aside class="contacto-info">
-                <h3 class="info-titulo"><i class="fa-solid fa-circle-info"></i> Información de Contacto</h3>
-
-                <section class="tarjetas-info">
-
-                    <!-- Tarjeta: Email -->
-                    <section class="info-card">
-                        <section class="icono-card">
-                            <i class="fa-solid fa-envelope"></i>
-                        </section>
-                        <section class="texto-card">
-                            <h4>Correo Electrónico</h4>
-                            <p><a href="mailto:contacto@puentelaboral360.com">contacto@puentelaboral360.com</a></p>
-                            <p><a href="mailto:soporte@puentelaboral360.com">soporte@puentelaboral360.com</a></p>
-                        </section>
-                    </section>
-
-                    <!-- Tarjeta: Teléfono -->
-                    <section class="info-card">
-                        <section class="icono-card">
-                            <i class="fa-solid fa-phone"></i>
-                        </section>
-                        <section class="texto-card">
-                            <h4>Teléfono</h4>
-                            <p>+593 2 555-0100</p>
-                            <p>+593 98 765-4321 (WhatsApp)</p>
-                        </section>
-                    </section>
-
-                    <!-- Tarjeta: Dirección -->
-                    <section class="info-card">
-                        <section class="icono-card">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </section>
-                        <section class="texto-card">
-                            <h4>Dirección</h4>
-                            <p>Av. Amazonas N37-29 y Unión Nacional</p>
-                            <p>Quito, Pichincha — Ecuador</p>
-                        </section>
-                    </section>
-
-                    <!-- Tarjeta: Horario -->
-                    <section class="info-card">
-                        <section class="icono-card">
-                            <i class="fa-solid fa-clock"></i>
-                        </section>
-                        <section class="texto-card">
-                            <h4>Horario de Atención</h4>
-                            <p>Lunes a Viernes: 08:00 – 18:00</p>
-                            <p>Sábados: 09:00 – 13:00</p>
-                        </section>
-                    </section>
-
-                </section>
-            </aside>
-
-        </article>
-    </section>
-
-    <!-- ====================================================
-         BLOQUE ADICIONAL: HORARIO Y FAQ
-         Artículos en fila con Flexbox
-         Box Model: border-left, padding, border-radius
-    ==================================================== -->
-    <section id="bloque-adicional">
-        <section class="bloque-adicional-inner">
-
-            <article class="articulo-horario">
-                <h3><i class="fa-solid fa-calendar-days"></i> Horario Completo</h3>
-                <section class="fila-horario">
-                    <span class="dia">Lunes – Viernes</span>
-                    <span class="hora">08:00 – 18:00</span>
-                </section>
-                <section class="fila-horario">
-                    <span class="dia">Sábados</span>
-                    <span class="hora">09:00 – 13:00</span>
-                </section>
-                <section class="fila-horario">
-                    <span class="dia">Domingos</span>
-                    <span class="hora">Cerrado</span>
-                </section>
-                <section class="fila-horario">
-                    <span class="dia">Feriados</span>
-                    <span class="hora">Solo online</span>
-                </section>
-            </article>
-
-            <article class="articulo-faq-contacto">
-                <h3><i class="fa-solid fa-circle-question"></i> Preguntas Rápidas</h3>
-                <ul>
-                    <li>
-                        <i class="fa-solid fa-circle-check"></i>
-                        ¿Cuánto tarda la respuesta? — Máximo 24 horas hábiles.
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check"></i>
-                        ¿Hay soporte en español? — Sí, 100% en español.
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check"></i>
-                        ¿Puedo agendar una demo? — Sí, escríbenos por WhatsApp.
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-circle-check"></i>
-                        ¿Hay soporte técnico? — Sí, por correo y chat en la plataforma.
-                    </li>
-                </ul>
-            </article>
-
         </section>
-    </section>
 
-    <!-- ====================================================
-         REDES SOCIALES — Flexbox horizontal
-    ==================================================== -->
-    <section id="redes-sociales">
-        <h2><i class="fa-solid fa-share-nodes"></i> Síguenos en Redes</h2>
-        <section class="redes-lista">
-            <a href="#" class="red-social-btn red-linkedin">
-                <i class="fa-brands fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="#" class="red-social-btn red-instagram">
-                <i class="fa-brands fa-instagram"></i> Instagram
-            </a>
-            <a href="#" class="red-social-btn red-twitter">
-                <i class="fa-brands fa-twitter"></i> Twitter / X
-            </a>
-            <a href="#" class="red-social-btn red-facebook">
-                <i class="fa-brands fa-facebook"></i> Facebook
-            </a>
+        <!-- ====================================================
+             REDES SOCIALES — Flexbox horizontal
+        ==================================================== -->
+        <section id="redes-sociales">
+            <h2><i class="fa-solid fa-share-nodes"></i> Síguenos en Redes</h2>
+            <section class="redes-lista">
+                <a href="#" class="red-social-btn red-linkedin">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="#" class="red-social-btn red-instagram">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="#" class="red-social-btn red-twitter">
+                    <i class="fa-brands fa-twitter"></i> Twitter / X
+                </a>
+                <a href="#" class="red-social-btn red-facebook">
+                    <i class="fa-brands fa-facebook"></i> Facebook
+                </a>
+            </section>
         </section>
-    </section>
 
-    <!-- FOOTER -->
+        <!-- FOOTER -->
+    </main>
+
     <footer class="footer">
         <nav class="footer-links">
             <a href="../servicios/servicios.html">Servicios</a>

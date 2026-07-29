@@ -21,7 +21,7 @@
          justify-content: space-between, align-items: center,
          flex-wrap: wrap, gap: 10px
     ==================================================== -->
-    <section class="navbar">
+    <header class="navbar">
         <a href="../../index.html" class="logo">PuenteLaboral<span>360</span></a>
         <button class="navbar-toggle" id="navToggle" aria-label="Abrir menú">
             <i class="fa-solid fa-bars"></i>
@@ -36,370 +36,374 @@
                 <a href="../registro/registro.html" class="btn-nav-registro"><i class="fa-solid fa-user-plus"></i> Registrarse</a>
             </span>
         </nav>
-    </section>
+    </header>
 
-    <hr class="separador-degradado">
 
-    <!-- ====================================================
-         HERO DE SERVICIOS
-         Box Model: padding 70px 20px
-         Flexbox en botones: justify-content, gap, flex-wrap
-    ==================================================== -->
-    <section id="hero-servicios">
-        <h1>Nuestros <span>Servicios</span></h1>
-        <p>
-            Ofrecemos un ecosistema completo de formación, certificación y conexión laboral
-            diseñado para estudiantes, instructores y empresas de Ecuador.
-        </p>
-        <section class="hero-servicios-botones">
-            <a href="../registro/registro.html" class="btn-hero-amarillo">
-                <i class="fa-solid fa-rocket"></i> Comenzar Gratis
-            </a>
-            <a href="../contacto/contacto.html" class="btn-hero-blanco">
-                <i class="fa-solid fa-envelope"></i> Solicitar Demo
-            </a>
-        </section>
-    </section>
+    <main>
+        <hr class="separador-degradado">
 
-    <hr class="separador-degradado">
-
-    <!-- ====================================================
-         TARJETAS DE SERVICIOS — FLEXBOX
-         display: flex
-         justify-content: center
-         align-items: stretch
-         flex-wrap: wrap
-         gap: 24px
-    ==================================================== -->
-    <section id="servicios-lista">
-        <section class="titulo-centrado">
-            <h2>¿Qué Ofrecemos?</h2>
-        </section>
-        <p class="subtitulo">Soluciones para cada etapa del camino educativo al empleo</p>
-
-        <section class="servicios-flex">
-
-            <!-- Servicio 1: Formación Técnica -->
-            <article class="servicio-card">
-                <section class="servicio-icono">
-                    <i class="fa-solid fa-book-open"></i>
-                </section>
-                <h3>Formación Técnica</h3>
-                <p>Cursos prácticos creados por instructores certificados, enfocados en las habilidades que demanda el mercado laboral actual.</p>
-                <ul class="servicio-features">
-                    <li><i class="fa-solid fa-check"></i> +30 cursos disponibles</li>
-                    <li><i class="fa-solid fa-check"></i> Video clases + ejercicios prácticos</li>
-                    <li><i class="fa-solid fa-check"></i> Certificado al completar</li>
-                    <li><i class="fa-solid fa-check"></i> Acceso desde cualquier dispositivo</li>
-                </ul>
-                <a href="../cursos/cursos.html" class="btn btn-azul">Ver Cursos</a>
-            </article>
-
-            <!-- Servicio 2: Verificación de Habilidades (POPULAR) -->
-            <article class="servicio-card">
-                <span class="badge-popular"><i class="fa-solid fa-star"></i> Popular</span>
-                <section class="servicio-icono">
-                    <i class="fa-solid fa-shield-check"></i>
-                </section>
-                <h3>Verificación de Habilidades</h3>
-                <p>Las habilidades de tu perfil son evaluadas y validadas por instructores calificados, dándote una ventaja competitiva real.</p>
-                <ul class="servicio-features">
-                    <li><i class="fa-solid fa-check"></i> Evaluación por expertos</li>
-                    <li><i class="fa-solid fa-check"></i> Badge verificado en tu perfil</li>
-                    <li><i class="fa-solid fa-check"></i> Nivel de competencia medido</li>
-                    <li><i class="fa-solid fa-check"></i> Reconocido por empresas</li>
-                </ul>
-                <a href="../perfil/perfil.html" class="btn btn-azul">Ver Mi Perfil</a>
-            </article>
-
-            <!-- Servicio 3: Motor de Matching -->
-            <article class="servicio-card">
-                <section class="servicio-icono">
-                    <i class="fa-solid fa-magnifying-glass-chart"></i>
-                </section>
-                <h3>Motor de Matching</h3>
-                <p>Nuestro algoritmo analiza tu perfil y lo compara automáticamente con los requisitos de las empresas registradas.</p>
-                <ul class="servicio-features">
-                    <li><i class="fa-solid fa-check"></i> Matching automático 24/7</li>
-                    <li><i class="fa-solid fa-check"></i> Porcentaje de compatibilidad</li>
-                    <li><i class="fa-solid fa-check"></i> Sin envío manual de CV</li>
-                    <li><i class="fa-solid fa-check"></i> Notificaciones en tiempo real</li>
-                </ul>
-                <a href="../buscar-talento/buscar-talento.html" class="btn btn-azul">Ver Matching</a>
-            </article>
-
-            <!-- Servicio 4: Gestión de Vacantes -->
-            <article class="servicio-card">
-                <section class="servicio-icono">
-                    <i class="fa-solid fa-briefcase"></i>
-                </section>
-                <h3>Gestión de Vacantes</h3>
-                <p>Las empresas pueden publicar vacantes, definir requisitos de habilidades y recibir candidatos pre-filtrados automáticamente.</p>
-                <ul class="servicio-features">
-                    <li><i class="fa-solid fa-check"></i> Publicación ilimitada</li>
-                    <li><i class="fa-solid fa-check"></i> Filtros por habilidad y nivel</li>
-                    <li><i class="fa-solid fa-check"></i> Candidatos pre-seleccionados</li>
-                    <li><i class="fa-solid fa-check"></i> Dashboard de seguimiento</li>
-                </ul>
-                <a href="../mis-vacantes/mis-vacantes.html" class="btn btn-azul">Ver Vacantes</a>
-            </article>
-
-            <!-- Servicio 5: Certificaciones Reconocidas -->
-            <article class="servicio-card">
-                <section class="servicio-icono">
-                    <i class="fa-solid fa-certificate"></i>
-                </section>
-                <h3>Certificaciones Reconocidas</h3>
-                <p>Cada certificado emitido está respaldado por evidencia real de aprendizaje y es reconocido por las empresas de nuestra red.</p>
-                <ul class="servicio-features">
-                    <li><i class="fa-solid fa-check"></i> PDF descargable</li>
-                    <li><i class="fa-solid fa-check"></i> Código único de verificación</li>
-                    <li><i class="fa-solid fa-check"></i> Visible en perfil público</li>
-                    <li><i class="fa-solid fa-check"></i> Compartible en LinkedIn</li>
-                </ul>
-                <a href="../cursos/cursos.html" class="btn btn-azul">Ver Certificaciones</a>
-            </article>
-
-            <!-- Servicio 6: Panel de Instructor -->
-            <article class="servicio-card">
-                <section class="servicio-icono">
-                    <i class="fa-solid fa-chalkboard-user"></i>
-                </section>
-                <h3>Panel de Instructor</h3>
-                <p>Herramientas para que los instructores creen cursos, gestionen matrículas y emitan certificados a sus estudiantes.</p>
-                <ul class="servicio-features">
-                    <li><i class="fa-solid fa-check"></i> Creación de cursos</li>
-                    <li><i class="fa-solid fa-check"></i> Seguimiento de progreso</li>
-                    <li><i class="fa-solid fa-check"></i> Emisión de certificados</li>
-                    <li><i class="fa-solid fa-check"></i> Estadísticas detalladas</li>
-                </ul>
-                <a href="../dashboard-instructor/dashboard-instructor.html" class="btn btn-azul">Ver Panel</a>
-            </article>
-
-        </section>
-    </section>
-
-    <!-- ====================================================
-         BENEFICIOS — CSS GRID 2×2
-         display: grid
-         grid-template-columns: repeat(2, 1fr)
-         grid-template-rows: repeat(2, auto)
-         gap: 24px
-    ==================================================== -->
-    <section id="beneficios">
-        <section class="titulo-centrado">
-            <h2>¿Por Qué Elegirnos?</h2>
-        </section>
-        <p class="subtitulo">Beneficios concretos que nos diferencian de otras plataformas</p>
-
-        <section class="beneficios-grid">
-
-            <!-- Beneficio 1 -->
-            <article class="beneficio-item">
-                <section class="beneficio-icono icono-azul">
-                    <i class="fa-solid fa-bolt"></i>
-                </section>
-                <section class="beneficio-texto">
-                    <h3>Matching Inteligente y Rápido</h3>
-                    <p>Nuestro motor de emparejamiento procesa perfiles en segundos y conecta estudiantes con empresas sin intermediarios. Sin esperas, sin formularios innecesarios.</p>
-                </section>
-            </article>
-
-            <!-- Beneficio 2 -->
-            <article class="beneficio-item">
-                <section class="beneficio-icono icono-verde">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </section>
-                <section class="beneficio-texto">
-                    <h3>Habilidades Verificadas por Expertos</h3>
-                    <p>No bastan las declaraciones: cada habilidad en tu perfil es evaluada y validada por instructores calificados. Las empresas confían en lo que ven.</p>
-                </section>
-            </article>
-
-            <!-- Beneficio 3 -->
-            <article class="beneficio-item">
-                <section class="beneficio-icono icono-naranja">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                </section>
-                <section class="beneficio-texto">
-                    <h3>Cursos Orientados al Mercado Real</h3>
-                    <p>El contenido de cada curso es diseñado en colaboración con empresas para garantizar que lo que aprendes es exactamente lo que el mercado laboral necesita hoy.</p>
-                </section>
-            </article>
-
-            <!-- Beneficio 4 -->
-            <article class="beneficio-item">
-                <section class="beneficio-icono icono-morado">
-                    <i class="fa-solid fa-chart-pie"></i>
-                </section>
-                <section class="beneficio-texto">
-                    <h3>Panel de Control para Cada Rol</h3>
-                    <p>Estudiantes, instructores y empresas tienen dashboards personalizados con métricas útiles, notificaciones y herramientas específicas para su rol dentro de la plataforma.</p>
-                </section>
-            </article>
-
-        </section>
-    </section>
-
-    <!-- ====================================================
-         PROCESO DE USO — FLEXBOX CON PASOS
-         display: flex
-         justify-content: center
-         align-items: flex-start
-         flex-wrap: wrap
-         gap: 0
-    ==================================================== -->
-    <section id="proceso">
-        <h2>¿Cómo Funciona?</h2>
-        <p class="subtitulo">Tu camino del aprendizaje al empleo en 5 pasos</p>
-
-        <section class="proceso-fila">
-
-            <section class="proceso-paso">
-                <section class="paso-numero">1</section>
-                <h3>Regístrate</h3>
-                <p>Crea tu cuenta gratuita y declara tus habilidades actuales</p>
+        <!-- ====================================================
+             HERO DE SERVICIOS
+             Box Model: padding 70px 20px
+             Flexbox en botones: justify-content, gap, flex-wrap
+        ==================================================== -->
+        <section id="hero-servicios">
+            <h1>Nuestros <span>Servicios</span></h1>
+            <p>
+                Ofrecemos un ecosistema completo de formación, certificación y conexión laboral
+                diseñado para estudiantes, instructores y empresas de Ecuador.
+            </p>
+            <section class="hero-servicios-botones">
+                <a href="../registro/registro.html" class="btn-hero-amarillo">
+                    <i class="fa-solid fa-rocket"></i> Comenzar Gratis
+                </a>
+                <a href="../contacto/contacto.html" class="btn-hero-blanco">
+                    <i class="fa-solid fa-envelope"></i> Solicitar Demo
+                </a>
             </section>
-
-            <section class="proceso-paso">
-                <section class="paso-numero">2</section>
-                <h3>Aprende</h3>
-                <p>Toma cursos verificados por instructores especializados</p>
-            </section>
-
-            <section class="proceso-paso">
-                <section class="paso-numero">3</section>
-                <h3>Certifícate</h3>
-                <p>Obtén certificados con evidencia real de competencia</p>
-            </section>
-
-            <section class="proceso-paso">
-                <section class="paso-numero">4</section>
-                <h3>Conéctate</h3>
-                <p>El motor de matching te presenta a empresas automáticamente</p>
-            </section>
-
-            <section class="proceso-paso">
-                <section class="paso-numero">5</section>
-                <h3>Consigue Empleo</h3>
-                <p>Acepta oportunidades que se ajusten a tu perfil y metas</p>
-            </section>
-
         </section>
-    </section>
 
-    <!-- ====================================================
-         PLANES DE PRECIOS — FLEXBOX
-         display: flex
-         justify-content: center
-         align-items: stretch
-         flex-wrap: wrap
-         gap: 24px
-    ==================================================== -->
-    <section id="planes">
-        <section class="titulo-centrado">
-            <h2>Nuestros Planes</h2>
+        <hr class="separador-degradado">
+
+        <!-- ====================================================
+             TARJETAS DE SERVICIOS — FLEXBOX
+             display: flex
+             justify-content: center
+             align-items: stretch
+             flex-wrap: wrap
+             gap: 24px
+        ==================================================== -->
+        <section id="servicios-lista">
+            <section class="titulo-centrado">
+                <h2>¿Qué Ofrecemos?</h2>
+            </section>
+            <p class="subtitulo">Soluciones para cada etapa del camino educativo al empleo</p>
+
+            <section class="servicios-flex">
+
+                <!-- Servicio 1: Formación Técnica -->
+                <article class="servicio-card">
+                    <div class="servicio-icono">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3>Formación Técnica</h3>
+                    <p>Cursos prácticos creados por instructores certificados, enfocados en las habilidades que demanda el mercado laboral actual.</p>
+                    <ul class="servicio-features">
+                        <li><i class="fa-solid fa-check"></i> +30 cursos disponibles</li>
+                        <li><i class="fa-solid fa-check"></i> Video clases + ejercicios prácticos</li>
+                        <li><i class="fa-solid fa-check"></i> Certificado al completar</li>
+                        <li><i class="fa-solid fa-check"></i> Acceso desde cualquier dispositivo</li>
+                    </ul>
+                    <a href="../cursos/cursos.html" class="btn btn-azul">Ver Cursos</a>
+                </article>
+
+                <!-- Servicio 2: Verificación de Habilidades (POPULAR) -->
+                <article class="servicio-card">
+                    <span class="badge-popular"><i class="fa-solid fa-star"></i> Popular</span>
+                    <div class="servicio-icono">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
+                    <h3>Verificación de Habilidades</h3>
+                    <p>Las habilidades de tu perfil son evaluadas y validadas por instructores calificados, dándote una ventaja competitiva real.</p>
+                    <ul class="servicio-features">
+                        <li><i class="fa-solid fa-check"></i> Evaluación por expertos</li>
+                        <li><i class="fa-solid fa-check"></i> Badge verificado en tu perfil</li>
+                        <li><i class="fa-solid fa-check"></i> Nivel de competencia medido</li>
+                        <li><i class="fa-solid fa-check"></i> Reconocido por empresas</li>
+                    </ul>
+                    <a href="../perfil/perfil.html" class="btn btn-azul">Ver Mi Perfil</a>
+                </article>
+
+                <!-- Servicio 3: Motor de Matching -->
+                <article class="servicio-card">
+                    <div class="servicio-icono">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h3>Motor de Matching</h3>
+                    <p>Nuestro algoritmo analiza tu perfil y lo compara automáticamente con los requisitos de las empresas registradas.</p>
+                    <ul class="servicio-features">
+                        <li><i class="fa-solid fa-check"></i> Matching automático 24/7</li>
+                        <li><i class="fa-solid fa-check"></i> Porcentaje de compatibilidad</li>
+                        <li><i class="fa-solid fa-check"></i> Sin envío manual de CV</li>
+                        <li><i class="fa-solid fa-check"></i> Notificaciones en tiempo real</li>
+                    </ul>
+                    <a href="../buscar-talento/buscar-talento.html" class="btn btn-azul">Ver Matching</a>
+                </article>
+
+                <!-- Servicio 4: Gestión de Vacantes -->
+                <article class="servicio-card">
+                    <div class="servicio-icono">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3>Gestión de Vacantes</h3>
+                    <p>Las empresas pueden publicar vacantes, definir requisitos de habilidades y recibir candidatos pre-filtrados automáticamente.</p>
+                    <ul class="servicio-features">
+                        <li><i class="fa-solid fa-check"></i> Publicación ilimitada</li>
+                        <li><i class="fa-solid fa-check"></i> Filtros por habilidad y nivel</li>
+                        <li><i class="fa-solid fa-check"></i> Candidatos pre-seleccionados</li>
+                        <li><i class="fa-solid fa-check"></i> Dashboard de seguimiento</li>
+                    </ul>
+                    <a href="../mis-vacantes/mis-vacantes.html" class="btn btn-azul">Ver Vacantes</a>
+                </article>
+
+                <!-- Servicio 5: Certificaciones Reconocidas -->
+                <article class="servicio-card">
+                    <div class="servicio-icono">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <h3>Certificaciones Reconocidas</h3>
+                    <p>Cada certificado emitido está respaldado por evidencia real de aprendizaje y es reconocido por las empresas de nuestra red.</p>
+                    <ul class="servicio-features">
+                        <li><i class="fa-solid fa-check"></i> PDF descargable</li>
+                        <li><i class="fa-solid fa-check"></i> Código único de verificación</li>
+                        <li><i class="fa-solid fa-check"></i> Visible en perfil público</li>
+                        <li><i class="fa-solid fa-check"></i> Compartible en LinkedIn</li>
+                    </ul>
+                    <a href="../cursos/cursos.html" class="btn btn-azul">Ver Certificaciones</a>
+                </article>
+
+                <!-- Servicio 6: Panel de Instructor -->
+                <article class="servicio-card">
+                    <div class="servicio-icono">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <h3>Panel de Instructor</h3>
+                    <p>Herramientas para que los instructores creen cursos, gestionen matrículas y emitan certificados a sus estudiantes.</p>
+                    <ul class="servicio-features">
+                        <li><i class="fa-solid fa-check"></i> Creación de cursos</li>
+                        <li><i class="fa-solid fa-check"></i> Seguimiento de progreso</li>
+                        <li><i class="fa-solid fa-check"></i> Emisión de certificados</li>
+                        <li><i class="fa-solid fa-check"></i> Estadísticas detalladas</li>
+                    </ul>
+                    <a href="../dashboard-instructor/dashboard-instructor.html" class="btn btn-azul">Ver Panel</a>
+                </article>
+
+            </section>
         </section>
-        <p class="subtitulo">Opciones para cada tipo de usuario</p>
 
-        <section class="planes-flex">
+        <!-- ====================================================
+             BENEFICIOS — CSS GRID 2×2
+             display: grid
+             grid-template-columns: repeat(2, 1fr)
+             grid-template-rows: repeat(2, auto)
+             gap: 24px
+        ==================================================== -->
+        <section id="beneficios">
+            <section class="titulo-centrado">
+                <h2>¿Por Qué Elegirnos?</h2>
+            </section>
+            <p class="subtitulo">Beneficios concretos que nos diferencian de otras plataformas</p>
 
-            <!-- Plan Básico -->
-            <article class="plan-card">
-                <p class="plan-nombre">Básico</p>
-                <p class="plan-precio">Gratis <span>/ mes</span></p>
-                <p class="plan-descripcion">Ideal para comenzar tu camino en la plataforma</p>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check check"></i> Perfil público</li>
-                    <li><i class="fa-solid fa-check check"></i> Acceso a cursos gratuitos</li>
-                    <li><i class="fa-solid fa-check check"></i> 1 certificado activo</li>
-                    <li><i class="fa-solid fa-xmark cross"></i> Matching automático</li>
-                    <li><i class="fa-solid fa-xmark cross"></i> Notificaciones de empresas</li>
-                </ul>
-                <!-- El plan define el rol: el registro ya no vuelve a preguntarlo -->
-                <a href="../registro/registro.html?rol=estudiante&amp;plan=B%C3%A1sico"
-                   class="btn btn-azul">Comenzar Gratis como Estudiante</a>
-            </article>
+            <section class="beneficios-grid">
 
-            <!-- Plan Pro (DESTACADO) -->
-            <article class="plan-card plan-destacado">
-                <span class="badge-mas-popular"><i class="fa-solid fa-star"></i> Más Popular</span>
-                <p class="plan-nombre">Pro Estudiante</p>
-                <p class="plan-precio">$9 <span>/ mes</span></p>
-                <p class="plan-descripcion">Para estudiantes listos para conectarse con empresas</p>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check check"></i> Todo lo del plan Básico</li>
-                    <li><i class="fa-solid fa-check check"></i> Cursos ilimitados</li>
-                    <li><i class="fa-solid fa-check check"></i> Certificados ilimitados</li>
-                    <li><i class="fa-solid fa-check check"></i> Matching automático</li>
-                    <li><i class="fa-solid fa-check check"></i> Notificaciones de empresas</li>
-                </ul>
-                <a href="../registro/registro.html?rol=estudiante&amp;plan=Pro%20Estudiante"
-                   class="btn btn-azul">Elegir Pro Estudiante</a>
-            </article>
+                <!-- Beneficio 1 -->
+                <article class="beneficio-item">
+                    <section class="beneficio-icono icono-azul">
+                        <i class="fa-solid fa-bolt"></i>
+                    </section>
+                    <section class="beneficio-texto">
+                        <h3>Matching Inteligente y Rápido</h3>
+                        <p>Nuestro motor de emparejamiento procesa perfiles en segundos y conecta estudiantes con empresas sin intermediarios. Sin esperas, sin formularios innecesarios.</p>
+                    </section>
+                </article>
 
-            <!-- Plan Instructor -->
-            <article class="plan-card">
-                <p class="plan-nombre">Instructor</p>
-                <p class="plan-precio">$19 <span>/ mes</span></p>
-                <p class="plan-descripcion">Para profesionales que dictan cursos en la plataforma</p>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check check"></i> Publicación de cursos</li>
-                    <li><i class="fa-solid fa-check check"></i> Gestión de matrículas</li>
-                    <li><i class="fa-solid fa-check check"></i> Emisión de certificados</li>
-                    <li><i class="fa-solid fa-check check"></i> Panel de instructor</li>
-                    <li><i class="fa-solid fa-xmark cross"></i> Buscador de talento</li>
-                </ul>
-                <a href="../registro/registro.html?rol=instructor&amp;plan=Instructor"
-                   class="btn btn-azul">Registrarme como Instructor</a>
-            </article>
+                <!-- Beneficio 2 -->
+                <article class="beneficio-item">
+                    <section class="beneficio-icono icono-verde">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </section>
+                    <section class="beneficio-texto">
+                        <h3>Habilidades Verificadas por Expertos</h3>
+                        <p>No bastan las declaraciones: cada habilidad en tu perfil es evaluada y validada por instructores calificados. Las empresas confían en lo que ven.</p>
+                    </section>
+                </article>
 
-            <!-- Plan Empresa -->
-            <article class="plan-card">
-                <p class="plan-nombre">Empresa</p>
-                <p class="plan-precio">$49 <span>/ mes</span></p>
-                <p class="plan-descripcion">Para empresas que buscan talento verificado</p>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check check"></i> Publicación de vacantes</li>
-                    <li><i class="fa-solid fa-check check"></i> Acceso al buscador de talento</li>
-                    <li><i class="fa-solid fa-check check"></i> Matching automático inverso</li>
-                    <li><i class="fa-solid fa-check check"></i> Dashboard de reclutamiento</li>
-                    <li><i class="fa-solid fa-check check"></i> Soporte prioritario</li>
-                </ul>
-                <a href="../registro/registro.html?rol=empresa&amp;plan=Empresa"
-                   class="btn btn-azul">Registrar mi Empresa</a>
-            </article>
+                <!-- Beneficio 3 -->
+                <article class="beneficio-item">
+                    <section class="beneficio-icono icono-naranja">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </section>
+                    <section class="beneficio-texto">
+                        <h3>Cursos Orientados al Mercado Real</h3>
+                        <p>El contenido de cada curso es diseñado en colaboración con empresas para garantizar que lo que aprendes es exactamente lo que el mercado laboral necesita hoy.</p>
+                    </section>
+                </article>
 
+                <!-- Beneficio 4 -->
+                <article class="beneficio-item">
+                    <section class="beneficio-icono icono-morado">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </section>
+                    <section class="beneficio-texto">
+                        <h3>Panel de Control para Cada Rol</h3>
+                        <p>Estudiantes, instructores y empresas tienen dashboards personalizados con métricas útiles, notificaciones y herramientas específicas para su rol dentro de la plataforma.</p>
+                    </section>
+                </article>
+
+            </section>
         </section>
-    </section>
 
-    <!-- ====================================================
-         LLAMADA A LA ACCIÓN FINAL
-         Flexbox: botones centrados con gap
-    ==================================================== -->
-    <section id="cta-servicios">
-        <h2>¿Listo para empezar?</h2>
-        <p>Únete a más de 1,240 estudiantes que ya están construyendo su futuro profesional con PuenteLaboral360.</p>
-        <section class="cta-botones">
-            <a href="../registro/registro.html" class="btn-hero-amarillo">
-                <i class="fa-solid fa-rocket"></i> Crear Cuenta Gratis
-            </a>
-            <a href="../contacto/contacto.html" class="btn-hero-blanco">
-                <i class="fa-solid fa-headset"></i> Hablar con un Asesor
-            </a>
+        <!-- ====================================================
+             PROCESO DE USO — FLEXBOX CON PASOS
+             display: flex
+             justify-content: center
+             align-items: flex-start
+             flex-wrap: wrap
+             gap: 0
+        ==================================================== -->
+        <section id="proceso">
+            <h2>¿Cómo Funciona?</h2>
+            <p class="subtitulo">Tu camino del aprendizaje al empleo en 5 pasos</p>
+
+            <section class="proceso-fila">
+
+                <section class="proceso-paso">
+                    <div class="paso-numero">1</div>
+                    <h3>Regístrate</h3>
+                    <p>Crea tu cuenta gratuita y declara tus habilidades actuales</p>
+                </section>
+
+                <section class="proceso-paso">
+                    <div class="paso-numero">2</div>
+                    <h3>Aprende</h3>
+                    <p>Toma cursos verificados por instructores especializados</p>
+                </section>
+
+                <section class="proceso-paso">
+                    <div class="paso-numero">3</div>
+                    <h3>Certifícate</h3>
+                    <p>Obtén certificados con evidencia real de competencia</p>
+                </section>
+
+                <section class="proceso-paso">
+                    <div class="paso-numero">4</div>
+                    <h3>Conéctate</h3>
+                    <p>El motor de matching te presenta a empresas automáticamente</p>
+                </section>
+
+                <section class="proceso-paso">
+                    <div class="paso-numero">5</div>
+                    <h3>Consigue Empleo</h3>
+                    <p>Acepta oportunidades que se ajusten a tu perfil y metas</p>
+                </section>
+
+            </section>
         </section>
-    </section>
 
-    <!-- ASIDE INFORMATIVO -->
-    <aside>
-        <i class="fa-solid fa-circle-info"></i>
-        <strong>¿Eres instructor o institución educativa?</strong>
-        Tenemos planes especiales para organizaciones. Escríbenos a
-        <a href="mailto:alianzas@puentelaboral360.com" style="color:#ffdd57;">alianzas@puentelaboral360.com</a>
-        y diseñamos un plan a medida para tu institución.
-    </aside>
+        <!-- ====================================================
+             PLANES DE PRECIOS — FLEXBOX
+             display: flex
+             justify-content: center
+             align-items: stretch
+             flex-wrap: wrap
+             gap: 24px
+        ==================================================== -->
+        <section id="planes">
+            <section class="titulo-centrado">
+                <h2>Nuestros Planes</h2>
+            </section>
+            <p class="subtitulo">Opciones para cada tipo de usuario</p>
 
-    <!-- FOOTER -->
+            <section class="planes-flex">
+
+                <!-- Plan Básico -->
+                <article class="plan-card">
+                    <p class="plan-nombre">Básico</p>
+                    <p class="plan-precio">Gratis <span>/ mes</span></p>
+                    <p class="plan-descripcion">Ideal para comenzar tu camino en la plataforma</p>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check check"></i> Perfil público</li>
+                        <li><i class="fa-solid fa-check check"></i> Acceso a cursos gratuitos</li>
+                        <li><i class="fa-solid fa-check check"></i> 1 certificado activo</li>
+                        <li><i class="fa-solid fa-xmark cross"></i> Matching automático</li>
+                        <li><i class="fa-solid fa-xmark cross"></i> Notificaciones de empresas</li>
+                    </ul>
+                    <!-- El plan define el rol: el registro ya no vuelve a preguntarlo -->
+                    <a href="../registro/registro.html?rol=estudiante&amp;plan=B%C3%A1sico"
+                       class="btn btn-azul">Comenzar Gratis como Estudiante</a>
+                </article>
+
+                <!-- Plan Pro (DESTACADO) -->
+                <article class="plan-card plan-destacado">
+                    <span class="badge-mas-popular"><i class="fa-solid fa-star"></i> Más Popular</span>
+                    <p class="plan-nombre">Pro Estudiante</p>
+                    <p class="plan-precio">$9 <span>/ mes</span></p>
+                    <p class="plan-descripcion">Para estudiantes listos para conectarse con empresas</p>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check check"></i> Todo lo del plan Básico</li>
+                        <li><i class="fa-solid fa-check check"></i> Cursos ilimitados</li>
+                        <li><i class="fa-solid fa-check check"></i> Certificados ilimitados</li>
+                        <li><i class="fa-solid fa-check check"></i> Matching automático</li>
+                        <li><i class="fa-solid fa-check check"></i> Notificaciones de empresas</li>
+                    </ul>
+                    <a href="../registro/registro.html?rol=estudiante&amp;plan=Pro%20Estudiante"
+                       class="btn btn-azul">Elegir Pro Estudiante</a>
+                </article>
+
+                <!-- Plan Instructor -->
+                <article class="plan-card">
+                    <p class="plan-nombre">Instructor</p>
+                    <p class="plan-precio">$19 <span>/ mes</span></p>
+                    <p class="plan-descripcion">Para profesionales que dictan cursos en la plataforma</p>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check check"></i> Publicación de cursos</li>
+                        <li><i class="fa-solid fa-check check"></i> Gestión de matrículas</li>
+                        <li><i class="fa-solid fa-check check"></i> Emisión de certificados</li>
+                        <li><i class="fa-solid fa-check check"></i> Panel de instructor</li>
+                        <li><i class="fa-solid fa-xmark cross"></i> Buscador de talento</li>
+                    </ul>
+                    <a href="../registro/registro.html?rol=instructor&amp;plan=Instructor"
+                       class="btn btn-azul">Registrarme como Instructor</a>
+                </article>
+
+                <!-- Plan Empresa -->
+                <article class="plan-card">
+                    <p class="plan-nombre">Empresa</p>
+                    <p class="plan-precio">$49 <span>/ mes</span></p>
+                    <p class="plan-descripcion">Para empresas que buscan talento verificado</p>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check check"></i> Publicación de vacantes</li>
+                        <li><i class="fa-solid fa-check check"></i> Acceso al buscador de talento</li>
+                        <li><i class="fa-solid fa-check check"></i> Matching automático inverso</li>
+                        <li><i class="fa-solid fa-check check"></i> Dashboard de reclutamiento</li>
+                        <li><i class="fa-solid fa-check check"></i> Soporte prioritario</li>
+                    </ul>
+                    <a href="../registro/registro.html?rol=empresa&amp;plan=Empresa"
+                       class="btn btn-azul">Registrar mi Empresa</a>
+                </article>
+
+            </section>
+        </section>
+
+        <!-- ====================================================
+             LLAMADA A LA ACCIÓN FINAL
+             Flexbox: botones centrados con gap
+        ==================================================== -->
+        <section id="cta-servicios">
+            <h2>¿Listo para empezar?</h2>
+            <p>Únete a más de 1,240 estudiantes que ya están construyendo su futuro profesional con PuenteLaboral360.</p>
+            <section class="cta-botones">
+                <a href="../registro/registro.html" class="btn-hero-amarillo">
+                    <i class="fa-solid fa-rocket"></i> Crear Cuenta Gratis
+                </a>
+                <a href="../contacto/contacto.html" class="btn-hero-blanco">
+                    <i class="fa-solid fa-headset"></i> Hablar con un Asesor
+                </a>
+            </section>
+        </section>
+
+        <!-- ASIDE INFORMATIVO -->
+        <aside>
+            <i class="fa-solid fa-circle-info"></i>
+            <strong>¿Eres instructor o institución educativa?</strong>
+            Tenemos planes especiales para organizaciones. Escríbenos a
+            <a href="mailto:alianzas@puentelaboral360.com" style="color:#ffdd57;">alianzas@puentelaboral360.com</a>
+            y diseñamos un plan a medida para tu institución.
+        </aside>
+
+        <!-- FOOTER -->
+    </main>
+
     <footer class="footer">
         <nav class="footer-links">
             <a href="../servicios/servicios.html">Servicios</a>

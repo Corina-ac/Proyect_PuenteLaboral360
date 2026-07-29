@@ -251,20 +251,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             return `
                 <section class="solicitud-card">
-                    <section class="info-sol" style="display:flex;align-items:center;gap:12px">
+                    <div class="info-sol" style="display:flex;align-items:center;gap:12px">
                         <img src="${avatarUrl}" alt="" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #e2e8f0;flex-shrink:0">
                         <section>
-                            <section class="nombre-sol">${UI.escapar(nombre)}</section>
-                            <section class="detalle-sol">Solicita certificacion en: ${UI.escapar(nombreCurso)}</section>
-                            <section class="solicitud-progreso">
+                            <div class="nombre-sol">${UI.escapar(nombre)}</div>
+                            <div class="detalle-sol">Solicita certificacion en: ${UI.escapar(nombreCurso)}</div>
+                            <div class="solicitud-progreso">
                                 <span class="badge ${clase}">Progreso: ${m.progreso}%</span>
-                            </section>
+                            </div>
                         </section>
-                    </section>
-                    <section class="acciones-sol">
+                    </div>
+                    <div class="acciones-sol">
                         <button type="button" class="btn btn-verde btn-xs" data-matricula="${m.id}" data-accion="aprobar">Aprobar</button>
                         <button type="button" class="btn btn-gris btn-xs" data-matricula="${m.id}" data-accion="revisar">Revisar</button>
-                    </section>
+                    </div>
                 </section>`;
         }).join('');
 
@@ -289,22 +289,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     function pintarVerificacion(perfilInstructor) {
         if (!perfilInstructor) {
             zonaVerificacion.innerHTML = `
-                <section class="verificacion-estado">
+                <div class="verificacion-estado">
                     <span class="badge badge-amarillo badge-grande">⚠️ Pendiente de verificación</span>
                     <span class="texto-verificacion">Tu perfil de instructor aún no ha sido verificado por un administrador.</span>
-                </section>`;
+                </div>`;
             return;
         }
         const verificado = perfilInstructor.verificado;
         zonaVerificacion.innerHTML = verificado
-            ? `<section class="verificacion-estado">
+            ? `<div class="verificacion-estado">
                     <span class="badge badge-verde badge-grande">✓ Instructor Verificado</span>
                     <span class="texto-verificacion">Tu perfil ha sido verificado y aprobado.</span>
-               </section>`
-            : `<section class="verificacion-estado">
+               </div>`
+            : `<div class="verificacion-estado">
                     <span class="badge badge-amarillo badge-grande">⚠️ Pendiente de verificación</span>
                     <span class="texto-verificacion">Un administrador revisará tu perfil pronto.</span>
-               </section>`;
+               </div>`;
     }
 
     await cargar();

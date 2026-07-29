@@ -43,124 +43,127 @@
         <nav data-zona="sesion"></nav>
     </header>
 
-    <section class="planes-hero">
-        <h1>Nuestros <span style="color:#ffdd57">Planes</span></h1>
-        <p>Elige el plan que mejor se adapte a tus necesidades y comienza a transformar tu carrera profesional.</p>
-    </section>
 
-    <section class="planes-grid" id="planes-grid">
-        <section class="plan-card-nuevo">
-            <section class="plan-icono">🎓</section>
-            <h3>Estudiante</h3>
-            <p style="color:#64748b;font-size:13px">Acceso basico a cursos y perfil</p>
-            <section class="precio">$0 <span>/Gratis</span></section>
-            <ul>
-                <li>Perfil publico verificado</li>
-                <li>Cursos basicos ilimitados</li>
-                <li>1 certificado basico</li>
-                <li>Matching con empresas</li>
-            </ul>
-            <a href="../registro/registro.html?rol=estudiante" class="btn btn-azul btn-activar" data-plan="estudiante">Comenzar Gratis</a>
+    <main>
+        <section class="planes-hero">
+            <h1>Nuestros <span style="color:#ffdd57">Planes</span></h1>
+            <p>Elige el plan que mejor se adapte a tus necesidades y comienza a transformar tu carrera profesional.</p>
         </section>
 
-        <section class="plan-card-nuevo popular">
-            <section class="plan-icono">🚀</section>
-            <h3>Estudiante Pro</h3>
-            <p style="color:#64748b;font-size:13px">Para estudiantes serios que quieren destacar</p>
-            <section class="precio">$9.99 <span>/mes</span></section>
-            <ul>
-                <li>Todo lo del plan Estudiante</li>
-                <li>Cursos premium ilimitados</li>
-                <li>Certificados PDF descargables</li>
-                <li>Prioridad en matching</li>
-                <li>Badge "Pro" en el perfil</li>
-                <li>Soporte prioritario</li>
-            </ul>
-            <button type="button" class="btn btn-amarillo btn-activar" data-plan="estudiante-pro" onclick="activarPlan('Estudiante Pro', 9.99)">Actualizar a Pro</button>
-        </section>
-
-        <section class="plan-card-nuevo">
-            <section class="plan-icono">👨‍🏫</section>
-            <h3>Instructor</h3>
-            <p style="color:#64748b;font-size:13px">Crea cursos y genera ingresos</p>
-            <section class="precio">$19.99 <span>/mes</span></section>
-            <ul>
-                <li>Creacion de cursos ilimitada</li>
-                <li>Emision de certificados</li>
-                <li>Dashboard de analytics</li>
-                <li>Hasta 500 alumnos por curso</li>
-                <li>Comision del 15% por venta</li>
-            </ul>
-            <button type="button" class="btn btn-azul btn-activar" data-plan="instructor" onclick="activarPlan('Instructor', 19.99)">Ser Instructor</button>
-        </section>
-
-        <section class="plan-card-nuevo">
-            <section class="plan-icono">🏢</section>
-            <h3>Empresa</h3>
-            <p style="color:#64748b;font-size:13px">Encuentra el mejor talento verificado</p>
-            <section class="precio">$29.99 <span>/mes</span></section>
-            <ul>
-                <li>Vacantes ilimitadas</li>
-                <li>Matching inteligente 24/7</li>
-                <li>Perfiles detallados de candidatos</li>
-                <li>Filtros avanzados por habilidad</li>
-                <li>Soporte dedicado</li>
-            </ul>
-            <button type="button" class="btn btn-azul btn-activar" data-plan="empresa" onclick="activarPlan('Empresa', 29.99)">Activar Empresa</button>
-        </section>
-
-        <section class="plan-card-nuevo">
-            <section class="plan-icono">🛡️</section>
-            <h3>Administrador</h3>
-            <p style="color:#64748b;font-size:13px">Control total de la plataforma</p>
-            <section class="precio">$49.99 <span>/mes</span></section>
-            <ul>
-                <li>Gestion completa de usuarios</li>
-                <li>Panel de administracion avanzado</li>
-                <li>Resumen IA del sistema</li>
-                <li>Reportes y estadisticas</li>
-                <li>Soporte 24/7</li>
-            </ul>
-            <button type="button" class="btn btn-gris btn-activar" disabled>Solo acceso administrativo</button>
-        </section>
-    </section>
-
-    <section class="pago-section oculto" id="seccion-pago">
-        <section class="pago-form" id="form-pago">
-            <h2 style="text-align:center;color:#1e293b;margin-top:0">Datos de pago</h2>
-            <p style="text-align:center;font-size:13px;color:#64748b;margin-bottom:16px" id="plan-seleccionado"></p>
-
-            <label for="pago-nombres">Nombres completos</label>
-            <input type="text" id="pago-nombres" placeholder="Nombres y apellidos">
-
-            <label for="pago-email">Correo electronico</label>
-            <input type="email" id="pago-email" placeholder="correo@ejemplo.com">
-
-            <label for="pago-tarjeta">Numero de tarjeta</label>
-            <input type="text" id="pago-tarjeta" placeholder="1234 5678 9012 3456" maxlength="19">
-
-            <section class="fila-2">
-                <div>
-                    <label for="pago-expiracion">Vencimiento</label>
-                    <input type="text" id="pago-expiracion" placeholder="MM/AA" maxlength="5">
-                </div>
-                <div>
-                    <label for="pago-cvv">CVV</label>
-                    <input type="text" id="pago-cvv" placeholder="123" maxlength="4">
-                </div>
+        <section class="planes-grid" id="planes-grid">
+            <section class="plan-card-nuevo">
+                <div class="plan-icono">🎓</div>
+                <h3>Estudiante</h3>
+                <p style="color:#64748b;font-size:13px">Acceso basico a cursos y perfil</p>
+                <div class="precio">$0 <span>/Gratis</span></div>
+                <ul>
+                    <li>Perfil publico verificado</li>
+                    <li>Cursos basicos ilimitados</li>
+                    <li>1 certificado basico</li>
+                    <li>Matching con empresas</li>
+                </ul>
+                <a href="../registro/registro.html?rol=estudiante" class="btn btn-azul btn-activar" data-plan="estudiante">Comenzar Gratis</a>
             </section>
 
-            <label for="pago-documento">Cedula / RUC</label>
-            <input type="text" id="pago-documento" placeholder="Ej: 1712345678">
+            <section class="plan-card-nuevo popular">
+                <div class="plan-icono">🚀</div>
+                <h3>Estudiante Pro</h3>
+                <p style="color:#64748b;font-size:13px">Para estudiantes serios que quieren destacar</p>
+                <div class="precio">$9.99 <span>/mes</span></div>
+                <ul>
+                    <li>Todo lo del plan Estudiante</li>
+                    <li>Cursos premium ilimitados</li>
+                    <li>Certificados PDF descargables</li>
+                    <li>Prioridad en matching</li>
+                    <li>Badge "Pro" en el perfil</li>
+                    <li>Soporte prioritario</li>
+                </ul>
+                <button type="button" class="btn btn-amarillo btn-activar" data-plan="estudiante-pro" onclick="activarPlan('Estudiante Pro', 9.99)">Actualizar a Pro</button>
+            </section>
 
-            <button type="button" class="btn btn-azul btn-pagar" id="btn-procesar-pago">
-                <i class="fa-solid fa-lock"></i> Procesar pago
-            </button>
-            <p style="text-align:center;font-size:11px;color:#94a3b8;margin-top:10px">
-                <i class="fa-solid fa-shield-halved"></i> Pago seguro. Simulacion sin cargos reales.
-            </p>
+            <section class="plan-card-nuevo">
+                <div class="plan-icono">👨‍🏫</div>
+                <h3>Instructor</h3>
+                <p style="color:#64748b;font-size:13px">Crea cursos y genera ingresos</p>
+                <div class="precio">$19.99 <span>/mes</span></div>
+                <ul>
+                    <li>Creacion de cursos ilimitada</li>
+                    <li>Emision de certificados</li>
+                    <li>Dashboard de analytics</li>
+                    <li>Hasta 500 alumnos por curso</li>
+                    <li>Comision del 15% por venta</li>
+                </ul>
+                <button type="button" class="btn btn-azul btn-activar" data-plan="instructor" onclick="activarPlan('Instructor', 19.99)">Ser Instructor</button>
+            </section>
+
+            <section class="plan-card-nuevo">
+                <div class="plan-icono">🏢</div>
+                <h3>Empresa</h3>
+                <p style="color:#64748b;font-size:13px">Encuentra el mejor talento verificado</p>
+                <div class="precio">$29.99 <span>/mes</span></div>
+                <ul>
+                    <li>Vacantes ilimitadas</li>
+                    <li>Matching inteligente 24/7</li>
+                    <li>Perfiles detallados de candidatos</li>
+                    <li>Filtros avanzados por habilidad</li>
+                    <li>Soporte dedicado</li>
+                </ul>
+                <button type="button" class="btn btn-azul btn-activar" data-plan="empresa" onclick="activarPlan('Empresa', 29.99)">Activar Empresa</button>
+            </section>
+
+            <section class="plan-card-nuevo">
+                <div class="plan-icono">🛡️</div>
+                <h3>Administrador</h3>
+                <p style="color:#64748b;font-size:13px">Control total de la plataforma</p>
+                <div class="precio">$49.99 <span>/mes</span></div>
+                <ul>
+                    <li>Gestion completa de usuarios</li>
+                    <li>Panel de administracion avanzado</li>
+                    <li>Resumen IA del sistema</li>
+                    <li>Reportes y estadisticas</li>
+                    <li>Soporte 24/7</li>
+                </ul>
+                <button type="button" class="btn btn-gris btn-activar" disabled>Solo acceso administrativo</button>
+            </section>
         </section>
-    </section>
+
+        <section class="pago-section oculto" id="seccion-pago">
+            <section class="pago-form" id="form-pago">
+                <h2 style="text-align:center;color:#1e293b;margin-top:0">Datos de pago</h2>
+                <p style="text-align:center;font-size:13px;color:#64748b;margin-bottom:16px" id="plan-seleccionado"></p>
+
+                <label for="pago-nombres">Nombres completos</label>
+                <input type="text" id="pago-nombres" placeholder="Nombres y apellidos">
+
+                <label for="pago-email">Correo electronico</label>
+                <input type="email" id="pago-email" placeholder="correo@ejemplo.com">
+
+                <label for="pago-tarjeta">Numero de tarjeta</label>
+                <input type="text" id="pago-tarjeta" placeholder="1234 5678 9012 3456" maxlength="19">
+
+                <div class="fila-2">
+                    <div>
+                        <label for="pago-expiracion">Vencimiento</label>
+                        <input type="text" id="pago-expiracion" placeholder="MM/AA" maxlength="5">
+                    </div>
+                    <div>
+                        <label for="pago-cvv">CVV</label>
+                        <input type="text" id="pago-cvv" placeholder="123" maxlength="4">
+                    </div>
+                </div>
+
+                <label for="pago-documento">Cedula / RUC</label>
+                <input type="text" id="pago-documento" placeholder="Ej: 1712345678">
+
+                <button type="button" class="btn btn-azul btn-pagar" id="btn-procesar-pago">
+                    <i class="fa-solid fa-lock"></i> Procesar pago
+                </button>
+                <p style="text-align:center;font-size:11px;color:#94a3b8;margin-top:10px">
+                    <i class="fa-solid fa-shield-halved"></i> Pago seguro. Simulacion sin cargos reales.
+                </p>
+            </section>
+        </section>
+    </main>
 
     <footer class="footer">
         <nav class="footer-links">

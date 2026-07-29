@@ -123,10 +123,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             [totalCertificados, 'Certificados emitidos'],
             [tasa + '%', 'Tasa de certificación']
         ].map(([valor, etiqueta]) => `
-            <section class="stat-box">
-                <section class="numero numero-verde">${valor}</section>
-                <section class="etiqueta">${etiqueta}</section>
-            </section>`).join('');
+            <div class="stat-box">
+                <div class="numero numero-verde">${valor}</div>
+                <div class="etiqueta">${etiqueta}</div>
+            </div>`).join('');
     }
 
     /* --------------------------------------------- cursos activos */
@@ -148,24 +148,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             return `
                 <section class="solicitud-card" data-curso-id="${curso.id}">
-                    <section class="info-sol">
-                        <section class="nombre-sol">${UI.escapar(curso.nombre)}</section>
-                        <section class="detalle-sol">${UI.escapar(curso.descripcion)}</section>
+                    <div class="info-sol">
+                        <div class="nombre-sol">${UI.escapar(curso.nombre)}</div>
+                        <div class="detalle-sol">${UI.escapar(curso.descripcion)}</div>
                         <section class="badges-grupo">
                             <span class="badge ${claseBadge(curso.estado)}">${labelEstado(curso.estado)}</span>
                             <span class="badge badge-azul">${inscritos} inscritos</span>
                             <span class="badge badge-gris">${certs} certificados</span>
                             ${cat ? `<span class="badge badge-gris">${cat.icono} ${UI.escapar(cat.nombre)}</span>` : ''}
                         </section>
-                        <section class="progreso-grupo">
+                        <div class="progreso-grupo">
                             <progress title="${tasa}%" value="${tasa}" max="100" class="${claseProgreso(tasa)}"></progress>
                             <p class="texto-progreso">Tasa de certificación: ${tasa}%</p>
-                        </section>
-                    </section>
-                    <section class="acciones-sol">
+                        </div>
+                    </div>
+                    <div class="acciones-sol">
                         <button type="button" class="btn btn-azul btn-xs" data-accion="detalle">Ver detalles</button>
                         <button type="button" class="btn btn-gris btn-xs" data-accion="editar">Editar</button>
-                    </section>
+                    </div>
                 </section>`;
         }).join('');
 
@@ -198,18 +198,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             return `
                 <section class="solicitud-card" data-matricula-id="${m.id}">
-                    <section class="info-sol">
-                        <section class="nombre-sol">${UI.escapar(nombre)}</section>
-                        <section class="detalle-sol">Solicita certificación en: ${UI.escapar(nombreCurso)}</section>
-                        <section class="solicitud-progreso">
+                    <div class="info-sol">
+                        <div class="nombre-sol">${UI.escapar(nombre)}</div>
+                        <div class="detalle-sol">Solicita certificación en: ${UI.escapar(nombreCurso)}</div>
+                        <div class="solicitud-progreso">
                             <progress title="${m.progreso}%" value="${m.progreso}" max="100" class="${claseProgreso(m.progreso)}"></progress>
                             <p class="texto-progreso">Progreso: ${m.progreso}%</p>
-                        </section>
-                    </section>
-                    <section class="acciones-sol">
+                        </div>
+                    </div>
+                    <div class="acciones-sol">
                         <button type="button" class="btn btn-verde btn-xs" data-accion="aprobar">Aprobar</button>
                         <button type="button" class="btn btn-gris btn-xs" data-accion="revisar">Revisar</button>
-                    </section>
+                    </div>
                 </section>`;
         }).join('');
 
@@ -233,41 +233,41 @@ document.addEventListener('DOMContentLoaded', async () => {
         <section class="tarjeta" id="formulario-curso-inline" style="border:2px solid #2563eb;margin-bottom:20px">
             <h2>${esEdicion ? '✏️ Editar curso' : '➕ Crear nuevo curso'}</h2>
             <form id="form-curso-instructor" style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
-                <section class="campo">
+                <div class="campo">
                     <label for="f-nombre"><strong>Nombre del curso *</strong></label>
                     <input type="text" id="f-nombre" value="${curso ? UI.escapar(curso.nombre) : ''}"
                            placeholder="Ej: JavaScript Avanzado" required minlength="5"
                            style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px">
-                </section>
-                <section class="campo">
+                </div>
+                <div class="campo">
                     <label for="f-descripcion"><strong>Descripcion *</strong></label>
                     <textarea id="f-descripcion" rows="3" placeholder="Describe el curso..."
                               required minlength="10"
                               style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;resize:vertical">${curso ? UI.escapar(curso.descripcion) : ''}</textarea>
-                </section>
+                </div>
                 <section style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-                    <section class="campo">
+                    <div class="campo">
                         <label for="f-categoria"><strong>Categoria</strong></label>
                         <select id="f-categoria" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px">${opcionesCategoria}</select>
-                    </section>
-                    <section class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="f-nivel"><strong>Nivel</strong></label>
                         <select id="f-nivel" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px">${opcionesNivel}</select>
-                    </section>
+                    </div>
                 </section>
                 <section style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-                    <section class="campo">
+                    <div class="campo">
                         <label for="f-precio"><strong>Precio (USD, 0 = gratis)</strong></label>
                         <input type="number" id="f-precio" min="0" max="5000"
                                value="${curso ? curso.precio : 0}"
                                style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px">
-                    </section>
-                    <section class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="f-duracion"><strong>Duracion (horas)</strong></label>
                         <input type="number" id="f-duracion" min="1" max="500"
                                value="${curso ? curso.duracionHoras : 10}"
                                style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px">
-                    </section>
+                    </div>
                 </section>
                 <section style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
                     <button type="button" class="btn btn-gris btn-sm" id="btn-cancelar-formulario">Cancelar</button>

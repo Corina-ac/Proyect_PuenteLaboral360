@@ -25,6 +25,44 @@
     border-bottom-color: #f5c0c0;
 }
 
+/* ------------------------------------------------ buscador en tiempo real */
+/* Campo de texto que filtra los candidatos mientras se escribe.
+   Va sobre la fila de filtros porque es la entrada principal de la busqueda. */
+.campo-busqueda {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.campo-busqueda label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+.campo-busqueda input[type="search"] {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.campo-busqueda input[type="search"]:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.campo-busqueda .texto-ayuda {
+    font-size: 12px;
+    color: #64748b;
+    margin: 6px 0 0;
+}
+
 .form-filtros {
     display: flex;
     flex-wrap: wrap;

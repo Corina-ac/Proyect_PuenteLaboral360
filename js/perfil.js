@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <article class="tarjeta-item">
                         <img src="${Datos.recurso(curso.imagen)}" alt="${UI.escapar(curso.nombre)}"
                              loading="lazy" data-respaldo="${curso.icono}">
-                        <section class="tarjeta-cuerpo">
+                        <div class="tarjeta-cuerpo">
                             <span class="chip">${UI.escapar(matricula.estado)}</span>
                             <h3 class="tarjeta-titulo">${UI.escapar(curso.nombre)}</h3>
                             <p class="tarjeta-desc">${categoria ? UI.escapar(categoria.nombre) : ''}</p>
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <p class="tarjeta-meta">${matricula.progreso}% completado
                                 ${matricula.certificadoEmitido ? '· 🏅 Certificado emitido' : ''}</p>
                             ${botonCurso}
-                        </section>
+                        </div>
                     </article>`;
                 }).join('');
 
@@ -340,10 +340,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         ];
 
         indicadores.innerHTML = tarjetas.map(([etiqueta, valor, color]) => `
-            <section class="indicador" style="border-left-color:${color}">
+            <div class="indicador" style="border-left-color:${color}">
                 <p class="valor">${valor}</p>
                 <p class="etiqueta">${etiqueta}</p>
-            </section>`).join('');
+            </div>`).join('');
     }
 
     /* ------------------------------------------------------- acciones */

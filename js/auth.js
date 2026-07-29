@@ -129,12 +129,40 @@ const Auth = (() => {
         return usuarios.some(u => u.email.toLowerCase() === (email || '').trim().toLowerCase());
     }
 
+    /** Traduce el nombre de una categoria a su identificador. */
+    function categoriaDeNombre(nombre) {
+        if (!nombre) return 1;
+        const categoria = Datos.cache('categorias')
+            .find(c => c.nombre.toLowerCase() === nombre.toLowerCase());
+        return categoria ? categoria.id : 1;
+    }
+
+    /**
+     * Calcula las iniciales que se muestran en el avatar de respaldo.
+     * Una empresa se registra sin apellidos, asi que en ese caso se toman las
+     * dos primeras palabras del nombre ("TechCorp S.A." da "TS") y, si solo
+     * hay una palabra, sus dos primeras letras.
+     */
+    function calcularIniciales(nombres, apellidos) {
+        const limpio = (nombres || '').trim();
+        if (apellidos && apellidos.trim()) {
+            return (limpio[0] + apellidos.trim()[0]).toUpperCase();
+        }
+        const palabras = limpio.split(/\s+/).filter(Boolean);
+        if (palabras.length >= 2) {
+            return (palabras[0][0] + palabras[1][0]).toUpperCase();
+        }
+        return limpio.slice(0, 2).toUpperCase() || '?';
+    }
+
     /**
      * Registra un usuario nuevo, lo guarda en la coleccion y abre su sesion.
      * El rol admin no puede crearse desde el formulario publico.
      */
     async function registrar(datosUsuario) {
-        await Datos.obtener('usuarios'); // asegura que la coleccion este en cache
+        // Se aseguran en cache todas las colecciones que el alta puede tocar:
+        // el usuario siempre, y ademas su ficha de instructor o de empresa.
+        await Datos.obtenerVarias('usuarios', 'instructores', 'empresas', 'categorias');
 
         if (datosUsuario.rol === 'admin') {
             throw new Error('El rol de administrador no puede crearse desde el registro publico.');
@@ -143,15 +171,18 @@ const Auth = (() => {
             throw new Error('Ese correo electronico ya esta registrado.');
         }
 
+        const nombres = (datosUsuario.nombres || '').trim();
+        const apellidos = (datosUsuario.apellidos || '').trim();
+
         const nuevo = Datos.agregar('usuarios', {
-            nombres: datosUsuario.nombres.trim(),
-            apellidos: datosUsuario.apellidos.trim(),
+            nombres,
+            apellidos,
             email: datosUsuario.email.trim().toLowerCase(),
             passwordHash: Validaciones.hashSimple(datosUsuario.password),
             rol: datosUsuario.rol,
             fechaNacimiento: datosUsuario.fechaNacimiento,
             nacionalidad: datosUsuario.nacionalidad,
-            iniciales: (datosUsuario.nombres[0] + datosUsuario.apellidos[0]).toUpperCase(),
+            iniciales: calcularIniciales(nombres, apellidos),
             activo: true,
             codigoAccesoHash: null,
             avatar: datosUsuario.avatar || null,
@@ -168,8 +199,54 @@ const Auth = (() => {
             habilidades: datosUsuario.habilidades || [],
             nivel: datosUsuario.nivel || 'Principiante',
             objetivo: datosUsuario.objetivo || '',
+            // Campos propios de cada rol: quedan vacios para los demas.
+            sector: datosUsuario.sector || '',
+            especialidad: datosUsuario.especialidad || '',
+            bio: datosUsuario.bio || '',
             fechaRegistro: new Date().toISOString().slice(0, 10)
         });
+
+        // Un instructor tambien debe figurar en su propia coleccion para que
+        // sus cursos y su ficha aparezcan en el resto de la plataforma.
+        if (nuevo.rol === 'instructor') {
+            Datos.agregar('instructores', {
+                nombres: nuevo.nombres,
+                apellidos: nuevo.apellidos,
+                email: nuevo.email,
+                usuarioId: nuevo.id,
+                categoriaId: categoriaDeNombre(datosUsuario.especialidad),
+                especialidad: datosUsuario.especialidad || 'General',
+                valoracion: 0,
+                cursosDictados: 0,
+                verificado: false,
+                iniciales: nuevo.iniciales,
+                bio: datosUsuario.bio || '',
+                contacto: {
+                    ciudad: datosUsuario.ciudad || '',
+                    pais: (datosUsuario.nacionalidad || {}).nombre || '',
+                    telefono: datosUsuario.telefono || ''
+                }
+            });
+        }
+
+        // Una empresa necesita su ficha para poder publicar vacantes.
+        if (nuevo.rol === 'empresa') {
+            Datos.agregar('empresas', {
+                nombre: nuevo.nombres,
+                sector: datosUsuario.sector || 'General',
+                empleados: 0,
+                verificada: false,
+                iniciales: nuevo.iniciales,
+                usuarioId: nuevo.id,
+                contacto: {
+                    email: nuevo.email,
+                    telefono: datosUsuario.telefono || '',
+                    ciudad: datosUsuario.ciudad || '',
+                    pais: (datosUsuario.nacionalidad || {}).nombre || ''
+                },
+                fechaRegistro: nuevo.fechaRegistro
+            });
+        }
 
         return abrirSesion(nuevo);
     }

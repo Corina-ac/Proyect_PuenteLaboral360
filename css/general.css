@@ -153,14 +153,24 @@ nav a:hover {
    Estilos para main, section, article y aside.
    ============================================================ */
 
+/* <main> es solo el contenedor del contenido principal: no impone fondo ni
+   relleno para no alterar las secciones que ya traen su propio diseño
+   (hero a pantalla completa, paneles, galerias). */
 main {
-    background-color: #ffffff;
     width: 100%;
-    padding: 25px;
 }
 
+/* La separacion entre bloques tematicos se mantiene en <section>.
+   Los <div> internos no la heredan, que es justo lo que se busca:
+   <div> agrupa visualmente, <section> delimita un bloque con significado. */
 section {
     margin-bottom: 18px;
+}
+
+/* Un <section> que envuelve el diseño de una pagina completa (hero, paneles)
+   no necesita el margen inferior de bloque de contenido. */
+main > section:last-child {
+    margin-bottom: 0;
 }
 
 article {

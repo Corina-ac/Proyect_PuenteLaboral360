@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             pintarBienvenida(enProgreso.length, completados.length);
             pintarEstadisticas(enProgreso, completados, certs, perfilCompleto);
-            pintarGraficas(enProgreso, completados, habilidades);
+            pintarGraficas(enProgreso, completados, habilidades, misMatriculas);
             pintarCursos(enProgreso);
             pintarMatch(usuario, misMatriculas);
             pintarHabilidades(habilidades, completados);
@@ -88,8 +88,49 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>`).join('');
     }
 
+    /**
+     * Calcula el nivel de una habilidad a partir de datos reales, no al azar:
+     * se buscan los cursos matriculados cuyo nombre, descripcion o categoria
+     * mencionan la habilidad y se promedia el progreso alcanzado en ellos.
+     *
+     * Un curso completado con calificacion aporta esa nota (sobre 100); si no
+     * hay calificacion se usa el porcentaje de avance. Cuando la habilidad no
+     * aparece en ningun curso se devuelve un nivel base declarado por el
+     * propio estudiante, segun el nivel que indico en su perfil.
+     *
+     * Al depender solo de las matriculas, el valor es estable entre recargas.
+     */
+    function nivelDeHabilidad(habilidad, matriculas) {
+        const termino = habilidad.toLowerCase();
+        const categorias = Datos.cache('categorias');
+
+        const relacionados = matriculas.filter(m => {
+            const curso = m.curso;
+            if (!curso) return false;
+            const categoria = categorias.find(c => c.id === curso.categoriaId);
+            const texto = `${curso.nombre} ${curso.descripcion || ''} ${categoria ? categoria.nombre : ''}`.toLowerCase();
+            return texto.includes(termino);
+        });
+
+        if (relacionados.length === 0) {
+            // Nivel declarado en el perfil cuando todavia no hay cursos que lo respalden.
+            const base = { 'principiante': 30, 'basico': 40, 'intermedio': 55, 'avanzado': 70 };
+            return base[(usuario.nivel || 'principiante').toLowerCase()] || 30;
+        }
+
+        const suma = relacionados.reduce((total, m) => {
+            // La calificacion (sobre 10) pesa mas que el avance porque ya fue evaluada.
+            const valor = m.estado === 'completado' && m.calificacion
+                ? m.calificacion * 10
+                : m.progreso;
+            return total + valor;
+        }, 0);
+
+        return Math.round(suma / relacionados.length);
+    }
+
     /* --------------------------------------------------- graficas */
-    function pintarGraficas(enProgreso, completados, habilidades) {
+    function pintarGraficas(enProgreso, completados, habilidades, misMatriculas) {
         if (typeof Chart === 'undefined') return;
 
         const cursos = Datos.cache('cursos');
@@ -129,13 +170,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             const ctx2 = document.getElementById('chart-habilidades-radar');
             if (ctx2) {
                 const habilidadesTop = habilidades.slice(0, 7);
-                const valores = habilidadesTop.map(() => Math.floor(Math.random() * 40) + 60);
+                const valores = habilidadesTop.map(h => nivelDeHabilidad(h, misMatriculas));
                 new Chart(ctx2, {
                     type: 'radar',
                     data: {
                         labels: habilidadesTop,
                         datasets: [{
-                            label: 'Nivel estimado',
+                            label: 'Nivel alcanzado',
                             data: valores,
                             backgroundColor: 'rgba(59,130,246,0.2)',
                             borderColor: '#3b82f6',
@@ -179,11 +220,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             return `
                 <section class="curso-card">
-                    <section class="titulo-curso">${UI.escapar(curso.nombre)}</section>
-                    <section class="instructor">👨‍🏫 ${UI.escapar(nombreInst)}</section>
-                    <section class="progreso-texto">
+                    <div class="titulo-curso">${UI.escapar(curso.nombre)}</div>
+                    <div class="instructor">👨‍🏫 ${UI.escapar(nombreInst)}</div>
+                    <div class="progreso-texto">
                         <span>Progreso</span><span>${m.progreso}%</span>
-                    </section>
+                    </div>
                     <progress title="Progreso: ${m.progreso}%" value="${m.progreso}" max="100" class="${clase}"></progress>
                     <br>${badge}<br>${botonCurso}
                 </section>`;
@@ -232,15 +273,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             const clase = v.match >= 70 ? 'match-alto' : v.match >= 40 ? 'match-medio' : 'match-bajo';
             return `
                 <section class="match-card">
-                    <section class="info-empresa">
-                        <section class="nombre-empresa">🏢 ${UI.escapar(v.empresa ? v.empresa.nombre : 'Empresa')}</section>
-                        <section class="cargo">${UI.escapar(v.titulo)}</section>
-                        <section class="habilidades-match">
+                    <div class="info-empresa">
+                        <div class="nombre-empresa">🏢 ${UI.escapar(v.empresa ? v.empresa.nombre : 'Empresa')}</div>
+                        <div class="cargo">${UI.escapar(v.titulo)}</div>
+                        <div class="habilidades-match">
                             ${v.habilidadesRequeridas.map(h => `<span class="habilidad-tag">${UI.escapar(h)}</span>`).join('')}
-                        </section>
-                    </section>
+                        </div>
+                    </div>
                     <section>
-                        <section class="match-porcentaje ${clase}">${v.match}%<section class="texto-match">de match</section></section>
+                        <section class="match-porcentaje ${clase}">${v.match}%<div class="texto-match">de match</div></section>
                     </section>
                 </section>`;
         }).join('');
@@ -270,11 +311,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const nombreCurso = curso ? curso.nombre : 'Curso';
             return `
                 <section class="match-card" style="border-left: 4px solid #16a34a;">
-                    <section class="info-empresa">
-                        <section class="nombre-empresa">📜 ${UI.escapar(nombreCurso)}</section>
-                        <section class="cargo">Completado el ${UI.fecha(m.fechaInscripcion)}</section>
-                        <section class="detalle-candidato">Calificacion: ${m.calificacion || 'Aprobado'}</section>
-                    </section>
+                    <div class="info-empresa">
+                        <div class="nombre-empresa">📜 ${UI.escapar(nombreCurso)}</div>
+                        <div class="cargo">Completado el ${UI.fecha(m.fechaInscripcion)}</div>
+                        <div class="detalle-candidato">Calificacion: ${m.calificacion || 'Aprobado'}</div>
+                    </div>
                     <section>
                         <button type="button" class="btn btn-verde btn-sm btn-ver-certificado"
                             data-nombre="${UI.escapar(nombreCurso)}"
@@ -377,9 +418,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                 document.getElementById('btn-recomendar-curso')?.addEventListener('click', async () => {
                     const cursos = Datos.cache('cursos');
                     const cursoActual = cursoId ? cursos.find(c => c.id === Number(cursoId)) : null;
+                    // Se recomienda por afinidad real: primero los cursos de la
+                    // misma categoria que el curso consultado y, dentro de esos,
+                    // los mejor valorados. Asi la lista es coherente y estable.
                     const recomendados = cursos
                         .filter(c => c.id !== Number(cursoId) && c.estado === 'disponible')
-                        .sort(() => Math.random() - 0.5)
+                        .sort((a, b) => {
+                            if (cursoActual) {
+                                const mismaA = a.categoriaId === cursoActual.categoriaId ? 1 : 0;
+                                const mismaB = b.categoriaId === cursoActual.categoriaId ? 1 : 0;
+                                if (mismaA !== mismaB) return mismaB - mismaA;
+                            }
+                            return b.valoracion - a.valoracion;
+                        })
                         .slice(0, 3);
                     if (recomendados.length === 0) {
                         UI.toast('No hay otros cursos para recomendar.', 'info');
@@ -445,14 +496,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             zonaSugerenciasIA.innerHTML = sugerencias.map(s => `
                 <section class="match-card" data-cargo="${UI.escapar(s.cargo)}" data-empresa="${UI.escapar(s.empresa)}">
-                    <section class="info-empresa">
-                        <section class="cargo">${UI.escapar(s.cargo)}</section>
-                        <section class="nombre-empresa">🏢 ${UI.escapar(s.empresa)}</section>
+                    <div class="info-empresa">
+                        <div class="cargo">${UI.escapar(s.cargo)}</div>
+                        <div class="nombre-empresa">🏢 ${UI.escapar(s.empresa)}</div>
                         <p class="descripcion-vacante">${UI.escapar(s.descripcion)}</p>
-                        <section class="habilidades-match">
+                        <div class="habilidades-match">
                             ${(s.habilidadesRequeridas || []).map(h => `<span class="habilidad-tag">${UI.escapar(h)}</span>`).join('')}
-                        </section>
-                    </section>
+                        </div>
+                    </div>
                     <section>
                         <button class="btn btn-azul btn-aplicar" type="button">Aplicar</button>
                     </section>
@@ -542,9 +593,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 zonaMeta.innerHTML = `
                     <p><strong>Mi objetivo:</strong> ${UI.escapar(estudiante.objetivo)}</p>
                     <p style="margin-top:10px"><strong>Habilidades sugeridas por IA para alcanzarlo:</strong></p>
-                    <section class="habilidades" style="margin-top:8px">
+                    <div class="habilidades" style="margin-top:8px">
                         ${habilidades.map(h => `<span class="habilidad-tag">${UI.escapar(h)}</span>`).join('')}
-                    </section>`;
+                    </div>`;
             } else {
                 zonaMeta.innerHTML = `<p><strong>Mi objetivo:</strong> ${UI.escapar(estudiante.objetivo)}</p>`;
             }
@@ -595,14 +646,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         zonaCursosRecomendados.innerHTML = cursosFiltrados.map(c => `
             <section class="match-card">
-                <section class="info-empresa">
-                    <section class="cargo">${UI.escapar(c.nombre)}</section>
-                    <section class="nombre-empresa">📂 ${UI.escapar(c.cat)}</section>
+                <div class="info-empresa">
+                    <div class="cargo">${UI.escapar(c.nombre)}</div>
+                    <div class="nombre-empresa">📂 ${UI.escapar(c.cat)}</div>
                     <section>
                         <span class="habilidad-tag">${UI.escapar(c.nivel)}</span>
                         <span class="habilidad-tag">${c.valoracion ? '⭐ ' + c.valoracion : ''}</span>
                     </section>
-                </section>
+                </div>
                 <section>
                     <a href="../cursos/cursos.html" class="btn btn-azul btn-sm">Ver curso</a>
                 </section>
